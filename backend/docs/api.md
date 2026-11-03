@@ -1,0 +1,330 @@
+# 백A API 초안 (약속방 · 인증 · 진행 상태)
+
+프론트는 이 문서로 화면·mock을 만들고, 실제 서버는 `/docs`(Swagger)에서 바로 호출해 볼 수 있다.
+조건 입력·추천 계산은 백B의 `app/core`(지하철 경로·공평성 추천)를 호출한다 (`docs/integration-B.md`).
+
+## 공통
+
+- Base URL: 개발 `http://localhost:8000`
+- 인증: `Authorization: Bearer <access_token>` (쿠키 미사용). 토큰은 **약속방마다 별개**이며 다른 약속방에서는 통하지 않는다.
+- 시간: UTC ISO 8601, 끝에 `Z` (예: `2026-12-01T09:30:00Z`). 날짜(`date_start` 등)는 `YYYY-MM-DD`.
+- 오류 형식 (모든 오류 동일):
+
+```json
+{ "error": { "code": "INVALID_PIN", "message": "PIN이 올바르지 않습니다." } }
+```
+
+입력 검증 실패는 `422 VALIDATION_ERROR`이며 **입력값은 응답에 포함하지 않고** 필드 위치만 알려 준다.
+
+```json
+{ "error": { "code": "VALIDATION_ERROR", "message": "입력값이 올바르지 않습니다.",
+             "fields": [ { "field": "pin", "reason": "string_pattern_mismatch" } ] } }
+```
+
+### 단계 (`stage`)
+
+```
+recruiting → input → recommended → proposed → confirmed
+ (모집 중)   (조건 입력) (추천 완료)   (제안됨)    (확정)
+```
+
+| 전이 | 누가/무엇이 | 조건 |
+| --- | --- | --- |
+| recruiting → input | 호스트 `POST /close` | 참여자 2명 이상 |
+| input → recommended | 호스트 `POST /recommendations` | 활성 참여자 **전원 조건 제출** + 추천 후보가 1개 이상 (후보가 없으면 단계는 그대로) |
+| recommended → proposed | 호스트 `POST /proposal` | 후보 검증 통과 |
+| proposed → confirmed | 마지막 사람이 동의 → **자동** | 활성 참여자 **전원**(호스트 포함) 동의 |
+
+거절이 하나라도 나오면 제안은 `rejected`가 되고 단계는 `proposed`에 머문다. 호스트가 다시 제안하면 응답은 처음부터 시작한다.
+
+### 주요 오류 코드
+
+| HTTP | code | 의미 |
+| --- | --- | --- |
+| 401 | `UNAUTHENTICATED` | 토큰 없음/만료/다른 약속방/제외됨 |
+| 401 | `INVALID_PIN`, `INVALID_CREDENTIALS` | PIN / 호스트 비밀번호 불일치 |
+| 403 | `HOST_ONLY` | 호스트 전용 기능 |
+| 404 | `MEETING_NOT_FOUND`, `PARTICIPANT_NOT_FOUND`, `JOIN_REQUEST_NOT_FOUND` | 대상 없음 |
+| 409 | `INVALID_STAGE` | 지금 단계에서 불가 (`stage`, `allowed_stages` 포함) |
+| 409 | `MEETING_FULL`, `JOIN_CLOSED`, `NOT_ENOUGH_PARTICIPANTS`, `NO_ACTIVE_PROPOSAL`, `NOT_CONFIRMED`, `NO_DRAFT` | 상태 충돌 |
+| 409 | `CONDITIONS_INCOMPLETE` | 아직 제출하지 않은 참여자가 있어 추천 불가 (`pending_nicknames` 포함) |
+| 410 | `MEETING_EXPIRED` | 만료된 약속방 (모든 접근 차단) |
+| 422 | `VALIDATION_ERROR`, `INVALID_CANDIDATE` | 입력/후보 오류 |
+| 422 | `CONDITIONS_INVALID` | 조건 값 오류. `errors: [{code, message, field}]` 에 B의 검증 결과가 그대로 들어간다 |
+| 429 | `TOO_MANY_ATTEMPTS` | PIN/비밀번호 실패 초과. `Retry-After` 헤더(초) 와 `retry_after` 필드 |
+
+---
+
+## 약속방 생성
+
+`POST /meetings` → `201`
+
+```json
+// 요청
+{
+  "title": "금요일 저녁 모임",          // 1~50자
+  "description": "다 같이 보자",        // 선택, 최대 200자
+  "date_start": "2026-12-01",
+  "date_end": "2026-12-07",            // date_start 이후, 최대 31일
+  "max_participants": 10,              // 선택(기본 10), 2~30
+  "host_nickname": "한경",              // 1~20자
+  "pin": "4821",                       // 4~6자리 숫자: 참여자가 입력
+  "host_password": "my-host-password"  // 8~72바이트: 호스트 재접속용
+}
+```
+
+```json
+// 응답: 호스트 토큰이 바로 발급된다 (생성자 = 호스트)
+{
+  "meeting_id": "Qx3k9aB1",
+  "access_token": "…",
+  "token_type": "bearer",
+  "expires_at": "2027-01-01T00:00:00Z",
+  "participant": { "id": 1, "nickname": "한경", "is_host": true },
+  "meeting": { "id": "Qx3k9aB1", "title": "…", "description": "…", "date_start": "2026-12-01",
+               "date_end": "2026-12-07", "stage": "recruiting", "max_participants": 10,
+               "closed_at": null, "expires_at": "2027-01-01T00:00:00Z" }
+}
+```
+
+## 공개 정보 (로그인 전, 초대 링크 화면)
+
+`GET /meetings/{id}/public` → `200` (인증 불필요)
+
+```json
+{ "id": "Qx3k9aB1", "title": "금요일 저녁 모임", "description": "다 같이 보자",
+  "date_start": "2026-12-01", "date_end": "2026-12-07", "stage": "recruiting",
+  "participant_count": 3, "max_participants": 10,
+  "can_join": true,            // 즉시 참여 가능 (모집 중 + 정원 여유)
+  "can_request_join": false }  // 마감 후 참여 신청 가능 (조건 입력 단계 + 정원 여유)
+```
+
+PIN, 호스트 정보, 참여자 목록은 포함하지 않는다.
+
+## 참여
+
+`POST /meetings/{id}/join`
+
+```json
+{ "nickname": "민수", "pin": "4821" }
+```
+
+- 모집 중 → `201`, 토큰 발급. 닉네임이 겹치면 접미사가 붙는다 (`민수` → `민수(2)`). 실제 닉네임은 응답의 `participant.nickname`을 사용한다.
+
+```json
+{ "meeting_id": "Qx3k9aB1", "access_token": "…", "token_type": "bearer",
+  "expires_at": "…", "participant": { "id": 2, "nickname": "민수", "is_host": false } }
+```
+
+- 조건 입력 단계(마감 후) → `202`, 호스트 승인 대기. `request_secret`은 **이때 한 번만** 보인다.
+
+```json
+{ "status": "pending", "request_id": 4, "nickname": "민수", "request_secret": "…" }
+```
+
+- 추천 이후 → `409 JOIN_CLOSED`, 정원 초과 → `409 MEETING_FULL`
+- PIN 불일치 → `401 INVALID_PIN` (5회 연속 실패 시 5분간 `429`. 클라이언트(IP)별로 제한)
+
+## 호스트 재접속
+
+`POST /meetings/{id}/host-login` → `200` (응답은 생성 응답의 토큰 부분과 동일)
+
+```json
+{ "host_password": "my-host-password" }
+```
+
+새 토큰을 발급하고 **이전 호스트 토큰은 즉시 무효**가 된다. 일반 참여자의 재접속은 저장해 둔 토큰으로 한다.
+
+## 대시보드
+
+`GET /meetings/{id}` (인증) → `200`
+
+```json
+{
+  "meeting": { "id": "…", "title": "…", "stage": "proposed", "max_participants": 10,
+               "date_start": "…", "date_end": "…", "closed_at": "…", "expires_at": "…", "description": null },
+  "me": { "participant_id": 2, "nickname": "민수", "is_host": false },
+  "participants": [
+    { "id": 1, "nickname": "한경", "is_host": true,  "is_me": false, "input_status": "submitted", "response": "accept" },
+    { "id": 2, "nickname": "민수", "is_host": false, "is_me": true,  "input_status": "submitted", "response": "pending" }
+  ],
+  "proposal": { "id": 3, "version": 1, "status": "pending", "candidate_id": "c_20261107_1500_창동",
+                "candidate": { … },          // 후보 공개 정보 (장소·시간)
+                "my_route": { … },           // 내 경로만. 추천 이후 참여한 사람은 null
+                "accepted_count": 1, "total": 2 },
+  "next_action": { "code": "respond_to_proposal", "message": "제안에 동의 또는 거절하세요." },
+  "host": { "pending_join_requests": 0 }       // 호스트에게만 포함
+}
+```
+
+- `input_status`: `none` | `draft` | `submitted` (조건 **내용**은 절대 포함되지 않는다)
+- `response`: `proposed`/`confirmed` 단계에서만 포함. `pending` | `accept` | `reject`
+- `proposal`: 제안이 없으면 `null`. `status`: `pending` | `accepted` | `rejected` | `superseded`
+- `candidate`는 B의 `get_candidate`, `my_route`는 B의 `get_my_route` 결과 (다른 참여자의 경로·출발역은 포함되지 않는다)
+
+### `next_action.code`
+
+| code | 대상 | 단계 |
+| --- | --- | --- |
+| `close_recruiting` / `wait_recruiting` | 호스트 / 참여자 | recruiting |
+| `submit_conditions` | 미제출자 | input |
+| `wait_conditions` / `run_recommendation` | 호스트 (일부 미제출 / 전원 제출) | input |
+| `wait_recommendation` | 제출 완료한 참여자 | input |
+| `propose_candidate` / `wait_proposal` | 호스트 / 참여자 | recommended |
+| `respond_to_proposal` / `wait_responses` | 미응답 / 응답 완료 | proposed (진행 중 제안) |
+| `repropose` / `wait_reproposal` | 호스트 / 참여자 | proposed (거절됨) |
+| `view_confirmed` | 모두 | confirmed |
+
+## 역 검색 · 조건 입력 · 추천
+
+### 역 자동완성
+
+`GET /stations?q=쌍문&limit=10` (인증 불필요, `q` 1~20자, `limit` 1~20)
+
+```json
+{ "stations": [ { "name": "쌍문", "lines": ["4"], "lat": 37.648627, "lng": 127.034709 } ] }
+```
+
+`신설동역`처럼 `역`을 붙이거나 별칭(예: `이수`)으로 검색해도 된다. 서울 지하철 1~8호선 범위.
+
+### 내 조건 조회 / 임시저장 / 제출
+
+| 요청 | 설명 |
+| --- | --- |
+| `GET /meetings/{id}/conditions/me` | `{ "status": "none"\|"draft"\|"submitted", "conditions": {…}\|null, "updated_at": "…" }` — **본인 것만** 조회 가능 |
+| `PUT /meetings/{id}/conditions/me/draft` | 임시저장 (있는 항목만 검사). 입력 단계(`input`)에서만 |
+| `POST /meetings/{id}/conditions/me/submit` | 제출/재제출 (필수 항목 모두 필요). **본문을 생략하면 저장해 둔 초안을 제출**. 없으면 `409 NO_DRAFT` |
+
+```json
+// 요청 본문 (draft / submit 공통)
+{
+  "availability": { "2026-11-07": [13, 14, 15], "2026-11-08": [10] },   // 날짜 -> 출발 가능한 시(0~23). 약속방 날짜 범위 안
+  "default_station": "쌍문",                                              // 필수(제출 시)
+  "exception_stations": [ { "date": "2026-11-08", "hours": [10], "station": "수유" } ],   // 선택
+  "constraints": {                                                         // 선택. level: "required"(필수) | "preferred"(선호)
+    "max_travel_min":  { "value": 60,   "level": "required" },
+    "max_transfers":   { "value": 1,    "level": "preferred" },
+    "max_walk_m":      { "value": 500,  "level": "preferred" },
+    "needs_elevator":  { "value": true, "level": "required" },
+    "avoid_stairs":    { "value": true, "level": "preferred" }
+  }
+}
+```
+
+```json
+// 응답 200: 정리된 조건 (역명은 표준 이름, 시간은 정렬·중복 제거)
+{ "status": "submitted", "conditions": { "availability": {…}, "default_station": "쌍문", "exception_stations": [], "constraints": {…} },
+  "updated_at": "2026-11-02T09:30:00Z" }
+```
+
+```json
+// 422 CONDITIONS_INVALID
+{ "error": { "code": "CONDITIONS_INVALID", "message": "조건을 확인해 주세요.",
+             "errors": [ { "code": "STATION_NOT_FOUND", "message": "…", "field": "default_station" } ] } }
+```
+
+`errors[].code`: `NO_AVAILABILITY`, `STATION_REQUIRED`, `STATION_NOT_FOUND`, `DATE_OUT_OF_RANGE`, `INVALID_FORMAT`, `INVALID_CONSTRAINT` (`field`는 문제가 된 항목 이름).
+
+- 제출 후 다시 `draft`로 저장하면 상태가 `draft`로 돌아가며, 다시 **제출해야** 추천에 포함된다.
+- 추천이 실행된 뒤(`recommended` 이후)에는 조건이 잠긴다 (`409 INVALID_STAGE`).
+- 대시보드의 `input_status`가 `none`/`draft`/`submitted`로 바뀐다.
+
+### 추천 실행 (호스트) / 조회 (참여자)
+
+`POST /meetings/{id}/recommendations` → `200` — 호스트만. 전원이 제출한 뒤에만 가능하며(아니면 `409 CONDITIONS_INCOMPLETE`),
+`input`/`recommended` 단계에서 다시 실행할 수 있다. 응답은 아래 조회 응답과 같다.
+
+`GET /meetings/{id}/recommendations` → `200` — 모든 참여자. **내 경로(`my_route`)만** 포함한다.
+
+```json
+{
+  "status": "ok",                      // "ok" | "no_candidate" | "not_ready"(추천 실행 전)
+  "stage": "recommended",
+  "best": "c_20261107_1500_창동",       // 1순위 candidate_id
+  "candidates": [
+    { "rank": 1, "candidate_id": "c_20261107_1500_창동", "date": "2026-11-07", "start": "15:00", "end": "17:00",
+      "station": { "name": "창동", "lines": ["1","4"], "lat": 37.65, "lng": 127.05 },
+      "max_travel_min": 32, "accessibility": "met",
+      "my_route": { "origin": "쌍문", "depart_at": "14:28", "minutes": 32, "transfers": 1, "walk_m": 210,
+                    "segments": [ { "line": "4", "board": "쌍문", "alight": "충무로", "stops": 10, "minutes": 22 } ] } }
+  ]
+}
+```
+
+- `no_candidate`이면 `candidates: []` 와 `reasons: [...]`(통합 사유)가 오고 **단계는 `input`에 머문다.** 조건을 고쳐 다시 제출한 뒤 호스트가 재실행한다.
+- 추천이 실행된 뒤에 참여한 사람은 `my_route`가 `null`이다.
+- 같은 날 같은 역은 가장 좋은 시간 1개만, 날짜별 최대 3개, 전체 순위(`rank`) 순서.
+- `accessibility`: 만남 장소 역의 엘리베이터 상태 `met` | `unmet` | `unknown` (필수 조건 판단에서 `unknown`은 충족으로 보지 않는다).
+- `segments[]`: 구간별 `{line, board, alight, stops, minutes}` (환승이 있으면 구간이 여러 개).
+
+---
+
+## 모집 마감 (호스트)
+
+`POST /meetings/{id}/close` → `200` `{ "meeting": { … "stage": "input", "closed_at": "…" } }`
+
+참여자가 2명 미만이면 `409 NOT_ENOUGH_PARTICIPANTS`, 이미 마감했으면 `409 INVALID_STAGE`.
+
+## 제안 (호스트) / 응답 (전원)
+
+`POST /meetings/{id}/proposal` → `201`
+
+```json
+{ "candidate_id": "c_20261107_1500_창동" }   // 추천 결과의 candidate_id 그대로. 이번 추천 결과에 없는 후보면 422 INVALID_CANDIDATE
+```
+
+```json
+{ "id": 3, "version": 1, "status": "pending",
+  "candidate_id": "c_20261107_1500_창동",
+  "candidate": { "candidate_id": "…", "date": "2026-11-07", "start": "15:00", "end": "17:00",
+                 "station": { "name": "창동", "lines": ["1","4"], "lat": 37.65, "lng": 127.05 },
+                 "max_travel_min": 32, "accessibility": "met" },
+  "my_route": { "origin": "쌍문", "depart_at": "14:28", "minutes": 32, "transfers": 1, "walk_m": 210,
+                "segments": [ { "line": "4", "board": "쌍문", "alight": "충무로", "stops": 10, "minutes": 22 } ] },
+  "stage": "proposed" }
+```
+
+- `recommended` 또는 `proposed` 단계에서 가능. 진행 중인 제안이 있으면 `superseded`로 바뀌고 새 제안은 응답 없이 시작한다.
+
+`POST /meetings/{id}/proposal/response`
+
+```json
+{ "response": "accept" }       // "accept" | "reject"
+```
+
+응답은 위 제안 객체와 같다 (`status`가 `accepted`이면 `stage`가 `confirmed`).
+진행 중인 제안이 없으면 `409 NO_ACTIVE_PROPOSAL`. 진행 중에는 응답을 바꿀 수 있고, 한 명이라도 거절하면 즉시 `rejected`.
+
+## 확정 화면
+
+`GET /meetings/{id}/confirmed` (인증) → `200`, 확정 전이면 `409 NOT_CONFIRMED`
+
+```json
+{ "meeting": { … }, "candidate_id": "c_20261107_1500_창동", "candidate": { … }, "my_route": { … },
+  "participants": [ { "id": 1, "nickname": "한경", "is_host": true } ] }
+```
+
+## 마감 후 참여 승인 / 참여자 제외 (호스트)
+
+| 요청 | 설명 |
+| --- | --- |
+| `GET /meetings/{id}/join-requests` | 대기 중 신청 `{ "requests": [{ "id", "nickname", "created_at" }] }` |
+| `POST /meetings/{id}/join-requests/{rid}/approve` | 승인 (입력 단계에서만, 정원 확인). `{ "id", "status": "approved" }` |
+| `POST /meetings/{id}/join-requests/{rid}/reject` | 거절 |
+| `POST /meetings/{id}/join-requests/{rid}/claim` | **신청자**가 결과 확인 (인증 대신 `{ "request_secret": "…" }`). 대기/거절이면 `{ "status": "pending"\|"rejected" }`, 승인이면 토큰 발급(한 번만, 이후 `409 ALREADY_CLAIMED`) |
+| `POST /meetings/{id}/participants/{pid}/exclude` | 참여자 제외. 토큰 즉시 무효. 제외 결과로 남은 전원이 동의한 상태면 자동 확정 |
+
+신청자는 승인될 때까지 `claim`을 주기적으로 호출한다.
+
+## 삭제
+
+| 요청 | 설명 |
+| --- | --- |
+| `DELETE /meetings/{id}/me` → `204` | 내 데이터 삭제 + 토큰 무효화 (내 응답·조건 등 하위 데이터 함께 삭제). 호스트는 `409 HOST_CANNOT_LEAVE` |
+| `DELETE /meetings/{id}` → `204` | 호스트가 약속방과 모든 하위 데이터를 삭제 |
+
+## 프론트가 알아 두면 좋은 점
+
+- 토큰은 로그인/참여 응답에서 **한 번만** 내려간다. `localStorage` 등에 저장해 재접속에 쓴다.
+- 서버가 쿠키를 쓰지 않으므로 CORS는 `Authorization`/`Content-Type` 헤더만 허용한다. 프론트 Origin은 서버 `CORS_ORIGINS`에 등록해야 한다.
+- 화면 분기는 `stage`와 `next_action.code`를 기준으로 한다.
