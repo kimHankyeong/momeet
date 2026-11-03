@@ -202,6 +202,8 @@ def recommend(participants: list[dict], dates: list[str]) -> dict:
 
     반환: 추천 결과 dict (JSON으로 그대로 저장했다가 view_for / get_candidate / get_my_route에 다시 넘기기)
     """
+    # 결과를 JSON으로 저장하면 dict 키가 문자열이 됨 → id는 처음부터 문자열로 통일 (정수 id를 넘겨도 됨)
+    participants = [{**p, "id": str(p["id"])} for p in participants]
     people = {p["id"]: p for p in participants}
     raw, diagnoses = generate_candidates(participants, dates)
 
@@ -311,7 +313,7 @@ def view_for(result: dict | None, participant_id: str) -> dict:
 
     view = {"status": result["status"], "best": result["best"], "candidates": []}
     for c in result["candidates"]:
-        leg = c["legs"].get(participant_id)
+        leg = c["legs"].get(str(participant_id))
         view["candidates"].append({
             "rank": c["rank"],
             "candidate_id": c["candidate_id"],
@@ -352,6 +354,6 @@ def get_my_route(result: dict | None, candidate_id: str, participant_id: str) ->
         return None
     for c in result["candidates"]:
         if c["candidate_id"] == candidate_id:
-            leg = c["legs"].get(participant_id)
+            leg = c["legs"].get(str(participant_id))
             return _route_view(leg) if leg else None
     return None

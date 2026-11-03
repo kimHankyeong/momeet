@@ -145,10 +145,21 @@ def test_특정_필수_조건이_항상_막히면_인원수만_표시():
 def test_조회는_본인_경로만():
     r = recommend(sample(), DATES)
     v = view_for(r, "p1")
+    for c in v["candidates"]:
+        assert set(c) == {"rank", "candidate_id", "date", "start", "end", "station",
+                          "max_travel_min", "accessibility", "my_route"}
+        assert c["my_route"]["origin"] == "쌍문"
     text = json.dumps(v, ensure_ascii=False)
-    assert "방화" not in text and "잠실" not in text.replace("잠실새내", "").replace(r["candidates"][0]["station"], "")
-    assert all(c["my_route"]["origin"] == "쌍문" for c in v["candidates"])
-    assert "legs" not in text
+    assert "legs" not in text and "p2" not in text and "p3" not in text
+
+
+def test_정수_id로_넘기고_JSON_저장_후에도_조회됨():
+    ps = sample()
+    for i, p in enumerate(ps, 1):
+        p["id"] = i
+    saved = json.loads(json.dumps(recommend(ps, DATES), ensure_ascii=False))  # DB 저장 → 다시 읽기
+    assert view_for(saved, 1)["candidates"][0]["my_route"]["origin"] == "쌍문"
+    assert get_my_route(saved, saved["best"], 2)["origin"] == "방화"
 
 
 def test_추천_전이면_not_ready():
