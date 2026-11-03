@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8'?><response><header><resultCode>00</resultCode><resultMsg>NORMAL_CODE</resultMsg></header><body><items/><pageNo>1</pageNo><numOfRows>5</numOfRows><totalCount>0</totalCount></body></response>
+<?xml version='1.0' encoding='UTF-8'?><response><header><resultCode>00</resultCode><resultMsg>NORMAL_CODE</resultMsg></header><body><items/><pageNo>1</pageNo><numOfRows>5</numOfRows><totalCount>0</totalCount></body></response>
+<?xml version="1.0" encoding="UTF-8"?>
+<tbTrfcElevInstlPrst>
+<list_total_count>18</list_total_count>
+<RESULT>
+<CODE>INFO-000</CODE>
+<MESSAGE>정상 처리되었습니다</MESSAGE>
+</RESULT>
+<row>
+<SN>9 </SN>
+<LINE>6</LINE>
+<ZONE>서부</ZONE>
+<SUBW_NM>삼각지(6)</SUBW_NM>
+<UNIT>8</UNIT>
+<ELEV_NO>1800-697</ELEV_NO>
+<INSTL_PSTN>환승통로(B3)</INSTL_PSTN>
+</row>
+<row>
+<SN>8 </SN>
+<LINE>6</LINE>
+<ZONE>서부</ZONE>
+<SUBW_NM>삼각지(6)</SUBW_NM>
+<UNIT>7</UNIT>
+<ELEV_NO>1800-696</ELEV_NO>
+<INSTL_PSTN>환승통로(B3)</INSTL_PSTN>
+</row>
+<row>
+<SN>7 </SN>
+<LINE>6</LINE>
+<ZONE>서부</ZONE>
+<SUBW_NM>삼각지(6)</SUBW_NM>
+<UNIT>6</UNIT>
+<ELEV_NO>1800-695</ELEV_NO>
+<INSTL_PSTN>환승통로(B3)</INSTL_PSTN>
+</row>
+<row>
+<SN>6 </SN>
+<LINE>6</LINE>
+<ZONE>서부</ZONE>
+<SUBW_NM>삼각지(6)</SUBW_NM>
+<UNIT>5</UNIT>
+<ELEV_NO>1800-361</ELEV_NO>
+<INSTL_PSTN>환승통로(B3)</INSTL_PSTN>
+</row>
+<row>
+<SN>5 </SN>
+<LINE>6</LINE>
+<ZONE>서부</ZONE>
+<SUBW_NM>삼각지(6)</SUBW_NM>
+<UNIT>4</UNIT>
+<ELEV_NO>1800-360</ELEV_NO>
+<INSTL_PSTN>환승통로(B3)</INSTL_PSTN>
+</row>
+</tbTrfcElevInstlPrst>
+<?xml version="1.0" encoding="UTF-8"?>
+<tb9LineElvt>
+<list_total_count>55</list_total_count>
+<RESULT>
+<CODE>INFO-000</CODE>
+<MESSAGE>정상 처리되었습니다</MESSAGE>
+</RESULT>
+<row>
+<SN>9</SN>
+<LINE>9(2단계)</LINE>
+<SUBW_NM>삼성중앙</SUBW_NM>
+<MNG_NO>1</MNG_NO>
+<ENEX_NO>내부</ENEX_NO>
+<BGNG_DTL>선정릉 방면 3-4</BGNG_DTL>
+<BGNG_FLOOR>지하</BGNG_FLOOR>
+<BGNG_OPR>2</BGNG_OPR>
+<END_FLOOR>지하</END_FLOOR>
+<END_OPR>1</END_OPR>
+<PSCP>15</PSCP>
+<PSCP_WGHT>1000</PSCP_WGHT>
+<ELVTR_NO>0108-266</ELVTR_NO>
+<OPR_SEC>B2-B1</OPR_SEC>
+<INSTL_PSTN>(대합실 ↔ 하선 3-4)</INSTL_PSTN>
+</row>
+<row>
+<SN>8</SN>
+<LINE>9(2단계)</LINE>
+<SUBW_NM>선정릉(9)</SUBW_NM>
+<MNG_NO>4</MNG_NO>
+<ENEX_NO>내부</ENEX_NO>
+<BGNG_DTL>삼성중앙 방면 2-4</BGNG_DTL>
+<BGNG_FLOOR>지하</BGNG_FLOOR>
+<BGNG_OPR>4</BGNG_OPR>
+<END_FLOOR>지하</END_FLOOR>
+<END_OPR>3</END_OPR>
+<PSCP>15</PSCP>
+<PSCP_WGHT>1000</PSCP_WGHT>
+<ELVTR_NO>0105-480</ELVTR_NO>
+<OPR_SEC>B4-B3</OPR_SEC>
+<INSTL_PSTN>(상선 2-4 ↔ 환승대합실)</INSTL_PSTN>
+</row>
+<row>
+<SN>7</SN>
+<LINE>9(2단계)</LINE>
+<SUBW_NM>선정릉(9)</SUBW_NM>
+<MNG_NO>3</MNG_NO>
+<ENEX_NO>내부</ENEX_NO>
+<BGNG_DTL>언주 방면 4-4</BGNG_DTL>
+<BGNG_FLOOR>지하</BGNG_FLOOR>
+<BGNG_OPR>4</BGNG_OPR>
+<END_FLOOR>지하</END_FLOOR>
+<END_OPR>3</END_OPR>
+<PSCP>15</PSCP>
+<PSCP_WGHT>1000</PSCP_WGHT>
+<ELVTR_NO>0105-479</ELVTR_NO>
+<OPR_SEC>B4-B3</OPR_SEC>
+<INSTL_PSTN>(하선 4-4 ↔ 환승대합실)</INSTL_PSTN>
+</row>
+<row>
+<SN>6</SN>
+<LINE>9(2단계)</LINE>
+<SUBW_NM>선정릉(9)</SUBW_NM>
+<MNG_NO>2</MNG_NO>
+<ENEX_NO>내부</ENEX_NO>
+<BGNG_DTL>삼성중앙 방면 5-3</BGNG_DTL>
+<BGNG_FLOOR>지하</BGNG_FLOOR>
+<BGNG_OPR>3</BGNG_OPR>
+<END_FLOOR>지하</END_FLOOR>
+<END_OPR>1</END_OPR>
+<PSCP>15</PSCP>
+<PSCP_WGHT>1000</PSCP_WGHT>
+<ELVTR_NO>0105-478</ELVTR_NO>
+<OPR_SEC>B3-B1</OPR_SEC>
+<INSTL_PSTN>(대합실 ↔ 상선 5-3)</INSTL_PSTN>
+</row>
+<row>
+<SN>55</SN>
+<LINE>9(3단계)</LINE>
+<SUBW_NM>중앙보훈병원</SUBW_NM>
+<MNG_NO>5</MNG_NO>
+<ENEX_NO>3번 출구</ENEX_NO>
+<BGNG_DTL>3번 출구 측</BGNG_DTL>
+<BGNG_FLOOR>지하</BGNG_FLOOR>
+<BGNG_OPR>2</BGNG_OPR>
+<END_FLOOR>지하</END_FLOOR>
+<END_OPR>1</END_OPR>
+<PSCP>24</PSCP>
+<PSCP_WGHT>1600</PSCP_WGHT>
+<ELVTR_NO>0129-730</ELVTR_NO>
+<OPR_SEC>B1-B2</OPR_SEC>
+<INSTL_PSTN>(3번 출구 ↔ 대합실)</INSTL_PSTN>
+</row>
+</tb9LineElvt>
