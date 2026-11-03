@@ -1,5 +1,6 @@
 """
-지하철 경로 계산 (서울교통공사 1~8호선)
+지하철 경로 계산 (1~9호선 + 우이신설선, 1호선은 서울역~청량리 구간만)
+9호선·우이신설선 운행시간은 거리로 추정한 값 (edges.json의 estimated=True)
 
 데이터: backend/data/stations.json, edges.json, transfers.json
         (scripts/build_subway_data.py 로 생성)
@@ -118,6 +119,8 @@ def search_stations(query: str, limit: int = 10) -> list[dict]:
     """역 자동완성: 앞부분 일치 우선, 그다음 포함. 별칭으로도 검색됨"""
     stations, _, _, _ = _load()
     q = query.strip().replace(" ", "")
+    if q.endswith("역") and q != "서울역":
+        q = q[:-1]  # "신설동역" → "신설동" (화면에 역 붙여서 보여주므로 그대로 검색해도 되게)
     if not q:
         return []
     prefix, contains = [], []
