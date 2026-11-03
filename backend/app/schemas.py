@@ -24,14 +24,14 @@ def _clean_text(v: str, field: str, *, allow_empty: bool = False) -> str:
 
 
 class MeetingCreate(Strict):
-    title: str = Field(min_length=1, max_length=50)
+    title: str = Field(min_length=1, max_length=12)  # 시안: 최대 12자
     description: str | None = Field(default=None, max_length=200)
     date_start: date
     date_end: date
     max_participants: int = Field(default=10, ge=2)
-    host_nickname: str = Field(min_length=1, max_length=20)
-    # 참여자가 입력하는 4~6자리 숫자
-    pin: str = Field(pattern=r"^\d{4,6}$")
+    host_nickname: str = Field(min_length=1, max_length=8)  # 시안: 최대 8자
+    # 시안: 숫자 6자리
+    pin: str = Field(pattern=r"^\d{6}$")
     host_password: str = Field(min_length=8, max_length=72)
 
     @field_validator("title", "host_nickname")
@@ -65,8 +65,8 @@ class MeetingCreate(Strict):
 
 
 class JoinBody(Strict):
-    nickname: str = Field(min_length=1, max_length=20)
-    pin: str = Field(pattern=r"^\d{4,6}$")
+    nickname: str = Field(min_length=1, max_length=8)  # 시안: 최대 8자
+    pin: str = Field(pattern=r"^\d{6}$")
 
     @field_validator("nickname")
     @classmethod

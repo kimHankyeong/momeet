@@ -51,15 +51,17 @@ def propose(db: Session, meeting: Meeting, host: Participant, candidate_id: str,
 
 
 def evaluate(db: Session, meeting: Meeting) -> Proposal | None:
-    """진행 중인 제안을 평가한다: 거절이 하나라도 있으면 rejected, 전원 동의면 accepted + 확정."""
+    """진행 중인 제안을 평가한다: 활성 참여자 전원이 동의하면 accepted + 확정.
+
+    거절이 있어도 제안은 pending으로 남는다 (시안: "거절 완료 / 수정하기"). 거절한 사람이 동의로 바꾸면
+    확정될 수 있고, 호스트가 다른 후보를 다시 제안하면 이 제안은 superseded 된다.
+    """
     proposal = current_pending(meeting)
     if proposal is None:
         return None
     responses = {r.participant_id: r.response for r in proposal.responses}
     active = active_participants(db, meeting.id)
-    if any(responses.get(p.id) == "reject" for p in active):
-        proposal.status = "rejected"
-    elif active and all(responses.get(p.id) == "accept" for p in active):
+    if active and all(responses.get(p.id) == "accept" for p in active):
         proposal.status = "accepted"
         meeting.confirmed_candidate_id = proposal.candidate_id
         state.transition(meeting, STAGE_CONFIRMED)
@@ -71,7 +73,7 @@ def respond(db: Session, meeting: Meeting, me: Participant, response: str) -> Pr
     state.require_stage(meeting, STAGE_PROPOSED)
     proposal = current_pending(meeting)
     if proposal is None:
-        raise AppError("NO_ACTIVE_PROPOSAL", "응답할 수 있는 제안이 없습니다. 호스트의 재제안을 기다려 주세요.", 409)
+        raise AppError("NO_ACTIVE_PROPOSAL", "응답할 수 있는 제안이 없습니다.", 409)
 
     existing = db.scalar(
         select(ProposalResponse).where(

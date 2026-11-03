@@ -128,7 +128,7 @@ class Room:
         return body
 
 
-def new_room(client: TestClient, pin: str = "1234", password: str = "host-password-1", **over) -> Room:
+def new_room(client: TestClient, pin: str = "123456", password: str = "host-password-1", **over) -> Room:
     today = date.today()
     body = {
         "title": "금요일 저녁 모임",

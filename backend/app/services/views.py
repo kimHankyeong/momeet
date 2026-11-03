@@ -1,6 +1,7 @@
 """응답 JSON 조립. 다른 참여자의 조건·개인 정보는 여기서 절대 내보내지 않는다."""
 from sqlalchemy.orm import Session
 
+from app.config import get_settings
 from app.errors import AppError
 from app.models import (
     STAGE_CONFIRMED,
@@ -57,7 +58,15 @@ def _next_action(db: Session, meeting: Meeting, me: Participant, people: list[Pa
         return {"code": code, "message": message}
 
     if stage == STAGE_RECRUITING:
-        return act("close_recruiting", "참여자가 모이면 모집을 마감하세요.") if host else act("wait_recruiting", "모집이 마감되기를 기다리는 중입니다.")
+        # 시안: 모집 중에도 참여자가 각자 조건을 입력한다 ("입력 중" / "입력완료")
+        if me.input_status != "submitted":
+            return act("submit_conditions", "내 조건을 입력하고 제출하세요.")
+        if host:
+            ready = all(p.input_status == "submitted" for p in people)
+            if ready and len(people) >= get_settings().min_participants_to_close:
+                return act("close_recruiting", "모든 참여자가 준비됐어요. 모집을 마감하세요.")
+            return act("wait_conditions", "다른 참여자의 입력을 기다리는 중입니다. 링크로 참여자를 더 초대할 수 있어요.")
+        return act("wait_recruiting", "모집이 마감되기를 기다리는 중입니다.")
 
     if stage == STAGE_INPUT:
         if me.input_status != "submitted":
@@ -74,11 +83,17 @@ def _next_action(db: Session, meeting: Meeting, me: Participant, people: list[Pa
     if stage == STAGE_PROPOSED:
         proposal = latest_proposal(meeting)
         if proposal is not None and proposal.status == "pending":
-            mine = next((r for r in proposal.responses if r.participant_id == me.id), None)
-            if mine is None:
+            answered = {r.participant_id for r in proposal.responses}
+            rejected = any(r.response == "reject" for r in proposal.responses if r.participant_id in {p.id for p in people})
+            if people and all(p.id in answered for p in people) and rejected:
+                # 전원이 응답했는데 거절이 있다: 확정되지 않았다 -> 호스트가 다른 후보를 다시 제안
+                if host:
+                    return act("repropose", "이번 제안은 확정되지 않았어요. 다른 후보를 다시 제안하세요.")
+                return act("wait_reproposal", "주최자의 새 제안을 기다리는 중입니다.")
+            if me.id not in answered:
                 return act("respond_to_proposal", "제안에 동의 또는 거절하세요.")
             return act("wait_responses", "다른 참여자의 응답을 기다리는 중입니다.")
-        return act("repropose", "제안이 거절되었습니다. 다시 제안하세요.") if host else act("wait_reproposal", "호스트의 재제안을 기다리는 중입니다.")
+        return act("repropose", "다른 후보를 제안하세요.") if host else act("wait_reproposal", "주최자의 새 제안을 기다리는 중입니다.")
 
     return act("view_confirmed", "확정되었습니다. 확정 내용을 확인하세요.")
 
@@ -112,8 +127,17 @@ def dashboard(db: Session, meeting: Meeting, me: Participant, provider: Candidat
             "candidate": provider.get(meeting.id, proposal.candidate_id),
             "my_route": provider.my_route(meeting.id, proposal.candidate_id, me.id),
             "accepted_count": sum(1 for p in people if responses.get(p.id) == "accept"),
+            "rejected_count": sum(1 for p in people if responses.get(p.id) == "reject"),
+            "responded_count": sum(1 for p in people if p.id in responses),
             "total": len(people),
         }
+        # 시안: "이번 제안은 확정되지 않았어요" (전원 응답 + 거절 있음). 거절한 사람은 계속 수정할 수 있다.
+        prop["needs_replan"] = (
+            proposal.status == "pending"
+            and bool(people)
+            and prop["responded_count"] == len(people)
+            and prop["rejected_count"] > 0
+        )
 
     out = {
         "meeting": meeting_summary(meeting),
@@ -121,6 +145,8 @@ def dashboard(db: Session, meeting: Meeting, me: Participant, provider: Candidat
         "participants": plist,
         "proposal": prop,
         "next_action": _next_action(db, meeting, me, people),
+        # 시안: "참여자 2/4 완료"
+        "progress": {"submitted": sum(1 for p in people if p.input_status == "submitted"), "total": len(people)},
     }
     if me.is_host:
         out["host"] = {"pending_join_requests": len(joins.list_pending(db, meeting))}

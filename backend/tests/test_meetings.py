@@ -16,7 +16,7 @@ def test_create_returns_host_token_and_hides_secrets(client):
             "date_start": "2026-12-01",
             "date_end": "2026-12-07",
             "host_nickname": "한경",
-            "pin": "4821",
+            "pin": "482193",
             "host_password": "super-secret-pw",
         },
     )
@@ -26,14 +26,14 @@ def test_create_returns_host_token_and_hides_secrets(client):
     assert body["meeting"]["stage"] == "recruiting"
     assert body["meeting"]["max_participants"] == 10
     text = r.text
-    for secret in ("4821", "super-secret-pw", "$2b$", "pin_hash", "password_hash"):
+    for secret in ("482193", "super-secret-pw", "$2b$", "pin_hash", "password_hash"):
         assert secret not in text
 
 
 def test_secrets_are_stored_hashed_not_plain(client, db):
-    room = new_room(client, pin="9876", password="another-password")
+    room = new_room(client, pin="987654", password="another-password")
     m = db.get(models.Meeting, room.id)
-    assert m.pin_hash.startswith("$2") and "9876" not in m.pin_hash
+    assert m.pin_hash.startswith("$2") and "987654" not in m.pin_hash
     assert m.host_password_hash.startswith("$2") and "another-password" not in m.host_password_hash
     p = db.get(models.Participant, room.host_id)
     assert p.token_hash and p.token_hash != room.host_token and len(p.token_hash) == 64
@@ -42,7 +42,7 @@ def test_secrets_are_stored_hashed_not_plain(client, db):
 def _bad(client, **over):
     base = {
         "title": "모임", "date_start": "2026-12-01", "date_end": "2026-12-07",
-        "host_nickname": "한경", "pin": "1234", "host_password": "long-enough-pw",
+        "host_nickname": "한경", "pin": "123456", "host_password": "long-enough-pw",
     }
     base.update(over)
     return client.post("/meetings", json=base)
@@ -50,11 +50,11 @@ def _bad(client, **over):
 
 def test_create_validation(client):
     for over in (
-        {"pin": "12"}, {"pin": "abcd"}, {"pin": "1234567"},
+        {"pin": "12"}, {"pin": "abcd"}, {"pin": "1234"}, {"pin": "12345"}, {"pin": "1234567"},
         {"host_password": "short"},
         {"host_password": "가" * 25},  # 75바이트: bcrypt 72바이트 한도 초과
-        {"title": ""}, {"title": "  "}, {"title": "x" * 51},
-        {"host_nickname": "a\nb"},
+        {"title": ""}, {"title": "  "}, {"title": "가" * 13},  # 시안: 약속 이름 최대 12자
+        {"host_nickname": "a\nb"}, {"host_nickname": "가" * 9},  # 시안: 닉네임 최대 8자
         {"date_start": "2026-12-10", "date_end": "2026-12-01"},
         {"date_start": "2026-01-01", "date_end": "2026-12-31"},
         {"max_participants": 1}, {"max_participants": 31},
@@ -113,7 +113,9 @@ def test_join_issues_token_and_dashboard_works(client, room):
     p = room.add("민수")
     d = room.get(headers=p["h"]).json()
     assert d["me"]["nickname"] == "민수" and d["me"]["is_host"] is False
-    assert d["next_action"]["code"] == "wait_recruiting"
+    # 시안: 모집 중에도 각자 조건을 입력한다
+    assert d["next_action"]["code"] == "submit_conditions"
+    assert d["progress"] == {"submitted": 0, "total": 2}
 
 
 def test_duplicate_nicknames_get_suffix(client, room):
@@ -123,13 +125,13 @@ def test_duplicate_nicknames_get_suffix(client, room):
 
 
 def test_join_wrong_pin(client, room):
-    r = room.client.post(f"/meetings/{room.id}/join", json={"nickname": "a", "pin": "0000"})
+    r = room.client.post(f"/meetings/{room.id}/join", json={"nickname": "a", "pin": "000000"})
     assert r.status_code == 401 and r.json()["error"]["code"] == "INVALID_PIN"
 
 
 def test_pin_lockout_after_repeated_failures_even_with_correct_pin(client, room):
     for _ in range(5):
-        assert client.post(f"/meetings/{room.id}/join", json={"nickname": "a", "pin": "0000"}).status_code == 401
+        assert client.post(f"/meetings/{room.id}/join", json={"nickname": "a", "pin": "000000"}).status_code == 401
     r = client.post(f"/meetings/{room.id}/join", json={"nickname": "a", "pin": room.pin})
     assert r.status_code == 429
     assert r.json()["error"]["code"] == "TOO_MANY_ATTEMPTS"
@@ -138,7 +140,7 @@ def test_pin_lockout_after_repeated_failures_even_with_correct_pin(client, room)
 
 def test_lockout_expires_and_success_resets_counter(client, room, db):
     for _ in range(5):
-        client.post(f"/meetings/{room.id}/join", json={"nickname": "a", "pin": "0000"})
+        client.post(f"/meetings/{room.id}/join", json={"nickname": "a", "pin": "000000"})
     row = db.scalar(select(models.AuthAttempt))
     row.locked_until = utcnow() - timedelta(seconds=1)
     db.commit()
@@ -147,10 +149,10 @@ def test_lockout_expires_and_success_resets_counter(client, room, db):
 
     # 4번 실패 후 성공하면 횟수가 초기화된다 (이후 4번 더 틀려도 잠기지 않음)
     for _ in range(4):
-        client.post(f"/meetings/{room.id}/join", json={"nickname": "b", "pin": "0000"})
+        client.post(f"/meetings/{room.id}/join", json={"nickname": "b", "pin": "000000"})
     assert client.post(f"/meetings/{room.id}/join", json={"nickname": "b", "pin": room.pin}).status_code == 201
     for _ in range(4):
-        assert client.post(f"/meetings/{room.id}/join", json={"nickname": "c", "pin": "0000"}).status_code == 401
+        assert client.post(f"/meetings/{room.id}/join", json={"nickname": "c", "pin": "000000"}).status_code == 401
 
 
 def test_lockout_is_per_client_key(db, client, room):
@@ -195,7 +197,7 @@ def test_host_login_wrong_password_and_lockout(client, room):
 
 def test_pin_and_host_password_counters_are_independent(client, room):
     for _ in range(5):
-        client.post(f"/meetings/{room.id}/join", json={"nickname": "a", "pin": "0000"})
+        client.post(f"/meetings/{room.id}/join", json={"nickname": "a", "pin": "000000"})
     assert client.post(f"/meetings/{room.id}/host-login", json={"host_password": room.password}).status_code == 200
 
 
@@ -269,14 +271,28 @@ def test_join_after_close_becomes_request_and_after_recommend_is_closed(client, 
 def test_wrong_pin_after_close_reveals_nothing_extra(client, room):
     room.add("민수")
     room.post("/close")
-    r = client.post(f"/meetings/{room.id}/join", json={"nickname": "x", "pin": "0000"})
+    r = client.post(f"/meetings/{room.id}/join", json={"nickname": "x", "pin": "000000"})
     assert r.status_code == 401
 
 
 # ---------------------------------------------------------------- 대시보드
+def test_dashboard_next_actions_while_recruiting(client, room):
+    """모집 중: 각자 조건 입력 -> 전원 입력하면 호스트에게 '모집 마감'을 안내."""
+    p = room.add("민수")
+    assert room.get().json()["next_action"]["code"] == "submit_conditions"
+    room.submit(room.host, "쌍문")
+    assert room.get().json()["next_action"]["code"] == "wait_conditions"  # 민수 입력 대기
+    assert room.get(headers=p["h"]).json()["next_action"]["code"] == "submit_conditions"
+    assert room.get().json()["progress"] == {"submitted": 1, "total": 2}
+
+    room.submit(p["h"], "강남")
+    assert room.get().json()["next_action"]["code"] == "close_recruiting"
+    assert room.get(headers=p["h"]).json()["next_action"]["code"] == "wait_recruiting"
+    assert room.get().json()["progress"] == {"submitted": 2, "total": 2}
+
+
 def test_dashboard_next_actions_through_input_stage(client, room, db):
     p = room.add("민수")
-    assert room.get().json()["next_action"]["code"] == "close_recruiting"
     room.post("/close")
     assert room.get().json()["next_action"]["code"] == "submit_conditions"
     assert room.get(headers=p["h"]).json()["next_action"]["code"] == "submit_conditions"
@@ -338,3 +354,12 @@ def test_two_meetings_are_isolated(client):
 def test_health(client):
     assert client.get("/health").json() == {"status": "ok"}
     _ = date
+
+
+def test_design_limits_boundaries_are_accepted(client):
+    """시안의 최대치: 약속 이름 12자, 닉네임 8자, PIN 6자리."""
+    room = new_room(client, title="가" * 12, host_nickname="나" * 8)
+    p = room.add("다" * 8)
+    assert p["nickname"] == "다" * 8
+    assert room.join("다" * 9).status_code == 422
+    assert room.join("라").status_code == 201

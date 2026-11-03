@@ -10,6 +10,7 @@ from app.errors import AppError
 from app.models import (
     STAGE_INPUT,
     STAGE_RECOMMENDED,
+    STAGE_RECRUITING,
     Condition,
     Meeting,
     Participant,
@@ -55,14 +56,14 @@ def _save(db: Session, meeting: Meeting, me: Participant, clean: dict, status: s
 
 
 def save_draft(db: Session, meeting: Meeting, me: Participant, data: dict) -> Condition:
-    state.require_stage(meeting, STAGE_INPUT)
+    state.require_stage(meeting, STAGE_RECRUITING, STAGE_INPUT)
     clean = _validate(meeting, data, final=False)
     return _save(db, meeting, me, clean, "draft")
 
 
 def submit(db: Session, meeting: Meeting, me: Participant, data: dict | None) -> Condition:
     """제출/재제출. data가 없으면 저장해 둔 초안을 제출한다."""
-    state.require_stage(meeting, STAGE_INPUT)
+    state.require_stage(meeting, STAGE_RECRUITING, STAGE_INPUT)
     if data is None:
         row = db.scalar(select(Condition).where(Condition.participant_id == me.id))
         if row is None:

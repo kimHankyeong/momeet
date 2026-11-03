@@ -122,17 +122,51 @@ def test_everyone_accepting_confirms_automatically(client, session_factory):
     assert propose(room, 0).status_code == 409
 
 
-def test_single_rejection_rejects_proposal(client, session_factory):
+def test_rejection_keeps_proposal_open_until_everyone_responded(client, session_factory):
+    """시안: 거절해도 제안은 열려 있고, 전원이 응답했는데 거절이 있으면 '확정되지 않았어요'(재조율)."""
     room, (a, b) = make_ready(client, session_factory)
     propose(room)
     respond(room, a, "accept")
     r = respond(room, b, "reject")
-    assert r.json()["status"] == "rejected" and r.json()["stage"] == "proposed"
+    assert r.json()["status"] == "pending" and r.json()["stage"] == "proposed"
 
+    d = room.get().json()["proposal"]  # 호스트가 아직 응답하지 않음
+    assert (d["responded_count"], d["rejected_count"], d["needs_replan"]) == (2, 1, False)
+    assert room.get().json()["next_action"]["code"] == "respond_to_proposal"
+
+    respond(room, room.host, "accept")  # 전원 응답 + 거절 1 -> 재조율
+    d = room.get().json()["proposal"]
+    assert (d["responded_count"], d["accepted_count"], d["rejected_count"], d["needs_replan"]) == (3, 2, 1, True)
     assert room.get().json()["next_action"]["code"] == "repropose"
     assert room.get(headers=a["h"]).json()["next_action"]["code"] == "wait_reproposal"
-    err = respond(room, room.host, "accept")
-    assert err.status_code == 409 and err.json()["error"]["code"] == "NO_ACTIVE_PROPOSAL"
+    assert room.get().json()["meeting"]["stage"] == "proposed"  # 확정되지 않음
+    assert room.get("/confirmed").status_code == 409
+
+
+def test_rejecter_can_change_mind_and_confirm(client, session_factory):
+    """시안: '거절 완료 / 수정하기' -> 거절한 사람이 동의로 바꾸면 전원 동의로 확정된다."""
+    room, (a, b) = make_ready(client, session_factory)
+    propose(room)
+    respond(room, a, "accept")
+    respond(room, room.host, "accept")
+    respond(room, b, "reject")
+    assert room.get().json()["proposal"]["needs_replan"] is True
+
+    r = respond(room, b, "accept")
+    assert r.status_code == 200 and r.json()["status"] == "accepted" and r.json()["stage"] == "confirmed"
+    d = room.get().json()
+    assert d["meeting"]["stage"] == "confirmed" and d["proposal"]["needs_replan"] is False
+    assert room.get("/confirmed", headers=b["h"]).json()["candidate_id"] == room.cands[0]
+
+
+def test_accepter_can_change_to_reject(client, session_factory):
+    room, (a, b) = make_ready(client, session_factory)
+    propose(room)
+    respond(room, a, "accept")
+    respond(room, a, "reject")  # 동의 -> 거절 수정
+    d = room.get().json()["proposal"]
+    assert (d["accepted_count"], d["rejected_count"]) == (0, 1)
+    assert respond(room, b, "accept").json()["status"] == "pending"
 
 
 def test_reproposal_resets_responses(client, session_factory):
@@ -172,8 +206,8 @@ def test_participant_response_is_idempotent_while_pending(client, session_factor
     respond(room, a, "accept")  # 같은 응답 반복은 문제 없음 (중복 행 없음)
     assert room.get().json()["proposal"]["accepted_count"] == 1
 
-    respond(room, a, "reject")  # 진행 중에는 바꿀 수 있고, 거절이면 즉시 rejected
-    assert room.get().json()["proposal"]["status"] == "rejected"
+    respond(room, a, "reject")  # 진행 중에는 바꿀 수 있다 (거절해도 제안은 pending)
+    assert room.get().json()["proposal"]["status"] == "pending"
 
 
 def test_dashboard_shows_responses_but_no_reasons(client, session_factory):
@@ -234,7 +268,7 @@ def test_leaving_can_complete_confirmation(client, session_factory):
 def test_leaving_removes_my_response_and_conditions(client, session_factory, db):
     room, (a, b) = make_ready(client, session_factory)
     propose(room)
-    respond(room, a, "reject")  # 거절 -> rejected
+    respond(room, a, "reject")
     client.delete(f"/meetings/{room.id}/me", headers=a["h"])
     assert db.scalar(select(models.ProposalResponse).where(models.ProposalResponse.participant_id == a["id"])) is None
     assert db.scalar(select(models.Condition).where(models.Condition.participant_id == a["id"])) is None

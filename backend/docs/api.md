@@ -25,17 +25,21 @@
 
 ```
 recruiting → input → recommended → proposed → confirmed
- (모집 중)   (조건 입력) (추천 완료)   (제안됨)    (확정)
+ (모집 중)   (마감 후)  (추천 완료)   (제안됨)    (확정)
 ```
+
+**화면(시안)의 5단계 스텝퍼와의 대응:** 시안은 *모집 → 입력 → 추천 → 제안 → 확정* 이고, 참여자가 링크로 들어오면서 동시에 각자 조건을 입력한다("입력 중/입력완료").
+그래서 API는 `recruiting`과 `input` **두 단계 모두에서 조건 입력이 가능**하다. 두 값은 화면에서 "입력" 단계 하나로 묶어 보여 주면 된다.
+(`recruiting` = 모집 마감 전, `input` = 호스트가 모집을 마감한 뒤 추천 실행 대기. 스텝퍼의 "모집" 칸이 따로 활성화되는 순간이 언제인지는 기획/디자인 확인 필요.)
 
 | 전이 | 누가/무엇이 | 조건 |
 | --- | --- | --- |
-| recruiting → input | 호스트 `POST /close` | 참여자 2명 이상 |
+| recruiting → input | 호스트 `POST /close` ("참여자 모집 마감") | 참여자 2명 이상. 마감 전에는 새 참여자가 들어올 수 있고, 마감 후에는 호스트 승인이 필요하다 |
 | input → recommended | 호스트 `POST /recommendations` | 활성 참여자 **전원 조건 제출** + 추천 후보가 1개 이상 (후보가 없으면 단계는 그대로) |
 | recommended → proposed | 호스트 `POST /proposal` | 후보 검증 통과 |
 | proposed → confirmed | 마지막 사람이 동의 → **자동** | 활성 참여자 **전원**(호스트 포함) 동의 |
 
-거절이 하나라도 나오면 제안은 `rejected`가 되고 단계는 `proposed`에 머문다. 호스트가 다시 제안하면 응답은 처음부터 시작한다.
+거절이 나와도 제안은 `pending`으로 열려 있다. **전원이 응답했는데 거절이 있으면 `proposal.needs_replan = true`** (시안: "이번 제안은 확정되지 않았어요")이고, 거절한 사람이 동의로 바꾸면 전원 동의로 확정된다. 호스트가 다른 후보를 다시 제안하면 응답은 처음부터 시작한다.
 
 ### 주요 오류 코드
 
@@ -62,13 +66,13 @@ recruiting → input → recommended → proposed → confirmed
 ```json
 // 요청
 {
-  "title": "금요일 저녁 모임",          // 1~50자
+  "title": "금요일 저녁 모임",          // 1~12자 (시안)
   "description": "다 같이 보자",        // 선택, 최대 200자
   "date_start": "2026-12-01",
   "date_end": "2026-12-07",            // date_start 이후, 최대 31일
   "max_participants": 10,              // 선택(기본 10), 2~30
-  "host_nickname": "한경",              // 1~20자
-  "pin": "4821",                       // 4~6자리 숫자: 참여자가 입력
+  "host_nickname": "한경",              // 1~8자 (시안)
+  "pin": "482193",                     // 숫자 6자리 (시안): 참여자가 입력
   "host_password": "my-host-password"  // 8~72바이트: 호스트 재접속용
 }
 ```
@@ -106,7 +110,7 @@ PIN, 호스트 정보, 참여자 목록은 포함하지 않는다.
 `POST /meetings/{id}/join`
 
 ```json
-{ "nickname": "민수", "pin": "4821" }
+{ "nickname": "민수", "pin": "482193" }
 ```
 
 - 모집 중 → `201`, 토큰 발급. 닉네임이 겹치면 접미사가 붙는다 (`민수` → `민수(2)`). 실제 닉네임은 응답의 `participant.nickname`을 사용한다.
@@ -151,28 +155,33 @@ PIN, 호스트 정보, 참여자 목록은 포함하지 않는다.
   "proposal": { "id": 3, "version": 1, "status": "pending", "candidate_id": "c_20261107_1500_창동",
                 "candidate": { … },          // 후보 공개 정보 (장소·시간)
                 "my_route": { … },           // 내 경로만. 추천 이후 참여한 사람은 null
-                "accepted_count": 1, "total": 2 },
+                "accepted_count": 1, "rejected_count": 0, "responded_count": 1, "total": 2,   // 시안 "참여자 2/4 동의"
+                "needs_replan": false },     // 전원 응답 + 거절 있음 -> "이번 제안은 확정되지 않았어요"
   "next_action": { "code": "respond_to_proposal", "message": "제안에 동의 또는 거절하세요." },
+  "progress": { "submitted": 2, "total": 4 },  // 시안 "참여자 2/4 완료" (입력 단계)
   "host": { "pending_join_requests": 0 }       // 호스트에게만 포함
 }
 ```
 
 - `input_status`: `none` | `draft` | `submitted` (조건 **내용**은 절대 포함되지 않는다)
 - `response`: `proposed`/`confirmed` 단계에서만 포함. `pending` | `accept` | `reject`
-- `proposal`: 제안이 없으면 `null`. `status`: `pending` | `accepted` | `rejected` | `superseded`
+- `proposal`: 제안이 없으면 `null`. `status`: `pending` | `accepted` | `superseded` (거절은 상태가 아니라 `rejected_count`/`needs_replan`으로 표현)
+- 동의 여부만 공유되고 거절 이유·개인 이동 조건은 공유되지 않는다 (시안 하단 문구와 동일)
 - `candidate`는 B의 `get_candidate`, `my_route`는 B의 `get_my_route` 결과 (다른 참여자의 경로·출발역은 포함되지 않는다)
 
 ### `next_action.code`
 
 | code | 대상 | 단계 |
 | --- | --- | --- |
-| `close_recruiting` / `wait_recruiting` | 호스트 / 참여자 | recruiting |
-| `submit_conditions` | 미제출자 | input |
-| `wait_conditions` / `run_recommendation` | 호스트 (일부 미제출 / 전원 제출) | input |
+| `submit_conditions` | 미제출자 (호스트 포함) | recruiting, input |
+| `wait_conditions` | 제출한 호스트 (다른 참여자 미제출) | recruiting, input |
+| `close_recruiting` | 호스트 (전원 제출 + 2명 이상) | recruiting |
+| `wait_recruiting` | 제출한 참여자 | recruiting |
+| `run_recommendation` | 호스트 (전원 제출) | input |
 | `wait_recommendation` | 제출 완료한 참여자 | input |
 | `propose_candidate` / `wait_proposal` | 호스트 / 참여자 | recommended |
 | `respond_to_proposal` / `wait_responses` | 미응답 / 응답 완료 | proposed (진행 중 제안) |
-| `repropose` / `wait_reproposal` | 호스트 / 참여자 | proposed (거절됨) |
+| `repropose` / `wait_reproposal` | 호스트 / 참여자 | proposed + `needs_replan` |
 | `view_confirmed` | 모두 | confirmed |
 
 ## 역 검색 · 조건 입력 · 추천
@@ -192,7 +201,7 @@ PIN, 호스트 정보, 참여자 목록은 포함하지 않는다.
 | 요청 | 설명 |
 | --- | --- |
 | `GET /meetings/{id}/conditions/me` | `{ "status": "none"\|"draft"\|"submitted", "conditions": {…}\|null, "updated_at": "…" }` — **본인 것만** 조회 가능 |
-| `PUT /meetings/{id}/conditions/me/draft` | 임시저장 (있는 항목만 검사). 입력 단계(`input`)에서만 |
+| `PUT /meetings/{id}/conditions/me/draft` | 임시저장 (있는 항목만 검사). `recruiting`/`input` 단계에서 가능 |
 | `POST /meetings/{id}/conditions/me/submit` | 제출/재제출 (필수 항목 모두 필요). **본문을 생략하면 저장해 둔 초안을 제출**. 없으면 `409 NO_DRAFT` |
 
 ```json
@@ -226,7 +235,7 @@ PIN, 호스트 정보, 참여자 목록은 포함하지 않는다.
 `errors[].code`: `NO_AVAILABILITY`, `STATION_REQUIRED`, `STATION_NOT_FOUND`, `DATE_OUT_OF_RANGE`, `INVALID_FORMAT`, `INVALID_CONSTRAINT` (`field`는 문제가 된 항목 이름).
 
 - 제출 후 다시 `draft`로 저장하면 상태가 `draft`로 돌아가며, 다시 **제출해야** 추천에 포함된다.
-- 추천이 실행된 뒤(`recommended` 이후)에는 조건이 잠긴다 (`409 INVALID_STAGE`).
+- `recruiting`/`input`에서만 입력·수정할 수 있고, 추천이 실행된 뒤(`recommended` 이후)에는 잠긴다 (`409 INVALID_STAGE`).
 - 대시보드의 `input_status`가 `none`/`draft`/`submitted`로 바뀐다.
 
 ### 추천 실행 (호스트) / 조회 (참여자)
@@ -293,7 +302,9 @@ PIN, 호스트 정보, 참여자 목록은 포함하지 않는다.
 ```
 
 응답은 위 제안 객체와 같다 (`status`가 `accepted`이면 `stage`가 `confirmed`).
-진행 중인 제안이 없으면 `409 NO_ACTIVE_PROPOSAL`. 진행 중에는 응답을 바꿀 수 있고, 한 명이라도 거절하면 즉시 `rejected`.
+- 제안이 열려 있는 동안(확정 전) **언제든 응답을 바꿀 수 있다** (시안: "동의 완료/거절 완료 → 수정하기"). 같은 응답을 반복해도 된다.
+- 전원 동의 → `status: "accepted"`, `stage: "confirmed"`. 거절이 있어도 `status`는 `pending`이고, 전원 응답 후에는 `needs_replan`이 `true`가 된다.
+- 확정된 뒤에는 `409 INVALID_STAGE`, 열린 제안이 없으면 `409 NO_ACTIVE_PROPOSAL`.
 
 ## 확정 화면
 

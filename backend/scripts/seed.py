@@ -15,7 +15,7 @@ from app.services import conditions as cond
 from app.services import meetings as svc
 from app.services import proposals
 
-PIN = "1234"
+PIN = "123456"
 HOST_PASSWORD = "demo-password"
 STATIONS = ["쌍문", "강남", "신촌"]  # 호스트, 첫 번째 참여자, 두 번째 참여자
 
@@ -61,22 +61,22 @@ def main() -> None:
         out = []
         names = ["민수", "지은"]
 
-        m, h, ht, mem = _room(db, "[시드] 1. 모집 중", names)
+        m, h, ht, mem = _room(db, "시드1 모집", names)
         out.append((m, ht, mem))
 
-        m, h, ht, mem = _room(db, "[시드] 2. 조건 입력 중", names)
+        m, h, ht, mem = _room(db, "시드2 입력", names)
         svc.close_recruiting(db, m)
         cond.submit(db, m, h, _conditions(m, STATIONS[0]))
         cond.save_draft(db, m, mem[0][0], _conditions(m, STATIONS[1]))
         out.append((m, ht, mem))
 
-        m, h, ht, mem = _room(db, "[시드] 3. 추천 완료", names)
+        m, h, ht, mem = _room(db, "시드3 추천", names)
         svc.close_recruiting(db, m)
         _submit_all(db, m, h, mem)
         cond.run_recommendation(db, m)
         out.append((m, ht, mem))
 
-        m, h, ht, mem = _room(db, "[시드] 4. 제안 응답 중", names)
+        m, h, ht, mem = _room(db, "시드4 제안", names)
         svc.close_recruiting(db, m)
         _submit_all(db, m, h, mem)
         best = cond.run_recommendation(db, m)["best"]
@@ -84,7 +84,7 @@ def main() -> None:
         proposals.respond(db, m, mem[0][0], "accept")
         out.append((m, ht, mem))
 
-        m, h, ht, mem = _room(db, "[시드] 5. 확정됨", names)
+        m, h, ht, mem = _room(db, "시드5 확정", names)
         svc.close_recruiting(db, m)
         _submit_all(db, m, h, mem)
         best = cond.run_recommendation(db, m)["best"]

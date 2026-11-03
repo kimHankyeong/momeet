@@ -126,10 +126,13 @@ def test_editing_after_submit_requires_resubmit(client):
     assert room.post("/recommendations").status_code == 200
 
 
-def test_conditions_locked_outside_input_stage(client, session_factory):
+def test_conditions_open_while_recruiting_and_locked_after_recommendation(client, session_factory):
     room = new_room(client)
     p = room.add("민수")
-    assert put_draft(room, p["h"], conditions("신촌", room.date0)).status_code == 409  # 모집 중
+    # 시안: 모집 중에도 참여자가 조건을 입력한다 ("입력 중" / "입력완료")
+    assert put_draft(room, p["h"], conditions("신촌", room.date0)).status_code == 200
+    assert submit(room, p["h"]).status_code == 200
+    assert room.get().json()["participants"][1]["input_status"] == "submitted"
     room.post("/close")
     run_pipeline(room, [p])
     r = submit(room, p["h"], conditions("강남", room.date0))
