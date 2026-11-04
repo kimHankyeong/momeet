@@ -1,0 +1,730 @@
+[
+  {
+    "station": "서울역",
+    "from": "서울역_1",
+    "to": "서울역_4",
+    "meters": 159,
+    "seconds": 133
+  },
+  {
+    "station": "시청",
+    "from": "시청_1",
+    "to": "시청_2",
+    "meters": 101,
+    "seconds": 84
+  },
+  {
+    "station": "종로3가",
+    "from": "종로3가_1",
+    "to": "종로3가_3",
+    "meters": 118,
+    "seconds": 98
+  },
+  {
+    "station": "종로3가",
+    "from": "종로3가_1",
+    "to": "종로3가_5",
+    "meters": 312,
+    "seconds": 260
+  },
+  {
+    "station": "동대문",
+    "from": "동대문_1",
+    "to": "동대문_4",
+    "meters": 194,
+    "seconds": 162
+  },
+  {
+    "station": "동묘앞",
+    "from": "동묘앞_1",
+    "to": "동묘앞_6",
+    "meters": 96,
+    "seconds": 80
+  },
+  {
+    "station": "신설동",
+    "from": "신설동_1",
+    "to": "신설동_2",
+    "meters": 159,
+    "seconds": 133
+  },
+  {
+    "station": "신설동",
+    "from": "신설동_1",
+    "to": "신설동_우이신설",
+    "meters": 129,
+    "seconds": 108
+  },
+  {
+    "station": "시청",
+    "from": "시청_2",
+    "to": "시청_1",
+    "meters": 101,
+    "seconds": 84
+  },
+  {
+    "station": "을지로3가",
+    "from": "을지로3가_2",
+    "to": "을지로3가_3",
+    "meters": 149,
+    "seconds": 124
+  },
+  {
+    "station": "을지로4가",
+    "from": "을지로4가_2",
+    "to": "을지로4가_5",
+    "meters": 77,
+    "seconds": 64
+  },
+  {
+    "station": "동대문역사문화공원",
+    "from": "동대문역사문화공원_2",
+    "to": "동대문역사문화공원_4",
+    "meters": 45,
+    "seconds": 38
+  },
+  {
+    "station": "동대문역사문화공원",
+    "from": "동대문역사문화공원_2",
+    "to": "동대문역사문화공원_5",
+    "meters": 234,
+    "seconds": 195
+  },
+  {
+    "station": "신당",
+    "from": "신당_2",
+    "to": "신당_6",
+    "meters": 242,
+    "seconds": 202
+  },
+  {
+    "station": "왕십리",
+    "from": "왕십리_2",
+    "to": "왕십리_5",
+    "meters": 86,
+    "seconds": 72
+  },
+  {
+    "station": "건대입구",
+    "from": "건대입구_2",
+    "to": "건대입구_7",
+    "meters": 77,
+    "seconds": 64
+  },
+  {
+    "station": "잠실",
+    "from": "잠실_2",
+    "to": "잠실_8",
+    "meters": 190,
+    "seconds": 158
+  },
+  {
+    "station": "종합운동장",
+    "from": "종합운동장_2",
+    "to": "종합운동장_9",
+    "meters": 94,
+    "seconds": 78
+  },
+  {
+    "station": "교대",
+    "from": "교대_2",
+    "to": "교대_3",
+    "meters": 75,
+    "seconds": 63
+  },
+  {
+    "station": "사당",
+    "from": "사당_2",
+    "to": "사당_4",
+    "meters": 74,
+    "seconds": 62
+  },
+  {
+    "station": "대림",
+    "from": "대림_2",
+    "to": "대림_7",
+    "meters": 276,
+    "seconds": 230
+  },
+  {
+    "station": "영등포구청",
+    "from": "영등포구청_2",
+    "to": "영등포구청_5",
+    "meters": 110,
+    "seconds": 92
+  },
+  {
+    "station": "당산",
+    "from": "당산_2",
+    "to": "당산_9",
+    "meters": 105,
+    "seconds": 88
+  },
+  {
+    "station": "합정",
+    "from": "합정_2",
+    "to": "합정_6",
+    "meters": 82,
+    "seconds": 68
+  },
+  {
+    "station": "충정로",
+    "from": "충정로_2",
+    "to": "충정로_5",
+    "meters": 212,
+    "seconds": 177
+  },
+  {
+    "station": "신설동",
+    "from": "신설동_2",
+    "to": "신설동_1",
+    "meters": 159,
+    "seconds": 133
+  },
+  {
+    "station": "신설동",
+    "from": "신설동_2",
+    "to": "신설동_우이신설",
+    "meters": 273,
+    "seconds": 228
+  },
+  {
+    "station": "종로3가",
+    "from": "종로3가_3",
+    "to": "종로3가_1",
+    "meters": 118,
+    "seconds": 98
+  },
+  {
+    "station": "종로3가",
+    "from": "종로3가_3",
+    "to": "종로3가_5",
+    "meters": 117,
+    "seconds": 98
+  },
+  {
+    "station": "을지로3가",
+    "from": "을지로3가_3",
+    "to": "을지로3가_2",
+    "meters": 149,
+    "seconds": 124
+  },
+  {
+    "station": "교대",
+    "from": "교대_3",
+    "to": "교대_2",
+    "meters": 75,
+    "seconds": 63
+  },
+  {
+    "station": "연신내",
+    "from": "연신내_3",
+    "to": "연신내_6",
+    "meters": 181,
+    "seconds": 151
+  },
+  {
+    "station": "불광",
+    "from": "불광_3",
+    "to": "불광_6",
+    "meters": 100,
+    "seconds": 83
+  },
+  {
+    "station": "충무로",
+    "from": "충무로_3",
+    "to": "충무로_4",
+    "meters": 17,
+    "seconds": 14
+  },
+  {
+    "station": "약수",
+    "from": "약수_3",
+    "to": "약수_6",
+    "meters": 130,
+    "seconds": 108
+  },
+  {
+    "station": "고속터미널",
+    "from": "고속터미널_3",
+    "to": "고속터미널_7",
+    "meters": 169,
+    "seconds": 141
+  },
+  {
+    "station": "고속터미널",
+    "from": "고속터미널_3",
+    "to": "고속터미널_9",
+    "meters": 155,
+    "seconds": 129
+  },
+  {
+    "station": "가락시장",
+    "from": "가락시장_3",
+    "to": "가락시장_8",
+    "meters": 35,
+    "seconds": 29
+  },
+  {
+    "station": "오금",
+    "from": "오금_3",
+    "to": "오금_5",
+    "meters": 65,
+    "seconds": 54
+  },
+  {
+    "station": "서울역",
+    "from": "서울역_4",
+    "to": "서울역_1",
+    "meters": 159,
+    "seconds": 133
+  },
+  {
+    "station": "동대문",
+    "from": "동대문_4",
+    "to": "동대문_1",
+    "meters": 194,
+    "seconds": 162
+  },
+  {
+    "station": "동대문역사문화공원",
+    "from": "동대문역사문화공원_4",
+    "to": "동대문역사문화공원_2",
+    "meters": 45,
+    "seconds": 38
+  },
+  {
+    "station": "동대문역사문화공원",
+    "from": "동대문역사문화공원_4",
+    "to": "동대문역사문화공원_5",
+    "meters": 107,
+    "seconds": 89
+  },
+  {
+    "station": "사당",
+    "from": "사당_4",
+    "to": "사당_2",
+    "meters": 74,
+    "seconds": 62
+  },
+  {
+    "station": "충무로",
+    "from": "충무로_4",
+    "to": "충무로_3",
+    "meters": 17,
+    "seconds": 14
+  },
+  {
+    "station": "노원",
+    "from": "노원_4",
+    "to": "노원_7",
+    "meters": 278,
+    "seconds": 232
+  },
+  {
+    "station": "성신여대입구",
+    "from": "성신여대입구_4",
+    "to": "성신여대입구_우이신설",
+    "meters": 7,
+    "seconds": 6
+  },
+  {
+    "station": "삼각지",
+    "from": "삼각지_4",
+    "to": "삼각지_6",
+    "meters": 155,
+    "seconds": 129
+  },
+  {
+    "station": "동작",
+    "from": "동작_4",
+    "to": "동작_9",
+    "meters": 245,
+    "seconds": 204
+  },
+  {
+    "station": "총신대입구",
+    "from": "총신대입구_4",
+    "to": "총신대입구_7",
+    "meters": 171,
+    "seconds": 143
+  },
+  {
+    "station": "김포공항",
+    "from": "김포공항_5",
+    "to": "김포공항_9",
+    "meters": 106,
+    "seconds": 88
+  },
+  {
+    "station": "까치산",
+    "from": "까치산_5",
+    "to": "까치산_2",
+    "meters": 17,
+    "seconds": 14
+  },
+  {
+    "station": "영등포구청",
+    "from": "영등포구청_5",
+    "to": "영등포구청_2",
+    "meters": 110,
+    "seconds": 92
+  },
+  {
+    "station": "여의도",
+    "from": "여의도_5",
+    "to": "여의도_9",
+    "meters": 68,
+    "seconds": 57
+  },
+  {
+    "station": "공덕",
+    "from": "공덕_5",
+    "to": "공덕_6",
+    "meters": 73,
+    "seconds": 61
+  },
+  {
+    "station": "충정로",
+    "from": "충정로_5",
+    "to": "충정로_2",
+    "meters": 212,
+    "seconds": 177
+  },
+  {
+    "station": "종로3가",
+    "from": "종로3가_5",
+    "to": "종로3가_1",
+    "meters": 312,
+    "seconds": 260
+  },
+  {
+    "station": "종로3가",
+    "from": "종로3가_5",
+    "to": "종로3가_3",
+    "meters": 117,
+    "seconds": 98
+  },
+  {
+    "station": "을지로4가",
+    "from": "을지로4가_5",
+    "to": "을지로4가_2",
+    "meters": 77,
+    "seconds": 64
+  },
+  {
+    "station": "동대문역사문화공원",
+    "from": "동대문역사문화공원_5",
+    "to": "동대문역사문화공원_2",
+    "meters": 234,
+    "seconds": 195
+  },
+  {
+    "station": "동대문역사문화공원",
+    "from": "동대문역사문화공원_5",
+    "to": "동대문역사문화공원_4",
+    "meters": 107,
+    "seconds": 89
+  },
+  {
+    "station": "청구",
+    "from": "청구_5",
+    "to": "청구_6",
+    "meters": 104,
+    "seconds": 87
+  },
+  {
+    "station": "왕십리",
+    "from": "왕십리_5",
+    "to": "왕십리_2",
+    "meters": 86,
+    "seconds": 72
+  },
+  {
+    "station": "군자",
+    "from": "군자_5",
+    "to": "군자_7",
+    "meters": 75,
+    "seconds": 63
+  },
+  {
+    "station": "천호",
+    "from": "천호_5",
+    "to": "천호_8",
+    "meters": 35,
+    "seconds": 29
+  },
+  {
+    "station": "올림픽공원",
+    "from": "올림픽공원_5",
+    "to": "올림픽공원_9",
+    "meters": 93,
+    "seconds": 78
+  },
+  {
+    "station": "오금",
+    "from": "오금_5",
+    "to": "오금_3",
+    "meters": 65,
+    "seconds": 54
+  },
+  {
+    "station": "태릉입구",
+    "from": "태릉입구_6",
+    "to": "태릉입구_7",
+    "meters": 46,
+    "seconds": 38
+  },
+  {
+    "station": "동묘앞",
+    "from": "동묘앞_6",
+    "to": "동묘앞_1",
+    "meters": 96,
+    "seconds": 80
+  },
+  {
+    "station": "신당",
+    "from": "신당_6",
+    "to": "신당_2",
+    "meters": 242,
+    "seconds": 202
+  },
+  {
+    "station": "보문",
+    "from": "보문_6",
+    "to": "보문_우이신설",
+    "meters": 87,
+    "seconds": 73
+  },
+  {
+    "station": "청구",
+    "from": "청구_6",
+    "to": "청구_5",
+    "meters": 104,
+    "seconds": 87
+  },
+  {
+    "station": "약수",
+    "from": "약수_6",
+    "to": "약수_3",
+    "meters": 130,
+    "seconds": 108
+  },
+  {
+    "station": "삼각지",
+    "from": "삼각지_6",
+    "to": "삼각지_4",
+    "meters": 155,
+    "seconds": 129
+  },
+  {
+    "station": "공덕",
+    "from": "공덕_6",
+    "to": "공덕_5",
+    "meters": 73,
+    "seconds": 61
+  },
+  {
+    "station": "합정",
+    "from": "합정_6",
+    "to": "합정_2",
+    "meters": 82,
+    "seconds": 68
+  },
+  {
+    "station": "불광",
+    "from": "불광_6",
+    "to": "불광_3",
+    "meters": 100,
+    "seconds": 83
+  },
+  {
+    "station": "연신내",
+    "from": "연신내_6",
+    "to": "연신내_3",
+    "meters": 181,
+    "seconds": 151
+  },
+  {
+    "station": "노원",
+    "from": "노원_7",
+    "to": "노원_4",
+    "meters": 278,
+    "seconds": 232
+  },
+  {
+    "station": "태릉입구",
+    "from": "태릉입구_7",
+    "to": "태릉입구_6",
+    "meters": 46,
+    "seconds": 38
+  },
+  {
+    "station": "군자",
+    "from": "군자_7",
+    "to": "군자_5",
+    "meters": 75,
+    "seconds": 63
+  },
+  {
+    "station": "건대입구",
+    "from": "건대입구_7",
+    "to": "건대입구_2",
+    "meters": 77,
+    "seconds": 64
+  },
+  {
+    "station": "고속터미널",
+    "from": "고속터미널_7",
+    "to": "고속터미널_3",
+    "meters": 169,
+    "seconds": 141
+  },
+  {
+    "station": "고속터미널",
+    "from": "고속터미널_7",
+    "to": "고속터미널_9",
+    "meters": 314,
+    "seconds": 262
+  },
+  {
+    "station": "총신대입구",
+    "from": "총신대입구_7",
+    "to": "총신대입구_4",
+    "meters": 171,
+    "seconds": 143
+  },
+  {
+    "station": "대림",
+    "from": "대림_7",
+    "to": "대림_2",
+    "meters": 276,
+    "seconds": 230
+  },
+  {
+    "station": "천호",
+    "from": "천호_8",
+    "to": "천호_5",
+    "meters": 35,
+    "seconds": 29
+  },
+  {
+    "station": "석촌",
+    "from": "석촌_8",
+    "to": "석촌_9",
+    "meters": 82,
+    "seconds": 68
+  },
+  {
+    "station": "잠실",
+    "from": "잠실_8",
+    "to": "잠실_2",
+    "meters": 190,
+    "seconds": 158
+  },
+  {
+    "station": "가락시장",
+    "from": "가락시장_8",
+    "to": "가락시장_3",
+    "meters": 35,
+    "seconds": 29
+  },
+  {
+    "station": "신설동",
+    "from": "신설동_우이신설",
+    "to": "신설동_1",
+    "meters": 129,
+    "seconds": 108
+  },
+  {
+    "station": "종합운동장",
+    "from": "종합운동장_9",
+    "to": "종합운동장_2",
+    "meters": 94,
+    "seconds": 78
+  },
+  {
+    "station": "당산",
+    "from": "당산_9",
+    "to": "당산_2",
+    "meters": 105,
+    "seconds": 88
+  },
+  {
+    "station": "신설동",
+    "from": "신설동_우이신설",
+    "to": "신설동_2",
+    "meters": 273,
+    "seconds": 228
+  },
+  {
+    "station": "고속터미널",
+    "from": "고속터미널_9",
+    "to": "고속터미널_3",
+    "meters": 155,
+    "seconds": 129
+  },
+  {
+    "station": "성신여대입구",
+    "from": "성신여대입구_우이신설",
+    "to": "성신여대입구_4",
+    "meters": 7,
+    "seconds": 6
+  },
+  {
+    "station": "동작",
+    "from": "동작_9",
+    "to": "동작_4",
+    "meters": 245,
+    "seconds": 204
+  },
+  {
+    "station": "김포공항",
+    "from": "김포공항_9",
+    "to": "김포공항_5",
+    "meters": 106,
+    "seconds": 88
+  },
+  {
+    "station": "까치산",
+    "from": "까치산_2",
+    "to": "까치산_5",
+    "meters": 17,
+    "seconds": 14
+  },
+  {
+    "station": "여의도",
+    "from": "여의도_9",
+    "to": "여의도_5",
+    "meters": 68,
+    "seconds": 57
+  },
+  {
+    "station": "올림픽공원",
+    "from": "올림픽공원_9",
+    "to": "올림픽공원_5",
+    "meters": 93,
+    "seconds": 78
+  },
+  {
+    "station": "보문",
+    "from": "보문_우이신설",
+    "to": "보문_6",
+    "meters": 87,
+    "seconds": 73
+  },
+  {
+    "station": "고속터미널",
+    "from": "고속터미널_9",
+    "to": "고속터미널_7",
+    "meters": 314,
+    "seconds": 262
+  },
+  {
+    "station": "석촌",
+    "from": "석촌_9",
+    "to": "석촌_8",
+    "meters": 82,
+    "seconds": 68
+  }
+]
