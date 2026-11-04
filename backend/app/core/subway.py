@@ -34,6 +34,15 @@ DWELL_SEC = 30            # 역마다 정차시간
 TRANSFER_WAIT_SEC = 180   # 환승 후 열차 대기시간 (평균)
 MAX_TRANSFERS_LIMIT = 4   # 탐색할 최대 환승 횟수
 
+# 도보 거리 → 도보 시간 환산 (분). 환승 데이터와 같은 보행속도 1.2m/s = 분당 72m
+WALK_M_PER_MIN = 72
+
+
+def walk_minutes(meters: int) -> int:
+    """도보 거리(m) → 도보 시간(분, 올림). 프론트의 '최대 도보 거리 10분' 같은 조건 비교용"""
+    return math.ceil(meters / WALK_M_PER_MIN) if meters > 0 else 0
+
+
 # 엘리베이터가 필요한 사용자의 환승 보행시간 배율.
 # 근거: '모두의 지하철 프로젝트'(무의·서울시·서울교통공사, 2025) 실증조사에서
 #       휠체어 이용자 환승 평균 19분 vs 비장애인 평균 3.3분 → 약 5.7배

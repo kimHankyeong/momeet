@@ -207,8 +207,8 @@
             "value": 45,
             "level": "required"
           },
-          "max_walk_m": {
-            "value": 300,
+          "max_walk_min": {
+            "value": 5,
             "level": "preferred"
           }
         }

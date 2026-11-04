@@ -134,7 +134,7 @@ def test_각자_필수는_되지만_동시에_안_되면_사유():
 
 def test_특정_필수_조건이_항상_막히면_인원수만_표시():
     # 모든 시간 가능 후보에서 p2의 최대 이동시간만 계속 실패한 상황
-    fails = {"2026-11-07": [[("p2", "max_travel_min")], [("p2", "max_travel_min"), ("p1", "max_walk_m")]]}
+    fails = {"2026-11-07": [[("p2", "max_travel_min")], [("p2", "max_travel_min"), ("p1", "max_walk_min")]]}
     reasons = fairness._reasons(["2026-11-07"], [], fails, {})
     assert reasons[0]["code"] == "REQUIRED_UNMET"
     assert "최대 이동시간" in reasons[0]["message"] and "1명" in reasons[0]["message"]
@@ -197,7 +197,7 @@ def test_검증_에러_코드():
     data = {
         "availability": {"2026-12-25": [10]},
         "default_station": "구로",
-        "constraints": {"max_walk_m": {"value": -1, "level": "required"}, "unknown": {"value": 1, "level": "required"}},
+        "constraints": {"max_walk_min": {"value": -1, "level": "required"}, "unknown": {"value": 1, "level": "required"}},
     }
     errors, _ = validate_conditions(data, DATES, final=True)
     codes = {e["code"] for e in errors}
@@ -209,3 +209,14 @@ def test_임시저장은_빈_값_허용():
     assert errors == []
     errors, _ = validate_conditions({}, DATES, final=True)
     assert {e["code"] for e in errors} == {"NO_AVAILABILITY", "STATION_REQUIRED"}
+
+
+def test_최대_도보는_분_단위():
+    from app.core.subway import walk_minutes
+    assert walk_minutes(0) == 0 and walk_minutes(72) == 1 and walk_minutes(73) == 2
+    ps = sample()
+    ps[0]["constraints"] = {"max_walk_min": {"value": 1, "level": "required"}}
+    r = recommend(ps, DATES)
+    assert all(walk_minutes(c["legs"]["p1"]["walk_m"]) <= 1 for c in r["candidates"])
+    v = view_for(r, "p1")
+    assert all("walk_min" in c["my_route"] for c in v["candidates"])
