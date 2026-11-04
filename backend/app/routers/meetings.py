@@ -12,6 +12,7 @@ from app.services import meetings as svc
 from app.services import views
 
 router = APIRouter(prefix="/meetings", tags=["meetings"])
+join_router = APIRouter(prefix="/join", tags=["join"])
 
 
 def _participant(p: Participant) -> dict:
@@ -31,7 +32,11 @@ def _token(meeting: Meeting, p: Participant, token: str) -> dict:
 @router.post("", status_code=201)
 def create_meeting(body: MeetingCreate, db: Session = Depends(get_db)):
     meeting, host, token = svc.create_meeting(db, body)
-    return {**_token(meeting, host, token), "meeting": views.meeting_summary(meeting)}
+    return {
+        **_token(meeting, host, token),
+        "join_code": meeting.join_code,  # 참여자에게 공유할 입장 코드 (서버가 발급)
+        "meeting": views.meeting_summary(meeting),
+    }
 
 
 @router.get("/{meeting_id}/public")
@@ -39,15 +44,24 @@ def public(meeting: Meeting = Depends(get_meeting), db: Session = Depends(get_db
     return views.public_view(db, meeting)
 
 
-@router.post("/{meeting_id}/join")
-def join(
+@join_router.get("/{code}")
+def preview_by_code(code: str, request: Request, db: Session = Depends(get_db)):
+    """입장 코드로 방 미리보기 (참여 화면의 제목·날짜·모집 상태 카드). 인증 불필요."""
+    meeting = svc.find_meeting_by_code(db, code, client_key(request))
+    return {"meeting_id": meeting.id, **views.public_view(db, meeting)}
+
+
+@join_router.post("/{code}")
+def join_by_code(
+    code: str,
     body: JoinBody,
     request: Request,
     response: Response,
-    meeting: Meeting = Depends(get_meeting),
     db: Session = Depends(get_db),
 ):
-    kind, obj, secret = svc.join(db, meeting, body.nickname, body.pin, client_key(request))
+    """입장 코드로 참여. 모집 중이면 즉시 참여(201), 마감 후면 호스트 승인 대기(202)."""
+    meeting = svc.find_meeting_by_code(db, code, client_key(request))
+    kind, obj, secret = svc.join(db, meeting, body.nickname)
     if kind == "joined":
         response.status_code = 201
         return _token(meeting, obj, secret)
@@ -55,6 +69,7 @@ def join(
     response.status_code = 202
     return {
         "status": "pending",
+        "meeting_id": meeting.id,
         "request_id": obj.id,
         "nickname": obj.nickname,
         "request_secret": secret,

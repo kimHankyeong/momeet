@@ -34,7 +34,7 @@ def meeting_summary(meeting: Meeting) -> dict:
 
 
 def public_view(db: Session, meeting: Meeting) -> dict:
-    """로그인 전에 보이는 정보. PIN/호스트 정보/참여자 목록은 포함하지 않는다."""
+    """로그인 전에 보이는 정보. 입장 코드/호스트 정보/참여자 목록은 포함하지 않는다."""
     count = len(active_participants(db, meeting.id))
     return {
         "id": meeting.id,
@@ -140,7 +140,7 @@ def dashboard(db: Session, meeting: Meeting, me: Participant, provider: Candidat
         )
 
     out = {
-        "meeting": meeting_summary(meeting),
+        "meeting": {**meeting_summary(meeting), "join_code": meeting.join_code},
         "me": {"participant_id": me.id, "nickname": me.nickname, "is_host": me.is_host},
         "participants": plist,
         "proposal": prop,

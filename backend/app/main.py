@@ -29,6 +29,7 @@ def create_app() -> FastAPI:
     install_error_handlers(app)
 
     app.include_router(meetings.router)
+    app.include_router(meetings.join_router)
     app.include_router(proposals.router)
     app.include_router(conditions.router)
 

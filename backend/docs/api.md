@@ -11,14 +11,14 @@
 - 오류 형식 (모든 오류 동일):
 
 ```json
-{ "error": { "code": "INVALID_PIN", "message": "PIN이 올바르지 않습니다." } }
+{ "error": { "code": "INVALID_CODE", "message": "입장 코드를 찾을 수 없습니다." } }
 ```
 
 입력 검증 실패는 `422 VALIDATION_ERROR`이며 **입력값은 응답에 포함하지 않고** 필드 위치만 알려 준다.
 
 ```json
 { "error": { "code": "VALIDATION_ERROR", "message": "입력값이 올바르지 않습니다.",
-             "fields": [ { "field": "pin", "reason": "string_pattern_mismatch" } ] } }
+             "fields": [ { "field": "nickname", "reason": "string_too_long" } ] } }
 ```
 
 ### 단계 (`stage`)
@@ -46,8 +46,9 @@ recruiting → input → recommended → proposed → confirmed
 | HTTP | code | 의미 |
 | --- | --- | --- |
 | 401 | `UNAUTHENTICATED` | 토큰 없음/만료/다른 약속방/제외됨 |
-| 401 | `INVALID_PIN`, `INVALID_CREDENTIALS` | PIN / 호스트 비밀번호 불일치 |
+| 401 | `INVALID_CREDENTIALS` | 호스트 비밀번호 불일치 |
 | 403 | `HOST_ONLY` | 호스트 전용 기능 |
+| 404 | `INVALID_CODE` | 입장 코드가 없거나 형식이 틀리거나 **만료된 방** (구분하지 않는다) |
 | 404 | `MEETING_NOT_FOUND`, `PARTICIPANT_NOT_FOUND`, `JOIN_REQUEST_NOT_FOUND` | 대상 없음 |
 | 409 | `INVALID_STAGE` | 지금 단계에서 불가 (`stage`, `allowed_stages` 포함) |
 | 409 | `MEETING_FULL`, `JOIN_CLOSED`, `NOT_ENOUGH_PARTICIPANTS`, `NO_ACTIVE_PROPOSAL`, `NOT_CONFIRMED`, `NO_DRAFT` | 상태 충돌 |
@@ -55,7 +56,7 @@ recruiting → input → recommended → proposed → confirmed
 | 410 | `MEETING_EXPIRED` | 만료된 약속방 (모든 접근 차단) |
 | 422 | `VALIDATION_ERROR`, `INVALID_CANDIDATE` | 입력/후보 오류 |
 | 422 | `CONDITIONS_INVALID` | 조건 값 오류. `errors: [{code, message, field}]` 에 B의 검증 결과가 그대로 들어간다 |
-| 429 | `TOO_MANY_ATTEMPTS` | PIN/비밀번호 실패 초과. `Retry-After` 헤더(초) 와 `retry_after` 필드 |
+| 429 | `TOO_MANY_ATTEMPTS` | 입장 코드 추측 / 호스트 비밀번호 실패 초과. `Retry-After` 헤더(초) 와 `retry_after` 필드 |
 
 ---
 
@@ -69,18 +70,20 @@ recruiting → input → recommended → proposed → confirmed
   "title": "금요일 저녁 모임",          // 1~12자 (시안)
   "description": "다 같이 보자",        // 선택, 최대 200자
   "date_start": "2026-12-01",
-  "date_end": "2026-12-07",            // date_start 이후, 최대 31일
-  "max_participants": 10,              // 선택(기본 10), 2~30
+  "date_end": "2026-12-07",            // date_start 이후, 1~7일 범위 (팀 결정)
+  "max_participants": 10,              // 선택(기본 10), 2~10 (팀 결정: 최대 10명)
   "host_nickname": "한경",              // 1~8자 (시안)
-  "pin": "482193",                     // 숫자 6자리 (시안): 참여자가 입력
   "host_password": "my-host-password"  // 8~72바이트: 호스트 재접속용
 }
 ```
+
+**PIN은 받지 않는다.** 참여자가 입력할 **입장 코드는 서버가 겹치지 않게 발급**한다 (`pin`, `join_code`를 보내면 `422`).
 
 ```json
 // 응답: 호스트 토큰이 바로 발급된다 (생성자 = 호스트)
 {
   "meeting_id": "Qx3k9aB1",
+  "join_code": "k7m2x9qa",           // 참여자에게 공유할 입장 코드 (서버 발급, 8자: 소문자+숫자)
   "access_token": "…",
   "token_type": "bearer",
   "expires_at": "2027-01-01T00:00:00Z",
@@ -91,7 +94,26 @@ recruiting → input → recommended → proposed → confirmed
 }
 ```
 
-## 공개 정보 (로그인 전, 초대 링크 화면)
+## 입장 코드
+
+- **8자, 소문자 + 숫자**, 헷갈리는 문자(`i l o 0 1`)는 쓰지 않는다. 방마다 겹치지 않는다. 호스트는 정하지 않는다.
+- 입력은 너그럽게 받는다: 대소문자 무시, 공백·하이픈 무시, **`MOMEET-` 접두사 허용** (예: `MOMEET-k7m2x9qa`, `k7m2-x9qa`). 화면에 `MOMEET-코드`로 보여 줘도 되고, 사용자가 **초대 링크를 붙여넣으면 프론트가 링크에서 코드만 뽑아 보낸다.**
+- 코드는 방 만들기 응답(`join_code`)과, 인증된 대시보드(`meeting.join_code`)에서 확인할 수 있다 (시안: 참여자도 링크 복사).
+- **방 ID만으로는 입장할 수 없다.** 입장은 코드로만 한다.
+- 추측 방어: 코드가 틀린(없음·형식 오류·만료) 요청이 **같은 클라이언트에서 10분 안에 10번**이면 5분간 `429`. **올바른 코드를 섞어도 횟수는 초기화되지 않는다.**
+  - ⚠️ 배포 환경(렌더 등)의 프록시 뒤에서는 클라이언트 구분이 모두 같은 주소로 보일 수 있다. 서버 실행 시 프록시 헤더를 신뢰하도록 설정해야 한다 (`uvicorn ... --proxy-headers --forwarded-allow-ips="*"`). **미설정 시 한 사람의 오타가 모두를 잠글 수 있다.**
+
+### 입장 코드로 방 미리보기 (참여 화면의 제목·날짜·모집 중 카드)
+
+`GET /join/{code}` → `200` (인증 불필요). 코드가 없거나 만료면 `404 INVALID_CODE`.
+
+```json
+{ "meeting_id": "Qx3k9aB1", "id": "Qx3k9aB1", "title": "금요일 저녁 모임", "description": "다 같이 보자",
+  "date_start": "2026-12-01", "date_end": "2026-12-07", "stage": "recruiting",
+  "participant_count": 3, "max_participants": 10, "can_join": true, "can_request_join": false }
+```
+
+## 공개 정보 (방 ID로 조회, 로그인 전)
 
 `GET /meetings/{id}/public` → `200` (인증 불필요)
 
@@ -103,14 +125,14 @@ recruiting → input → recommended → proposed → confirmed
   "can_request_join": false }  // 마감 후 참여 신청 가능 (조건 입력 단계 + 정원 여유)
 ```
 
-PIN, 호스트 정보, 참여자 목록은 포함하지 않는다.
+입장 코드, 호스트 정보, 참여자 목록은 포함하지 않는다.
 
 ## 참여
 
-`POST /meetings/{id}/join`
+`POST /join/{code}` (인증 불필요, **코드만으로 입장**)
 
 ```json
-{ "nickname": "민수", "pin": "482193" }
+{ "nickname": "민수" }          // 1~8자 (시안)
 ```
 
 - 모집 중 → `201`, 토큰 발급. 닉네임이 겹치면 접미사가 붙는다 (`민수` → `민수(2)`). 실제 닉네임은 응답의 `participant.nickname`을 사용한다.
@@ -123,11 +145,11 @@ PIN, 호스트 정보, 참여자 목록은 포함하지 않는다.
 - 조건 입력 단계(마감 후) → `202`, 호스트 승인 대기. `request_secret`은 **이때 한 번만** 보인다.
 
 ```json
-{ "status": "pending", "request_id": 4, "nickname": "민수", "request_secret": "…" }
+{ "status": "pending", "meeting_id": "Qx3k9aB1", "request_id": 4, "nickname": "민수", "request_secret": "…" }
 ```
 
 - 추천 이후 → `409 JOIN_CLOSED`, 정원 초과 → `409 MEETING_FULL`
-- PIN 불일치 → `401 INVALID_PIN` (5회 연속 실패 시 5분간 `429`. 클라이언트(IP)별로 제한)
+- 코드 오류 → `404 INVALID_CODE` (위 "추측 방어" 참고)
 
 ## 호스트 재접속
 

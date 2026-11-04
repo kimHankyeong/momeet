@@ -86,10 +86,10 @@ def conditions(station: str, d0: str, hours=(13, 14, 15), **extra) -> dict:
 class Room:
     """테스트용 약속방 조작 헬퍼."""
 
-    def __init__(self, client: TestClient, data: dict, pin: str, password: str):
+    def __init__(self, client: TestClient, data: dict, password: str):
         self.client = client
         self.id = data["meeting_id"]
-        self.pin = pin
+        self.code = data["join_code"]  # 서버가 발급한 입장 코드
         self.password = password
         self.host_token = data["access_token"]
         self.host_id = data["participant"]["id"]
@@ -101,7 +101,7 @@ class Room:
         return auth(self.host_token)
 
     def join(self, nickname: str):
-        return self.client.post(f"/meetings/{self.id}/join", json={"nickname": nickname, "pin": self.pin})
+        return self.client.post(f"/join/{self.code}", json={"nickname": nickname})
 
     def add(self, nickname: str) -> dict:
         r = self.join(nickname)
@@ -128,7 +128,7 @@ class Room:
         return body
 
 
-def new_room(client: TestClient, pin: str = "123456", password: str = "host-password-1", **over) -> Room:
+def new_room(client: TestClient, password: str = "host-password-1", **over) -> Room:
     today = date.today()
     body = {
         "title": "금요일 저녁 모임",
@@ -137,13 +137,12 @@ def new_room(client: TestClient, pin: str = "123456", password: str = "host-pass
         "date_end": (today + timedelta(days=6)).isoformat(),
         "max_participants": 10,
         "host_nickname": "호스트",
-        "pin": pin,
         "host_password": password,
     }
     body.update(over)
     r = client.post("/meetings", json=body)
     assert r.status_code == 201, r.text
-    return Room(client, r.json(), pin, password)
+    return Room(client, r.json(), password)
 
 
 def advance_to_recommended(session_factory, room: Room) -> None:

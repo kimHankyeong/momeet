@@ -26,7 +26,8 @@ class Meeting(Base):
     max_participants: Mapped[int] = mapped_column(Integer)
     stage: Mapped[str] = mapped_column(String(16), default=STAGE_RECRUITING)
 
-    pin_hash: Mapped[str] = mapped_column(String(100))
+    # 시스템이 발급하는 입장 코드 (겹치지 않음). 참여자는 이 코드만으로 방을 찾아 입장한다.
+    join_code: Mapped[str] = mapped_column(String(12), unique=True, index=True)
     host_password_hash: Mapped[str] = mapped_column(String(100))
 
     confirmed_candidate_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
@@ -147,7 +148,7 @@ class RecommendationResult(Base):
 
 
 class AuthAttempt(Base):
-    """PIN / 호스트 비밀번호 실패 횟수 (약속방 + 종류 + 클라이언트별)."""
+    """호스트 비밀번호 실패 횟수 (약속방 + 종류 + 클라이언트별)."""
 
     __tablename__ = "auth_attempts"
     __table_args__ = (UniqueConstraint("meeting_id", "kind", "client_key", name="uq_auth_attempt"),)
@@ -157,4 +158,19 @@ class AuthAttempt(Base):
     kind: Mapped[str] = mapped_column(String(8))
     client_key: Mapped[str] = mapped_column(String(64))
     failures: Mapped[int] = mapped_column(Integer, default=0)
+    locked_until: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+
+
+class JoinAttempt(Base):
+    """입장 코드 추측 시도 제한 (클라이언트별, 방과 무관).
+
+    코드로 방을 찾는 구조에서는 방을 모르는 상태의 대입 공격을 막아야 한다.
+    성공해도 초기화하지 않는다 (유효한 코드를 섞어 제한을 우회하지 못하게). 시간 창이 지나면 초기화.
+    """
+
+    __tablename__ = "join_attempts"
+
+    client_key: Mapped[str] = mapped_column(String(64), primary_key=True)
+    failures: Mapped[int] = mapped_column(Integer, default=0)
+    window_start: Mapped[datetime] = mapped_column(DateTime, default=utcnow)
     locked_until: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)

@@ -17,6 +17,10 @@ copy .env.example .env          # 필요하면 값 수정 (macOS/Linux: cp)
 uvicorn app.main:app --reload   # http://localhost:8000/docs
 ```
 
+## 기존 개발 DB가 있다면
+
+테이블 구조가 바뀌었다 (방 PIN → 입장 코드). 마이그레이션 도구가 없어서 **예전 `momeet.db`를 삭제하고 다시 실행**해야 한다. (해커톤 개발용 SQLite 기준)
+
 ## API 키 (선택)
 
 서울시 엘리베이터 API와 티맵 보행자 경로를 쓸 때만 필요하다. **키가 없어도 서버와 테스트는 그대로 실행된다.**
@@ -35,7 +39,7 @@ python -m pytest                # 백A + 백B(test_fairness) 전체
 ## 시드 데이터 (개발용)
 
 ```bash
-python -m scripts.seed --yes    # 단계별 약속방 5개 + 토큰 출력 (PIN 123456 / 호스트 비밀번호 demo-password)
+python -m scripts.seed --yes    # 단계별 약속방 5개 + 입장 코드·토큰 출력 (호스트 비밀번호 demo-password)
 ```
 
 ## 구조

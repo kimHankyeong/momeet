@@ -1,7 +1,11 @@
+import logging
+
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
+
+log = logging.getLogger("momeet")
 
 
 class AppError(Exception):
@@ -45,6 +49,8 @@ def install_error_handlers(app: FastAPI) -> None:
         return JSONResponse(_body(code, str(exc.detail)), status_code=exc.status_code)
 
     @app.exception_handler(Exception)
-    async def _unexpected(_: Request, exc: Exception):
-        # 내부 오류 상세/스택은 응답에 싣지 않는다
+    async def _unexpected(request: Request, exc: Exception):
+        # 응답에는 상세/스택을 싣지 않지만, 원인을 추적할 수 있도록 서버 로그에는 남긴다.
+        # (경로에는 방 ID만 있고 토큰/PIN/비밀번호는 본문·헤더에만 있어 로그에 들어가지 않는다)
+        log.exception("처리되지 않은 오류: %s %s", request.method, request.url.path)
         return JSONResponse(_body("INTERNAL_ERROR", "서버 오류가 발생했습니다."), status_code=500)

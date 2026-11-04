@@ -30,8 +30,6 @@ class MeetingCreate(Strict):
     date_end: date
     max_participants: int = Field(default=10, ge=2)
     host_nickname: str = Field(min_length=1, max_length=8)  # 시안: 최대 8자
-    # 시안: 숫자 6자리
-    pin: str = Field(pattern=r"^\d{6}$")
     host_password: str = Field(min_length=8, max_length=72)
 
     @field_validator("title", "host_nickname")
@@ -66,7 +64,6 @@ class MeetingCreate(Strict):
 
 class JoinBody(Strict):
     nickname: str = Field(min_length=1, max_length=8)  # 시안: 최대 8자
-    pin: str = Field(pattern=r"^\d{6}$")
 
     @field_validator("nickname")
     @classmethod

@@ -15,7 +15,6 @@ from app.services import conditions as cond
 from app.services import meetings as svc
 from app.services import proposals
 
-PIN = "123456"
 HOST_PASSWORD = "demo-password"
 STATIONS = ["쌍문", "강남", "신촌"]  # 호스트, 첫 번째 참여자, 두 번째 참여자
 
@@ -30,13 +29,12 @@ def _room(db, title: str, names: list[str]) -> tuple[Meeting, Participant, str, 
             date_start=today,
             date_end=today + timedelta(days=6),
             host_nickname="호스트",
-            pin=PIN,
             host_password=HOST_PASSWORD,
         ),
     )
     members = []
     for n in names:
-        _, p, t = svc.join(db, meeting, n, PIN, "seed")
+        _, p, t = svc.join(db, meeting, n)
         members.append((p, t))
     return meeting, host, host_token, members
 
@@ -93,9 +91,9 @@ def main() -> None:
             proposals.respond(db, m, p, "accept")
         out.append((m, ht, mem))
 
-        print(f"PIN={PIN}  호스트 비밀번호={HOST_PASSWORD}")
+        print(f"호스트 비밀번호={HOST_PASSWORD}  (입장 코드는 방마다 아래에 표시)")
         for meeting, host_token, members in out:
-            print(f"\n{meeting.title}  id={meeting.id}  stage={meeting.stage}")
+            print(f"\n{meeting.title}  id={meeting.id}  입장코드={meeting.join_code}  stage={meeting.stage}")
             print(f"  host   token={host_token}")
             for p, t in members:
                 print(f"  {p.nickname:<4} token={t}")

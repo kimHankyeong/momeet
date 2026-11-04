@@ -10,6 +10,7 @@ from app.models import (
     STAGE_INPUT,
     STAGE_RECRUITING,
     AuthAttempt,
+    JoinAttempt,
     JoinRequest,
     Meeting,
     Participant,
@@ -18,8 +19,11 @@ from app.schemas import MeetingCreate
 from app.security import (
     burn_verify,
     hash_secret,
+    is_valid_join_code,
+    new_join_code,
     new_meeting_id,
     new_token,
+    normalize_join_code,
     token_digest,
     utcnow,
     verify_secret,
@@ -74,8 +78,6 @@ def check_secret(db: Session, meeting: Meeting, kind: str, plain: str, hashed: s
     guard_attempts(db, meeting, kind, client)
     if not verify_secret(plain, hashed):
         record_failure(db, meeting, kind, client)
-        if kind == "pin":
-            raise AppError("INVALID_PIN", "PIN이 올바르지 않습니다.", 401)
         raise AppError("INVALID_CREDENTIALS", "비밀번호가 올바르지 않습니다.", 401)
     clear_failures(db, meeting, kind, client)
 
@@ -132,25 +134,73 @@ def _add_participant(db: Session, meeting: Meeting, nickname: str, *, is_host: b
     raise AppError("NICKNAME_CONFLICT", "닉네임을 정하지 못했습니다. 다시 시도하세요.", 409)
 
 
+# ---------------------------------------------------------------- 입장 코드
+def _guard_code_attempts(db: Session, client: str) -> None:
+    row = db.get(JoinAttempt, client)
+    if row is None or row.locked_until is None:
+        return
+    now = utcnow()
+    if row.locked_until > now:
+        wait = int((row.locked_until - now).total_seconds()) + 1
+        raise AppError("TOO_MANY_ATTEMPTS", "시도 횟수를 초과했습니다. 잠시 후 다시 시도하세요.", 429, {"retry_after": wait})
+    row.failures, row.locked_until, row.window_start = 0, None, now
+    db.commit()
+
+
+def _record_code_failure(db: Session, client: str) -> None:
+    s = get_settings()
+    now = utcnow()
+    row = db.get(JoinAttempt, client)
+    if row is None:
+        row = JoinAttempt(client_key=client, failures=0, window_start=now)
+        db.add(row)
+    elif now - row.window_start > timedelta(minutes=s.code_fail_window_minutes):
+        row.failures, row.window_start = 0, now
+    row.failures += 1
+    if row.failures >= s.max_code_failures:
+        row.locked_until = now + timedelta(minutes=s.auth_lock_minutes)
+    db.commit()  # 오류를 던지기 전에 저장 (롤백되면 제한이 무력화됨)
+
+
+def find_meeting_by_code(db: Session, raw_code: str, client: str) -> Meeting:
+    """입장 코드로 약속방을 찾는다. 없거나 만료된 방은 같은 응답(404)이고 실패로 센다."""
+    _guard_code_attempts(db, client)
+    code = normalize_join_code(raw_code)
+    meeting = db.scalar(select(Meeting).where(Meeting.join_code == code)) if is_valid_join_code(code) else None
+    if meeting is None or meeting.expires_at <= utcnow():
+        _record_code_failure(db, client)
+        raise AppError("INVALID_CODE", "입장 코드를 찾을 수 없습니다.", 404)
+    return meeting
+
+
 # ---------------------------------------------------------------- 생성 / 참여
 def create_meeting(db: Session, data: MeetingCreate) -> tuple[Meeting, Participant, str]:
     s = get_settings()
     now = utcnow()
-    meeting = Meeting(
-        id=new_meeting_id(),
-        title=data.title,
-        description=data.description,
-        date_start=data.date_start,
-        date_end=data.date_end,
-        max_participants=data.max_participants,
-        stage=STAGE_RECRUITING,
-        pin_hash=hash_secret(data.pin),
-        host_password_hash=hash_secret(data.host_password),
-        created_at=now,
-        expires_at=now + timedelta(days=s.meeting_ttl_days),
-    )
-    db.add(meeting)
-    db.flush()
+    meeting = None
+    for _ in range(10):  # 코드가 겹치면(확률 매우 낮음) 새 코드로 다시 시도
+        candidate = Meeting(
+            id=new_meeting_id(),
+            title=data.title,
+            description=data.description,
+            date_start=data.date_start,
+            date_end=data.date_end,
+            max_participants=data.max_participants,
+            stage=STAGE_RECRUITING,
+            join_code=new_join_code(),
+            host_password_hash=hash_secret(data.host_password),
+            created_at=now,
+            expires_at=now + timedelta(days=s.meeting_ttl_days),
+        )
+        db.add(candidate)
+        try:
+            db.flush()
+            meeting = candidate
+            break
+        except IntegrityError:
+            db.rollback()
+    if meeting is None:
+        raise AppError("CODE_GENERATION_FAILED", "입장 코드를 만들지 못했습니다. 다시 시도하세요.", 503)
     host = Participant(meeting_id=meeting.id, nickname=data.host_nickname, is_host=True)
     db.add(host)
     db.flush()
@@ -158,11 +208,8 @@ def create_meeting(db: Session, data: MeetingCreate) -> tuple[Meeting, Participa
     return meeting, host, token
 
 
-def join(db: Session, meeting: Meeting, nickname: str, pin: str, client: str):
-    """모집 중이면 즉시 참여(토큰 발급), 입력 단계면 호스트 승인 대기(JoinRequest)."""
-    # PIN을 먼저 확인한다. 틀린 사람에게는 단계/정원 정보를 더 알려주지 않는다.
-    check_secret(db, meeting, "pin", pin, meeting.pin_hash, client)
-
+def join(db: Session, meeting: Meeting, nickname: str):
+    """코드가 확인된 방에 입장. 모집 중이면 즉시 참여(토큰 발급), 입력 단계면 호스트 승인 대기(JoinRequest)."""
     if meeting.stage == STAGE_RECRUITING:
         if _active_count(db, meeting.id) >= meeting.max_participants:
             raise AppError("MEETING_FULL", "정원이 가득 찼습니다.", 409)
