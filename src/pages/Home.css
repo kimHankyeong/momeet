@@ -1,0 +1,115 @@
+.home {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 0 var(--page-padding-x) 18px;
+}
+
+/* 히어로 */
+.home__hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 500px;
+}
+
+.home__hero-text {
+  position: relative;
+  z-index: 1;
+}
+
+.home__tagline {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.home__title {
+  margin: 4px 0 20px;
+  font-size: 104px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -3px;
+}
+
+.home__title span {
+  color: var(--color-logo);
+}
+
+.home__desc {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.home__buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;   /* 두 버튼 너비를 같게 */
+  gap: 12px;              /* 두 버튼 사이 간격 */
+  width: 260px;           /* 버튼 너비. 디자인 보고 조절 */
+  margin-top: 40px;
+}
+
+.home__buttons .btn {
+  width: 100%;
+  height: 52px;           /* 두 버튼 높이 통일 */
+  display: flex;
+  align-items: center;
+  justify-content: center;  /* 글자 가운데 */
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.home__btn-icon {
+  margin-left: 0;       
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.home__hero-art {
+  position: absolute;
+  top: 60%;
+  right: calc(50% - 50vw);
+  transform: translateY(-50%);
+  width: 60vw;
+  max-width: 900px;
+  pointer-events: none;
+}
+
+.home__hero-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* 구분선 */
+.home__divider {
+  margin: 15px 0 10px;
+  border: none;
+  border-top: 1px solid #333;
+}
+
+/* 3단계 소개 전체 영역 */
+.home__steps {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  margin-top: 40px;
+}
+
+.home__steps-icons {
+  display: block;
+  width: 100%;
+  max-width: 800px; 
+  height: auto;
+  margin-bottom: 20px; 
+}
+
+.home__steps-texts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  max-width: 1130px;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.5;
+}
