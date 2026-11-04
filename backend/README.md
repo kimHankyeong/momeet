@@ -17,6 +17,15 @@ copy .env.example .env          # 필요하면 값 수정 (macOS/Linux: cp)
 uvicorn app.main:app --reload   # http://localhost:8000/docs
 ```
 
+## API 키 (선택)
+
+서울시 엘리베이터 API와 티맵 보행자 경로를 쓸 때만 필요하다. **키가 없어도 서버와 테스트는 그대로 실행된다.**
+
+- 내 컴퓨터: `.env`에 `SEOUL_OPEN_API_KEY=`, `TMAP_APP_KEY=` 뒤에 값만 한 줄로 넣는다 (따옴표·공백 없이).
+- 배포(렌더 등): 서비스 설정의 환경 변수에 같은 이름으로 넣는다. `.env` 파일은 올라가지 않는다.
+- `.env`는 `.gitignore`에 들어 있다. 키를 채팅·이슈·코드·문서에 붙여넣지 않는다.
+- 키는 각자 무료로 발급받을 수 있다 (서울 열린데이터광장 > 인증키 관리, SK Open API > 앱 > appKey).
+
 ## 테스트
 
 ```bash
@@ -26,7 +35,7 @@ python -m pytest                # 백A + 백B(test_fairness) 전체
 ## 시드 데이터 (개발용)
 
 ```bash
-python -m scripts.seed --yes    # 단계별 약속방 5개 + 토큰 출력 (PIN 1234 / 호스트 비밀번호 demo-password)
+python -m scripts.seed --yes    # 단계별 약속방 5개 + 토큰 출력 (PIN 123456 / 호스트 비밀번호 demo-password)
 ```
 
 ## 구조
