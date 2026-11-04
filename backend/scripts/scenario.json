@@ -1,0 +1,218 @@
+{
+  "title": "친구들과 저녁 약속",
+  "description": "피그마 시안 시나리오. 생활 패턴과 이동 여건이 다른 4명",
+  "date_start": "2026-11-01",
+  "date_end": "2026-11-08",
+  "participants": [
+    {
+      "name": "디소공",
+      "role": "host",
+      "persona": "대학생. 평소엔 신설동, 주말(11/7)엔 본가 근처 정릉에서 출발",
+      "conditions": {
+        "availability": {
+          "2026-11-01": [
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "2026-11-02": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "2026-11-03": [
+            17,
+            18,
+            19,
+            20,
+            21,
+            22
+          ],
+          "2026-11-07": [
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ]
+        },
+        "default_station": "신설동",
+        "exception_stations": [
+          {
+            "date": "2026-11-07",
+            "hours": [
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23
+            ],
+            "station": "정릉"
+          }
+        ],
+        "constraints": {
+          "max_travel_min": {
+            "value": 60,
+            "level": "required"
+          },
+          "avoid_stairs": {
+            "value": true,
+            "level": "preferred"
+          }
+        }
+      }
+    },
+    {
+      "name": "홍길동",
+      "role": "member",
+      "persona": "휠체어 이용자. 엘리베이터 없는 역·환승은 불가, 환승은 적을수록 좋음",
+      "conditions": {
+        "availability": {
+          "2026-11-03": [
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "2026-11-07": [
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ]
+        },
+        "default_station": "방화",
+        "exception_stations": [],
+        "constraints": {
+          "needs_elevator": {
+            "value": true,
+            "level": "required"
+          },
+          "avoid_stairs": {
+            "value": true,
+            "level": "required"
+          },
+          "max_transfers": {
+            "value": 1,
+            "level": "preferred"
+          }
+        }
+      }
+    },
+    {
+      "name": "아무개",
+      "role": "member",
+      "persona": "교대근무 간호사. 근무 없는 날 오후·저녁만 가능",
+      "conditions": {
+        "availability": {
+          "2026-11-03": [
+            17,
+            18,
+            19,
+            20,
+            21
+          ],
+          "2026-11-07": [
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "2026-11-08": [
+            10,
+            11,
+            12,
+            13,
+            14
+          ]
+        },
+        "default_station": "잠실",
+        "exception_stations": [],
+        "constraints": {
+          "max_travel_min": {
+            "value": 50,
+            "level": "required"
+          }
+        }
+      }
+    },
+    {
+      "name": "두루미",
+      "role": "member",
+      "persona": "유모차를 쓰는 육아 중 부모. 아이 하원 전후 짧은 시간만 가능",
+      "conditions": {
+        "availability": {
+          "2026-11-01": [
+            18,
+            19,
+            20,
+            21
+          ],
+          "2026-11-03": [
+            16,
+            17,
+            18,
+            19
+          ],
+          "2026-11-07": [
+            13,
+            14,
+            15,
+            16,
+            17
+          ]
+        },
+        "default_station": "수유",
+        "exception_stations": [],
+        "constraints": {
+          "avoid_stairs": {
+            "value": true,
+            "level": "required"
+          },
+          "max_travel_min": {
+            "value": 45,
+            "level": "required"
+          },
+          "max_walk_m": {
+            "value": 300,
+            "level": "preferred"
+          }
+        }
+      }
+    }
+  ]
+}
