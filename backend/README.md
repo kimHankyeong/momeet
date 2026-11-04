@@ -21,6 +21,10 @@ uvicorn app.main:app --reload   # http://localhost:8000/docs
 
 테이블 구조가 바뀌었다 (방 PIN → 입장 코드). 마이그레이션 도구가 없어서 **예전 `momeet.db`를 삭제하고 다시 실행**해야 한다. (해커톤 개발용 SQLite 기준)
 
+## 배포 (렌더)
+
+[docs/deploy-render.md](docs/deploy-render.md) — 절차, 환경 변수, 무료 플랜 제한(재시작 시 SQLite 초기화), 점검표. **실제 배포는 아직 하지 않았다.**
+
 ## API 키 (선택)
 
 서울시 엘리베이터 API와 티맵 보행자 경로를 쓸 때만 필요하다. **키가 없어도 서버와 테스트는 그대로 실행된다.**
