@@ -1,0 +1,101 @@
+.grid__wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.grid__arrow {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background: #bbb;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.grid__arrow:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.grid__table {
+  --label-w: 48px;
+  display: grid;
+  grid-template-columns: var(--label-w) repeat(var(--cols), 1fr);
+  user-select: none;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.grid__row {
+  display: contents;
+}
+
+.grid__corner,
+.grid__day {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 34px;
+  background: #fff;
+}
+
+.grid__day {
+  border: none;
+  border-bottom: 1px solid #ddd;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.grid__day--odd {
+  background: #f5f5f5;
+}
+
+.grid__hour {
+  height: 26px;
+  padding-right: 8px;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: 11px;
+  text-align: right;
+  cursor: pointer;
+}
+
+.grid__cell {
+  height: 26px;
+  cursor: pointer;
+}
+
+.grid__cell--odd {
+  background: #f5f5f5;
+}
+
+.grid__cell--on {
+  background: #b0b0b0;
+}
+
+.grid__expand {
+  display: block;
+  margin: 10px auto 4px;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: 13px;
+  color: #999;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.grid__notice {
+  text-align: center;
+  font-size: 11px;
+  color: #bbb;
+}

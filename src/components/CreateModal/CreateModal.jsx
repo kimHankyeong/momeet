@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Modal from '../Modal/Modal';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
@@ -6,6 +7,7 @@ import DateRangeInput from '../DateRangeInput/DateRangeInput';
 import './CreateModal.css';
 
 function CreateModal({ isOpen, onClose }) {
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [dateRange, setDateRange] = useState();
   const [pin, setPin] = useState('');
@@ -15,8 +17,9 @@ function CreateModal({ isOpen, onClose }) {
     name && dateRange?.from && dateRange?.to && pin.length === 6 && password;
 
   const handleSubmit = () => {
-    console.log({ name, dateRange, pin, password });
-    // TODO: 나중에 백엔드 API 연결
+    // TODO: 백엔드 API로 방 생성 후 받은 id 사용
+    onClose();
+    navigate(`/meet/${pin}/setup`);
   };
 
   return (

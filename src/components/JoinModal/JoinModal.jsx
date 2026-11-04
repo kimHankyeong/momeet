@@ -1,18 +1,21 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Modal from '../Modal/Modal';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import './JoinModal.css';
 
 function JoinModal({ isOpen, onClose }) {
+  const navigate = useNavigate();
   const [pin, setPin] = useState('');
   const [nickname, setNickname] = useState('');
 
   const isValid = pin && nickname;
 
   const handleSubmit = () => {
-    console.log({ pin, nickname });
-    // TODO: 백엔드 API 연결
+    // TODO: 백엔드 API로 PIN 확인 후 참여 처리
+    onClose();
+    navigate(`/meet/${pin}/setup`);
   };
 
   return (
@@ -26,14 +29,26 @@ function JoinModal({ isOpen, onClose }) {
         <p className="join__card-status">모집 중</p>
       </div>
 
-      <Input label="방 PIN 또는 링크를 입력해주세요." placeholder="초대 링크"
-        value={pin} onChange={(e) => setPin(e.target.value)} />
+      <Input
+        label="방 PIN 또는 링크를 입력해주세요."
+        placeholder="초대 링크"
+        value={pin}
+        onChange={(e) => setPin(e.target.value)}
+      />
 
-      <Input label="닉네임을 정해주세요." placeholder="닉네임" hint="최대 8자 이내로 만들어 주세요"
-        value={nickname} maxLength={8} onChange={(e) => setNickname(e.target.value)} />
+      <Input
+        label="닉네임을 정해주세요."
+        placeholder="닉네임"
+        hint="최대 8자 이내로 만들어 주세요"
+        value={nickname}
+        maxLength={8}
+        onChange={(e) => setNickname(e.target.value)}
+      />
 
       <div className="join__submit">
-        <Button size="lg" disabled={!isValid} onClick={handleSubmit}>참여하기</Button>
+        <Button size="lg" disabled={!isValid} onClick={handleSubmit}>
+          참여하기
+        </Button>
       </div>
     </Modal>
   );
