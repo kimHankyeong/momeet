@@ -9,15 +9,16 @@ const [selectedCells, setSelectedCells] = useState(new Set());
 
 const START_DATE = new Date(2026, 10, 1); // 약속 시작일 (TODO: 약속 데이터에서 받기)
 const DOW = ['일', '월', '화', '수', '목', '금', '토'];
+const pad = (n) => String(n).padStart(2, '0');
 
-const selectedTimes = (() => {
+// [변경] 문자열 대신 객체 배열로 만들고, selectedTimes는 여기서 파생
+const timeRanges = (() => {
   const byDay = {};
   selectedCells.forEach((key) => {
     const [d, h] = key.split('-').map(Number);
     (byDay[d] ||= []).push(h);
   });
   const result = [];
-  const pad = (n) => String(n).padStart(2, '0');
   Object.keys(byDay)
     .map(Number)
     .sort((a, b) => a - b)
@@ -30,7 +31,12 @@ const selectedTimes = (() => {
       let prev = hours[0];
       for (let i = 1; i <= hours.length; i++) {
         if (hours[i] !== prev + 1) {
-          result.push(`${label} ${pad(start)}:00-${pad(prev + 1)}:00`);
+          result.push({
+            id: `${d}-${start}`,
+            label,
+            start: `${pad(start)}:00`,
+            end: `${pad(prev + 1)}:00`,
+          });
           start = hours[i];
         }
         prev = hours[i];
@@ -39,10 +45,14 @@ const selectedTimes = (() => {
   return result;
 })();
 
-  // STEP 2: 출발역 (Frame 9, 16)
-  const [location, setLocation] = useState('');
-  const [tempInput, setTempInput] = useState('');
-  const [isEditingLocation, setIsEditingLocation] = useState(false);
+const selectedTimes = timeRanges.map((r) => `${r.label} ${r.start}-${r.end}`);
+
+  // STEP 2: 출발지 + 출발역 [변경]
+  const [origin, setOrigin] = useState(null); // { place, station } 확정된 기본 출발
+  const [originDraft, setOriginDraft] = useState({ place: '', station: '' });
+  const [exceptions, setExceptions] = useState([]);
+  const [showExceptionForm, setShowExceptionForm] = useState(false);
+  const [exceptionDraft, setExceptionDraft] = useState({ rangeId: '', place: '', station: '' });
 
   // STEP 3: 이동 조건 상태 (Frame 11, 12, 13)
   const [isSelectingCondition, setIsSelectingCondition] = useState(false); // Frame 12(선택 리스트) 열림 여부
@@ -54,6 +64,35 @@ const selectedTimes = (() => {
   if (!isOpen) return null;
 
   const handleNext = () => setStep((prev) => Math.min(prev + 1, 4));
+
+  // [추가] 기본 출발 확정
+  const commitOrigin = () => {
+    const place = originDraft.place.trim();
+    const station = originDraft.station.trim();
+    if (place && station) setOrigin({ place, station });
+  };
+
+  // [추가] 예외 출발 추가/삭제
+  const handleAddException = () => {
+    const { rangeId, place, station } = exceptionDraft;
+    const range = timeRanges.find((r) => r.id === rangeId);
+    if (!range || !place.trim() || !station.trim()) return;
+    setExceptions((prev) => [
+      ...prev,
+      {
+        id: Date.now(),
+        label: range.label,
+        startTime: range.start,
+        endTime: range.end,
+        place: place.trim(),
+        station: station.trim(),
+      },
+    ]);
+    setExceptionDraft({ rangeId: '', place: '', station: '' });
+  };
+
+  const handleRemoveException = (id) =>
+    setExceptions((prev) => prev.filter((e) => e.id !== id));
 
   // 조건 선택 및 추가 핸들러
   const handleSelectOption = (item) => {
@@ -79,8 +118,9 @@ const selectedTimes = (() => {
     );
   };
 
+  // [변경] location -> origin, exceptions
   const handleSubmit = () => {
-    onSubmitSuccess({ location, selectedTimes, addedConditions });
+    onSubmitSuccess({ origin, exceptions, selectedTimes, addedConditions });
     onClose();
   };
 
@@ -141,53 +181,136 @@ const selectedTimes = (() => {
             </button>
           </div>
         )}
-        {/* STEP 2: 어디서 출발하나요? (Frame 9, 16) */}
+
+        {/* STEP 2: 어디서 출발하나요? [변경] 출발지 + 역, 예외 출발 */}
         {step === 2 && (
           <div className="space-y-6 pt-1">
-            <div className="min-h-[120px] flex flex-col justify-center">
-              {(!location || isEditingLocation) ? (
-                <div className="space-y-2 text-center">
+            <div className="space-y-2 text-center">
+              {/* 기본 출발: 미확정이면 입력, 확정이면 보라색 칩 */}
+              {!origin ? (
+                <>
+                  <input
+                    type="text"
+                    placeholder="출발지"
+                    value={originDraft.place}
+                    onChange={(e) => setOriginDraft((d) => ({ ...d, place: e.target.value }))}
+                    className="w-full py-3.5 px-4 bg-[#F5F5F7] border-none rounded-full text-sm text-center placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6C5CE7]"
+                    autoFocus
+                  />
                   <input
                     type="text"
                     placeholder="지하철 역 검색"
-                    value={tempInput}
-                    onChange={(e) => setTempInput(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' && tempInput.trim()) {
-                        setLocation(tempInput.trim());
-                        setIsEditingLocation(false);
-                      }
-                    }}
-                    className="w-full py-3.5 px-4 bg-[#F5F5F7] border-none rounded-2xl text-sm text-center placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6C5CE7]"
-                    autoFocus
+                    value={originDraft.station}
+                    onChange={(e) => setOriginDraft((d) => ({ ...d, station: e.target.value }))}
+                    onKeyDown={(e) => e.key === 'Enter' && commitOrigin()}
+                    className="w-full py-3.5 px-4 bg-[#F5F5F7] border-none rounded-full text-sm text-center placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6C5CE7]"
                   />
                   <span className="text-xs text-gray-300 block pt-1">다른 출발 설정</span>
-                </div>
+                </>
               ) : (
-                <div className="space-y-2 text-center">
-                  <div className="w-full py-3.5 bg-[#6C5CE7] text-white font-bold rounded-2xl text-sm shadow-sm">
-                    {location}
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setTempInput(location);
-                      setIsEditingLocation(true);
-                    }}
-                    className="text-xs text-gray-400 hover:text-gray-600 underline"
-                  >
-                    다른 출발 설정
-                  </button>
-                </div>
+                <>
+                  {[origin.place, origin.station].map((text, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => {
+                        setOriginDraft(origin); // 칩을 누르면 다시 수정
+                        setOrigin(null);
+                      }}
+                      className="w-full py-3.5 bg-[#6C5CE7] text-white font-bold rounded-full text-sm shadow-sm"
+                    >
+                      {text}
+                    </button>
+                  ))}
+
+                  {/* 확정된 예외 출발들 */}
+                  {exceptions.map((ex) => (
+                    <div key={ex.id} className="space-y-2 pt-3">
+                      <div className="flex justify-between items-center px-4 text-xs">
+                        <span className="text-gray-700">
+                          {ex.label} {ex.startTime} ~ {ex.endTime}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveException(ex.id)}
+                          className="text-gray-400 hover:text-gray-600 underline"
+                        >
+                          삭제
+                        </button>
+                      </div>
+                      {[ex.place, ex.station].map((text, i) => (
+                        <div
+                          key={i}
+                          className="w-full py-3 border border-[#6C5CE7] text-[#6C5CE7] font-bold rounded-full text-sm"
+                        >
+                          {text}
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+
+                  {/* 예외 출발 입력 폼 */}
+                  {showExceptionForm ? (
+                    <div className="space-y-2 pt-3">
+                      <select
+                        value={exceptionDraft.rangeId}
+                        onChange={(e) => setExceptionDraft((d) => ({ ...d, rangeId: e.target.value }))}
+                        className="w-full py-3.5 px-4 bg-[#F5F5F7] rounded-full text-sm text-center text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#6C5CE7]"
+                      >
+                        <option value="">날짜 선택</option>
+                        {timeRanges.map((r) => (
+                          <option key={r.id} value={r.id}>
+                            {r.label} {r.start} ~ {r.end}
+                          </option>
+                        ))}
+                      </select>
+                      <input
+                        type="text"
+                        placeholder="출발지"
+                        value={exceptionDraft.place}
+                        onChange={(e) => setExceptionDraft((d) => ({ ...d, place: e.target.value }))}
+                        className="w-full py-3.5 px-4 bg-[#F5F5F7] border-none rounded-full text-sm text-center placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6C5CE7]"
+                      />
+                      <input
+                        type="text"
+                        placeholder="지하철 역 검색"
+                        value={exceptionDraft.station}
+                        onChange={(e) => setExceptionDraft((d) => ({ ...d, station: e.target.value }))}
+                        onKeyDown={(e) => e.key === 'Enter' && handleAddException()}
+                        className="w-full py-3.5 px-4 bg-[#F5F5F7] border-none rounded-full text-sm text-center placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6C5CE7]"
+                      />
+                      <button
+                        type="button"
+                        onClick={handleAddException}
+                        disabled={
+                          !exceptionDraft.rangeId ||
+                          !exceptionDraft.place.trim() ||
+                          !exceptionDraft.station.trim()
+                        }
+                        className="text-xs underline text-gray-500 hover:text-[#6C5CE7] disabled:text-gray-300 disabled:no-underline disabled:cursor-not-allowed"
+                      >
+                        추가
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => setShowExceptionForm(true)}
+                      className="text-xs text-gray-400 hover:text-gray-600 underline pt-1"
+                    >
+                      다른 출발 설정
+                    </button>
+                  )}
+                </>
               )}
             </div>
 
             <button
               type="button"
-              disabled={!location}
+              disabled={!origin}
               onClick={handleNext}
-              className={`w-full py-3.5 font-bold rounded-2xl text-sm transition-all ${
-                location
+              className={`w-full py-3.5 font-bold rounded-full text-sm transition-all ${
+                origin
                   ? 'bg-[#6C5CE7] hover:bg-[#5b4cdb] text-white shadow-sm'
                   : 'bg-[#F5F5F7] text-gray-300 cursor-not-allowed'
               }`}
@@ -345,7 +468,7 @@ const selectedTimes = (() => {
               </div>
             </div>
 
-            {/* 2) 출발역 */}
+            {/* 2) 출발역 [변경] 실제 값 표시 */}
             <div className="space-y-1 pt-1">
               <div className="flex justify-between items-center">
                 <span className="text-xs font-bold text-[#6C5CE7]">출발역</span>
@@ -359,16 +482,24 @@ const selectedTimes = (() => {
               </div>
               <div className="text-xs space-y-1 text-gray-700 pt-0.5">
                 <div className="flex items-center gap-2">
-                  <span className="text-gray-400 text-[11px]">기본 출발역</span>
-                  <span className="font-bold text-gray-800">{location || '신설동역'}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-gray-400 text-[11px]">예외 출발역</span>
-                  <span className="font-bold text-gray-800">1개</span>
-                  <span className="bg-[#F5F5F7] text-gray-700 text-[10px] px-2 py-0.5 rounded">
-                    11월 7일 (토) 11:00-23:00 정릉역
+                  <span className="text-gray-400 text-[11px]">기본 출발</span>
+                  <span className="font-bold text-gray-800">
+                    {origin ? `${origin.place} · ${origin.station}` : '-'}
                   </span>
                 </div>
+                {exceptions.length > 0 && (
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2">
+                      <span className="text-gray-400 text-[11px]">예외 출발</span>
+                      <span className="font-bold text-gray-800">{exceptions.length}개</span>
+                    </div>
+                    {exceptions.map((ex) => (
+                      <div key={ex.id} className="bg-[#F5F5F7] text-gray-700 text-[10px] px-2 py-1 rounded">
+                        {ex.label} {ex.startTime}-{ex.endTime} · {ex.place} · {ex.station}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
 

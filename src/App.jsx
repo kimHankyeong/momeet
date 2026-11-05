@@ -7,6 +7,8 @@ import ProposalPage from './pages/ProposalPage';
 import CreateModal from './components/CreateModal/CreateModal';
 import JoinModal from './components/JoinModal/JoinModal';
 import RecommendPage from './pages/RecommendPage';
+import JoinedMeetingsPage from './pages/JoinedMeetingsPage'; // [추가]
+import SettingsPage from './pages/SettingsPage'; // [추가]
 
 
 
@@ -28,6 +30,9 @@ function App() {
             />
           }
         />
+        {/* [추가] 참여한 약속 / 설정 */}
+        <Route path="/meetings/joined" element={<JoinedMeetingsPage />} />
+        <Route path="/meetings/settings" element={<SettingsPage />} />
         <Route path="/meet/:id/setup" element={<SetupPage />} />
         <Route path="/meet/:id/proposal" element={<ProposalPage />} />
         <Route path="/meet/:id/recommend" element={<RecommendPage />} />

@@ -60,10 +60,17 @@ export default function SetupPage() {
           <div className="px-4 py-2.5 bg-[#6C5CE7] text-white font-bold rounded-xl text-sm inline-block w-full">
             내 약속방
           </div>
-          <div className="px-4 py-2.5 text-gray-400 font-medium rounded-xl text-sm cursor-pointer hover:bg-gray-100">
+          {/* [변경] 클릭 시 해당 화면으로 이동 */}
+          <div
+            onClick={() => navigate('/meetings/joined')}
+            className="px-4 py-2.5 text-gray-400 font-medium rounded-xl text-sm cursor-pointer hover:bg-gray-100"
+          >
             참여한 약속
           </div>
-          <div className="px-4 py-2.5 text-gray-400 font-medium rounded-xl text-sm cursor-pointer hover:bg-gray-100">
+          <div
+            onClick={() => navigate('/meetings/settings')}
+            className="px-4 py-2.5 text-gray-400 font-medium rounded-xl text-sm cursor-pointer hover:bg-gray-100"
+          >
             설정
           </div>
         </aside>
