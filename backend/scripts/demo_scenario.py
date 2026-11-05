@@ -73,6 +73,8 @@ def main() -> None:
         v = view_for(result, p["id"])
         me = get_my_route(result, best, p["id"])
         path = " → ".join([me["segments"][0]["board"]] + [s["alight"] for s in me["segments"]]) if me["segments"] else me["origin"]
+        if me.get("access"):
+            path = f"출발 위치 (도보 {me['access']['minutes']}분) → " + path
         print(f"- {p['id']}: {me['origin']}에서 {me['depart_at']} 출발 예상, {me['minutes']}분, "
               f"환승 {me['transfers']}회, 도보 {me['walk_m']}m(약 {me['walk_min']}분)  [{path}]  (후보 {len(v['candidates'])}개 조회)")
 

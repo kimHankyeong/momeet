@@ -29,7 +29,7 @@ KST = timezone(timedelta(hours=9))
 CONSTRAINT_KEYS = {
     "max_travel_min": int,
     "max_transfers": int,
-    "max_walk_min": int,   # 분 단위 (프론트 '최대 도보 거리 10분'). 환승 보행거리를 1.2m/s로 환산해 비교
+    "max_walk_min": int,   # 분 단위 (프론트 '최대 도보 거리 10분'). 출발 위치→역 + 환승 도보를 1.2m/s로 환산해 비교
     "needs_elevator": bool,
     "avoid_stairs": bool,
 }
@@ -59,6 +59,33 @@ def _station_name(name) -> str | None:
 
 def _valid_hours(hours) -> bool:
     return isinstance(hours, list) and all(isinstance(h, int) and 0 <= h <= 23 for h in hours)
+
+
+# 출발 위치 좌표 허용 범위 (수도권) / 저장 정밀도
+LAT_RANGE, LNG_RANGE = (36.8, 38.3), (126.3, 127.9)
+ORIGIN_DECIMALS = 3   # 소수점 3자리 ≈ 100m. 집 위치를 정확히 저장하지 않으려고 반올림
+
+
+def _check_origin(origin, station: str | None, field: str, errors: list) -> dict | None:
+    """
+    출발 위치 {"lat", "lng"} 검사 + 반올림. 없으면 None.
+    출발역이 있으면 그 역까지 걸어갈 만한 거리(MAX_ACCESS_M)인지도 확인
+    """
+    if origin in (None, {}):
+        return None
+    num = lambda v: isinstance(v, (int, float)) and not isinstance(v, bool)
+    if not (isinstance(origin, dict) and num(origin.get("lat")) and num(origin.get("lng"))
+            and LAT_RANGE[0] <= origin["lat"] <= LAT_RANGE[1] and LNG_RANGE[0] <= origin["lng"] <= LNG_RANGE[1]):
+        errors.append(_err("INVALID_ORIGIN", "출발 위치가 올바르지 않습니다.", field))
+        return None
+    point = {"lat": round(origin["lat"], ORIGIN_DECIMALS), "lng": round(origin["lng"], ORIGIN_DECIMALS)}
+    if station:
+        meters, _ = subway.access_walk(point["lat"], point["lng"], station)
+        if meters > subway.MAX_ACCESS_M:
+            errors.append(_err("ORIGIN_TOO_FAR",
+                               f"출발 위치에서 {station}역까지 너무 멀어요. 더 가까운 역을 골라주세요.", field))
+            return None
+    return point
 
 
 def validate_conditions(data: dict, dates: list[str], final: bool = True) -> tuple[list[dict], dict]:
@@ -102,6 +129,11 @@ def validate_conditions(data: dict, dates: list[str], final: bool = True) -> tup
     elif final:
         errors.append(_err("STATION_REQUIRED", "기본 출발역을 선택해 주세요.", "default_station"))
 
+    # 출발 위치 (선택). 있으면 위치 → 출발역 도보가 이동시간에 더해짐
+    origin = _check_origin(data.get("default_origin"), clean["default_station"], "default_origin", errors)
+    if origin:
+        clean["default_origin"] = origin
+
     # 예외 출발역
     exceptions = data.get("exception_stations") or []
     if not isinstance(exceptions, list):
@@ -119,8 +151,11 @@ def validate_conditions(data: dict, dates: list[str], final: bool = True) -> tup
         elif not _valid_hours(ex.get("hours")) or not ex.get("hours"):
             errors.append(_err("INVALID_FORMAT", "예외 출발역 시간은 0~23 숫자 목록이어야 합니다.", "exception_stations"))
         else:
-            clean["exception_stations"].append(
-                {"date": ex["date"], "hours": sorted(set(ex["hours"])), "station": name})
+            item = {"date": ex["date"], "hours": sorted(set(ex["hours"])), "station": name}
+            ex_origin = _check_origin(ex.get("origin"), name, "exception_stations", errors)
+            if ex_origin:
+                item["origin"] = ex_origin
+            clean["exception_stations"].append(item)
 
     # 이동·접근성 조건
     constraints = data.get("constraints") or {}
@@ -299,6 +334,9 @@ def _route_view(leg: dict) -> dict:
         "transfers": leg["transfers"],
         "walk_m": leg["walk_m"],
         "walk_min": subway.walk_minutes(leg["walk_m"]),
+        # 출발 위치를 입력했을 때만: 위치 → 출발역 도보 (좌표는 내보내지 않음)
+        "access": ({"walk_m": leg["access_walk_m"], "minutes": leg["access_min"]}
+                   if leg.get("access_walk_m") else None),
         "segments": leg["route"]["segments"],
     }
 
