@@ -335,7 +335,8 @@ def _route_view(leg: dict) -> dict:
         "walk_m": leg["walk_m"],
         "walk_min": subway.walk_minutes(leg["walk_m"]),  # 화면 표시용 (약 N분)
         # 출발 위치를 입력했을 때만: 위치 → 출발역 도보 (좌표는 내보내지 않음)
-        "access": ({"walk_m": leg["access_walk_m"], "minutes": leg["access_min"]}
+        "access": ({"walk_m": leg["access_walk_m"], "minutes": leg["access_min"],
+                    "source": leg.get("access_source") or "estimate"}  # tmap | estimate
                    if leg.get("access_walk_m") else None),
         "segments": leg["route"]["segments"],
     }

@@ -231,7 +231,9 @@ recruiting → input → recommended → proposed → confirmed
 {
   "availability": { "2026-11-07": [13, 14, 15], "2026-11-08": [10] },   // 날짜 -> 출발 가능한 시(0~23). 약속방 날짜 범위 안
   "default_station": "쌍문",                                              // 필수(제출 시)
-  "exception_stations": [ { "date": "2026-11-08", "hours": [10], "station": "수유" } ],   // 선택
+  "default_origin": { "lat": 37.6514, "lng": 127.0459 },                  // 선택. 출발 위치. {"address": "..."}도 가능
+  "exception_stations": [ { "date": "2026-11-08", "hours": [10], "station": "수유",
+                            "origin": { "lat": 37.66, "lng": 127.02 } } ],   // 선택. origin도 선택
   "constraints": {                                                         // 선택. level: "required"(필수) | "preferred"(선호)
     "max_travel_min":  { "value": 60,   "level": "required" },
     "max_transfers":   { "value": 1,    "level": "preferred" },
@@ -254,7 +256,13 @@ recruiting → input → recommended → proposed → confirmed
              "errors": [ { "code": "STATION_NOT_FOUND", "message": "…", "field": "default_station" } ] } }
 ```
 
-`errors[].code`: `NO_AVAILABILITY`, `STATION_REQUIRED`, `STATION_NOT_FOUND`, `DATE_OUT_OF_RANGE`, `INVALID_FORMAT`, `INVALID_CONSTRAINT` (`field`는 문제가 된 항목 이름).
+`errors[].code`: `NO_AVAILABILITY`, `STATION_REQUIRED`, `STATION_NOT_FOUND`, `DATE_OUT_OF_RANGE`, `INVALID_FORMAT`, `INVALID_CONSTRAINT`, `INVALID_ORIGIN`, `ORIGIN_TOO_FAR` (`field`는 문제가 된 항목 이름).
+
+**출발 위치 → 출발역 도보 (선택 입력)**
+- `default_origin`(기본 출발역용), 예외 출발역의 `origin`을 보내면 그 위치에서 **그 출발역까지 걸어가는 거리·시간**이 이동시간에 더해진다. 출발 시각도 출발 위치에서 나서는 시각이다. 위치를 안 보내면 도보는 0이다.
+- 좌표는 수도권 범위만 받고 **소수 3자리(약 100m)로 반올림해 저장**한다. 출발역까지 직선거리가 3km를 넘으면 `422 ORIGIN_TOO_FAR`.
+- **주소만 보내도 된다** (`{"address": "서울 도봉구 노해로 342"}`): 서버가 좌표로 바꾼 뒤 검증하며 **주소는 저장하지 않는다**(응답에는 좌표만). 못 찾으면 `422 INVALID_ORIGIN`, 변환 서비스 장애면 `503 GEOCODE_UNAVAILABLE`(좌표로 다시 보내면 됨).
+- 서버가 도보를 구해 조건에 저장한다: `default_access` / `exception_stations[].access` = `{ "station", "walk_m", "minutes", "source" }`. `source`는 `"tmap"`(티맵 보행 경로) 또는 `"estimate"`(직선거리×1.3 추정, 티맵 키 없음·한도·장애 시). `estimate`는 다음 저장 때 티맵을 다시 시도한다. 같은 위치·역으로 다시 저장해도 티맵을 다시 부르지 않는다.
 
 - 제출 후 다시 `draft`로 저장하면 상태가 `draft`로 돌아가며, 다시 **제출해야** 추천에 포함된다.
 - `recruiting`/`input`에서만 입력·수정할 수 있고, 추천이 실행된 뒤(`recommended` 이후)에는 잠긴다 (`409 INVALID_STAGE`).
@@ -276,7 +284,8 @@ recruiting → input → recommended → proposed → confirmed
     { "rank": 1, "candidate_id": "c_20261107_1500_창동", "date": "2026-11-07", "start": "15:00", "end": "17:00",
       "station": { "name": "창동", "lines": ["1","4"], "lat": 37.65, "lng": 127.05 },
       "max_travel_min": 32, "accessibility": "met",
-      "my_route": { "origin": "쌍문", "depart_at": "14:28", "minutes": 32, "transfers": 1, "walk_m": 210,
+      "my_route": { "origin": "쌍문", "depart_at": "14:28", "minutes": 32, "transfers": 1, "walk_m": 210, "walk_min": 3,
+                    "access": { "walk_m": 140, "minutes": 2, "source": "tmap" },
                     "segments": [ { "line": "4", "board": "쌍문", "alight": "충무로", "stops": 10, "minutes": 22 } ] } }
   ]
 }
@@ -286,6 +295,7 @@ recruiting → input → recommended → proposed → confirmed
 - 추천이 실행된 뒤에 참여한 사람은 `my_route`가 `null`이다.
 - 같은 날 같은 역은 가장 좋은 시간 1개만, 날짜별 최대 3개, 전체 순위(`rank`) 순서.
 - `accessibility`: 만남 장소 역의 엘리베이터 상태 `met` | `unmet` | `unknown` (필수 조건 판단에서 `unknown`은 충족으로 보지 않는다).
+- `my_route.minutes`는 출발 위치에서 나서는 순간부터의 총 시간, `walk_m`은 도보 합계(출발 위치→출발역 + 환승 도보), `max_walk_m` 조건도 이 합계와 비교한다. `access`는 출발 위치를 입력했을 때만 있고(없으면 `null`) 출발 위치→출발역 구간만 나타낸다. 출발 위치 좌표는 어떤 응답에도 나오지 않는다(본인 조건 조회 제외).
 - `segments[]`: 구간별 `{line, board, alight, stops, minutes}` (환승이 있으면 구간이 여러 개).
 
 ---
@@ -310,7 +320,8 @@ recruiting → input → recommended → proposed → confirmed
   "candidate": { "candidate_id": "…", "date": "2026-11-07", "start": "15:00", "end": "17:00",
                  "station": { "name": "창동", "lines": ["1","4"], "lat": 37.65, "lng": 127.05 },
                  "max_travel_min": 32, "accessibility": "met" },
-  "my_route": { "origin": "쌍문", "depart_at": "14:28", "minutes": 32, "transfers": 1, "walk_m": 210,
+  "my_route": { "origin": "쌍문", "depart_at": "14:28", "minutes": 32, "transfers": 1, "walk_m": 210, "walk_min": 3,
+                    "access": { "walk_m": 140, "minutes": 2, "source": "tmap" },
                 "segments": [ { "line": "4", "board": "쌍문", "alight": "충무로", "stops": 10, "minutes": 22 } ] },
   "stage": "proposed" }
 ```

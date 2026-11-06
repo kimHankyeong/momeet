@@ -23,6 +23,8 @@ class ConditionsBody(Strict):
 
     availability: dict[str, list[StrictInt]] | None = Field(default=None, max_length=62)
     default_station: str | None = Field(default=None, max_length=30)
+    # 출발 위치 {lat, lng} 또는 {address}. 형식·범위 검증은 B의 validate_conditions, 주소 변환은 services/access_walk.py
+    default_origin: dict[str, Any] | None = Field(default=None, max_length=3)
     exception_stations: list[dict[str, Any]] | None = Field(default=None, max_length=100)
     constraints: dict[str, Any] | None = Field(default=None, max_length=10)
 

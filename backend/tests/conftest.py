@@ -5,6 +5,7 @@ os.environ["DATABASE_URL"] = "sqlite://"
 os.environ["BCRYPT_ROUNDS"] = "4"
 os.environ["MAX_AUTH_FAILURES"] = "5"
 os.environ["AUTH_LOCK_MINUTES"] = "5"
+os.environ["TMAP_APP_KEY"] = ""  # .env의 실제 키를 쓰지 않는다: 테스트가 티맵 호출 한도를 쓰지 않도록 (B의 직선거리 추정으로 동작)
 
 from datetime import date, timedelta  # noqa: E402
 

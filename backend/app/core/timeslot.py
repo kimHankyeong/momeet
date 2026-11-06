@@ -40,6 +40,7 @@ class Leg:
     route: dict          # subway.Route.to_dict() (지하철 구간만)
     access_walk_m: int = 0   # 출발 위치 → 출발역 도보 거리 (위치 안 줬으면 0)
     access_min: int = 0      # 출발 위치 → 출발역 도보 시간
+    access_source: str = ""  # "tmap"(티맵 보행 경로) | "estimate"(직선거리 추정). 위치 안 줬으면 빈 문자열
 
 
 @dataclass
@@ -105,9 +106,16 @@ def _point(origin: dict | None) -> tuple[float, float] | None:
     return (origin["lat"], origin["lng"]) if origin else None
 
 
-def _origin_options(p: dict, date: str) -> list[tuple[str, tuple | None, set[int]]]:
+def _stored_access(info, station: str) -> tuple[int, int, str] | None:
+    """조건에 저장된 출발 위치→출발역 도보 (m, 분, 출처). 다른 역 기준으로 구한 값이면 None (직선거리 추정으로 대체)"""
+    if isinstance(info, dict) and info.get("station") == station and "walk_m" in info and "minutes" in info:
+        return int(info["walk_m"]), int(info["minutes"]), str(info.get("source", ""))
+    return None
+
+
+def _origin_options(p: dict, date: str) -> list[tuple[str, tuple | None, tuple | None, set[int]]]:
     """
-    이 날짜에 쓸 수 있는 (출발역, 출발 위치 좌표 or None, 출발 가능한 시간들) 목록.
+    이 날짜에 쓸 수 있는 (출발역, 출발 위치 좌표 or None, 저장된 도보 or None, 출발 가능한 시간들) 목록.
     예외 출발역이 지정된 시간은 기본 출발역에서 빼고 예외역에 배정.
     """
     hours = set(p.get("availability", {}).get(date, []))
@@ -116,11 +124,14 @@ def _origin_options(p: dict, date: str) -> list[tuple[str, tuple | None, set[int
         if ex["date"] == date:
             ex_hours = hours & set(ex["hours"])
             if ex_hours:
-                options.setdefault((ex["station"], _point(ex.get("origin"))), set()).update(ex_hours)
+                key = (ex["station"], _point(ex.get("origin")), _stored_access(ex.get("access"), ex["station"]))
+                options.setdefault(key, set()).update(ex_hours)
                 hours -= ex_hours
     if hours:
-        options.setdefault((p["default_station"], _point(p.get("default_origin"))), set()).update(hours)
-    return [(station, point, hrs) for (station, point), hrs in options.items()]
+        st = p["default_station"]
+        key = (st, _point(p.get("default_origin")), _stored_access(p.get("default_access"), st))
+        options.setdefault(key, set()).update(hours)
+    return [(station, point, stored, hrs) for (station, point, stored), hrs in options.items()]
 
 
 # ------------------------------------------------------------------ 메인
@@ -207,11 +218,16 @@ def _best_leg(p: dict, options, station: str, start: int, routes) -> Leg | None:
     출발 시각(start - 이동시간)이 그 출발역에 배정된 출발 가능 시간 안이어야 함.
     """
     best = None
-    for origin, point, hours in options:
+    for origin, point, stored, hours in options:
         r = routes(p, origin).get(station)
         if r is None:          # 필수 조건(환승 제한·엘리베이터) 때문에 도달 불가
             continue
-        access_m, access_min = subway.access_walk(*point, origin) if point else (0, 0)
+        if point is None:
+            access_m, access_min, source = 0, 0, ""
+        elif stored:           # 저장 시 구한 값 (티맵 실측 또는 추정)
+            access_m, access_min, source = stored
+        else:                  # 저장된 값이 없으면 직선거리 추정
+            (access_m, access_min), source = subway.access_walk(*point, origin), "estimate"
         total = r.minutes + access_min
         depart = start - total
         if depart < 0 or depart // 60 not in hours:
@@ -227,5 +243,6 @@ def _best_leg(p: dict, options, station: str, start: int, routes) -> Leg | None:
                 route=r.to_dict(),
                 access_walk_m=access_m,
                 access_min=access_min,
+                access_source=source,
             )
     return best

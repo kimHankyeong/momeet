@@ -17,7 +17,7 @@ from app.models import (
     RecommendationResult,
 )
 from app.security import utcnow
-from app.services import hooks, state
+from app.services import access_walk, hooks, state
 from app.services.meetings import active_participants
 
 # 추천 계산은 CPU를 오래 쓴다. 동시에 몇 개까지만 돌리고 나머지는 기다리게 한다.
@@ -36,10 +36,12 @@ def get_my_condition(db: Session, me: Participant) -> dict:
     return {"status": row.status, "conditions": row.data, "updated_at": row.updated_at}
 
 
-def _validate(meeting: Meeting, data: dict, final: bool) -> dict:
+def _validate(meeting: Meeting, data: dict, final: bool, previous: dict | None = None) -> dict:
+    data = access_walk.resolve_addresses(data)  # 주소 입력은 좌표로 바꾼 뒤 B의 검증에 넘긴다
     errors, clean = fairness.validate_conditions(data, meeting_dates(meeting), final=final)
     if errors:
         raise AppError("CONDITIONS_INVALID", "조건을 확인해 주세요.", 422, {"errors": errors})
+    access_walk.apply(clean, previous)  # 출발 위치가 있으면 출발역까지 도보(티맵)를 구해 저장
     return clean
 
 
@@ -57,19 +59,20 @@ def _save(db: Session, meeting: Meeting, me: Participant, clean: dict, status: s
 
 def save_draft(db: Session, meeting: Meeting, me: Participant, data: dict) -> Condition:
     state.require_stage(meeting, STAGE_RECRUITING, STAGE_INPUT)
-    clean = _validate(meeting, data, final=False)
+    row = db.scalar(select(Condition).where(Condition.participant_id == me.id))
+    clean = _validate(meeting, data, final=False, previous=row.data if row else None)
     return _save(db, meeting, me, clean, "draft")
 
 
 def submit(db: Session, meeting: Meeting, me: Participant, data: dict | None) -> Condition:
     """제출/재제출. data가 없으면 저장해 둔 초안을 제출한다."""
     state.require_stage(meeting, STAGE_RECRUITING, STAGE_INPUT)
+    row = db.scalar(select(Condition).where(Condition.participant_id == me.id))
     if data is None:
-        row = db.scalar(select(Condition).where(Condition.participant_id == me.id))
         if row is None:
             raise AppError("NO_DRAFT", "제출할 조건이 없습니다. 조건을 입력해 주세요.", 409)
         data = row.data
-    clean = _validate(meeting, data, final=True)
+    clean = _validate(meeting, data, final=True, previous=row.data if row else None)
     return _save(db, meeting, me, clean, "submitted")
 
 

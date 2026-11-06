@@ -28,6 +28,10 @@ class Settings(BaseSettings):
     max_participants_limit: int = 10
     max_date_range_days: int = 7
 
+    # 티맵 보행자 경로·주소 변환 (출발 위치 → 출발역 도보). 키가 없거나 실패하면 B의 직선거리 추정을 쓴다.
+    tmap_app_key: str = ""
+    tmap_timeout_sec: float = 5.0
+
     @property
     def cors_origin_list(self) -> list[str]:
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]
