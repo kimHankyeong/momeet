@@ -29,14 +29,14 @@ KST = timezone(timedelta(hours=9))
 CONSTRAINT_KEYS = {
     "max_travel_min": int,
     "max_transfers": int,
-    "max_walk_min": int,   # 분 단위 (프론트 '최대 도보 거리 10분'). 출발 위치→역 + 환승 도보를 1.2m/s로 환산해 비교
+    "max_walk_m": int,     # 미터. 출발 위치→역 도보 + 환승 도보 합계와 비교 (화면에서 분으로 받으면 × 72 해서 보내기)
     "needs_elevator": bool,
     "avoid_stairs": bool,
 }
 CONSTRAINT_LABELS = {
     "max_travel_min": "최대 이동시간",
     "max_transfers": "최대 환승 횟수",
-    "max_walk_min": "최대 도보 거리",
+    "max_walk_m": "최대 도보 거리",
     "needs_elevator": "엘리베이터 필요",
     "avoid_stairs": "계단 회피",
 }
@@ -195,8 +195,8 @@ def _meets(key: str, value, leg: dict, accessibility: str) -> bool:
         return leg["minutes"] <= value
     if key == "max_transfers":
         return leg["transfers"] <= value
-    if key == "max_walk_min":
-        return subway.walk_minutes(leg["walk_m"]) <= value
+    if key == "max_walk_m":
+        return leg["walk_m"] <= value
     if key in ("needs_elevator", "avoid_stairs"):
         # 경로상 환승은 subway에서 이미 엘리베이터 있는 곳만 지나게 계산됨 → 만나는 역만 확인
         return (not value) or accessibility == "met"
@@ -333,7 +333,7 @@ def _route_view(leg: dict) -> dict:
         "minutes": leg["minutes"],
         "transfers": leg["transfers"],
         "walk_m": leg["walk_m"],
-        "walk_min": subway.walk_minutes(leg["walk_m"]),
+        "walk_min": subway.walk_minutes(leg["walk_m"]),  # 화면 표시용 (약 N분)
         # 출발 위치를 입력했을 때만: 위치 → 출발역 도보 (좌표는 내보내지 않음)
         "access": ({"walk_m": leg["access_walk_m"], "minutes": leg["access_min"]}
                    if leg.get("access_walk_m") else None),

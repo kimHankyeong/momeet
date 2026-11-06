@@ -2846,10 +2846,13 @@
       {
         "id": "삼전_9",
         "line": "9",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 1,
+          "source": "manual"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "상계",

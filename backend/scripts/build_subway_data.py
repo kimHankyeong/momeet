@@ -57,6 +57,12 @@ BRANCH_START = {
     ("5", "둔촌동"): "강동",    # 마천지선 강동-둔촌동-...-마천
 }
 
+# 공공데이터에 없어서 팀이 직접 확인한 접근성 정보 (노드 ID → 정보)
+# elevator 1 = 대수는 모르고 '있음'만 확인
+MANUAL_ACCESSIBILITY = {
+    "삼전_9": {"elevator": 1, "source": "manual"},  # 엘리베이터 위치정보에 없음, 팀 확인 (2026-11-04)
+}
+
 # 6호선 응암순환 구간은 응암→역촌→불광→독바위→연신내→구산→응암 한 방향만 운행
 ONEWAY_LOOP = ("6", "응암")
 
@@ -264,6 +270,11 @@ def add_elevator_points(acc, nodes):
     for nid, (name, line) in nodes.items():
         if line in DISTANCE_LINES and nid not in acc and counts.get(name):
             acc[nid] = {"elevator": counts[name], "source": "elevator_location"}
+
+    # 그래도 정보가 없는 역은 팀이 직접 확인한 값으로 채움
+    for nid, info in MANUAL_ACCESSIBILITY.items():
+        if nid in nodes and nid not in acc:
+            acc[nid] = dict(info)
     return acc
 
 
