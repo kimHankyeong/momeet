@@ -8,6 +8,7 @@
 | | 주소 |
 | --- | --- |
 | 배포된 웹 | https://momeet-frontend.onrender.com |
+| 시연 영상 | https://youtu.be/UbdpHKHmkeo |
 | API 문서 (Swagger) | https://momeet-backend.onrender.com/docs |
 
 - **무료 서버라서 오랫동안 쓰지 않으면 잠들고, 첫 접속은 최대 1분 정도 걸립니다.** 화면이 멈춘 것처럼 보여도 잠시 기다려 주세요.
@@ -162,7 +163,7 @@ npm run dev                       # http://localhost:5173
 
 ```bash
 cd backend
-python -m pytest        # 142개
+python -m pytest        # 146개
 ```
 
 약속방·참여·진행 단계 흐름, 조건 검증, 추천(공평성·접근성·후보 없음 사유), 출발지 도보 계산, 장소 검색, 인증·접근 제한을 자동 테스트로 확인합니다. 테스트는 실제 티맵을 호출하지 않아 외부 호출 한도를 쓰지 않습니다.
