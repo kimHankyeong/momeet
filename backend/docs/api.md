@@ -53,10 +53,17 @@ recruiting → input → recommended → proposed → confirmed
 | 409 | `INVALID_STAGE` | 지금 단계에서 불가 (`stage`, `allowed_stages` 포함) |
 | 409 | `MEETING_FULL`, `JOIN_CLOSED`, `NOT_ENOUGH_PARTICIPANTS`, `NO_ACTIVE_PROPOSAL`, `NOT_CONFIRMED`, `NO_DRAFT` | 상태 충돌 |
 | 409 | `CONDITIONS_INCOMPLETE` | 아직 제출하지 않은 참여자가 있어 추천 불가 (`pending_nicknames` 포함) |
+| 409 | `HAS_REJECTION` | 거절한 참여자가 있어 확정 불가 (`POST /proposal/confirm`). 다른 후보를 다시 제안하거나 거절한 사람이 동의로 바꿔야 한다 |
+| 409 | `HOST_CANNOT_LEAVE`, `CANNOT_EXCLUDE_HOST` | 호스트는 나가거나 제외할 수 없다 (약속방 삭제만 가능) |
+| 409 | `ALREADY_DECIDED`, `ALREADY_CLAIMED`, `NICKNAME_CONFLICT` | 이미 처리한 참여 신청 / 이미 토큰을 받음 / 닉네임을 정하지 못해 다시 시도 |
 | 410 | `MEETING_EXPIRED` | 만료된 약속방 (모든 접근 차단) |
 | 422 | `VALIDATION_ERROR`, `INVALID_CANDIDATE` | 입력/후보 오류 |
 | 422 | `CONDITIONS_INVALID` | 조건 값 오류. `errors: [{code, message, field}]` 에 B의 검증 결과가 그대로 들어간다 |
 | 429 | `TOO_MANY_ATTEMPTS` | 입장 코드 추측 / 호스트 비밀번호 실패 초과. `Retry-After` 헤더(초) 와 `retry_after` 필드 |
+| 429 | `RATE_LIMITED` | 장소 검색 호출이 너무 잦음 (`GET /places`, 클라이언트당 분당 30건). `Retry-After` 헤더(초) |
+| 503 | `GEOCODE_UNAVAILABLE` | 출발지 주소를 좌표로 바꾸지 못함(변환 서비스 장애). 좌표(`lat`, `lng`)로 다시 보내면 된다 |
+| 503 | `PLACES_UNAVAILABLE` | 장소 검색을 쓸 수 없음 (티맵 키 없음·한도·장애). 주소를 직접 입력하게 안내 |
+| 503 | `CODE_GENERATION_FAILED` | 입장 코드를 만들지 못함. 다시 시도 |
 
 ---
 
@@ -307,7 +314,8 @@ recruiting → input → recommended → proposed → confirmed
       "max_travel_min": 32, "accessibility": "met",
       "my_route": { "origin": "쌍문", "depart_at": "14:28", "minutes": 32, "transfers": 1, "walk_m": 210, "walk_min": 3,
                     "access": { "walk_m": 140, "minutes": 2, "source": "tmap" },
-                    "segments": [ { "line": "4", "board": "쌍문", "alight": "충무로", "stops": 10, "minutes": 22 } ] } }
+                    "segments": [ { "line": "4", "board": "쌍문", "alight": "충무로", "stops": 10, "minutes": 22 } ],
+                    "stops": [ { "name": "쌍문", "line": "4", "lat": 37.648627, "lng": 127.034709 }, "…" ] } }
   ]
 }
 ```
@@ -318,6 +326,7 @@ recruiting → input → recommended → proposed → confirmed
 - `accessibility`: 만남 장소 역의 엘리베이터 상태 `met` | `unmet` | `unknown` (필수 조건 판단에서 `unknown`은 충족으로 보지 않는다).
 - `my_route.minutes`는 출발 위치에서 나서는 순간부터의 총 시간, `walk_m`은 도보 합계(출발 위치→출발역 + 환승 도보), `max_walk_m` 조건도 이 합계와 비교한다. `access`는 출발 위치를 입력했을 때만 있고(없으면 `null`) 출발 위치→출발역 구간만 나타낸다. 출발 위치 좌표는 어떤 응답에도 나오지 않는다(본인 조건 조회 제외).
 - `segments[]`: 구간별 `{line, board, alight, stops, minutes}` (환승이 있으면 구간이 여러 개).
+- `stops[]`: 승차역부터 하차역까지 **지나가는 모든 역**을 순서대로 `{name, line, lat, lng}` (지도에 노선을 그릴 때 쓴다). `segments[].stops`는 그 구간의 정거장 수이고, 이 `stops[]`와 이름은 같지만 서로 다른 값이다. 제안·확정 응답의 `my_route`에도 같은 형식으로 들어 있다.
 
 ---
 
@@ -343,7 +352,8 @@ recruiting → input → recommended → proposed → confirmed
                  "max_travel_min": 32, "accessibility": "met" },
   "my_route": { "origin": "쌍문", "depart_at": "14:28", "minutes": 32, "transfers": 1, "walk_m": 210, "walk_min": 3,
                     "access": { "walk_m": 140, "minutes": 2, "source": "tmap" },
-                "segments": [ { "line": "4", "board": "쌍문", "alight": "충무로", "stops": 10, "minutes": 22 } ] },
+                "segments": [ { "line": "4", "board": "쌍문", "alight": "충무로", "stops": 10, "minutes": 22 } ],
+                "stops": [ { "name": "쌍문", "line": "4", "lat": 37.648627, "lng": 127.034709 }, "…" ] },
   "stage": "proposed" }
 ```
 
