@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ConditionSetupModal from '../components/ConditionSetupModal';
-import { closeRecruiting, getMeeting, runRecommendations } from '../api/meetApi';
+import { closeRecruiting, getMeeting, inviteLinkOf, runRecommendations } from '../api/meetApi';
 
 const DOW = ['일', '월', '화', '수', '목', '금', '토'];
 // "2026-11-10" → "11월 10일 (화)"
@@ -92,7 +92,6 @@ export default function SetupPage() {
     fetchMeetData();
   };
 
-  // 링크 복사: 서버가 발급한 입장 코드 복사 (참여자도 가능)
   // 방장: 참여자 모집 마감 (recruiting → input)
   const handleClose = async () => {
     setBusy(true);
@@ -126,13 +125,15 @@ export default function SetupPage() {
     }
   };
 
+  // 초대 링크 복사 (참여자도 가능). 링크를 열면 처음 온 사람은 참여, 이미 참여한 사람은 지금 단계 화면으로 간다
   const handleCopy = async () => {
     if (!meetInfo.joinCode) return;
+    const link = inviteLinkOf(meetInfo.joinCode);
     try {
-      await navigator.clipboard.writeText(meetInfo.joinCode);
-      alert(`입장 코드가 복사되었습니다: ${meetInfo.joinCode}`);
+      await navigator.clipboard.writeText(link);
+      alert(`초대 링크가 복사되었습니다.\n${link}`);
     } catch {
-      window.prompt('아래 입장 코드를 복사해 주세요.', meetInfo.joinCode);
+      window.prompt('아래 초대 링크를 복사해 주세요.', link);
     }
   };
 
