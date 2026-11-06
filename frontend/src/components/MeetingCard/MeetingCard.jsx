@@ -43,7 +43,7 @@ export default function MeetingCard({ meeting }) {
         <span className="mcard__people">
           {participants}/{maxParticipants} 참여 중
         </span>
-        <button type="button" className="mcard__btn" onClick={() => navigate(`/meet/${id}`)}>
+        <button type="button" className="mcard__btn" onClick={() => navigate(`/meet/${id}/setup`)}>
           상세보기
         </button>
       </div>

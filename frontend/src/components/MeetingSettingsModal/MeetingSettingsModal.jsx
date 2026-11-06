@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './MeetingSettingsModal.css';
 
-// meeting: { id, name, reconnectLink }
+// meeting: { id, name, reconnectLink, isHost }
 export default function MeetingSettingsModal({ isOpen, meeting, onClose, onLeave }) {
   const [copied, setCopied] = useState(false);
 
@@ -17,8 +17,12 @@ export default function MeetingSettingsModal({ isOpen, meeting, onClose, onLeave
     }
   };
 
+  // 참여자: 약속방 나가기 / 방장: 약속방 삭제 (방장은 나갈 수 없어서 삭제만 가능)
   const handleLeave = () => {
-    if (window.confirm('약속방을 나가시겠어요? 개인 링크로 다시 들어올 수 없어요.')) {
+    const msg = meeting.isHost
+      ? '약속방을 삭제하시겠어요? 모든 참여자의 정보가 함께 삭제되고 되돌릴 수 없어요.'
+      : '약속방을 나가시겠어요? 개인 링크로 다시 들어올 수 없어요.';
+    if (window.confirm(msg)) {
       onLeave?.(meeting.id);
       onClose();
     }
@@ -56,7 +60,7 @@ export default function MeetingSettingsModal({ isOpen, meeting, onClose, onLeave
 
         <div className="msm__foot">
           <button type="button" className="msm__leave" onClick={handleLeave}>
-            ↪ 약속방 나가기
+            {meeting.isHost ? '🗑 약속방 삭제' : '↪ 약속방 나가기'}
           </button>
         </div>
       </div>

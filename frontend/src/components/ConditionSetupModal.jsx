@@ -1,31 +1,21 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import AvailabilityGrid from './conditions/AvailabilityGrid';
 import { submitConditions } from '../api/meetApi';
-import {
-  cellsToAvailability,
-  conditionsToConstraints,
-  stripStationSuffix,
-} from '../api/transform';
+import { cellsToAvailability, conditionsToConstraints } from '../api/transform';
 
-export default function ConditionSetupModal({
-  isOpen, onClose, onSubmitSuccess, meetingId,
-  dateStart, dateEnd,   // "YYYY-MM-DD" 문자열
-}) {
+
+// startDate: 약속방 시작일 "YYYY-MM-DD", totalDays: 약속방 날짜 수 (SetupPage가 서버에서 받아 넘김)
+export default function ConditionSetupModal({ isOpen, onClose, onSubmitSuccess, meetingId, startDate, totalDays = 7 }) {
+
   const [step, setStep] = useState(1);
 
   // STEP 1: 시간 선택
 const [selectedCells, setSelectedCells] = useState(new Set());
 
-// "2026-11-06" → 로컬 Date (new Date("YYYY-MM-DD")는 UTC로 해석돼서 쓰지 않음)
-const parseLocal = (s) => {
-  if (!s) return new Date();
-  const [y, m, d] = s.split('-').map(Number);
-  return new Date(y, m - 1, d);
-};
-const START_DATE = parseLocal(dateStart);
-const totalDays = dateStart && dateEnd
-  ? Math.round((parseLocal(dateEnd) - START_DATE) / 86400000) + 1
-  : 7;
+// "2026-11-10" → 로컬 Date (new Date("2026-11-10")은 UTC로 해석돼서 쓰지 않음)
+const START_DATE = startDate
+  ? new Date(Number(startDate.slice(0, 4)), Number(startDate.slice(5, 7)) - 1, Number(startDate.slice(8, 10)))
+  : new Date();
 const DOW = ['일', '월', '화', '수', '목', '금', '토'];
 const pad = (n) => String(n).padStart(2, '0');
 

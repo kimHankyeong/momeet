@@ -23,7 +23,7 @@ function CreateModal({ isOpen, onClose }) {
       : 0;
 
   const isValid =
-    title && nickname && password.length >= 8 && days >= 2 && days <= 7;
+    title && nickname && password.length >= 8 && days >= 1 && days <= 7;
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -36,8 +36,9 @@ function CreateModal({ isOpen, onClose }) {
         host_nickname: nickname,
         host_password: password,
       });
-      saveToken(res.access_token, res.meeting_id);
+      saveToken(res.meeting_id, res.access_token);
       localStorage.setItem(`momeet_meeting_${res.meeting_id}`, JSON.stringify(res.meeting));
+      localStorage.setItem(`momeet_code_${res.meeting_id}`, res.join_code);
       onClose();
       navigate(`/meet/${res.meeting_id}/setup`);
     } catch (e) {

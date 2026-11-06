@@ -7,16 +7,16 @@ const api = axios.create({
   headers: { 'Content-Type': 'application/json' },
 });
 
-// 토큰이 있으면 모든 요청에 Authorization 헤더 자동 첨부
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('momeet_token');
+  const m = config.url?.match(/^\/meetings\/([^/?]+)/);
+  const token = (m && localStorage.getItem(`momeet_token_${m[1]}`)) || localStorage.getItem('momeet_token');
   if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
 });
 
-export const saveToken = (token, meetingId) => {
+export const saveToken = (meetingId, token) => {
   localStorage.setItem('momeet_token', token);
-  if (meetingId) localStorage.setItem(`momeet_token_${meetingId}`, token);
+  localStorage.setItem(`momeet_token_${meetingId}`, token);
 };
 
 // 약속 생성 (경로·필드는 api.md 확인 후 확정)
@@ -46,3 +46,14 @@ export const hostLogin = async (id, hostPassword) =>
 
 export const joinMeeting = async (code, nickname) =>
   (await api.post(`/join/${encodeURIComponent(code)}`, { nickname })).data;
+
+export const leaveMeeting = async (id) => {
+  await api.delete(`/meetings/${id}/me`);
+  localStorage.removeItem(`momeet_token_${id}`);
+};
+
+// 약속방 삭제 (방장만): 방과 모든 데이터 삭제
+export const deleteMeeting = async (id) => {
+  await api.delete(`/meetings/${id}`);
+  localStorage.removeItem(`momeet_token_${id}`);
+};
