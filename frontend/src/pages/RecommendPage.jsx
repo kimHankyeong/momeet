@@ -180,15 +180,17 @@ export default function RecommendPage() {
                           isOn ? 'border-[#6C5CE7]' : 'border-gray-300'
                         }`}
                       >
-                        <div>
+                        <div className="min-w-0 flex-1 pr-3">
                           <p className="text-base font-medium text-gray-900">
                             <span className={isOn ? 'text-[#6C5CE7]' : 'text-gray-400'}>📍</span> {c.name}
                           </p>
-                          <p className="text-xs text-gray-700 mt-1">
-                            {c.lines} | {c.when}
+                          <p className="text-xs text-gray-700 mt-1 break-keep">
+                            {c.lines}
+                            <br />
+                            {c.when}
                           </p>
                         </div>
-                        <div className="flex items-center gap-4 text-center">
+                        <div className="flex items-center gap-3 text-center shrink-0 whitespace-nowrap">
                           <Stat label="최대 이동" value={`${c.maxMin}분`} />
                           <Stat label="내 이동" value={`${c.myMin}분`} />
                           <Stat label="내 환승" value={`${c.transfers}회`} />
