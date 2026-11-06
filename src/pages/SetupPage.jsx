@@ -207,6 +207,7 @@ export default function SetupPage() {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onSubmitSuccess={handleModalSubmit}
+        meetingId={id}
       />
     </div>
   );
