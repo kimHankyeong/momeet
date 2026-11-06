@@ -134,7 +134,7 @@ def test_각자_필수는_되지만_동시에_안_되면_사유():
 
 def test_특정_필수_조건이_항상_막히면_인원수만_표시():
     # 모든 시간 가능 후보에서 p2의 최대 이동시간만 계속 실패한 상황
-    fails = {"2026-11-07": [[("p2", "max_travel_min")], [("p2", "max_travel_min"), ("p1", "max_walk_m")]]}
+    fails = {"2026-11-07": [[("p2", "max_travel_min")], [("p2", "max_travel_min"), ("p1", "max_walk_min")]]}
     reasons = fairness._reasons(["2026-11-07"], [], fails, {})
     assert reasons[0]["code"] == "REQUIRED_UNMET"
     assert "최대 이동시간" in reasons[0]["message"] and "1명" in reasons[0]["message"]
@@ -197,7 +197,7 @@ def test_검증_에러_코드():
     data = {
         "availability": {"2026-12-25": [10]},
         "default_station": "구로",
-        "constraints": {"max_walk_m": {"value": -1, "level": "required"}, "unknown": {"value": 1, "level": "required"}},
+        "constraints": {"max_walk_min": {"value": -1, "level": "required"}, "unknown": {"value": 1, "level": "required"}},
     }
     errors, _ = validate_conditions(data, DATES, final=True)
     codes = {e["code"] for e in errors}
@@ -209,3 +209,74 @@ def test_임시저장은_빈_값_허용():
     assert errors == []
     errors, _ = validate_conditions({}, DATES, final=True)
     assert {e["code"] for e in errors} == {"NO_AVAILABILITY", "STATION_REQUIRED"}
+
+
+def test_최대_도보는_분_단위():
+    from app.core.subway import walk_minutes
+    assert walk_minutes(0) == 0 and walk_minutes(72) == 1 and walk_minutes(73) == 2
+    ps = sample()
+    ps[0]["constraints"] = {"max_walk_min": {"value": 1, "level": "required"}}
+    r = recommend(ps, DATES)
+    assert all(walk_minutes(c["legs"]["p1"]["walk_m"]) <= 1 for c in r["candidates"])
+    v = view_for(r, "p1")
+    assert all("walk_min" in c["my_route"] for c in v["candidates"])
+
+
+# ------------------------------------------------------------------ 출발 위치 (출발역까지 도보 포함)
+HOME = {"lat": 37.6553, "lng": 127.0420}  # 쌍문역에서 약 1km 떨어진 위치 (예시)
+
+
+def test_출발_위치가_있으면_역까지_도보가_이동시간에_더해짐():
+    from app.core.subway import access_walk
+    base = recommend(sample(), DATES)
+    ps = sample()
+    ps[0]["default_origin"] = HOME
+    r = recommend(ps, DATES)
+    walk_m, walk_min = access_walk(HOME["lat"], HOME["lng"], "쌍문")
+    assert walk_min > 0
+    # 같은 후보가 남아 있으면 p1 이동시간이 정확히 도보만큼 늘어남
+    same = {c["candidate_id"]: c for c in base["candidates"]}
+    for c in r["candidates"]:
+        if c["candidate_id"] in same:
+            assert c["legs"]["p1"]["minutes"] == same[c["candidate_id"]]["legs"]["p1"]["minutes"] + walk_min
+        leg = c["legs"]["p1"]
+        assert leg["access_walk_m"] == walk_m and leg["access_min"] == walk_min
+        assert int(leg["depart_at"][:2]) in ps[0]["availability"][c["date"]]  # 집에서 출발하는 시각 기준
+
+
+def test_내_경로에_출발_위치_도보가_보이고_좌표는_안_보임():
+    ps = sample()
+    ps[0]["default_origin"] = HOME
+    r = recommend(ps, DATES)
+    me = view_for(r, "p1")["candidates"][0]["my_route"]
+    assert me["access"]["minutes"] > 0 and me["access"]["walk_m"] > 0
+    assert me["walk_m"] >= me["access"]["walk_m"]
+    other = view_for(r, "p2")["candidates"][0]["my_route"]
+    assert other["access"] is None
+    text = json.dumps(r, ensure_ascii=False) + json.dumps(view_for(r, "p1"), ensure_ascii=False)
+    assert "37.655" not in text and "127.042" not in text
+
+
+def test_출발_위치_검증_반올림_및_에러():
+    data = {"availability": {"2026-11-07": [14]}, "default_station": "쌍문",
+            "default_origin": {"lat": 37.655312, "lng": 127.041987}}
+    errors, clean = validate_conditions(data, DATES, final=True)
+    assert errors == [] and clean["default_origin"] == {"lat": 37.655, "lng": 127.042}
+
+    far = dict(data, default_origin={"lat": 37.50, "lng": 127.03})  # 쌍문역에서 십몇 km
+    assert {e["code"] for e in validate_conditions(far, DATES)[0]} == {"ORIGIN_TOO_FAR"}
+
+    bad = dict(data, default_origin={"lat": "37.6", "lng": 127.0})
+    assert {e["code"] for e in validate_conditions(bad, DATES)[0]} == {"INVALID_ORIGIN"}
+
+    ex = dict(data, exception_stations=[{"date": "2026-11-07", "hours": [14], "station": "수유",
+                                         "origin": {"lat": 37.6380, "lng": 127.0257}}])
+    errors, clean = validate_conditions(ex, DATES)
+    assert errors == [] and clean["exception_stations"][0]["origin"] == {"lat": 37.638, "lng": 127.026}
+
+
+def test_출발_위치_없으면_예전과_똑같음():
+    errors, clean = validate_conditions({"availability": {"2026-11-07": [14]}, "default_station": "쌍문"}, DATES)
+    assert errors == [] and "default_origin" not in clean
+    r = recommend(sample(), DATES)
+    assert all(c["my_route"]["access"] is None for c in view_for(r, "p1")["candidates"])

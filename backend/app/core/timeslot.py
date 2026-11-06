@@ -33,11 +33,13 @@ class Leg:
     """참여자 1명의 후보까지 이동 정보"""
     participant_id: str
     origin: str          # 실제 출발역 (기본 or 예외)
-    depart_at: str       # 예상 출발 시각 HH:MM
-    minutes: int
+    depart_at: str       # 예상 출발 시각 HH:MM (출발 위치가 있으면 그 위치에서 출발하는 시각)
+    minutes: int         # 총 이동시간 = 출발 위치→역 도보 + 지하철
     transfers: int
-    walk_m: int
-    route: dict          # subway.Route.to_dict()
+    walk_m: int          # 총 도보 = 출발 위치→역 도보 + 환승 도보
+    route: dict          # subway.Route.to_dict() (지하철 구간만)
+    access_walk_m: int = 0   # 출발 위치 → 출발역 도보 거리 (위치 안 줬으면 0)
+    access_min: int = 0      # 출발 위치 → 출발역 도보 시간
 
 
 @dataclass
@@ -99,22 +101,26 @@ def _required_value(constraints: dict, key: str):
     return c["value"] if c and c.get("level") == "required" else None
 
 
-def _origin_options(p: dict, date: str) -> list[tuple[str, set[int]]]:
+def _point(origin: dict | None) -> tuple[float, float] | None:
+    return (origin["lat"], origin["lng"]) if origin else None
+
+
+def _origin_options(p: dict, date: str) -> list[tuple[str, tuple | None, set[int]]]:
     """
-    이 날짜에 쓸 수 있는 (출발역, 그 역에서 출발 가능한 시간들) 목록.
+    이 날짜에 쓸 수 있는 (출발역, 출발 위치 좌표 or None, 출발 가능한 시간들) 목록.
     예외 출발역이 지정된 시간은 기본 출발역에서 빼고 예외역에 배정.
     """
     hours = set(p.get("availability", {}).get(date, []))
-    options: dict[str, set[int]] = {}
+    options: dict[tuple, set[int]] = {}
     for ex in p.get("exception_stations", []):
         if ex["date"] == date:
             ex_hours = hours & set(ex["hours"])
             if ex_hours:
-                options.setdefault(ex["station"], set()).update(ex_hours)
+                options.setdefault((ex["station"], _point(ex.get("origin"))), set()).update(ex_hours)
                 hours -= ex_hours
     if hours:
-        options.setdefault(p["default_station"], set()).update(hours)
-    return list(options.items())
+        options.setdefault((p["default_station"], _point(p.get("default_origin"))), set()).update(hours)
+    return [(station, point, hrs) for (station, point), hrs in options.items()]
 
 
 # ------------------------------------------------------------------ 메인
@@ -201,21 +207,25 @@ def _best_leg(p: dict, options, station: str, start: int, routes) -> Leg | None:
     출발 시각(start - 이동시간)이 그 출발역에 배정된 출발 가능 시간 안이어야 함.
     """
     best = None
-    for origin, hours in options:
+    for origin, point, hours in options:
         r = routes(p, origin).get(station)
         if r is None:          # 필수 조건(환승 제한·엘리베이터) 때문에 도달 불가
             continue
-        depart = start - r.minutes
+        access_m, access_min = subway.access_walk(*point, origin) if point else (0, 0)
+        total = r.minutes + access_min
+        depart = start - total
         if depart < 0 or depart // 60 not in hours:
             continue
-        if best is None or r.minutes < best.minutes:
+        if best is None or total < best.minutes:
             best = Leg(
                 participant_id=p["id"],
                 origin=origin,
                 depart_at=hhmm(depart),
-                minutes=r.minutes,
+                minutes=total,
                 transfers=r.transfers,
-                walk_m=r.walk_m,
+                walk_m=r.walk_m + access_m,
                 route=r.to_dict(),
+                access_walk_m=access_m,
+                access_min=access_min,
             )
     return best

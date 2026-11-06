@@ -34,6 +34,36 @@ DWELL_SEC = 30            # 역마다 정차시간
 TRANSFER_WAIT_SEC = 180   # 환승 후 열차 대기시간 (평균)
 MAX_TRANSFERS_LIMIT = 4   # 탐색할 최대 환승 횟수
 
+# 도보 거리 → 도보 시간 환산 (분). 환승 데이터와 같은 보행속도 1.2m/s = 분당 72m
+WALK_M_PER_MIN = 72
+
+
+def walk_minutes(meters: int) -> int:
+    """도보 거리(m) → 도보 시간(분, 올림). 프론트의 '최대 도보 거리 10분' 같은 조건 비교용"""
+    return math.ceil(meters / WALK_M_PER_MIN) if meters > 0 else 0
+
+
+# 출발 위치 → 출발역 도보 추정. 실제 길은 직선보다 돌아가므로 직선거리에 1.3배
+WALK_DETOUR = 1.3
+MAX_ACCESS_M = 3000  # 출발 위치는 출발역에서 걸어갈 만한 거리 안이어야 함 (도보 약 40분)
+
+
+def distance_m(lat1: float, lng1: float, lat2: float, lng2: float) -> float:
+    """두 좌표 사이 직선거리(m)"""
+    r = 6371000
+    p1, p2 = math.radians(lat1), math.radians(lat2)
+    dp, dl = p2 - p1, math.radians(lng2 - lng1)
+    a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
+    return 2 * r * math.asin(math.sqrt(a))
+
+
+def access_walk(lat: float, lng: float, station: str) -> tuple[int, int]:
+    """출발 위치 → 출발역 예상 도보 (거리 m, 시간 분)"""
+    st = get_station(station)
+    meters = round(distance_m(lat, lng, st["lat"], st["lng"]) * WALK_DETOUR)
+    return meters, walk_minutes(meters)
+
+
 # 엘리베이터가 필요한 사용자의 환승 보행시간 배율.
 # 근거: '모두의 지하철 프로젝트'(무의·서울시·서울교통공사, 2025) 실증조사에서
 #       휠체어 이용자 환승 평균 19분 vs 비장애인 평균 3.3분 → 약 5.7배
