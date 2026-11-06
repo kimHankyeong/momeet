@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import MeetingSidebar from '../components/MeetingSidebar/MeetingSidebar';
+import MeetingLayout from '../components/MeetingLayout/MeetingLayout';
 import MeetingCard from '../components/MeetingCard/MeetingCard';
 import { getMeeting } from '../api/meetApi';
 
@@ -59,39 +59,35 @@ export default function JoinedMeetingsPage() {
   const list = tab === 'ongoing' ? ongoing : ended;
 
   return (
-    <div className="max-w-[860px] mx-auto px-6 pt-12 flex gap-6">
-      <MeetingSidebar />
+    <MeetingLayout active="joined">
+      <div className="flex gap-2">
+        <button
+          type="button"
+          onClick={() => setTab('ongoing')}
+          className={`px-5 py-2 rounded-full text-sm font-bold border border-[#6C5CE7] ${
+            tab === 'ongoing' ? 'bg-[#6C5CE7] text-white' : 'bg-white text-[#6C5CE7]'
+          }`}
+        >
+          진행 중 {ongoing.length}
+        </button>
+        <button
+          type="button"
+          onClick={() => setTab('ended')}
+          className={`px-5 py-2 rounded-full text-sm font-bold border border-[#6C5CE7] ${
+            tab === 'ended' ? 'bg-[#6C5CE7] text-white' : 'bg-white text-[#6C5CE7]'
+          }`}
+        >
+          종료된 약속 {ended.length}
+        </button>
+      </div>
 
-      <main className="flex-1 min-w-0 space-y-4">
-        <div className="flex gap-2">
-          <button
-            type="button"
-            onClick={() => setTab('ongoing')}
-            className={`px-4 py-1 rounded-full text-[11px] font-bold border border-[#6C5CE7] ${
-              tab === 'ongoing' ? 'bg-[#6C5CE7] text-white' : 'bg-white text-[#6C5CE7]'
-            }`}
-          >
-            진행 중 {ongoing.length}
-          </button>
-          <button
-            type="button"
-            onClick={() => setTab('ended')}
-            className={`px-4 py-1 rounded-full text-[11px] font-bold border border-[#6C5CE7] ${
-              tab === 'ended' ? 'bg-[#6C5CE7] text-white' : 'bg-white text-[#6C5CE7]'
-            }`}
-          >
-            종료된 약속 {ended.length}
-          </button>
-        </div>
-
-        <div className="space-y-6">
-          {list.length === 0 ? (
-            <p className="text-xs text-gray-400 py-10 text-center">약속이 없어요.</p>
-          ) : (
-            list.map((m) => <MeetingCard key={m.id} meeting={m} />)
-          )}
-        </div>
-      </main>
-    </div>
+      <div className="space-y-6">
+        {list.length === 0 ? (
+          <p className="text-sm text-gray-400 py-10 text-center">약속이 없어요.</p>
+        ) : (
+          list.map((m) => <MeetingCard key={m.id} meeting={m} />)
+        )}
+      </div>
+    </MeetingLayout>
   );
 }
