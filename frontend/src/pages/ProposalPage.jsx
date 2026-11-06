@@ -1,8 +1,17 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { getMeeting, respondProposal } from '../api/meetApi';
 
-// ✅ 테스트용: 1이면 방장(디소공), 4면 참여자(두루미) 화면으로 확인 가능
-const ME_ID = 1;
+const DOW = ['일', '월', '화', '수', '목', '금', '토'];
+// "2026-11-10" → "11월 10일 (화)"
+const dateLabel = (s) => {
+  const [y, m, d] = s.split('-').map(Number);
+  return `${m}월 ${d}일 (${DOW[new Date(y, m - 1, d).getDay()]})`;
+};
+
+// 서버 응답 값 ↔ 화면 값
+const FROM_SERVER = { accept: 'AGREED', reject: 'REJECTED', pending: 'PENDING' };
+const TO_SERVER = { AGREED: 'accept', REJECTED: 'reject' };
 
 const STEPS = ['모집', '입력', '추천', '제안', '확정'];
 
@@ -58,46 +67,101 @@ function StatusBadge({ response }) {
 
 export default function ProposalPage() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
-  // 백엔드에서 받아올 값들 (지금은 임시 데이터)
-  const meetInfo = {
-    title: '친구들과 저녁 약속',
-    dateRange: '11월 1일 (일) - 11월 8일 (일)',
+  // 백엔드 대시보드(GET /meetings/{id})에서 받아오는 값들
+  const [meetInfo, setMeetInfo] = useState({ title: '', dateRange: '' });
+  const [proposal, setProposal] = useState(null);
+  const [participants, setParticipants] = useState([]);
+  const [serverStage, setServerStage] = useState('');
+  const [needsReplan, setNeedsReplan] = useState(false);
+  const [editing, setEditing] = useState(false); // "수정하기"를 눌러 응답을 다시 고르는 중
+  const [showRoute, setShowRoute] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
+
+  const fetchData = async () => {
+    try {
+      const res = await getMeeting(id);
+      setMeetInfo({
+        title: res.meeting.title,
+        dateRange: `${dateLabel(res.meeting.date_start)} - ${dateLabel(res.meeting.date_end)}`,
+      });
+      setServerStage(res.meeting.stage);
+      setParticipants(
+        res.participants.map((p) => ({
+          id: p.id,
+          name: p.nickname,
+          isHost: p.is_host,
+          isMe: p.is_me,
+          response: FROM_SERVER[p.response] || 'PENDING',
+        })),
+      );
+      const pr = res.proposal;
+      if (pr) {
+        const c = pr.candidate;
+        const r = pr.my_route;
+        const [, m, d] = c.date.split('-').map(Number);
+        const station = c.station.name.endsWith('역') ? c.station.name : `${c.station.name}역`;
+        setNeedsReplan(pr.needs_replan);
+        setProposal({
+          dateText: `${dateLabel(c.date)} ${c.start}`,
+          headline: `${m}월 ${d}일,`,
+          placeName: station,
+          myMinutes: r ? r.minutes : '-',
+          transfers: r ? r.transfers : '-',
+          walkMeters: r ? r.walk_m : '-',
+          departAt: r ? r.depart_at : '-',
+          // 경로: 출발역 → (환승역) → 도착역
+          route: r && r.segments.length ? [r.segments[0].board, ...r.segments.map((s) => s.alight)] : [station],
+        });
+      }
+      setErrorMsg('');
+    } catch (e) {
+      setErrorMsg(e.response?.data?.error?.message || '약속 정보를 불러오지 못했어요.');
+    }
   };
 
-  const proposal = {
-    dateText: '11월 7일 (토) 17:00',
-    headline: '11월 7일,',
-    placeName: '종로3가역',
-    myMinutes: 21,
-    transfers: 1,
-    walkMeters: 320,
-    departAt: '14:35',
-    route: ['정릉', '환승', '종로3가'],
-  };
+  // 처음 열 때 + 5초마다 다시 불러오기 (다른 참여자의 응답 반영)
+  useEffect(() => {
+    const first = setTimeout(fetchData, 0);
+    const t = setInterval(fetchData, 5000);
+    return () => {
+      clearTimeout(first);
+      clearInterval(t);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
 
-  const [participants, setParticipants] = useState([
-    { id: 1, name: '디소공', isHost: true, response: 'PENDING' },
-    { id: 2, name: '홍길동', isHost: false, response: 'AGREED' },
-    { id: 3, name: '아무개', isHost: false, response: 'AGREED' },
-    { id: 4, name: '두루미', isHost: false, response: 'REJECTED' },
-  ]);
-
-  const me = participants.find((p) => p.id === ME_ID);
+  const me = participants.find((p) => p.isMe) || { response: 'PENDING', isHost: false };
+  const myResponse = editing ? 'PENDING' : me.response;
   const agreedCount = participants.filter((p) => p.response === 'AGREED').length;
-  const allResponded = participants.every((p) => p.response !== 'PENDING');
-  const anyRejected = participants.some((p) => p.response === 'REJECTED');
 
-  // 화면 단계: 제안 중 / 확정 안 됨 / 확정
-  const stage = !allResponded ? 'PROPOSAL' : anyRejected ? 'FAILED' : 'CONFIRMED';
+  // 화면 단계: 서버 기준 (확정 / 전원 응답했는데 거절 있음 / 제안 중)
+  const stage = serverStage === 'confirmed' ? 'CONFIRMED' : needsReplan ? 'FAILED' : 'PROPOSAL';
   const currentStep = stage === 'CONFIRMED' ? 4 : 3;
 
-  // 내 응답 변경 (TODO: 백엔드 API 연결)
-  const respond = (response) => {
-    setParticipants((prev) =>
-      prev.map((p) => (p.id === ME_ID ? { ...p, response } : p))
-    );
+  // 내 응답: 동의/거절은 서버에 저장, "수정하기"(PENDING)는 버튼만 다시 보여 준다
+  const respond = async (response) => {
+    if (response === 'PENDING') {
+      setEditing(true);
+      return;
+    }
+    try {
+      await respondProposal(id, TO_SERVER[response]);
+      setEditing(false);
+      await fetchData();
+    } catch (e) {
+      setErrorMsg(e.response?.data?.error?.message || '응답을 저장하지 못했어요.');
+    }
   };
+
+  if (!proposal) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-sm text-gray-500">
+        {errorMsg || '제안 정보를 불러오고 있어요…'}
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
@@ -107,10 +171,16 @@ export default function ProposalPage() {
           <div className="px-4 py-2.5 bg-[#6C5CE7] text-white font-bold rounded-xl text-sm w-full">
             내 약속방
           </div>
-          <div className="px-4 py-2.5 text-gray-400 font-medium rounded-xl text-sm cursor-pointer hover:bg-gray-100">
+          <div
+            onClick={() => navigate('/meetings/joined')}
+            className="px-4 py-2.5 text-gray-400 font-medium rounded-xl text-sm cursor-pointer hover:bg-gray-100"
+          >
             참여한 약속
           </div>
-          <div className="px-4 py-2.5 text-gray-400 font-medium rounded-xl text-sm cursor-pointer hover:bg-gray-100">
+          <div
+            onClick={() => navigate('/meetings/settings')}
+            className="px-4 py-2.5 text-gray-400 font-medium rounded-xl text-sm cursor-pointer hover:bg-gray-100"
+          >
             설정
           </div>
         </aside>
@@ -144,7 +214,7 @@ export default function ProposalPage() {
               )}
 
               {/* 단계별 응답 영역 */}
-              {stage === 'PROPOSAL' && me.response === 'PENDING' && (
+              {stage === 'PROPOSAL' && myResponse === 'PENDING' && (
                 <div className="text-center space-y-3">
                   <p className="text-base text-gray-900">약속에 참여할까요?</p>
                   <p className="text-xs text-gray-300">약속 시간 전까지 수정할 수 있어요.</p>
@@ -167,14 +237,14 @@ export default function ProposalPage() {
                 </div>
               )}
 
-              {stage === 'PROPOSAL' && me.response !== 'PENDING' && (
+              {stage === 'PROPOSAL' && myResponse !== 'PENDING' && (
                 <div className="text-center space-y-3">
                   <p
                     className={`text-base ${
-                      me.response === 'AGREED' ? 'text-emerald-600' : 'text-red-500'
+                      myResponse === 'AGREED' ? 'text-emerald-600' : 'text-red-500'
                     }`}
                   >
-                    {me.response === 'AGREED' ? '동의 완료' : '거절 완료'}
+                    {myResponse === 'AGREED' ? '동의 완료' : '거절 완료'}
                   </p>
                   <p className="text-xs text-gray-300">다른 참여자의 응답을 기다리고 있어요.</p>
                   <button
@@ -197,7 +267,7 @@ export default function ProposalPage() {
                   {me.isHost ? (
                     <button
                       type="button"
-                      onClick={() => alert('추천 단계로 돌아갑니다 (TODO)')}
+                      onClick={() => navigate(`/meet/${id}/recommend`)}
                       className="w-full py-2.5 rounded-full bg-[#6C5CE7] text-white text-sm font-semibold hover:opacity-90"
                     >
                       기존 추천 후보 다시 보기
@@ -217,6 +287,8 @@ export default function ProposalPage() {
                   각자의 이동 경로를 확인해 주세요.
                 </p>
               )}
+
+              {errorMsg && <p className="text-xs text-red-500 text-center">{errorMsg}</p>}
 
               {/* 날짜/장소/내 이동 정보 */}
               <div className="space-y-3 text-base">
@@ -243,14 +315,15 @@ export default function ProposalPage() {
                       <p>{proposal.myMinutes}분</p>
                       <button
                         type="button"
-                        onClick={() => alert('경로 보기 (TODO)')}
+                        onClick={() => setShowRoute((v) => !v)}
                         className="text-[11px] font-bold text-[#6C5CE7] underline mt-1"
                       >
-                        내 경로 보기
+                        {showRoute ? '경로 접기' : '내 경로 보기'}
                       </button>
                     </div>
                   </div>
                 )}
+                {stage !== 'CONFIRMED' && showRoute && <RouteSummary proposal={proposal} />}
               </div>
             </section>
 
@@ -272,7 +345,7 @@ export default function ProposalPage() {
                       </div>
                       <span className="font-medium text-gray-900">
                         {p.name}
-                        {p.id === ME_ID && ' (나)'}
+                        {p.isMe && ' (나)'}
                       </span>
                       {p.isHost && (
                         <span className="bg-[#6C5CE7] text-white text-[10px] px-2 py-0.5 rounded-full font-bold">
@@ -306,7 +379,7 @@ function RouteSummary({ proposal }) {
 
       <div className="flex items-center">
         {proposal.route.map((name, i) => (
-          <React.Fragment key={name}>
+          <React.Fragment key={`${name}-${i}`}>
             <div className="flex flex-col items-center w-12">
               <span
                 className={`w-9 h-9 rounded-full ${

@@ -57,3 +57,23 @@ export const deleteMeeting = async (id) => {
   await api.delete(`/meetings/${id}`);
   localStorage.removeItem(`momeet_token_${id}`);
 };
+
+// 모집 마감 (방장만, 참여자 2명 이상)
+export const closeRecruiting = async (id) =>
+  (await api.post(`/meetings/${id}/close`)).data;
+
+// 추천 실행 (방장만, 전원 조건 제출 후) → { status: 'ok' | 'no_candidate', candidates, reasons? }
+export const runRecommendations = async (id) =>
+  (await api.post(`/meetings/${id}/recommendations`)).data;
+
+// 추천 결과 조회 (모든 참여자, 내 경로만 포함) → { status, best, candidates[] }
+export const getRecommendations = async (id) =>
+  (await api.get(`/meetings/${id}/recommendations`)).data;
+
+// 공식 제안 (방장만): 추천 후보의 candidate_id를 그대로 보낸다
+export const createProposal = async (id, candidateId) =>
+  (await api.post(`/meetings/${id}/proposal`, { candidate_id: candidateId })).data;
+
+// 제안 응답 (전원): 'accept' | 'reject'. 확정 전까지 여러 번 바꿀 수 있다
+export const respondProposal = async (id, response) =>
+  (await api.post(`/meetings/${id}/proposal/response`, { response })).data;
