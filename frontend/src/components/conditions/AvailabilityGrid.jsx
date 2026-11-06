@@ -4,7 +4,15 @@ import './AvailabilityGrid.css';
 const DAYS_PER_PAGE = 7;
 
 // selected: Set("날짜인덱스-시간"), onChange: 새 Set을 받는 함수
-function AvailabilityGrid({ selected, onChange, totalDays = 8 }) {
+// startDate: 약속방 첫날(Date). 있으면 칸 이름을 "11/6"처럼 실제 날짜로 보여 준다
+function AvailabilityGrid({ selected, onChange, totalDays = 8, startDate }) {
+  const dayLabel = (day) => {
+    if (!startDate) return `${day + 1}일`;
+    const d = new Date(startDate);
+    d.setDate(d.getDate() + day);
+    return `${d.getMonth() + 1}/${d.getDate()}`;
+  };
+
   const [expanded, setExpanded] = useState(false);
   const [startDay, setStartDay] = useState(0); // 화면 첫 번째 날짜 인덱스
   const [dragMode, setDragMode] = useState(null); // 'add' | 'remove' | null
@@ -77,7 +85,7 @@ function AvailabilityGrid({ selected, onChange, totalDays = 8 }) {
               className={`grid__day ${i % 2 === 0 ? 'grid__day--odd' : ''}`}
               onClick={() => toggleDay(d)}
             >
-              {d + 1}일
+              {dayLabel(d)}
             </button>
           ))}
 
