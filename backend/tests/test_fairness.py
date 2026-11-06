@@ -280,3 +280,16 @@ def test_출발_위치_없으면_예전과_똑같음():
     assert errors == [] and "default_origin" not in clean
     r = recommend(sample(), DATES)
     assert all(c["my_route"]["access"] is None for c in view_for(r, "p1")["candidates"])
+
+def test_지도용_경로는_지나가는_역_전체와_역_좌표():
+    from app.core import subway
+    r = subway.find_route("쌍문", "충무로")
+    stops = subway.path_stops(r.path)
+    assert stops[0]["name"] == "쌍문" and stops[-1]["name"] == "충무로"
+    assert len(stops) == r.segments[0].stops + 1  # 환승 없음: 정차 역 수 + 출발역
+    assert all({"name", "line", "lat", "lng"} <= set(s) for s in stops)
+
+    # 환승이 있으면 환승역이 노선을 바꿔 두 번 나온다
+    r2 = subway.find_route("방화", "강남")
+    names = [s["name"] for s in subway.path_stops(r2.path)]
+    assert r2.transfers >= 1 and len(names) == len(set(names)) + r2.transfers

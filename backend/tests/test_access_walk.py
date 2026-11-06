@@ -205,7 +205,8 @@ def test_route_view_matches_front_contract(client):
     room = new_room(client)
     me = room.add("민수")
     assert room.post("/close").status_code == 200
-    room.submit(room.host, "쌍문", default_origin=near("쌍문"))
+    home = near("쌍문")
+    room.submit(room.host, "쌍문", default_origin=home)
     room.submit(me["h"], "강남")
     body = room.recommend()
     mine = body["candidates"][0]["my_route"]
@@ -213,4 +214,9 @@ def test_route_view_matches_front_contract(client):
     assert mine["walk_m"] >= mine["access"]["walk_m"] > 0 and mine["walk_min"] > 0  # walk_m은 도보 합계
     theirs = room.client.get(f"/meetings/{room.id}/recommendations", headers=me["h"]).json()["candidates"][0]["my_route"]
     assert theirs["access"] is None  # 본인 값만 보인다
-    assert "lat" not in str(mine) and "default_origin" not in str(body)  # 위치 좌표는 응답에 없다
+    # 출발 위치 좌표는 응답에 없다 (지도용 stops에는 역 좌표만 있음)
+    assert "default_origin" not in str(body)
+    assert set(mine["access"]) == {"walk_m", "minutes", "source"}  # 도보 거리·시간만, 좌표 없음
+    saved = (round(home["lat"], 3), round(home["lng"], 3))
+    assert all((s["lat"], s["lng"]) != saved for s in mine["stops"])
+    assert all(set(s) == {"name", "line", "lat", "lng"} for s in mine["stops"])
