@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import AvailabilityGrid from './conditions/AvailabilityGrid';
+import { submitConditions } from '../api/meetApi';
+import {
+  cellsToAvailability,
+  conditionsToConstraints,
+  stripStationSuffix,
+} from '../api/transform';
 
-export default function ConditionSetupModal({ isOpen, onClose, onSubmitSuccess }) {
+export default function ConditionSetupModal({ isOpen, onClose, onSubmitSuccess , meetingId}) {
   const [step, setStep] = useState(1);
 
   // STEP 1: 시간 선택
@@ -60,6 +66,8 @@ const selectedTimes = timeRanges.map((r) => `${r.label} ${r.start}-${r.end}`);
 
   // STEP 4: 최종 동의 체크박스 (Frame 14, 22)
   const [isConfirmed, setIsConfirmed] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
   if (!isOpen) return null;
 
@@ -118,11 +126,24 @@ const selectedTimes = timeRanges.map((r) => `${r.label} ${r.start}-${r.end}`);
     );
   };
 
-  // [변경] location -> origin, exceptions
-  const handleSubmit = () => {
-    onSubmitSuccess({ origin, exceptions, selectedTimes, addedConditions });
+ const handleSubmit = async () => {
+  setSubmitting(true);
+  setErrorMsg('');
+  try {
+    await submitConditions(meetingId, {
+      availability: cellsToAvailability(selectedCells, START_DATE),
+      default_station: stripStationSuffix(location),
+      constraints: conditionsToConstraints(addedConditions),
+    });
+    onSubmitSuccess({ location, selectedTimes, addedConditions });
     onClose();
-  };
+  } catch (e) {
+    const err = e.response?.data?.error;
+    setErrorMsg(err?.errors?.[0]?.message || err?.message || '제출하지 못했어요. 다시 시도해 주세요.');
+  } finally {
+    setSubmitting(false);
+  }
+};
 
   // 3단계 선택 가능한 전체 항목 (Frame 12)
   const availableOptions = [
@@ -564,9 +585,10 @@ const selectedTimes = timeRanges.map((r) => `${r.label} ${r.start}-${r.end}`);
             </div>
 
             {/* 제출 버튼 */}
+            {errorMsg && <p className="text-xs text-red-500 text-center">{errorMsg}</p>}
             <button
               type="button"
-              disabled={!isConfirmed}
+              disabled={!isConfirmed || submitting}
               onClick={handleSubmit}
               className={`w-full py-3.5 font-bold rounded-2xl text-sm transition-all ${
                 isConfirmed
