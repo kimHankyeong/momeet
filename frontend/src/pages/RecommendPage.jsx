@@ -1,75 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import routeMap from '../assets/route-map.png';
+import StationMap from '../components/StationMap/StationMap';
 import { createProposal, getMeeting, getRecommendations } from '../api/meetApi';
 
 const STEPS = ['모집', '입력', '추천', '제안', '확정'];
-
-// 서울 지하철 노선 색
-const LINE_COLOR = {
-  1: '#0052A4', 2: '#00A84D', 3: '#EF7C1C', 4: '#00A5DE', 5: '#996CAC',
-  6: '#CD7C2F', 7: '#747F00', 8: '#E6186C', 9: '#BDB092', 우이신설: '#B0CE18',
-};
-
-// 내 경로를 티맵 지도에 노선 색 선으로 그린다.
-// stops: [{name, line, lat, lng}] (지나가는 역 전체, 서버 my_route.stops)
-// 지도를 못 불러오면(키 없음 등) 아래 깔린 기존 이미지가 그대로 보인다
-function RouteMap({ stops, fallback }) {
-  const boxRef = useRef(null);
-
-  useEffect(() => {
-    const T = window.Tmapv2;
-    const box = boxRef.current;
-    if (!T || !box || !stops?.length) return undefined;
-    let map;
-    try {
-      box.innerHTML = '';
-      box.id = 'route-map';
-      const pts = stops.map((s) => new T.LatLng(s.lat, s.lng));
-      map = new T.Map('route-map', { center: pts[pts.length - 1], width: '100%', height: '100%', zoom: 13 });
-
-      // 노선이 바뀌는 곳(환승역)에서 선을 나눠 노선 색으로 그린다
-      let start = 0;
-      for (let i = 1; i <= stops.length; i++) {
-        if (i === stops.length || stops[i].line !== stops[start].line) {
-          if (i - start > 1) {
-            new T.Polyline({
-              path: pts.slice(start, i),
-              strokeColor: LINE_COLOR[stops[start].line] || '#6C5CE7',
-              strokeWeight: 6,
-              map,
-            });
-          }
-          start = i;
-        }
-      }
-      new T.Marker({ position: pts[0], map, title: `출발 ${stops[0].name}` });
-      new T.Marker({ position: pts[pts.length - 1], map, title: `만남 ${stops[stops.length - 1].name}` });
-
-      if (pts.length > 1) {
-        const bounds = new T.LatLngBounds();
-        pts.forEach((p) => bounds.extend(p));
-        map.fitBounds(bounds);
-      }
-    } catch (e) {
-      console.error('지도를 그리지 못했어요', e);
-    }
-    return () => {
-      try {
-        map?.destroy();
-      } catch {
-        /* 이미 지워짐 */
-      }
-    };
-  }, [stops]);
-
-  return (
-    <div className="relative w-full h-[260px] rounded-2xl overflow-hidden">
-      <img src={fallback} alt="추천 장소 노선" className="absolute inset-0 w-full h-full object-contain" />
-      <div ref={boxRef} className="absolute inset-0" />
-    </div>
-  );
-}
 
 function Stepper({ current }) {
   return (
@@ -121,6 +55,8 @@ const toCandidate = (c) => ({
   id: c.candidate_id,
   name: c.station.name.endsWith('역') ? c.station.name : `${c.station.name}역`,
   lines: linesLabel(c.station.lines),
+  lat: c.station.lat,
+  lng: c.station.lng,
   when: `${dateLabel(c.date)} ${c.start}`,
   maxMin: c.max_travel_min,
   myMin: c.my_route ? c.my_route.minutes : '-',
@@ -225,9 +161,7 @@ export default function RecommendPage() {
             <div className="grid grid-cols-2 gap-6 items-stretch">
               {/* 좌측: 선택 후보 미리보기 */}
               <section className="bg-white p-6 rounded-3xl border border-gray-300 flex flex-col justify-between min-h-[380px]">
-                <div className="flex-1 flex items-center justify-center">
-                  <RouteMap stops={selected.stops} fallback={routeMap} />
-                </div>
+                <StationMap lat={selected.lat} lng={selected.lng} name={selected.name} />
                 <div className="mt-4 border border-gray-300 rounded-2xl px-4 py-3">
                   <p className="text-base font-medium text-gray-900">📍 {selected.name}</p>
                   <p className="text-xs text-gray-600 mt-1">
