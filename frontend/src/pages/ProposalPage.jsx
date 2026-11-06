@@ -157,8 +157,13 @@ export default function ProposalPage() {
 
   if (!proposal) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-sm text-gray-500">
-        {errorMsg || '제안 정보를 불러오고 있어요…'}
+      <div className="min-h-screen flex flex-col items-center justify-center gap-3 text-sm text-gray-500">
+        <p>{errorMsg || (serverStage ? '아직 방장이 제안하지 않았어요.' : '제안 정보를 불러오고 있어요…')}</p>
+        {serverStage && (
+          <button type="button" onClick={() => navigate(`/meet/${id}/setup`)} className="text-xs underline">
+            약속방으로 돌아가기
+          </button>
+        )}
       </div>
     );
   }

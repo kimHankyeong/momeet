@@ -126,13 +126,15 @@ export default function SetupPage() {
     }
   };
 
+  // 초대 링크 복사: 받은 사람이 링크를 열면 참여 창이 코드가 채워진 채로 열린다
   const handleCopy = async () => {
     if (!meetInfo.joinCode) return;
+    const link = `${window.location.origin}/join/${meetInfo.joinCode}`;
     try {
-      await navigator.clipboard.writeText(meetInfo.joinCode);
-      alert(`입장 코드가 복사되었습니다: ${meetInfo.joinCode}`);
+      await navigator.clipboard.writeText(link);
+      alert(`초대 링크가 복사되었습니다.\n${link}`);
     } catch {
-      window.prompt('아래 입장 코드를 복사해 주세요.', meetInfo.joinCode);
+      window.prompt('아래 초대 링크를 복사해 주세요.', link);
     }
   };
 
@@ -328,10 +330,10 @@ export default function SetupPage() {
                 {['recommended', 'proposed', 'confirmed'].includes(stage) && (
                   <button
                     type="button"
-                    onClick={() => navigate(`/meet/${id}/recommend`)}
+                    onClick={() => navigate(stage === 'recommended' ? `/meet/${id}/recommend` : `/meet/${id}/proposal`)}
                     className="w-full py-2.5 rounded-full bg-[#6C5CE7] text-white text-sm font-semibold hover:opacity-90"
                   >
-                    추천 결과 보기
+                    {stage === 'recommended' ? '추천 결과 보기' : '제안 확인하기'}
                   </button>
                 )}
 
@@ -358,8 +360,8 @@ export default function SetupPage() {
         onClose={() => setIsModalOpen(false)}
         onSubmitSuccess={handleModalSubmit}
         meetingId={id}
-        dateStart={meetInfo.dateStart || savedMeeting?.date_start}
-        dateEnd={meetInfo.dateEnd || savedMeeting?.date_end}
+        startDate={meetInfo.startDate || savedMeeting?.date_start}
+        totalDays={meetInfo.totalDays}
       />
     </div>
   );

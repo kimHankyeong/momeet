@@ -84,6 +84,11 @@ export default function RecommendPage() {
           dateRange: `${dateLabel(dash.meeting.date_start)} - ${dateLabel(dash.meeting.date_end)}`,
         });
         setIsHost(dash.me.is_host);
+        // 이미 제안이 나갔으면 참여자는 제안 화면으로 (방장은 다른 후보로 다시 제안할 수 있게 남김)
+        if (!dash.me.is_host && ['proposed', 'confirmed'].includes(dash.meeting.stage)) {
+          navigate(`/meet/${id}/proposal`, { replace: true });
+          return;
+        }
         const list = (rec.candidates || []).map(toCandidate);
         setCandidates(list);
         setSelectedId(rec.best || list[0]?.id || null);
@@ -94,7 +99,7 @@ export default function RecommendPage() {
     return () => {
       alive = false;
     };
-  }, [id]);
+  }, [id, navigate]);
 
   const selected = candidates.find((c) => c.id === selectedId);
 
