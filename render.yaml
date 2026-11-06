@@ -1,0 +1,39 @@
+# Render Blueprint: 백엔드(Web Service) + 프론트(Static Site)를 한 번에 배포한다.
+# 비밀값·서로의 주소는 파일에 적지 않고(sync: false) 배포 화면에서 직접 입력한다. 자세한 절차: backend/docs/deploy-render.md
+services:
+  - type: web
+    name: momeet-backend
+    runtime: python
+    plan: free
+    branch: main
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      # 프록시 뒤에서 사용자별 주소를 구분한다 (입장 코드 실패 잠금, 장소 검색 호출 제한이 사람마다 따로 적용됨)
+      - key: FORWARDED_ALLOW_IPS
+        value: "*"
+      # 프론트 주소 (예: https://momeet-frontend.onrender.com, 끝에 / 없이). 프론트 배포 주소를 확인한 뒤 입력
+      - key: CORS_ORIGINS
+        sync: false
+      # 티맵 앱키. 없으면 도보는 직선거리 추정, 장소 검색은 503
+      - key: TMAP_APP_KEY
+        sync: false
+
+  - type: web
+    name: momeet-frontend
+    runtime: static
+    branch: main
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      # 백엔드 주소 (예: https://momeet-backend.onrender.com, 끝에 / 없이). 빌드 때 코드에 들어가므로 바꾸면 다시 배포해야 한다
+      - key: VITE_API_URL
+        sync: false
+    routes:
+      # react-router: 새로고침·직접 접속 시 404가 나지 않도록 모든 경로를 index.html로
+      - type: rewrite
+        source: /*
+        destination: /index.html
