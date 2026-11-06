@@ -131,7 +131,7 @@ export default function SetupPage() {
     const link = inviteLinkOf(meetInfo.joinCode);
     try {
       await navigator.clipboard.writeText(link);
-      alert(`초대 링크가 복사되었습니다.\n${link}`);
+      alert(`초대 링크가 복사되었습니다.\n${link}\n\n입장 코드: ${meetInfo.joinCode}`);
     } catch {
       window.prompt('아래 초대 링크를 복사해 주세요.', link);
     }
@@ -258,13 +258,20 @@ export default function SetupPage() {
                     {completedCount}/{participants.length} 완료
                   </span>
                 </div>
-                <button
-                  type="button"
-                  onClick={handleCopy}
-                  className="px-3 py-1.5 bg-[#6C5CE7] text-white rounded-xl text-xs font-semibold hover:bg-indigo-700 transition-colors"
-                >
-                  🔗 링크 복사하기
-                </button>
+                <div className="flex items-center gap-2">
+                  {meetInfo.joinCode && (
+                    <span className="text-xs text-gray-500">
+                      입장 코드 <span className="font-mono font-semibold text-gray-900">{meetInfo.joinCode}</span>
+                    </span>
+                  )}
+                  <button
+                    type="button"
+                    onClick={handleCopy}
+                    className="px-3 py-1.5 bg-[#6C5CE7] text-white rounded-xl text-xs font-semibold hover:bg-indigo-700 transition-colors"
+                  >
+                    🔗 링크 복사하기
+                  </button>
+                </div>
               </div>
 
               <div className="space-y-3 pt-2">

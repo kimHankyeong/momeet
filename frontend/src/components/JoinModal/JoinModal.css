@@ -16,3 +16,14 @@
 .join__card-status { margin-top: 16px; font-size: 14px; font-weight: 700; }
 
 .join__submit { margin-top: 32px; }
+
+.join__switch {
+  display: block;
+  margin: 16px auto 0;
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+}
