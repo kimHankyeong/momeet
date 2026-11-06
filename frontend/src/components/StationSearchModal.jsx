@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 // 자주 쓰이는 지하철역 목록 (추후 Kakao/지하철 API로 교체 가능)
 const POPULAR_STATIONS = [

@@ -71,7 +71,6 @@ const toCandidate = (c) => ({
   maxMin: c.max_travel_min,
   myMin: c.my_route ? c.my_route.minutes : '-',
   transfers: c.my_route ? c.my_route.transfers : '-',
-  stops: c.my_route?.stops || [], // 지도용 (지나가는 역 전체)
 });
 
 export default function RecommendPage() {

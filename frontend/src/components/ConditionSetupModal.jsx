@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import AvailabilityGrid from './conditions/AvailabilityGrid';
 import { submitConditions } from '../api/meetApi';
-import { cellsToAvailability, conditionsToConstraints } from '../api/transform';
+import { cellsToAvailability } from '../api/transform';
 
 
 // startDate: 약속방 시작일 "YYYY-MM-DD", totalDays: 약속방 날짜 수 (SetupPage가 서버에서 받아 넘김)
