@@ -260,8 +260,8 @@ export default function SetupPage() {
         onClose={() => setIsModalOpen(false)}
         onSubmitSuccess={handleModalSubmit}
         meetingId={id}
-        dateStart={meetInfo.dateStart || savedMeeting?.date_start}
-        dateEnd={meetInfo.dateEnd || savedMeeting?.date_end}
+        startDate={meetInfo.startDate}
+        totalDays={meetInfo.totalDays}
       />
     </div>
   );
