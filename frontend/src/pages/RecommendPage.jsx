@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import routeMap from '../assets/route-map.png';
-
-// ✅ 테스트용: true면 방장 화면, false면 참여자 화면
-const IS_HOST = true;
+import { createProposal, getMeeting, getRecommendations } from '../api/meetApi';
 
 const STEPS = ['모집', '입력', '추천', '제안', '확정'];
 
@@ -39,38 +37,79 @@ function Stepper({ current }) {
   );
 }
 
-// 임시 데이터 (TODO: 백엔드 추천 결과로 교체)
-const CANDIDATES = [
-  { id: 1, name: '종로3가역', lines: '1·3·5호선', when: '11월 7일 17:00', maxMin: 27, myMin: 21, transfers: 1 },
-  { id: 2, name: '을지로3가역', lines: '2·3호선', when: '11월 3일 18:00', maxMin: 43, myMin: 18, transfers: 1 },
-  { id: 3, name: '충무로역', lines: '3·4호선', when: '11월 7일 14:00', maxMin: 49, myMin: 28, transfers: 0 },
-];
+const DOW = ['일', '월', '화', '수', '목', '금', '토'];
+// "2026-11-10" → "11월 10일 (화)"
+const dateLabel = (s) => {
+  const [y, m, d] = s.split('-').map(Number);
+  return `${m}월 ${d}일 (${DOW[new Date(y, m - 1, d).getDay()]})`;
+};
+// ["2", "5"] → "2·5호선", ["1", "우이신설"] → "1호선·우이신설선"
+const linesLabel = (lines) => {
+  const nums = lines.filter((l) => /^\d+$/.test(l));
+  const others = lines.filter((l) => !/^\d+$/.test(l)).map((l) => `${l}선`);
+  return [...(nums.length ? [`${nums.join('·')}호선`] : []), ...others].join('·');
+};
+
+// 서버 추천 후보 → 화면 형식 (내 이동은 본인 경로만 내려옴. 추천 이후 참여자는 my_route가 없음)
+const toCandidate = (c) => ({
+  id: c.candidate_id,
+  name: c.station.name.endsWith('역') ? c.station.name : `${c.station.name}역`,
+  lines: linesLabel(c.station.lines),
+  when: `${dateLabel(c.date)} ${c.start}`,
+  maxMin: c.max_travel_min,
+  myMin: c.my_route ? c.my_route.minutes : '-',
+  transfers: c.my_route ? c.my_route.transfers : '-',
+});
 
 export default function RecommendPage() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const meetInfo = {
-    title: '친구들과 저녁 약속',
-    dateRange: '11월 1일 (일) - 11월 8일 (일)',
-  };
-
+  const [meetInfo, setMeetInfo] = useState({ title: '', dateRange: '' });
+  const [isHost, setIsHost] = useState(false);
+  const [candidates, setCandidates] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectedId, setSelectedId] = useState(1);
-  const [proposed, setProposed] = useState(false); // 방장이 제안했는지
+  const [selectedId, setSelectedId] = useState(null);
+  const [proposing, setProposing] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
-  // 추천 계산 중인 척 (TODO: 실제 API 응답 대기로 교체)
+  // 약속 정보(제목·날짜·방장 여부) + 추천 결과 불러오기
   useEffect(() => {
-    const t = setTimeout(() => setLoading(false), 1500);
-    return () => clearTimeout(t);
-  }, []);
+    let alive = true;
+    Promise.all([getMeeting(id), getRecommendations(id)])
+      .then(([dash, rec]) => {
+        if (!alive) return;
+        setMeetInfo({
+          title: dash.meeting.title,
+          dateRange: `${dateLabel(dash.meeting.date_start)} - ${dateLabel(dash.meeting.date_end)}`,
+        });
+        setIsHost(dash.me.is_host);
+        const list = (rec.candidates || []).map(toCandidate);
+        setCandidates(list);
+        setSelectedId(rec.best || list[0]?.id || null);
+        if (rec.status !== 'ok') setErrorMsg('아직 추천 결과가 없어요. 방장이 추천을 받으면 보여요.');
+      })
+      .catch((e) => alive && setErrorMsg(e.response?.data?.error?.message || '추천 결과를 불러오지 못했어요.'))
+      .finally(() => alive && setLoading(false));
+    return () => {
+      alive = false;
+    };
+  }, [id]);
 
-  const selected = CANDIDATES.find((c) => c.id === selectedId);
+  const selected = candidates.find((c) => c.id === selectedId);
 
-  const handlePropose = () => {
-    setProposed(true);
-    // TODO: 백엔드에 제안 저장 후 이동
-    navigate(`/meet/${id}/proposal`);
+  // 방장: 선택한 후보로 공식 제안 → 제안 화면으로 이동
+  const handlePropose = async () => {
+    setProposing(true);
+    setErrorMsg('');
+    try {
+      await createProposal(id, selectedId);
+      navigate(`/meet/${id}/proposal`);
+    } catch (e) {
+      setErrorMsg(e.response?.data?.error?.message || '제안하지 못했어요.');
+    } finally {
+      setProposing(false);
+    }
   };
 
   return (
@@ -79,10 +118,16 @@ export default function RecommendPage() {
         {/* 좌측 사이드바 */}
         <aside className="w-44 shrink-0 space-y-1.5 pt-2">
           <div className="px-4 py-2.5 bg-[#6C5CE7] text-white font-bold rounded-xl text-sm w-full">내 약속방</div>
-          <div className="px-4 py-2.5 text-gray-400 font-medium rounded-xl text-sm cursor-pointer hover:bg-gray-100">
+          <div
+            onClick={() => navigate('/meetings/joined')}
+            className="px-4 py-2.5 text-gray-400 font-medium rounded-xl text-sm cursor-pointer hover:bg-gray-100"
+          >
             참여한 약속
           </div>
-          <div className="px-4 py-2.5 text-gray-400 font-medium rounded-xl text-sm cursor-pointer hover:bg-gray-100">
+          <div
+            onClick={() => navigate('/meetings/settings')}
+            className="px-4 py-2.5 text-gray-400 font-medium rounded-xl text-sm cursor-pointer hover:bg-gray-100"
+          >
             설정
           </div>
         </aside>
@@ -102,7 +147,9 @@ export default function RecommendPage() {
             {loading ? '조건에 맞는 약속 시간과 장소를 찾고 있어요' : '조건에 맞는 약속 시간과 장소를 찾았어요'}
           </div>
 
-          {!loading && (
+          {errorMsg && <p className="text-sm text-red-500 text-center">{errorMsg}</p>}
+
+          {!loading && selected && (
             <div className="grid grid-cols-2 gap-6 items-stretch">
               {/* 좌측: 선택 후보 미리보기 */}
               <section className="bg-white p-6 rounded-3xl border border-gray-300 flex flex-col justify-between min-h-[380px]">
@@ -124,7 +171,7 @@ export default function RecommendPage() {
                   <span className="text-xs text-gray-700">전체 최적 기준 정렬</span>
                 </div>
 
-                {CANDIDATES.map((c) => {
+                {candidates.map((c) => {
                   const isOn = c.id === selectedId;
                   return (
                     <button
@@ -157,11 +204,12 @@ export default function RecommendPage() {
                   );
                 })}
 
-                {IS_HOST ? (
+                {isHost ? (
                   <button
                     type="button"
+                    disabled={proposing}
                     onClick={handlePropose}
-                    className="w-full py-2.5 rounded-full bg-[#6C5CE7] text-white text-sm font-semibold hover:opacity-90"
+                    className="w-full py-2.5 rounded-full bg-[#6C5CE7] text-white text-sm font-semibold hover:opacity-90 disabled:opacity-40"
                   >
                     선택한 장소로 공식 제안하기
                   </button>

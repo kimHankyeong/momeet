@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ConditionSetupModal from '../components/ConditionSetupModal';
-import { getMeeting } from '../api/meetApi';
+import { closeRecruiting, getMeeting, runRecommendations } from '../api/meetApi';
 
 const DOW = ['일', '월', '화', '수', '목', '금', '토'];
 // "2026-11-10" → "11월 10일 (화)"
@@ -24,6 +24,12 @@ export default function SetupPage() {
   const [meetInfo, setMeetInfo] = useState({ title: '', dateRange: '', joinCode: '', startDate: '', dateStart: '', dateEnd: '', totalDays: 7 });
   const [participants, setParticipants] = useState([]);
   const [loadError, setLoadError] = useState('');
+  // 진행 단계·방장 여부 (다음 단계 버튼에 사용)
+  const [stage, setStage] = useState('');
+  const [isHost, setIsHost] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [actionMsg, setActionMsg] = useState('');
+  const [reasons, setReasons] = useState([]); // 추천 후보가 없을 때 사유
 
   const fetchMeetData = async () => {
     try {
@@ -47,6 +53,8 @@ export default function SetupPage() {
           status: p.input_status === 'submitted' ? 'COMPLETED' : 'IN_PROGRESS',
         })),
       );
+      setStage(res.meeting.stage);
+      setIsHost(res.me.is_host);
       setLoadError('');
     } catch (err) {
       setLoadError(err.response?.data?.error?.message || '약속 정보를 불러오지 못했어요.');
@@ -85,6 +93,39 @@ export default function SetupPage() {
   };
 
   // 링크 복사: 서버가 발급한 입장 코드 복사 (참여자도 가능)
+  // 방장: 참여자 모집 마감 (recruiting → input)
+  const handleClose = async () => {
+    setBusy(true);
+    setActionMsg('');
+    try {
+      await closeRecruiting(id);
+      await fetchMeetData();
+    } catch (e) {
+      setActionMsg(e.response?.data?.error?.message || '모집을 마감하지 못했어요.');
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  // 방장: 추천 받기 (input → recommended). 후보가 없으면 사유를 보여 준다
+  const handleRecommend = async () => {
+    setBusy(true);
+    setActionMsg('');
+    setReasons([]);
+    try {
+      const res = await runRecommendations(id);
+      if (res.status === 'ok') {
+        navigate(`/meet/${id}/recommend`);
+        return;
+      }
+      setReasons(res.reasons || []);
+    } catch (e) {
+      setActionMsg(e.response?.data?.error?.message || '추천을 받지 못했어요.');
+    } finally {
+      setBusy(false);
+    }
+  };
+
   const handleCopy = async () => {
     if (!meetInfo.joinCode) return;
     try {
@@ -249,6 +290,63 @@ export default function SetupPage() {
                   </div>
                 ))}
               </div>
+
+              {/* 다음 단계: 방장은 모집 마감 → 추천 받기, 추천이 나오면 모두 결과 보기 */}
+              <div className="pt-4 border-t border-gray-100 space-y-2 text-center">
+                {isHost && stage === 'recruiting' && (
+                  <button
+                    type="button"
+                    disabled={busy || participants.length < 2}
+                    onClick={handleClose}
+                    className="w-full py-2.5 rounded-full bg-[#6C5CE7] text-white text-sm font-semibold hover:opacity-90 disabled:opacity-40"
+                  >
+                    참여자 모집 마감
+                  </button>
+                )}
+                {isHost && stage === 'recruiting' && participants.length < 2 && (
+                  <p className="text-[11px] text-gray-400">2명 이상 모이면 마감할 수 있어요.</p>
+                )}
+
+                {isHost && stage === 'input' && (
+                  <button
+                    type="button"
+                    disabled={busy || completedCount < participants.length}
+                    onClick={handleRecommend}
+                    className="w-full py-2.5 rounded-full bg-[#6C5CE7] text-white text-sm font-semibold hover:opacity-90 disabled:opacity-40"
+                  >
+                    {busy ? '약속 시간과 장소를 찾고 있어요…' : '약속 추천 받기'}
+                  </button>
+                )}
+                {isHost && stage === 'input' && completedCount < participants.length && (
+                  <p className="text-[11px] text-gray-400">모든 참여자가 조건을 제출하면 추천을 받을 수 있어요.</p>
+                )}
+
+                {!isHost && (stage === 'recruiting' || stage === 'input') && (
+                  <p className="text-[11px] text-gray-400">방장이 추천을 받으면 다음 단계로 넘어가요.</p>
+                )}
+
+                {['recommended', 'proposed', 'confirmed'].includes(stage) && (
+                  <button
+                    type="button"
+                    onClick={() => navigate(`/meet/${id}/recommend`)}
+                    className="w-full py-2.5 rounded-full bg-[#6C5CE7] text-white text-sm font-semibold hover:opacity-90"
+                  >
+                    추천 결과 보기
+                  </button>
+                )}
+
+                {actionMsg && <p className="text-xs text-red-500">{actionMsg}</p>}
+                {reasons.length > 0 && (
+                  <div className="text-left bg-red-50 rounded-2xl p-3 space-y-1">
+                    <p className="text-xs font-bold text-red-600">조건에 맞는 약속을 찾지 못했어요</p>
+                    {reasons.map((r, i) => (
+                      <p key={i} className="text-[11px] text-gray-700">
+                        · {r.date} {r.message}
+                      </p>
+                    ))}
+                  </div>
+                )}
+              </div>
             </section>
           </div>
         </main>
@@ -260,8 +358,8 @@ export default function SetupPage() {
         onClose={() => setIsModalOpen(false)}
         onSubmitSuccess={handleModalSubmit}
         meetingId={id}
-        startDate={meetInfo.startDate}
-        totalDays={meetInfo.totalDays}
+        dateStart={meetInfo.dateStart || savedMeeting?.date_start}
+        dateEnd={meetInfo.dateEnd || savedMeeting?.date_end}
       />
     </div>
   );
