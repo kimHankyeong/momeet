@@ -39,7 +39,6 @@ function Stepper({ current }) {
 }
 
 const DOW = ['일', '월', '화', '수', '목', '금', '토'];
-// "2026-11-10" → "11월 10일 (화)"
 const dateLabel = (s) => {
   const [y, m, d] = s.split('-').map(Number);
   return `${m}월 ${d}일 (${DOW[new Date(y, m - 1, d).getDay()]})`;
@@ -69,7 +68,6 @@ export default function RecommendPage() {
   const [proposing, setProposing] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
 
-  // 약속 정보(제목·날짜·방장 여부) + 추천 결과 불러오기
   useEffect(() => {
     let alive = true;
     Promise.all([getMeeting(id), getRecommendations(id)])
@@ -80,7 +78,6 @@ export default function RecommendPage() {
           dateRange: `${dateLabel(dash.meeting.date_start)} - ${dateLabel(dash.meeting.date_end)}`,
         });
         setIsHost(dash.me.is_host);
-        // 이미 제안이 나갔으면 참여자는 제안 화면으로 (방장은 다른 후보로 다시 제안할 수 있게 남김)
         if (!dash.me.is_host && ['proposed', 'confirmed'].includes(dash.meeting.stage)) {
           navigate(`/meet/${id}/proposal`, { replace: true });
           return;
@@ -99,7 +96,6 @@ export default function RecommendPage() {
 
   const selected = candidates.find((c) => c.id === selectedId);
 
-  // 방장: 선택한 후보로 공식 제안 → 제안 화면으로 이동
   const handlePropose = async () => {
     setProposing(true);
     setErrorMsg('');
@@ -114,8 +110,8 @@ export default function RecommendPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
-      <div className="flex-1 flex max-w-6xl w-full mx-auto px-6 py-8 gap-8">
+    <div className="h-[calc(100vh-64px)] overflow-hidden bg-white flex flex-col">
+      <div className="flex-1 min-h-0 flex max-w-6xl w-full mx-auto px-6 py-6 gap-8">
         {/* 좌측 사이드바 */}
         <aside className="w-44 shrink-0 space-y-1.5 pt-2">
           <div className="px-4 py-2.5 bg-[#6C5CE7] text-white font-bold rounded-xl text-sm w-full">내 약속방</div>
@@ -133,9 +129,9 @@ export default function RecommendPage() {
           </div>
         </aside>
 
-        <main className="flex-1 space-y-6">
+        <main className="flex-1 min-w-0 min-h-0 flex flex-col gap-4">
           {/* 약속 정보 + 진행 단계 */}
-          <section className="bg-white p-6 rounded-3xl border-2 border-[#6C5CE7] space-y-6">
+          <section className="shrink-0 bg-white p-5 rounded-3xl border-2 border-[#6C5CE7] space-y-4">
             <div>
               <h1 className="text-xl font-bold text-gray-900">{meetInfo.title}</h1>
               <p className="text-xs text-gray-500 mt-1">{meetInfo.dateRange}</p>
@@ -144,18 +140,20 @@ export default function RecommendPage() {
           </section>
 
           {/* 상태 배너 */}
-          <div className="bg-[#7B61FF] text-white text-xl font-bold text-center py-5 rounded-3xl">
+          <div className="shrink-0 bg-[#7B61FF] text-white text-xl font-bold text-center py-4 rounded-3xl">
             {loading ? '조건에 맞는 약속 시간과 장소를 찾고 있어요' : '조건에 맞는 약속 시간과 장소를 찾았어요'}
           </div>
 
-          {errorMsg && <p className="text-sm text-red-500 text-center">{errorMsg}</p>}
+          {errorMsg && <p className="shrink-0 text-sm text-red-500 text-center">{errorMsg}</p>}
 
           {!loading && selected && (
-            <div className="grid grid-cols-2 gap-6 items-stretch">
-              {/* 좌측: 선택 후보 미리보기 */}
-              <section className="bg-white p-6 rounded-3xl border border-gray-300 flex flex-col justify-between min-h-[380px]">
-                <StationMap lat={selected.lat} lng={selected.lng} name={selected.name} />
-                <div className="mt-4 border border-gray-300 rounded-2xl px-4 py-3">
+            <div className="flex-1 min-h-[300px] max-h-[480px] grid grid-cols-2 gap-6">
+              {/* 좌측: 지도 */}
+              <section className="min-h-0 bg-white p-5 rounded-3xl border border-gray-300 flex flex-col gap-3">
+                <div className="flex-1 min-h-0 rounded-2xl overflow-hidden [&>*]:!h-full [&>*]:!w-full">
+                  <StationMap lat={selected.lat} lng={selected.lng} name={selected.name} />
+                </div>
+                <div className="shrink-0 border border-gray-300 rounded-2xl px-4 py-3">
                   <p className="text-base font-medium text-gray-900">📍 {selected.name}</p>
                   <p className="text-xs text-gray-600 mt-1">
                     선택 후보 | 내 예상 이동 {selected.myMin}분
@@ -163,60 +161,64 @@ export default function RecommendPage() {
                 </div>
               </section>
 
-              {/* 우측: 추천 후보 목록 */}
-              <section className="bg-white p-6 rounded-3xl border border-gray-300 space-y-3">
-                <div className="flex justify-between items-center">
+              {/* 우측: 후보 목록 (목록만 스크롤) */}
+              <section className="min-h-0 bg-white p-5 rounded-3xl border border-gray-300 flex flex-col gap-3">
+                <div className="shrink-0 flex justify-between items-center">
                   <h3 className="text-xl font-bold text-gray-900">추천 후보</h3>
                   <span className="text-xs text-gray-700">전체 최적 기준 정렬</span>
                 </div>
 
-                {candidates.map((c) => {
-                  const isOn = c.id === selectedId;
-                  return (
-                    <button
-                      key={c.id}
-                      type="button"
-                      onClick={() => setSelectedId(c.id)}
-                      className={`w-full text-left rounded-2xl px-4 py-3 flex items-center justify-between border ${
-                        isOn ? 'border-[#6C5CE7]' : 'border-gray-300'
-                      }`}
-                    >
-                      <div>
-                        <p className="text-base font-medium text-gray-900">
-                          <span className={isOn ? 'text-[#6C5CE7]' : 'text-gray-400'}>📍</span> {c.name}
-                        </p>
-                        <p className="text-xs text-gray-700 mt-1">
-                          {c.lines} | {c.when}
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-4 text-center">
-                        <Stat label="최대 이동" value={`${c.maxMin}분`} />
-                        <Stat label="내 이동" value={`${c.myMin}분`} />
-                        <Stat label="내 환승" value={`${c.transfers}회`} />
-                        <span
-                          className={`w-4 h-4 rounded-full ${
-                            isOn ? 'bg-[#6C5CE7]' : 'bg-gray-200 border border-gray-300'
-                          }`}
-                        />
-                      </div>
-                    </button>
-                  );
-                })}
+                <div className="flex-1 min-h-0 overflow-y-auto space-y-3 pr-1">
+                  {candidates.map((c) => {
+                    const isOn = c.id === selectedId;
+                    return (
+                      <button
+                        key={c.id}
+                        type="button"
+                        onClick={() => setSelectedId(c.id)}
+                        className={`w-full text-left rounded-2xl px-4 py-3 flex items-center justify-between border ${
+                          isOn ? 'border-[#6C5CE7]' : 'border-gray-300'
+                        }`}
+                      >
+                        <div>
+                          <p className="text-base font-medium text-gray-900">
+                            <span className={isOn ? 'text-[#6C5CE7]' : 'text-gray-400'}>📍</span> {c.name}
+                          </p>
+                          <p className="text-xs text-gray-700 mt-1">
+                            {c.lines} | {c.when}
+                          </p>
+                        </div>
+                        <div className="flex items-center gap-4 text-center">
+                          <Stat label="최대 이동" value={`${c.maxMin}분`} />
+                          <Stat label="내 이동" value={`${c.myMin}분`} />
+                          <Stat label="내 환승" value={`${c.transfers}회`} />
+                          <span
+                            className={`w-4 h-4 rounded-full ${
+                              isOn ? 'bg-[#6C5CE7]' : 'bg-gray-200 border border-gray-300'
+                            }`}
+                          />
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
 
-                {isHost ? (
-                  <button
-                    type="button"
-                    disabled={proposing}
-                    onClick={handlePropose}
-                    className="w-full py-2.5 rounded-full bg-[#6C5CE7] text-white text-sm font-semibold hover:opacity-90 disabled:opacity-40"
-                  >
-                    선택한 장소로 공식 제안하기
-                  </button>
-                ) : (
-                  <div className="w-full py-2.5 rounded-full border border-[#6C5CE7] text-[#6C5CE7] text-sm text-center">
-                    제안 대기 중
-                  </div>
-                )}
+                <div className="shrink-0">
+                  {isHost ? (
+                    <button
+                      type="button"
+                      disabled={proposing}
+                      onClick={handlePropose}
+                      className="w-full py-2.5 rounded-full bg-[#6C5CE7] text-white text-sm font-semibold hover:opacity-90 disabled:opacity-40"
+                    >
+                      선택한 장소로 공식 제안하기
+                    </button>
+                  ) : (
+                    <div className="w-full py-2.5 rounded-full border border-[#6C5CE7] text-[#6C5CE7] text-sm text-center">
+                      제안 대기 중
+                    </div>
+                  )}
+                </div>
               </section>
             </div>
           )}

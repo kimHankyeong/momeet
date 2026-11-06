@@ -23,32 +23,43 @@ const savedMeetingIds = () => {
 const reconnectLinkOf = (id) =>
   `${window.location.origin}/meet/${id}/setup?token=${localStorage.getItem(`momeet_token_${id}`)}`;
 
+// 이 브라우저에 저장된 약속방을 서버에서 불러와 목록으로 만든다
+const loadMeetings = () =>
+  Promise.all(
+    savedMeetingIds().map((id) =>
+      getMeeting(id)
+        .then((res) => {
+          const c = res.proposal?.candidate;
+          return {
+            id,
+            name: res.meeting.title,
+            dateLabel: c
+              ? `${dateLabel(c.date)} ${c.start}`
+              : `${dateLabel(res.meeting.date_start)} - ${dateLabel(res.meeting.date_end)}`,
+            participants: res.participants.length,
+            maxParticipants: res.meeting.max_participants,
+            isHost: res.me.is_host,
+            reconnectLink: reconnectLinkOf(id),
+          };
+        })
+        .catch(() => null),
+    ),
+  ).then((list) => list.filter(Boolean));
+
 export default function SettingsPage() {
   const [meetings, setMeetings] = useState([]);
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
-    Promise.all(
-      savedMeetingIds().map((id) =>
-        getMeeting(id)
-          .then((res) => {
-            const c = res.proposal?.candidate;
-            return {
-              id,
-              name: res.meeting.title,
-              dateLabel: c
-                ? `${dateLabel(c.date)} ${c.start}`
-                : `${dateLabel(res.meeting.date_start)} - ${dateLabel(res.meeting.date_end)}`,
-              participants: res.participants.length,
-              maxParticipants: res.meeting.max_participants,
-              isHost: res.me.is_host,
-              reconnectLink: reconnectLinkOf(id),
-            };
-          })
-          .catch(() => null),
-      ),
-    ).then((list) => setMeetings(list.filter(Boolean)));
+    loadMeetings().then(setMeetings);
   }, []);
+
+  // 방장 권한을 받으면 목록(방장 여부·개인 링크)을 새로 불러오고, 열려 있는 팝업도 새 정보로 바꾼다
+  const handleClaimed = (id) =>
+    loadMeetings().then((list) => {
+      setMeetings(list);
+      setSelected(list.find((x) => x.id === id) || null);
+    });
 
     // 참여자: 나가기(F-011) / 방장: 약속방 삭제
   const handleLeave = async (id) => {
@@ -96,7 +107,6 @@ export default function SettingsPage() {
 
       <section className="border-t border-gray-200 pt-6 space-y-3">
         <h2 className="text-2xl font-bold text-gray-900">서비스 정보</h2>
-        {/* TODO: 시안이 비어 있어요. 들어갈 내용(이용약관, 개인정보 처리방침 등)을 정해서 채우세요. */}
       </section>
 
       <MeetingSettingsModal
@@ -104,6 +114,7 @@ export default function SettingsPage() {
         meeting={selected}
         onClose={() => setSelected(null)}
         onLeave={handleLeave}
+        onClaimed={handleClaimed}
       />
     </MeetingLayout>
   );

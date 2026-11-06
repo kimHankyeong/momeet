@@ -3,23 +3,29 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 // 추천 역 지도 (OpenStreetMap, API 키 불필요. 지도 아래 출처 표시는 이용 조건이라 지우지 않는다)
-// className: 높이 등 크기 (기본 280px)
-export default function StationMap({ lat, lng, name, className = 'h-[280px]' }) {
+// className: 높이 등 크기 (기본: 부모 높이에 맞춤, 최소 200px)
+export default function StationMap({ lat, lng, name, className = 'h-full min-h-[200px]' }) {
   const el = useRef(null);
   const map = useRef(null);
   const marker = useRef(null);
 
   useEffect(() => {
-    map.current = L.map(el.current, { scrollWheelZoom: false });
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    }).addTo(map.current);
-    return () => {
-      map.current.remove();
-      map.current = null;
-    };
-  }, []);
+  map.current = L.map(el.current, { scrollWheelZoom: false });
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  }).addTo(map.current);
+
+  // 컨테이너 크기가 바뀌면 타일을 다시 그린다
+  const ro = new ResizeObserver(() => map.current?.invalidateSize());
+  ro.observe(el.current);
+
+  return () => {
+    ro.disconnect();
+    map.current.remove();
+    map.current = null;
+  };
+}, []);
 
   // 후보를 바꾸면 그 역으로 이동하고 표시를 옮긴다
   useEffect(() => {

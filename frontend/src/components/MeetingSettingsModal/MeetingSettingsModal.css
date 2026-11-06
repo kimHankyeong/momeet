@@ -108,3 +108,65 @@
 .msm__leave:hover {
   color: #000;
 }
+
+/* 방장 권한 요청 */
+.msm__claim-link {
+  display: block;
+  margin: 14px 0 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 10px;
+  color: #999;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.msm__note {
+  margin: 0 0 12px;
+  font-size: 11px;
+  color: #888;
+}
+
+.msm__claim-input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 18px;
+  border: none;
+  border-radius: 999px;
+  background: #f4f4f4;
+  font-size: 13px;
+  color: #333;
+  outline: none;
+}
+
+.msm__claim-input:focus {
+  box-shadow: 0 0 0 2px var(--color-primary, #6c5ce7);
+}
+
+.msm__error {
+  margin: 8px 0 0;
+  font-size: 12px;
+  text-align: center;
+  color: #b42318;
+}
+
+.msm__claim-btn {
+  display: block;
+  width: 100%;
+  margin-top: 16px;
+  padding: 12px;
+  border: none;
+  border-radius: 999px;
+  background: var(--color-primary, #6c5ce7);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.msm__claim-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
