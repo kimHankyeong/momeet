@@ -9,16 +9,22 @@ export default function StationMap({ lat, lng, name }) {
   const marker = useRef(null);
 
   useEffect(() => {
-    map.current = L.map(el.current, { scrollWheelZoom: false });
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    }).addTo(map.current);
-    return () => {
-      map.current.remove();
-      map.current = null;
-    };
-  }, []);
+  map.current = L.map(el.current, { scrollWheelZoom: false });
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  }).addTo(map.current);
+
+  // 컨테이너 크기가 바뀌면 타일을 다시 그린다
+  const ro = new ResizeObserver(() => map.current?.invalidateSize());
+  ro.observe(el.current);
+
+  return () => {
+    ro.disconnect();
+    map.current.remove();
+    map.current = null;
+  };
+}, []);
 
   // 후보를 바꾸면 그 역으로 이동하고 표시를 옮긴다
   useEffect(() => {
@@ -38,5 +44,5 @@ export default function StationMap({ lat, lng, name }) {
   }, [lat, lng, name]);
 
   // isolate: 지도 레이어(z-index 400~1000)가 헤더·모달 위로 올라오지 않게 한다
-  return <div ref={el} className="isolate w-full h-[280px] rounded-2xl overflow-hidden" />;
+  return <div ref={el} className="isolate w-full h-full min-h-[200px] rounded-2xl overflow-hidden" />;
 }

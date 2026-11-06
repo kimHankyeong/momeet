@@ -96,7 +96,6 @@ export default function SettingsPage() {
 
       <section className="border-t border-gray-200 pt-6 space-y-3">
         <h2 className="text-2xl font-bold text-gray-900">서비스 정보</h2>
-        {/* TODO: 시안이 비어 있어요. 들어갈 내용(이용약관, 개인정보 처리방침 등)을 정해서 채우세요. */}
       </section>
 
       <MeetingSettingsModal
