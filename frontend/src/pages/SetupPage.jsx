@@ -1,38 +1,69 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ConditionSetupModal from '../components/ConditionSetupModal';
-// import { getMeetDetail } from '../api/meetApi'; // 실제 API 연동 시 사용
+import { getMeeting } from '../api/meetApi';
+
+const DOW = ['일', '월', '화', '수', '목', '금', '토'];
+// "2026-11-10" → "11월 10일 (화)"
+const dateLabel = (s) => {
+  const [y, m, d] = s.split('-').map(Number);
+  const dt = new Date(y, m - 1, d);
+  return `${m}월 ${d}일 (${DOW[dt.getDay()]})`;
+};
 
 export default function SetupPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // 실제 백엔드 API에서 받아올 약속 및 참여자 상태
-  const [meetInfo] = useState({
-    title: '친구들과 저녁 약속',
-    dateRange: '11월 1일 (일) - 11월 8일 (일)',
-  });
+  // 백엔드 대시보드(GET /meetings/{id})에서 받아오는 약속 및 참여자 상태
+  const [meetInfo, setMeetInfo] = useState({ title: '', dateRange: '', joinCode: '', startDate: '', totalDays: 7 });
+  const [participants, setParticipants] = useState([]);
+  const [loadError, setLoadError] = useState('');
 
-  // 동적 참여자 목록 (실제로는 백엔드에서 받아옴)
-  const [participants, setParticipants] = useState([
-    { id: 1, name: '디소공 (나)', isHost: true, isMe: true, status: 'IN_PROGRESS' },
-  ]);
-
-  /* 백엔드 연동 예시 코드 (주석 해제 후 사용)
-  useEffect(() => {
-    async function fetchMeetData() {
-      try {
-        const res = await getMeetDetail(id);
-        setParticipants(res.data.participants);
-        setMeetInfo(res.data.meetInfo);
-      } catch (err) {
-        console.error('약속 정보 불러오기 실패:', err);
-      }
+  const fetchMeetData = async () => {
+    try {
+      const res = await getMeeting(id);
+      setMeetInfo({
+        title: res.meeting.title,
+        dateRange: `${dateLabel(res.meeting.date_start)} - ${dateLabel(res.meeting.date_end)}`,
+        joinCode: res.meeting.join_code,
+        startDate: res.meeting.date_start, // 조건 입력 시간표의 첫날
+        totalDays:
+          Math.round((new Date(res.meeting.date_end) - new Date(res.meeting.date_start)) / 86400000) + 1,
+      });
+      setParticipants(
+        res.participants.map((p) => ({
+          id: p.id,
+          name: p.is_me ? `${p.nickname} (나)` : p.nickname,
+          isHost: p.is_host,
+          isMe: p.is_me,
+          status: p.input_status === 'submitted' ? 'COMPLETED' : 'IN_PROGRESS',
+        })),
+      );
+      setLoadError('');
+    } catch (err) {
+      setLoadError(err.response?.data?.error?.message || '약속 정보를 불러오지 못했어요.');
     }
-    fetchMeetData();
+  };
+
+  // 처음 열 때 + 5초마다 다시 불러오기 (다른 참여자의 입력 상태 반영)
+  useEffect(() => {
+    // 개인 재접속 링크(?token=...)로 들어오면 토큰을 저장하고 주소에서 지운다
+    const params = new URLSearchParams(window.location.search);
+    const urlToken = params.get('token');
+    if (urlToken) {
+      localStorage.setItem(`momeet_token_${id}`, urlToken);
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+    const first = setTimeout(fetchMeetData, 0);
+    const t = setInterval(fetchMeetData, 5000);
+    return () => {
+      clearTimeout(first);
+      clearInterval(t);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
-  */
 
   // 현재 사용자('나')의 조건 입력 완료 여부
   const myData = participants.find((p) => p.isMe);
@@ -41,15 +72,30 @@ export default function SetupPage() {
   // 완료한 참여자 수
   const completedCount = participants.filter((p) => p.status === 'COMPLETED').length;
 
-  // 모달에서 '개인 조건 최종 제출' 클릭 시
-  const handleModalSubmit = (submittedData) => {
-    setParticipants((prev) =>
-      prev.map((p) => (p.isMe ? { ...p, status: 'COMPLETED' } : p))
-    );
-    // 임시: 시연용으로 바로 추천 화면으로 이동
-    // TODO: 모든 참여자 입력 완료 + 방장 '모집 마감' 후 이동하도록 변경
-    navigate(`/meet/${id}/recommend`);
+  // 모달에서 '개인 조건 최종 제출' 클릭 시: 서버 상태를 다시 불러온다
+  // TODO: 모든 참여자 입력 완료 + 방장 '모집 마감' 후 추천 화면으로 이동
+  const handleModalSubmit = () => {
+    fetchMeetData();
   };
+
+  // 링크 복사: 서버가 발급한 입장 코드 복사 (참여자도 가능)
+  const handleCopy = async () => {
+    if (!meetInfo.joinCode) return;
+    try {
+      await navigator.clipboard.writeText(meetInfo.joinCode);
+      alert(`입장 코드가 복사되었습니다: ${meetInfo.joinCode}`);
+    } catch {
+      window.prompt('아래 입장 코드를 복사해 주세요.', meetInfo.joinCode);
+    }
+  };
+
+  if (loadError && !meetInfo.title) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-sm text-gray-500">
+        {loadError}
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
@@ -166,7 +212,7 @@ export default function SetupPage() {
                 </div>
                 <button
                   type="button"
-                  onClick={() => alert('초대 링크가 복사되었습니다!')}
+                  onClick={handleCopy}
                   className="px-3 py-1.5 bg-[#6C5CE7] text-white rounded-xl text-xs font-semibold hover:bg-indigo-700 transition-colors"
                 >
                   🔗 링크 복사하기
@@ -208,6 +254,8 @@ export default function SetupPage() {
         onClose={() => setIsModalOpen(false)}
         onSubmitSuccess={handleModalSubmit}
         meetingId={id}
+        startDate={meetInfo.startDate}
+        totalDays={meetInfo.totalDays}
       />
     </div>
   );

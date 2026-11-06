@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import AvailabilityGrid from './conditions/AvailabilityGrid';
 import { submitConditions } from '../api/meetApi';
-import {
-  cellsToAvailability,
-  conditionsToConstraints,
-  stripStationSuffix,
-} from '../api/transform';
+import { cellsToAvailability, conditionsToConstraints } from '../api/transform';
 
-export default function ConditionSetupModal({ isOpen, onClose, onSubmitSuccess , meetingId}) {
+// startDate: 약속방 시작일 "YYYY-MM-DD", totalDays: 약속방 날짜 수 (SetupPage가 서버에서 받아 넘김)
+export default function ConditionSetupModal({ isOpen, onClose, onSubmitSuccess, meetingId, startDate, totalDays = 7 }) {
   const [step, setStep] = useState(1);
 
   // STEP 1: 시간 선택
 const [selectedCells, setSelectedCells] = useState(new Set());
 
-const START_DATE = new Date(2026, 10, 1); // 약속 시작일 (TODO: 약속 데이터에서 받기)
+// "2026-11-10" → 로컬 Date (new Date("2026-11-10")은 UTC로 해석돼서 쓰지 않음)
+const START_DATE = startDate
+  ? new Date(Number(startDate.slice(0, 4)), Number(startDate.slice(5, 7)) - 1, Number(startDate.slice(8, 10)))
+  : new Date();
 const DOW = ['일', '월', '화', '수', '목', '금', '토'];
 const pad = (n) => String(n).padStart(2, '0');
 
@@ -132,10 +132,10 @@ const selectedTimes = timeRanges.map((r) => `${r.label} ${r.start}-${r.end}`);
   try {
     await submitConditions(meetingId, {
       availability: cellsToAvailability(selectedCells, START_DATE),
-      default_station: stripStationSuffix(location),
+      default_station: origin.station,
       constraints: conditionsToConstraints(addedConditions),
     });
-    onSubmitSuccess({ location, selectedTimes, addedConditions });
+    onSubmitSuccess({ location: origin.station, selectedTimes, addedConditions });
     onClose();
   } catch (e) {
     const err = e.response?.data?.error;
@@ -186,7 +186,7 @@ const selectedTimes = timeRanges.map((r) => `${r.label} ${r.start}-${r.end}`);
 
         {step === 1 && (
           <div className="space-y-6 pt-1">
-            <AvailabilityGrid selected={selectedCells} onChange={setSelectedCells} totalDays={8} />
+            <AvailabilityGrid selected={selectedCells} onChange={setSelectedCells} totalDays={totalDays} />
 
             <button
               type="button"

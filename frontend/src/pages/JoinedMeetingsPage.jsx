@@ -1,20 +1,58 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import MeetingSidebar from '../components/MeetingSidebar/MeetingSidebar';
 import MeetingCard from '../components/MeetingCard/MeetingCard';
+import { getMeeting } from '../api/meetApi';
 
-// TODO: 임시 데이터입니다. api/meetApi.js에 목록 조회 함수가 생기면 교체하세요.
-const MOCK_MEETINGS = [
-  { id: 'abc', name: '친구들과 저녁 약속', dateLabel: '11월 7일 (일) 17:00', place: '종로3가역',
-    participants: 3, maxParticipants: 4, stage: '제안', ended: false },
-  { id: 'def', name: '고등학교 동창 모임', dateLabel: '10월 16일 (금) 20:00', place: '삼각지역',
-    participants: 8, ended: true, daysUntilDelete: 10 },
-  { id: 'ghi', name: '맛집 탐방 약속', dateLabel: '10월 10일 (토) 13:00', place: '홍대입구역',
-    participants: 3, ended: true, daysUntilDelete: 4 },
-];
+const DOW = ['일', '월', '화', '수', '목', '금', '토'];
+const dateLabel = (s) => {
+  const [y, m, d] = s.split('-').map(Number);
+  return `${m}월 ${d}일 (${DOW[new Date(y, m - 1, d).getDay()]})`;
+};
+
+// 서버 단계 → 카드에 표시할 단계 (모집 중과 마감 후 입력은 화면에서 "입력"으로 묶음)
+const STAGE_LABEL = { recruiting: '입력', input: '입력', recommended: '추천', proposed: '제안', confirmed: '확정' };
+
+// 이 브라우저에 저장된 약속방 ID 목록 (방 만들기·참여할 때 momeet_token_방ID로 저장됨)
+const savedMeetingIds = () => {
+  const ids = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (key.startsWith('momeet_token_')) ids.push(key.slice('momeet_token_'.length));
+  }
+  return ids;
+};
+
+// 대시보드 응답 → MeetingCard 형식
+const toCard = (id, res) => {
+  const c = res.proposal?.candidate;
+  return {
+    id,
+    name: res.meeting.title,
+    dateLabel: c
+      ? `${dateLabel(c.date)} ${c.start}`
+      : `${dateLabel(res.meeting.date_start)} - ${dateLabel(res.meeting.date_end)}`,
+    place: c ? `${c.station.name}역` : '장소 미정',
+    participants: res.participants.length,
+    maxParticipants: res.meeting.max_participants,
+    stage: STAGE_LABEL[res.meeting.stage],
+    ended: false,
+  };
+};
 
 export default function JoinedMeetingsPage() {
   const [tab, setTab] = useState('ongoing'); // 'ongoing' | 'ended'
-  const meetings = MOCK_MEETINGS; // TODO: API 데이터로 교체
+  const [meetings, setMeetings] = useState([]);
+
+  useEffect(() => {
+    // 방마다 대시보드를 불러온다. 만료·삭제된 방이나 토큰이 무효인 방은 목록에서 뺀다
+    Promise.all(
+      savedMeetingIds().map((id) =>
+        getMeeting(id)
+          .then((res) => toCard(id, res))
+          .catch(() => null),
+      ),
+    ).then((list) => setMeetings(list.filter(Boolean)));
+  }, []);
 
   const ongoing = meetings.filter((m) => !m.ended);
   const ended = meetings.filter((m) => m.ended);

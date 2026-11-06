@@ -1,19 +1,64 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import MeetingSidebar from '../components/MeetingSidebar/MeetingSidebar';
 import MeetingSettingsModal from '../components/MeetingSettingsModal/MeetingSettingsModal';
+import { getMeeting, leaveMeeting } from '../api/meetApi';
 
-// TODO: 임시 데이터입니다. 실제로는 내 약속방 목록 API + 개인 재접속 링크를 받아오세요.
-const MOCK_MEETINGS = [
-  { id: 'abc', name: '친구들과 저녁 약속', dateLabel: '11월 7일 (일) 17:00',
-    participants: 3, maxParticipants: 4, reconnectLink: 'https://momeet.kr/invite/abc' },
-];
+const DOW = ['일', '월', '화', '수', '목', '금', '토'];
+const dateLabel = (s) => {
+  const [y, m, d] = s.split('-').map(Number);
+  return `${m}월 ${d}일 (${DOW[new Date(y, m - 1, d).getDay()]})`;
+};
+
+// 이 브라우저에 저장된 약속방 ID 목록 (방 만들기·참여할 때 momeet_token_방ID로 저장됨)
+const savedMeetingIds = () => {
+  const ids = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (key.startsWith('momeet_token_')) ids.push(key.slice('momeet_token_'.length));
+  }
+  return ids;
+};
+
+// 개인 재접속 링크: 이 링크를 열면 다른 기기에서도 내 자리로 들어온다 (토큰이 들어 있으니 남에게 공유 금지)
+const reconnectLinkOf = (id) =>
+  `${window.location.origin}/meet/${id}/setup?token=${localStorage.getItem(`momeet_token_${id}`)}`;
 
 export default function SettingsPage() {
-  const [meetings, setMeetings] = useState(MOCK_MEETINGS);
+  const [meetings, setMeetings] = useState([]);
   const [selected, setSelected] = useState(null);
 
-  // TODO: 서버에 접근 권한 해제(F-011) 요청 후 목록에서 제거
-  const handleLeave = (id) => setMeetings((prev) => prev.filter((m) => m.id !== id));
+  useEffect(() => {
+    Promise.all(
+      savedMeetingIds().map((id) =>
+        getMeeting(id)
+          .then((res) => {
+            const c = res.proposal?.candidate;
+            return {
+              id,
+              name: res.meeting.title,
+              dateLabel: c
+                ? `${dateLabel(c.date)} ${c.start}`
+                : `${dateLabel(res.meeting.date_start)} - ${dateLabel(res.meeting.date_end)}`,
+              participants: res.participants.length,
+              maxParticipants: res.meeting.max_participants,
+              isHost: res.me.is_host,
+              reconnectLink: reconnectLinkOf(id),
+            };
+          })
+          .catch(() => null),
+      ),
+    ).then((list) => setMeetings(list.filter(Boolean)));
+  }, []);
+
+  // 접근 권한 해제(F-011): 서버에서 내 데이터 삭제 후 목록에서 제거
+  const handleLeave = async (id) => {
+    try {
+      await leaveMeeting(id);
+      setMeetings((prev) => prev.filter((m) => m.id !== id));
+    } catch (e) {
+      alert(e.response?.data?.error?.message || '약속방을 나가지 못했어요.');
+    }
+  };
 
   return (
     <div className="max-w-[860px] mx-auto px-6 pt-12 flex gap-6">

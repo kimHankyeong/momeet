@@ -29,7 +29,8 @@ function DateRangeInput({ value, onChange }) {
   const handleSelect = (range) => {
     onChange(range);
     // 시작일과 종료일이 둘 다 선택되면 닫기
-    if (range?.from && range?.to) setIsOpen(false);
+    // 첫 클릭에는 from == to(같은 날)로 들어오므로 그때는 닫지 않는다 (하루짜리는 바깥을 누르면 닫힘)
+    if (range?.from && range?.to && range.from.getTime() !== range.to.getTime()) setIsOpen(false);
   };
 
   const label =
