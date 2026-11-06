@@ -32,7 +32,8 @@ function JoinModal({ isOpen, onClose, initialCode = '' }) {
         return;
       }
 
-      saveToken(res.meeting_id, res.access_token);
+      saveToken(res.access_token, res.meeting_id);
+    
       onClose();
       navigate(`/meet/${res.meeting_id}/setup`);
     } catch (e) {

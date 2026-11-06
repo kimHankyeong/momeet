@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import routeMap from '../assets/route-map.png';
 
 // ✅ 테스트용: true면 방장 화면, false면 참여자 화면
 const IS_HOST = true;
@@ -105,9 +106,8 @@ export default function RecommendPage() {
             <div className="grid grid-cols-2 gap-6 items-stretch">
               {/* 좌측: 선택 후보 미리보기 */}
               <section className="bg-white p-6 rounded-3xl border border-gray-300 flex flex-col justify-between min-h-[380px]">
-                {/* TODO: 피그마에서 노선 그림을 내보내 <img>로 교체 */}
-                <div className="flex-1 bg-gray-100 rounded-2xl flex items-center justify-center text-sm text-gray-400">
-                  노선 이미지 자리
+                <div className="flex-1 flex items-center justify-center">
+                  <img src={routeMap} alt="추천 장소 노선" className="w-full h-auto" />
                 </div>
                 <div className="mt-4 border border-gray-300 rounded-2xl px-4 py-3">
                   <p className="text-base font-medium text-gray-900">📍 {selected.name}</p>

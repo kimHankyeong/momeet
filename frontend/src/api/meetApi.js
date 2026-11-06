@@ -14,7 +14,10 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-export const saveToken = (token) => localStorage.setItem(`momeet_token_${meetingId}`, token);
+export const saveToken = (token, meetingId) => {
+  localStorage.setItem('momeet_token', token);
+  if (meetingId) localStorage.setItem(`momeet_token_${meetingId}`, token);
+};
 
 // 약속 생성 (경로·필드는 api.md 확인 후 확정)
 export const createMeeting = async (body) =>

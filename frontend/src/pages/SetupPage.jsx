@@ -5,6 +5,10 @@ import ConditionSetupModal from '../components/ConditionSetupModal';
 
 export default function SetupPage() {
   const { id } = useParams();
+  const savedMeeting = (() => {
+  try { return JSON.parse(localStorage.getItem(`momeet_meeting_${id}`)) || {}; }
+  catch { return {}; }
+  })();
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -208,6 +212,8 @@ export default function SetupPage() {
         onClose={() => setIsModalOpen(false)}
         onSubmitSuccess={handleModalSubmit}
         meetingId={id}
+        dateStart={savedMeeting.date_start}
+        dateEnd={savedMeeting.date_end}
       />
     </div>
   );

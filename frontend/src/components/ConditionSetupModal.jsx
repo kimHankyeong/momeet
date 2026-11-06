@@ -7,13 +7,25 @@ import {
   stripStationSuffix,
 } from '../api/transform';
 
-export default function ConditionSetupModal({ isOpen, onClose, onSubmitSuccess , meetingId}) {
+export default function ConditionSetupModal({
+  isOpen, onClose, onSubmitSuccess, meetingId,
+  dateStart, dateEnd,   // "YYYY-MM-DD" 문자열
+}) {
   const [step, setStep] = useState(1);
 
   // STEP 1: 시간 선택
 const [selectedCells, setSelectedCells] = useState(new Set());
 
-const START_DATE = new Date(2026, 10, 1); // 약속 시작일 (TODO: 약속 데이터에서 받기)
+// "2026-11-06" → 로컬 Date (new Date("YYYY-MM-DD")는 UTC로 해석돼서 쓰지 않음)
+const parseLocal = (s) => {
+  if (!s) return new Date();
+  const [y, m, d] = s.split('-').map(Number);
+  return new Date(y, m - 1, d);
+};
+const START_DATE = parseLocal(dateStart);
+const totalDays = dateStart && dateEnd
+  ? Math.round((parseLocal(dateEnd) - START_DATE) / 86400000) + 1
+  : 7;
 const DOW = ['일', '월', '화', '수', '목', '금', '토'];
 const pad = (n) => String(n).padStart(2, '0');
 
@@ -129,13 +141,25 @@ const selectedTimes = timeRanges.map((r) => `${r.label} ${r.start}-${r.end}`);
  const handleSubmit = async () => {
   setSubmitting(true);
   setErrorMsg('');
+  const constraints = {};
+  addedConditions.forEach((c) => {
+    const level = c.priority === '필수' ? 'required' : 'preferred';
+    const val = parseInt(c.value, 10) || 0;
+    if (c.id === 'maxTime') constraints.max_travel_min = { value: val, level };
+    if (c.id === 'maxTransfer') constraints.max_transfers = { value: val, level };
+    if (c.id === 'maxWalk') constraints.max_walk_m = { value: val * 72, level };
+    if (c.id === 'elevator') constraints.needs_elevator = { value: true, level };
+    if (c.id === 'avoidStairs') constraints.avoid_stairs = { value: true, level };
+  });
+
+  const stationName = (origin?.station || '').replace(/역$/, '').trim();
   try {
     await submitConditions(meetingId, {
       availability: cellsToAvailability(selectedCells, START_DATE),
-      default_station: stripStationSuffix(location),
-      constraints: conditionsToConstraints(addedConditions),
+      default_station: stationName,
+      constraints,
     });
-    onSubmitSuccess({ location, selectedTimes, addedConditions });
+    onSubmitSuccess({ location: stationName, selectedTimes, addedConditions });
     onClose();
   } catch (e) {
     const err = e.response?.data?.error;
@@ -186,7 +210,7 @@ const selectedTimes = timeRanges.map((r) => `${r.label} ${r.start}-${r.end}`);
 
         {step === 1 && (
           <div className="space-y-6 pt-1">
-            <AvailabilityGrid selected={selectedCells} onChange={setSelectedCells} totalDays={8} />
+            <AvailabilityGrid selected={selectedCells} onChange={setSelectedCells} totalDays={totalDays} />
 
             <button
               type="button"

@@ -36,7 +36,7 @@ function CreateModal({ isOpen, onClose }) {
         host_nickname: nickname,
         host_password: password,
       });
-      saveToken(res.meeting_id, res.access_token);
+      saveToken(res.access_token, res.meeting_id);
       localStorage.setItem(`momeet_meeting_${res.meeting_id}`, JSON.stringify(res.meeting));
       onClose();
       navigate(`/meet/${res.meeting_id}/setup`);
