@@ -224,7 +224,7 @@ recruiting → input → recommended → proposed → confirmed
 { "stations": [ { "name": "쌍문", "lines": ["4"], "lat": 37.648627, "lng": 127.034709 } ] }
 ```
 
-`GET /stations/nearby?lat=37.388867&lng=126.964965` — 출발 위치 **근처 역** (인증 불필요, 기본 3건, `limit` 최대 10). 걸어갈 만한 거리(3km) 안의 역만 가까운 순. `walk_m`/`walk_min`은 직선거리×1.3 추정.
+`GET /stations/nearby?lat=37.388867&lng=126.964965` — 출발 위치 **근처 역** (인증 불필요, 기본 3건, `limit` 최대 10). 걸어갈 만한 거리(추정 도보 3km) 안의 역만 가까운 순. `walk_m`/`walk_min`은 직선거리×1.3 추정.
 
 ```json
 { "stations": [ { "name": "평촌", "lines": ["4"], "lat": 37.394346, "lng": 126.963881, "walk_m": 802, "walk_min": 12 } ] }
@@ -288,7 +288,7 @@ recruiting → input → recommended → proposed → confirmed
 
 **출발 위치 → 출발역 도보 (선택 입력)**
 - `default_origin`(기본 출발역용), 예외 출발역의 `origin`을 보내면 그 위치에서 **그 출발역까지 걸어가는 거리·시간**이 이동시간에 더해진다. 출발 시각도 출발 위치에서 나서는 시각이다. 위치를 안 보내면 도보는 0이다.
-- 좌표는 수도권 범위만 받고 **소수 3자리(약 100m)로 반올림해 저장**한다. 출발역까지 직선거리가 3km를 넘으면 `422 ORIGIN_TOO_FAR`.
+- 좌표는 수도권 범위만 받고 **소수 3자리(약 100m)로 반올림해 저장**한다. 출발역까지 **추정 도보 거리(직선거리×1.3)가 3km를 넘으면** `422 ORIGIN_TOO_FAR`.
 - **주소·장소 이름만 보내도 된다** (`{"address": "서울 도봉구 노해로 342"}`): 서버가 좌표로 바꾼 뒤 검증하며 **주소는 저장하지 않는다**(응답에는 좌표만). 못 찾으면 `422 INVALID_ORIGIN`, 변환 서비스 장애면 `503 GEOCODE_UNAVAILABLE`(좌표로 다시 보내면 됨).
 - 서버가 도보를 구해 조건에 저장한다: `default_access` / `exception_stations[].access` = `{ "station", "walk_m", "minutes", "source" }`. `source`는 `"tmap"`(티맵 보행 경로) 또는 `"estimate"`(직선거리×1.3 추정, 티맵 키 없음·한도·장애 시). `estimate`는 다음 저장 때 티맵을 다시 시도한다. 같은 위치·역으로 다시 저장해도 티맵을 다시 부르지 않는다.
 
