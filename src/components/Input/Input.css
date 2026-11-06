@@ -1,0 +1,29 @@
+.field { margin-top: 20px; }
+
+.field__label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.field__input {
+  width: 100%;
+  height: 48px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 999px;
+  background: #f5f5f5;
+  font-family: inherit;
+  font-size: 15px;
+  text-align: center;
+  outline: none;
+}
+
+.field__input:focus { box-shadow: 0 0 0 2px var(--color-primary); }
+
+.field__hint {
+  margin-top: 6px;
+  text-align: right;
+  font-size: 12px;
+  color: #aaa;
+}
