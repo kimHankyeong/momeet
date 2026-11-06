@@ -18,7 +18,7 @@ services:
       - key: CORS_ORIGINS
         sync: false
       # 티맵 앱키. 없으면 도보는 직선거리 추정, 장소 검색은 503
-      - key: TMAP_APP_KEY
+      - key: TMAP_APP_KEY=585vvBOHhtkktN13ugus7FDJdeBu1rY32r4QXnCb
         sync: false
 
   - type: web
