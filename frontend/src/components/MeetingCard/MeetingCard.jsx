@@ -18,7 +18,12 @@ export default function MeetingCard({ meeting }) {
         <h4 className="mcard__name">{name}</h4>
         <p className="mcard__info">{dateLabel}</p>
         <p className="mcard__info">📍 {place}</p>
-        <p className="mcard__foot-text">{participants}명 참여 · 약속 종료</p>
+        <div className="mcard__foot">
+          <span className="mcard__foot-text">{participants}명 참여 · 약속 확정</span>
+          <button type="button" className="mcard__btn" onClick={() => navigate(`/meet/${id}/proposal`)}>
+            확정 내용 보기
+          </button>
+        </div>
       </div>
     );
   }

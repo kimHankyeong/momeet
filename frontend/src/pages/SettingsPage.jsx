@@ -39,12 +39,13 @@ const loadMeetings = () =>
             participants: res.participants.length,
             maxParticipants: res.meeting.max_participants,
             isHost: res.me.is_host,
+            ended: res.meeting.stage === 'confirmed',
             reconnectLink: reconnectLinkOf(id),
           };
         })
         .catch(() => null),
     ),
-  ).then((list) => list.filter(Boolean));
+  ).then((list) => list.filter((m) => m && !m.ended)); // 종료(확정)된 약속방은 설정 대상에서 뺀다
 
 export default function SettingsPage() {
   const [meetings, setMeetings] = useState([]);

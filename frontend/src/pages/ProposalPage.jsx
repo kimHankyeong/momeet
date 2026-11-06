@@ -142,7 +142,7 @@ export default function ProposalPage() {
 
   // 화면 단계: 서버 기준 (확정 / 전원 응답했는데 거절 있음 / 제안 중)
   const stage = serverStage === 'confirmed' ? 'CONFIRMED' : needsReplan ? 'FAILED' : 'PROPOSAL';
-  const currentStep = stage === 'CONFIRMED' ? 4 : 3;
+  const currentStep = stage === 'CONFIRMED' ? 5 : 3; // 확정이면 5단계 모두 완료로 표시
 
   // 내 응답: 동의/거절은 서버에 저장, "수정하기"(PENDING)는 버튼만 다시 보여 준다
   const respond = async (response) => {

@@ -23,6 +23,13 @@ const savedMeetingIds = () => {
   return ids;
 };
 
+// 서버 만료 시각 → 남은 일수 (자동 삭제 예정 표시용)
+const daysLeft = (iso) => {
+  if (!iso) return null;
+  const ms = new Date(iso) - Date.now();
+  return Math.max(0, Math.ceil(ms / 86400000));
+};
+
 // 대시보드 응답 → MeetingCard 형식
 const toCard = (id, res) => {
   const c = res.proposal?.candidate;
@@ -36,7 +43,8 @@ const toCard = (id, res) => {
     participants: res.participants.length,
     maxParticipants: res.meeting.max_participants,
     stage: STAGE_LABEL[res.meeting.stage],
-    ended: false,
+    ended: res.meeting.stage === 'confirmed', // 확정된 약속은 '종료된 약속'으로
+    daysUntilDelete: res.meeting.stage === 'confirmed' ? daysLeft(res.meeting.expires_at) : null,
   };
 };
 
