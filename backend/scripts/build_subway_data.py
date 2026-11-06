@@ -496,6 +496,68 @@ def load_accessibility():
     return acc
 
 
+KORAIL_ACC = "한국철도공사_역별 승강설비 현황_20230101.csv"
+INCHEON_ACC = "인천교통공사_엘리베이터 설치현황_20260630.csv"
+
+# 코레일 승강설비 자료의 노선명 → 노선 ID (수도권 전철이 지나는 노선만)
+KORAIL_ACC_LINE = {
+    "경부선": "1", "경원선": "1", "경인선": "1", "장항선": "1",
+    "일산선": "3", "과천선": "4", "안산선": "4",
+    "분당선": "수인분당", "수인선": "수인분당", "수인분당선": "수인분당",
+    "중앙선": "경의중앙", "경의선": "경의중앙", "용산선": "경의중앙",
+    "경춘선": "경춘", "경강선": "경강", "서해선": "서해",
+}
+# 인천교통공사 엘리베이터 자료의 호선 → 노선 ID
+INCHEON_ACC_LINE = {"1": "인천1", "2": "인천2", "7": "7"}
+
+
+def add_regional_accessibility(acc, nodes):
+    """
+    서울교통공사 자료에 없는 광역철도 역의 엘리베이터 정보를 채운다.
+      - 코레일 운영 역: 한국철도공사 역별 승강설비 현황 (2023.01, 역사별 대수)
+      - 인천1·2호선, 7호선 부천·인천 구간: 인천교통공사 엘리베이터 설치현황 (한 대 = 한 행 → 역별로 셈)
+    같은 이름의 다른 지역 역(전국 자료)과 섞이지 않도록 수도권 노선 이름으로 맞춘다.
+    """
+    korail = {}  # (역명, 노선 ID) → 정보
+    for r in read_csv(require(RAW / KORAIL_ACC)):
+        line = KORAIL_ACC_LINE.get(r["노선명"].strip())
+        counts = [int(r[k] or 0) for k in ("엘리베이터", "에스컬레이터", "휠체어리프트")]
+        if line is None or not any(counts):
+            continue  # 설비가 전부 0 = 코레일 관리가 아닌 역(서해선 소사~원시 등)이거나 미집계 → 정보 없음으로 둠
+        name = norm_regional(r["역명"].strip().removesuffix("역사"))
+        name = SEPARATE_STATIONS.get((name, line), name)
+        info = korail.setdefault((name, line), {"elevator": 0, "escalator": 0, "wheelchair_lift": 0, "source": "korail_2023"})
+        info["elevator"] += int(r["엘리베이터"] or 0)
+        info["escalator"] += int(r["에스컬레이터"] or 0)
+        info["wheelchair_lift"] += int(r["휠체어리프트"] or 0)
+    korail_by_name = {}  # 노선이 달라도 같은 역 (예: 4호선·수인분당선 한대앞은 안산선으로만 집계)
+    for (name, _), info in korail.items():
+        korail_by_name.setdefault(name, info)
+
+    incheon = {}
+    for r in read_csv(require(RAW / INCHEON_ACC)):
+        line = INCHEON_ACC_LINE.get(r["호선"].strip())
+        name = norm_regional(r["역명"])
+        if line is None or r["장비종류"].strip() != "EL" or "환기구" in name or name.startswith("대피"):
+            continue
+        incheon[(name, line)] = incheon.get((name, line), 0) + 1
+
+    filled = 0
+    for nid, (name, line) in nodes.items():
+        if nid in acc:
+            continue
+        if (name, line) in incheon:
+            acc[nid] = {"elevator": incheon[(name, line)], "source": "incheon_2026"}
+        elif (name, line) in korail:
+            acc[nid] = dict(korail[(name, line)])
+        elif line in set(KORAIL_ACC_LINE.values()) and name in korail_by_name:
+            acc[nid] = dict(korail_by_name[name])
+        else:
+            continue
+        filled += 1
+    return filled
+
+
 def add_elevator_points(acc, nodes):
     """
     9호선·우이신설선은 승강설비 대수 자료가 없음.
@@ -511,6 +573,8 @@ def add_elevator_points(acc, nodes):
     for nid, (name, line) in nodes.items():
         if line in DISTANCE_LINES and nid not in acc and counts.get(name):
             acc[nid] = {"elevator": counts[name], "source": "elevator_location"}
+
+    add_regional_accessibility(acc, nodes)
 
     # 그래도 정보가 없는 역은 팀이 직접 확인한 값으로 채움
     for nid, info in MANUAL_ACCESSIBILITY.items():

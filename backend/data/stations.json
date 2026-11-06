@@ -31,10 +31,15 @@
       {
         "id": "가능_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "가락시장",
@@ -81,10 +86,10 @@
         "id": "가산디지털단지_1",
         "line": "1",
         "accessibility": {
-          "elevator": 4,
-          "escalator": 18,
-          "wheelchair_lift": 3,
-          "shared": true
+          "elevator": 3,
+          "escalator": 4,
+          "wheelchair_lift": 1,
+          "source": "korail_2023"
         }
       },
       {
@@ -151,10 +156,13 @@
       {
         "id": "가재울_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "가정",
@@ -168,10 +176,13 @@
       {
         "id": "가정_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "가정중앙시장",
@@ -185,10 +196,13 @@
       {
         "id": "가정중앙시장_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 5,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "가좌",
@@ -202,10 +216,15 @@
       {
         "id": "가좌_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 5,
+          "escalator": 22,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "가천대",
@@ -219,10 +238,15 @@
       {
         "id": "가천대_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 11,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "가평",
@@ -236,10 +260,15 @@
       {
         "id": "가평_경춘",
         "line": "경춘",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "간석",
@@ -253,10 +282,15 @@
       {
         "id": "간석_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "간석오거리",
@@ -270,10 +304,13 @@
       {
         "id": "간석오거리_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "갈매",
@@ -287,10 +324,15 @@
       {
         "id": "갈매_경춘",
         "line": "경춘",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "갈산",
@@ -304,10 +346,13 @@
       {
         "id": "갈산_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "강남",
@@ -364,10 +409,10 @@
         "id": "강남구청_수인분당",
         "line": "수인분당",
         "accessibility": {
-          "elevator": 2,
-          "escalator": 7,
+          "elevator": 10,
+          "escalator": 23,
           "wheelchair_lift": 0,
-          "shared": true
+          "source": "korail_2023"
         }
       }
     ],
@@ -444,10 +489,15 @@
       {
         "id": "강매_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "강변",
@@ -503,10 +553,15 @@
       {
         "id": "강촌_경춘",
         "line": "경춘",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "개롱",
@@ -541,10 +596,15 @@
       {
         "id": "개봉_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "개포동",
@@ -558,10 +618,15 @@
       {
         "id": "개포동_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 8,
+          "wheelchair_lift": 4,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "개화",
@@ -685,10 +750,13 @@
       {
         "id": "검단사거리_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "검단오류",
@@ -702,10 +770,13 @@
       {
         "id": "검단오류_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "검단호수공원",
@@ -719,10 +790,13 @@
       {
         "id": "검단호수공원_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "검바위",
@@ -736,10 +810,13 @@
       {
         "id": "검바위_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "검암",
@@ -754,15 +831,22 @@
       {
         "id": "검암_공항철도",
         "line": "공항철도",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026",
+          "shared": true
+        }
       },
       {
         "id": "검암_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "경기광주",
@@ -776,10 +860,15 @@
       {
         "id": "경기광주_경강",
         "line": "경강",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "경기도청북부청사",
@@ -810,10 +899,15 @@
       {
         "id": "경마공원_4",
         "line": "4",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "경복궁",
@@ -848,10 +942,13 @@
       {
         "id": "경인교대입구_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "경전철의정부",
@@ -903,10 +1000,13 @@
       {
         "id": "계산_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "계양",
@@ -921,15 +1021,22 @@
       {
         "id": "계양_공항철도",
         "line": "공항철도",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "source": "incheon_2026",
+          "shared": true
+        }
       },
       {
         "id": "계양_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "고덕",
@@ -985,10 +1092,15 @@
       {
         "id": "고색_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 10,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "고속터미널",
@@ -1043,15 +1155,25 @@
       {
         "id": "고잔_4",
         "line": "4",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 2,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "고잔_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 2,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "고진",
@@ -1100,15 +1222,25 @@
       {
         "id": "곡산_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "곡산_서해",
         "line": "서해",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "곤제",
@@ -1139,10 +1271,15 @@
       {
         "id": "곤지암_경강",
         "line": "경강",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "공덕",
@@ -1178,10 +1315,10 @@
         "id": "공덕_경의중앙",
         "line": "경의중앙",
         "accessibility": {
-          "elevator": 2,
-          "escalator": 11,
+          "elevator": 7,
+          "escalator": 16,
           "wheelchair_lift": 0,
-          "shared": true
+          "source": "korail_2023"
         }
       },
       {
@@ -1267,10 +1404,15 @@
       {
         "id": "과천_4",
         "line": "4",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 5,
+          "escalator": 16,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "관악",
@@ -1284,10 +1426,15 @@
       {
         "id": "관악_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 0,
+          "wheelchair_lift": 1,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "관악산",
@@ -1412,15 +1559,25 @@
       {
         "id": "광운대_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 1,
+          "escalator": 4,
+          "wheelchair_lift": 2,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "광운대_경춘",
         "line": "경춘",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 1,
+          "escalator": 4,
+          "wheelchair_lift": 2,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "광화문",
@@ -1524,10 +1681,15 @@
       {
         "id": "구로_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 7,
+          "escalator": 2,
+          "wheelchair_lift": 5,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "구로디지털단지",
@@ -1562,10 +1724,15 @@
       {
         "id": "구룡_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 16,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "구리",
@@ -1580,15 +1747,26 @@
       {
         "id": "구리_8",
         "line": "8",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023",
+          "shared": true
+        }
       },
       {
         "id": "구리_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "구반포",
@@ -1644,15 +1822,26 @@
       {
         "id": "구성_GTX-A",
         "line": "GTX-A",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 14,
+          "wheelchair_lift": 0,
+          "source": "korail_2023",
+          "shared": true
+        }
       },
       {
         "id": "구성_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 14,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "구의",
@@ -1687,10 +1876,15 @@
       {
         "id": "구일_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 7,
+          "wheelchair_lift": 5,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "구파발",
@@ -1725,10 +1919,15 @@
       {
         "id": "국수_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "국제업무지구",
@@ -1742,10 +1941,13 @@
       {
         "id": "국제업무지구_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 5,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "국회의사당",
@@ -1810,10 +2012,15 @@
       {
         "id": "군포_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 2,
+          "wheelchair_lift": 2,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "굴봉산",
@@ -1827,10 +2034,15 @@
       {
         "id": "굴봉산_경춘",
         "line": "경춘",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "굴포천",
@@ -1844,10 +2056,13 @@
       {
         "id": "굴포천_7",
         "line": "7",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "굽은다리",
@@ -1882,10 +2097,13 @@
       {
         "id": "귤현_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "금곡",
@@ -1899,10 +2117,15 @@
       {
         "id": "금곡_경춘",
         "line": "경춘",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "금릉",
@@ -1916,10 +2139,15 @@
       {
         "id": "금릉_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "금정",
@@ -1934,15 +2162,25 @@
       {
         "id": "금정_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "금정_4",
         "line": "4",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "금천구청",
@@ -1956,10 +2194,15 @@
       {
         "id": "금천구청_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "금촌",
@@ -1973,10 +2216,15 @@
       {
         "id": "금촌_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "금호",
@@ -2012,15 +2260,26 @@
       {
         "id": "기흥_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 8,
+          "escalator": 15,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "기흥_에버라인",
         "line": "에버라인",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 8,
+          "escalator": 15,
+          "wheelchair_lift": 0,
+          "source": "korail_2023",
+          "shared": true
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "길동",
@@ -2093,10 +2352,15 @@
       {
         "id": "김유정_경춘",
         "line": "경춘",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "김포공항",
@@ -2152,10 +2416,10 @@
         "id": "김포공항_서해",
         "line": "서해",
         "accessibility": {
-          "elevator": 2,
-          "escalator": 8,
+          "elevator": 5,
+          "escalator": 18,
           "wheelchair_lift": 0,
-          "shared": true
+          "source": "korail_2023"
         }
       }
     ],
@@ -2205,10 +2469,13 @@
       {
         "id": "까치울_7",
         "line": "7",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "낙성대",
@@ -2264,10 +2531,13 @@
       {
         "id": "남동구청_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "남동인더스파크",
@@ -2281,10 +2551,15 @@
       {
         "id": "남동인더스파크_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "남부터미널",
@@ -2340,10 +2615,15 @@
       {
         "id": "남영_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 0,
+          "escalator": 0,
+          "wheelchair_lift": 1,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "unmet"
   },
   {
     "name": "남위례",
@@ -2378,10 +2658,15 @@
       {
         "id": "남춘천_경춘",
         "line": "경춘",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "남태령",
@@ -2480,9 +2765,10 @@
         "id": "노량진_1",
         "line": "1",
         "accessibility": {
-          "elevator": 3,
-          "source": "elevator_location",
-          "shared": true
+          "elevator": 1,
+          "escalator": 2,
+          "wheelchair_lift": 5,
+          "source": "korail_2023"
         }
       },
       {
@@ -2581,10 +2867,15 @@
       {
         "id": "녹양_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "녹천",
@@ -2598,10 +2889,15 @@
       {
         "id": "녹천_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 8,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "논현",
@@ -2648,15 +2944,25 @@
       {
         "id": "능곡_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "escalator": 10,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "능곡_서해",
         "line": "서해",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "escalator": 10,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "능길",
@@ -2673,15 +2979,25 @@
       {
         "id": "능길_4",
         "line": "4",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "능길_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "다산",
@@ -2750,10 +3066,15 @@
       {
         "id": "달월_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 1,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "답십리",
@@ -2835,10 +3156,15 @@
       {
         "id": "당정_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "대곡",
@@ -2855,25 +3181,46 @@
       {
         "id": "대곡_3",
         "line": "3",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "대곡_GTX-A",
         "line": "GTX-A",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023",
+          "shared": true
+        }
       },
       {
         "id": "대곡_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "대곡_서해",
         "line": "서해",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "대공원",
@@ -2887,10 +3234,15 @@
       {
         "id": "대공원_4",
         "line": "4",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "대림",
@@ -2935,10 +3287,15 @@
       {
         "id": "대모산입구_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 3,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "대방",
@@ -2953,15 +3310,26 @@
       {
         "id": "대방_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 5,
+          "escalator": 10,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "대방_신림",
         "line": "신림",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 5,
+          "escalator": 10,
+          "wheelchair_lift": 0,
+          "source": "korail_2023",
+          "shared": true
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "대성리",
@@ -2975,10 +3343,15 @@
       {
         "id": "대성리_경춘",
         "line": "경춘",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "대야미",
@@ -2992,10 +3365,15 @@
       {
         "id": "대야미_4",
         "line": "4",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "대청",
@@ -3051,10 +3429,15 @@
       {
         "id": "대화_3",
         "line": "3",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "대흥",
@@ -3089,10 +3472,15 @@
       {
         "id": "덕계_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 1,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "덕소",
@@ -3106,10 +3494,15 @@
       {
         "id": "덕소_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "덕정",
@@ -3123,10 +3516,15 @@
       {
         "id": "덕정_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "도곡",
@@ -3151,10 +3549,10 @@
         "id": "도곡_수인분당",
         "line": "수인분당",
         "accessibility": {
-          "elevator": 0,
-          "escalator": 8,
-          "wheelchair_lift": 0,
-          "shared": true
+          "elevator": 4,
+          "escalator": 20,
+          "wheelchair_lift": 3,
+          "source": "korail_2023"
         }
       }
     ],
@@ -3172,10 +3570,15 @@
       {
         "id": "도농_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "도라산",
@@ -3189,10 +3592,15 @@
       {
         "id": "도라산_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 1,
+          "escalator": 3,
+          "wheelchair_lift": 2,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "도림천",
@@ -3227,10 +3635,15 @@
       {
         "id": "도봉_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "도봉산",
@@ -3247,9 +3660,9 @@
         "line": "1",
         "accessibility": {
           "elevator": 5,
-          "escalator": 0,
+          "escalator": 10,
           "wheelchair_lift": 0,
-          "shared": true
+          "source": "korail_2023"
         }
       },
       {
@@ -3276,10 +3689,15 @@
       {
         "id": "도심_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "도원",
@@ -3293,10 +3711,15 @@
       {
         "id": "도원_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 2,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "도화",
@@ -3310,10 +3733,15 @@
       {
         "id": "도화_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "독립문",
@@ -3369,10 +3797,15 @@
       {
         "id": "독산_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "독정",
@@ -3386,10 +3819,13 @@
       {
         "id": "독정_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "돌곶이",
@@ -3534,10 +3970,15 @@
       {
         "id": "동두천_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 5,
+          "escalator": 7,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "동두천중앙",
@@ -3551,10 +3992,15 @@
       {
         "id": "동두천중앙_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "동막",
@@ -3568,10 +4014,13 @@
       {
         "id": "동막_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "동묘앞",
@@ -3633,10 +4082,13 @@
       {
         "id": "동수_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "동암",
@@ -3650,10 +4102,15 @@
       {
         "id": "동암_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "동오",
@@ -3684,10 +4141,15 @@
       {
         "id": "동인천_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 5,
+          "wheelchair_lift": 2,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "동작",
@@ -3748,10 +4210,13 @@
       {
         "id": "동춘_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "동탄",
@@ -3782,10 +4247,15 @@
       {
         "id": "두정_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "둔전",
@@ -3889,10 +4359,10 @@
         "id": "디지털미디어시티_경의중앙",
         "line": "경의중앙",
         "accessibility": {
-          "elevator": 3,
-          "escalator": 8,
-          "wheelchair_lift": 2,
-          "shared": true
+          "elevator": 9,
+          "escalator": 20,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
         }
       },
       {
@@ -3992,10 +4462,15 @@
       {
         "id": "마두_3",
         "line": "3",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 12,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "마들",
@@ -4047,10 +4522,15 @@
       {
         "id": "마석_경춘",
         "line": "경춘",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "마장",
@@ -4085,10 +4565,13 @@
       {
         "id": "마전_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "마천",
@@ -4165,10 +4648,13 @@
       {
         "id": "만수_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "망우",
@@ -4183,15 +4669,25 @@
       {
         "id": "망우_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "망우_경춘",
         "line": "경춘",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "망원",
@@ -4226,10 +4722,15 @@
       {
         "id": "망월사_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 4,
+          "wheelchair_lift": 2,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "망포",
@@ -4243,10 +4744,15 @@
       {
         "id": "망포_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 14,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "매교",
@@ -4260,10 +4766,15 @@
       {
         "id": "매교_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 21,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "매봉",
@@ -4298,10 +4809,15 @@
       {
         "id": "매탄권선_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 20,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "먹골",
@@ -4416,10 +4932,15 @@
       {
         "id": "명학_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "모란",
@@ -4444,10 +4965,10 @@
         "id": "모란_수인분당",
         "line": "수인분당",
         "accessibility": {
-          "elevator": 3,
-          "escalator": 2,
-          "wheelchair_lift": 0,
-          "shared": true
+          "elevator": 2,
+          "escalator": 12,
+          "wheelchair_lift": 5,
+          "source": "korail_2023"
         }
       }
     ],
@@ -4465,10 +4986,13 @@
       {
         "id": "모래내시장_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "목동",
@@ -4566,10 +5090,15 @@
       {
         "id": "문산_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "문정",
@@ -4604,10 +5133,13 @@
       {
         "id": "문학경기장_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "미금",
@@ -4622,15 +5154,26 @@
       {
         "id": "미금_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "미금_신분당",
         "line": "신분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023",
+          "shared": true
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "미사",
@@ -4707,10 +5250,13 @@
       {
         "id": "박촌_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "반월",
@@ -4724,10 +5270,15 @@
       {
         "id": "반월_4",
         "line": "4",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "반포",
@@ -4842,10 +5393,15 @@
       {
         "id": "방학_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "방화",
@@ -4880,10 +5436,15 @@
       {
         "id": "배방_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "백마",
@@ -4898,15 +5459,25 @@
       {
         "id": "백마_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "백마_서해",
         "line": "서해",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "백석",
@@ -4920,10 +5491,15 @@
       {
         "id": "백석_3",
         "line": "3",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 5,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "백양리",
@@ -4937,10 +5513,15 @@
       {
         "id": "백양리_경춘",
         "line": "경춘",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "백운",
@@ -4954,10 +5535,15 @@
       {
         "id": "백운_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "버티고개",
@@ -4992,10 +5578,15 @@
       {
         "id": "범계_4",
         "line": "4",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 12,
+          "wheelchair_lift": 2,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "범골",
@@ -5027,15 +5618,26 @@
       {
         "id": "별내_8",
         "line": "8",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023",
+          "shared": true
+        }
       },
       {
         "id": "별내_경춘",
         "line": "경춘",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "별내별가람",
@@ -5066,10 +5668,15 @@
       {
         "id": "병점_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "보라매",
@@ -5179,10 +5786,15 @@
       {
         "id": "보산_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "보정",
@@ -5196,10 +5808,15 @@
       {
         "id": "보정_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 18,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "보평",
@@ -5241,14 +5858,14 @@
         "id": "복정_수인분당",
         "line": "수인분당",
         "accessibility": {
-          "elevator": 2,
-          "escalator": 5,
+          "elevator": 0,
+          "escalator": 2,
           "wheelchair_lift": 0,
-          "shared": true
+          "source": "korail_2023"
         }
       }
     ],
-    "elevator": "met"
+    "elevator": "unmet"
   },
   {
     "name": "봉명",
@@ -5262,10 +5879,15 @@
       {
         "id": "봉명_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "봉은사",
@@ -5341,10 +5963,15 @@
       {
         "id": "부개_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "부발",
@@ -5358,10 +5985,15 @@
       {
         "id": "부발_경강",
         "line": "경강",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "부천",
@@ -5375,10 +6007,15 @@
       {
         "id": "부천_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "부천시청",
@@ -5392,10 +6029,13 @@
       {
         "id": "부천시청_7",
         "line": "7",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "부천종합운동장",
@@ -5410,15 +6050,23 @@
       {
         "id": "부천종합운동장_7",
         "line": "7",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "source": "incheon_2026"
+        }
       },
       {
         "id": "부천종합운동장_서해",
         "line": "서해",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 22,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "부평",
@@ -5433,15 +6081,23 @@
       {
         "id": "부평_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 2,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "부평_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "부평구청",
@@ -5456,15 +6112,21 @@
       {
         "id": "부평구청_7",
         "line": "7",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 9,
+          "source": "incheon_2026"
+        }
       },
       {
         "id": "부평구청_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "부평삼거리",
@@ -5478,10 +6140,13 @@
       {
         "id": "부평삼거리_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "부평시장",
@@ -5495,10 +6160,13 @@
       {
         "id": "부평시장_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "북한산보국문",
@@ -5658,10 +6326,15 @@
       {
         "id": "사릉_경춘",
         "line": "경춘",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "사리",
@@ -5675,10 +6348,15 @@
       {
         "id": "사리_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "사우",
@@ -5729,10 +6407,13 @@
       {
         "id": "산곡_7",
         "line": "7",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "산본",
@@ -5746,10 +6427,15 @@
       {
         "id": "산본_4",
         "line": "4",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 1,
+          "escalator": 8,
+          "wheelchair_lift": 2,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "산성",
@@ -5832,10 +6518,15 @@
       {
         "id": "삼동_경강",
         "line": "경강",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "삼산체육관",
@@ -5849,10 +6540,13 @@
       {
         "id": "삼산체육관_7",
         "line": "7",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "삼성",
@@ -5907,10 +6601,15 @@
       {
         "id": "삼송_3",
         "line": "3",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 5,
+          "escalator": 16,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "삼양",
@@ -5984,10 +6683,15 @@
       {
         "id": "상갈_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 16,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "상계",
@@ -6043,10 +6747,13 @@
       {
         "id": "상동_7",
         "line": "7",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "상록수",
@@ -6060,10 +6767,15 @@
       {
         "id": "상록수_4",
         "line": "4",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "상봉",
@@ -6090,9 +6802,9 @@
         "line": "경의중앙",
         "accessibility": {
           "elevator": 5,
-          "escalator": 6,
+          "escalator": 11,
           "wheelchair_lift": 0,
-          "shared": true
+          "source": "korail_2023"
         }
       },
       {
@@ -6100,9 +6812,9 @@
         "line": "경춘",
         "accessibility": {
           "elevator": 5,
-          "escalator": 6,
+          "escalator": 11,
           "wheelchair_lift": 0,
-          "shared": true
+          "source": "korail_2023"
         }
       }
     ],
@@ -6204,10 +6916,15 @@
       {
         "id": "상천_경춘",
         "line": "경춘",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "상현",
@@ -6306,10 +7023,15 @@
       {
         "id": "서강대_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 10,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "서구청",
@@ -6323,10 +7045,13 @@
       {
         "id": "서구청_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "서대문",
@@ -6378,10 +7103,13 @@
       {
         "id": "서부여성회관_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "서빙고",
@@ -6395,10 +7123,15 @@
       {
         "id": "서빙고_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "서울대벤처타운",
@@ -6450,10 +7183,15 @@
       {
         "id": "서울숲_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 16,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "서울역",
@@ -6565,10 +7303,15 @@
       {
         "id": "서정리_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 2,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "서초",
@@ -6603,10 +7346,15 @@
       {
         "id": "서현_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "석계",
@@ -6622,10 +7370,10 @@
         "id": "석계_1",
         "line": "1",
         "accessibility": {
-          "elevator": 4,
-          "escalator": 14,
-          "wheelchair_lift": 2,
-          "shared": true
+          "elevator": 1,
+          "escalator": 1,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
         }
       },
       {
@@ -6653,15 +7401,21 @@
       {
         "id": "석남_7",
         "line": "7",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 11,
+          "source": "incheon_2026"
+        }
       },
       {
         "id": "석남_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "석바위시장",
@@ -6675,10 +7429,13 @@
       {
         "id": "석바위시장_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "석수",
@@ -6692,10 +7449,15 @@
       {
         "id": "석수_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 0,
+          "escalator": 0,
+          "wheelchair_lift": 2,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "unmet"
   },
   {
     "name": "석천사거리",
@@ -6709,10 +7471,13 @@
       {
         "id": "석천사거리_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "석촌",
@@ -6787,10 +7552,10 @@
         "id": "선릉_수인분당",
         "line": "수인분당",
         "accessibility": {
-          "elevator": 3,
-          "escalator": 2,
+          "elevator": 4,
+          "escalator": 20,
           "wheelchair_lift": 0,
-          "shared": true
+          "source": "korail_2023"
         }
       }
     ],
@@ -6808,10 +7573,15 @@
       {
         "id": "선바위_4",
         "line": "4",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "선부",
@@ -6872,9 +7642,10 @@
         "id": "선정릉_수인분당",
         "line": "수인분당",
         "accessibility": {
-          "elevator": 2,
-          "source": "elevator_location",
-          "shared": true
+          "elevator": 4,
+          "escalator": 31,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
         }
       }
     ],
@@ -6892,10 +7663,13 @@
       {
         "id": "선학_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "성균관대",
@@ -6909,10 +7683,15 @@
       {
         "id": "성균관대_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 7,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "성남",
@@ -7017,10 +7796,15 @@
       {
         "id": "성환_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "세류",
@@ -7034,10 +7818,15 @@
       {
         "id": "세류_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 1,
+          "escalator": 0,
+          "wheelchair_lift": 2,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "세마",
@@ -7051,10 +7840,15 @@
       {
         "id": "세마_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 2,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "세종대왕릉",
@@ -7068,10 +7862,15 @@
       {
         "id": "세종대왕릉_경강",
         "line": "경강",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "센트럴파크",
@@ -7085,10 +7884,13 @@
       {
         "id": "센트럴파크_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "소래포구",
@@ -7102,10 +7904,15 @@
       {
         "id": "소래포구_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 12,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "소사",
@@ -7120,15 +7927,25 @@
       {
         "id": "소사_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "소사_서해",
         "line": "서해",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "소새울",
@@ -7216,10 +8033,15 @@
       {
         "id": "송내_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 5,
+          "escalator": 10,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "송도",
@@ -7233,10 +8055,15 @@
       {
         "id": "송도_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "송도달빛축제공원",
@@ -7250,10 +8077,13 @@
       {
         "id": "송도달빛축제공원_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "송산",
@@ -7305,10 +8135,15 @@
       {
         "id": "송탄_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "송파",
@@ -7363,10 +8198,15 @@
       {
         "id": "수내_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "수락산",
@@ -7401,10 +8241,15 @@
       {
         "id": "수리산_4",
         "line": "4",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "수색",
@@ -7418,10 +8263,15 @@
       {
         "id": "수색_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 5,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "수서",
@@ -7457,10 +8307,10 @@
         "id": "수서_수인분당",
         "line": "수인분당",
         "accessibility": {
-          "elevator": 4,
-          "escalator": 12,
-          "wheelchair_lift": 0,
-          "shared": true
+          "elevator": 2,
+          "escalator": 8,
+          "wheelchair_lift": 3,
+          "source": "korail_2023"
         }
       }
     ],
@@ -7479,15 +8329,25 @@
       {
         "id": "수원_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 14,
+          "escalator": 26,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "수원_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 14,
+          "escalator": 26,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "수원시청",
@@ -7501,10 +8361,15 @@
       {
         "id": "수원시청_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 18,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "수유",
@@ -7619,10 +8484,15 @@
       {
         "id": "숭의_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 16,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "시민공원",
@@ -7636,10 +8506,13 @@
       {
         "id": "시민공원_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 5,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "시우",
@@ -7769,10 +8642,15 @@
       {
         "id": "신갈_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 22,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "신검단중앙",
@@ -7786,10 +8664,13 @@
       {
         "id": "신검단중앙_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "신금호",
@@ -7826,10 +8707,10 @@
         "id": "신길_1",
         "line": "1",
         "accessibility": {
-          "elevator": 6,
-          "escalator": 9,
-          "wheelchair_lift": 0,
-          "shared": true
+          "elevator": 4,
+          "escalator": 6,
+          "wheelchair_lift": 2,
+          "source": "korail_2023"
         }
       },
       {
@@ -7869,10 +8750,10 @@
         "id": "신내_경춘",
         "line": "경춘",
         "accessibility": {
-          "elevator": 1,
-          "escalator": 2,
+          "elevator": 5,
+          "escalator": 10,
           "wheelchair_lift": 0,
-          "shared": true
+          "source": "korail_2023"
         }
       }
     ],
@@ -8017,9 +8898,9 @@
         "line": "1",
         "accessibility": {
           "elevator": 4,
-          "escalator": 9,
+          "escalator": 11,
           "wheelchair_lift": 0,
-          "shared": true
+          "source": "korail_2023"
         }
       },
       {
@@ -8046,10 +8927,15 @@
       {
         "id": "신둔도예촌_경강",
         "line": "경강",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "신림",
@@ -8227,10 +9113,13 @@
       {
         "id": "신연수_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "신용산",
@@ -8265,10 +9154,15 @@
       {
         "id": "신원_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "신이문",
@@ -8282,10 +9176,15 @@
       {
         "id": "신이문_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 3,
+          "wheelchair_lift": 3,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "신정",
@@ -8341,10 +9240,13 @@
       {
         "id": "신중동_7",
         "line": "7",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "신창",
@@ -8358,10 +9260,15 @@
       {
         "id": "신창_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "신천",
@@ -8413,10 +9320,15 @@
       {
         "id": "신촌(경의중앙)_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 2,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "신포",
@@ -8430,10 +9342,15 @@
       {
         "id": "신포_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 15,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "신풍",
@@ -8527,10 +9444,15 @@
       {
         "id": "쌍용_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "아라",
@@ -8544,10 +9466,13 @@
       {
         "id": "아라_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "아산",
@@ -8561,10 +9486,15 @@
       {
         "id": "아산_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "escalator": 22,
+          "wheelchair_lift": 1,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "아시아드경기장",
@@ -8578,10 +9508,13 @@
       {
         "id": "아시아드경기장_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "아신",
@@ -8595,10 +9528,15 @@
       {
         "id": "아신_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "아차산",
@@ -8676,15 +9614,25 @@
       {
         "id": "안산_4",
         "line": "4",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 1,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "안산_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 1,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "안암",
@@ -8719,10 +9667,15 @@
       {
         "id": "안양_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "암사",
@@ -8799,10 +9752,15 @@
       {
         "id": "압구정로데오_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 20,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "애오개",
@@ -8837,10 +9795,15 @@
       {
         "id": "야당_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 10,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "야목",
@@ -8854,10 +9817,15 @@
       {
         "id": "야목_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "야탑",
@@ -8871,10 +9839,15 @@
       {
         "id": "야탑_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "약수",
@@ -8919,10 +9892,15 @@
       {
         "id": "양수_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "양원",
@@ -8936,10 +9914,15 @@
       {
         "id": "양원_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "양재",
@@ -9002,10 +9985,15 @@
       {
         "id": "양정_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 2,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "양주",
@@ -9019,10 +10007,15 @@
       {
         "id": "양주_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "양천구청",
@@ -9115,10 +10108,15 @@
       {
         "id": "양평(경의중앙)_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "escalator": 12,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "어룡",
@@ -9187,10 +10185,15 @@
       {
         "id": "어천_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "언주",
@@ -9275,10 +10278,15 @@
       {
         "id": "여주_경강",
         "line": "경강",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 1,
+          "escalator": 2,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "역곡",
@@ -9292,10 +10300,15 @@
       {
         "id": "역곡_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "역삼",
@@ -9351,10 +10364,15 @@
       {
         "id": "연수_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 8,
+          "escalator": 11,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "연신내",
@@ -9447,10 +10465,15 @@
       {
         "id": "영등포_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 11,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "영등포구청",
@@ -9533,10 +10556,15 @@
       {
         "id": "영통_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 14,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "예술회관",
@@ -9550,10 +10578,13 @@
       {
         "id": "예술회관_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "오금",
@@ -9615,10 +10646,15 @@
       {
         "id": "오류동_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "오리",
@@ -9632,10 +10668,15 @@
       {
         "id": "오리_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 12,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "오목교",
@@ -9670,10 +10711,15 @@
       {
         "id": "오목천_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 11,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "오빈",
@@ -9687,10 +10733,15 @@
       {
         "id": "오빈_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "오산",
@@ -9704,10 +10755,15 @@
       {
         "id": "오산_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "escalator": 2,
+          "wheelchair_lift": 2,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "오산대",
@@ -9721,10 +10777,15 @@
       {
         "id": "오산대_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "오이도",
@@ -9739,15 +10800,25 @@
       {
         "id": "오이도_4",
         "line": "4",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "오이도_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "옥수",
@@ -9772,10 +10843,10 @@
         "id": "옥수_경의중앙",
         "line": "경의중앙",
         "accessibility": {
-          "elevator": 3,
+          "elevator": 2,
           "escalator": 4,
           "wheelchair_lift": 0,
-          "shared": true
+          "source": "korail_2023"
         }
       }
     ],
@@ -9795,10 +10866,10 @@
         "id": "온수_1",
         "line": "1",
         "accessibility": {
-          "elevator": 3,
-          "escalator": 16,
-          "wheelchair_lift": 1,
-          "shared": true
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
         }
       },
       {
@@ -9825,10 +10896,15 @@
       {
         "id": "온양온천_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 5,
+          "escalator": 10,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "올림픽공원",
@@ -9872,10 +10948,13 @@
       {
         "id": "완정_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "왕길",
@@ -9889,10 +10968,13 @@
       {
         "id": "왕길_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "왕십리",
@@ -9928,20 +11010,20 @@
         "id": "왕십리_경의중앙",
         "line": "경의중앙",
         "accessibility": {
-          "elevator": 2,
-          "escalator": 8,
-          "wheelchair_lift": 0,
-          "shared": true
+          "elevator": 5,
+          "escalator": 14,
+          "wheelchair_lift": 2,
+          "source": "korail_2023"
         }
       },
       {
         "id": "왕십리_수인분당",
         "line": "수인분당",
         "accessibility": {
-          "elevator": 2,
-          "escalator": 8,
-          "wheelchair_lift": 0,
-          "shared": true
+          "elevator": 5,
+          "escalator": 14,
+          "wheelchair_lift": 2,
+          "source": "korail_2023"
         }
       }
     ],
@@ -9959,10 +11041,15 @@
       {
         "id": "외대앞_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 0,
+          "escalator": 0,
+          "wheelchair_lift": 1,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "unmet"
   },
   {
     "name": "용답",
@@ -10039,10 +11126,15 @@
       {
         "id": "용문_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "escalator": 12,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "용산",
@@ -10057,15 +11149,25 @@
       {
         "id": "용산_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 14,
+          "escalator": 23,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "용산_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 14,
+          "escalator": 23,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "용인중앙시장",
@@ -10117,10 +11219,15 @@
       {
         "id": "운길산_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "운서",
@@ -10168,10 +11275,13 @@
       {
         "id": "운연_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "운정",
@@ -10185,10 +11295,15 @@
       {
         "id": "운정_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "escalator": 10,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "운정중앙",
@@ -10236,10 +11351,15 @@
       {
         "id": "원당_3",
         "line": "3",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 10,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "원덕",
@@ -10253,10 +11373,15 @@
       {
         "id": "원덕_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "원시",
@@ -10288,15 +11413,23 @@
       {
         "id": "원인재_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 10,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "원인재_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "원종",
@@ -10310,10 +11443,15 @@
       {
         "id": "원종_서해",
         "line": "서해",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 30,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "원흥",
@@ -10327,10 +11465,15 @@
       {
         "id": "원흥_3",
         "line": "3",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "escalator": 19,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "월계",
@@ -10344,10 +11487,15 @@
       {
         "id": "월계_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 8,
+          "escalator": 9,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "월곡",
@@ -10382,10 +11530,15 @@
       {
         "id": "월곶_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "월드컵경기장",
@@ -10420,10 +11573,15 @@
       {
         "id": "월롱_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 2,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "을지로3가",
@@ -10520,10 +11678,15 @@
       {
         "id": "응봉_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "응암",
@@ -10558,10 +11721,15 @@
       {
         "id": "의왕_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "의정부",
@@ -10575,10 +11743,15 @@
       {
         "id": "의정부_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 9,
+          "escalator": 12,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "의정부시청",
@@ -10648,15 +11821,25 @@
       {
         "id": "이매_경강",
         "line": "경강",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 13,
+          "escalator": 23,
+          "wheelchair_lift": 1,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "이매_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 13,
+          "escalator": 23,
+          "wheelchair_lift": 1,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "이천",
@@ -10670,10 +11853,15 @@
       {
         "id": "이천_경강",
         "line": "경강",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "이촌",
@@ -10698,10 +11886,10 @@
         "id": "이촌_경의중앙",
         "line": "경의중앙",
         "accessibility": {
-          "elevator": 5,
+          "elevator": 3,
           "escalator": 4,
           "wheelchair_lift": 0,
-          "shared": true
+          "source": "korail_2023"
         }
       }
     ],
@@ -10740,10 +11928,15 @@
       {
         "id": "인덕원_4",
         "line": "4",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 5,
+          "escalator": 16,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "인천",
@@ -10758,15 +11951,25 @@
       {
         "id": "인천_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 12,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "인천_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 12,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "인천가좌",
@@ -10780,10 +11983,13 @@
       {
         "id": "인천가좌_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "인천공항1터미널",
@@ -10831,10 +12037,15 @@
       {
         "id": "인천논현_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 12,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "인천대공원",
@@ -10848,10 +12059,13 @@
       {
         "id": "인천대공원_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "인천대입구",
@@ -10865,10 +12079,13 @@
       {
         "id": "인천대입구_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "인천시청",
@@ -10883,15 +12100,21 @@
       {
         "id": "인천시청_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "source": "incheon_2026"
+        }
       },
       {
         "id": "인천시청_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 8,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "인천터미널",
@@ -10905,10 +12128,13 @@
       {
         "id": "인천터미널_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "인하대",
@@ -10922,10 +12148,15 @@
       {
         "id": "인하대_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 20,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "일산",
@@ -10940,15 +12171,25 @@
       {
         "id": "일산_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 5,
+          "escalator": 12,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "일산_서해",
         "line": "서해",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 5,
+          "escalator": 12,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "일원",
@@ -11000,10 +12241,13 @@
       {
         "id": "임학_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "자양",
@@ -11040,10 +12284,13 @@
       {
         "id": "작전_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "잠실",
@@ -11323,10 +12570,15 @@
       {
         "id": "정발산_3",
         "line": "3",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "정부과천청사",
@@ -11340,10 +12592,15 @@
       {
         "id": "정부과천청사_4",
         "line": "4",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 5,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "정왕",
@@ -11358,15 +12615,25 @@
       {
         "id": "정왕_4",
         "line": "4",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "정왕_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "정자",
@@ -11381,15 +12648,26 @@
       {
         "id": "정자_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 12,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "정자_신분당",
         "line": "신분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 12,
+          "wheelchair_lift": 0,
+          "source": "korail_2023",
+          "shared": true
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "제기동",
@@ -11424,10 +12702,15 @@
       {
         "id": "제물포_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "종각",
@@ -11555,15 +12838,23 @@
       {
         "id": "주안_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "주안_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "주안국가산단",
@@ -11577,10 +12868,13 @@
       {
         "id": "주안국가산단_인천2",
         "line": "인천2",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "주엽",
@@ -11594,10 +12888,15 @@
       {
         "id": "주엽_3",
         "line": "3",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 12,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "죽전",
@@ -11611,10 +12910,15 @@
       {
         "id": "죽전_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "중계",
@@ -11670,10 +12974,15 @@
       {
         "id": "중동_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "중랑",
@@ -11688,15 +12997,25 @@
       {
         "id": "중랑_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 2,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "중랑_경춘",
         "line": "경춘",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 2,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "중앙",
@@ -11711,15 +13030,25 @@
       {
         "id": "중앙_4",
         "line": "4",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "중앙_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "중앙보훈병원",
@@ -11832,10 +13161,13 @@
       {
         "id": "지식정보단지_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "지축",
@@ -11870,10 +13202,15 @@
       {
         "id": "지평_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 2,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "지행",
@@ -11887,10 +13224,15 @@
       {
         "id": "지행_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "직산",
@@ -11904,10 +13246,15 @@
       {
         "id": "직산_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "진위",
@@ -11921,10 +13268,15 @@
       {
         "id": "진위_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "진접",
@@ -12008,10 +13360,15 @@
       {
         "id": "천마산_경춘",
         "line": "경춘",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "천안",
@@ -12025,10 +13382,15 @@
       {
         "id": "천안_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "escalator": 1,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "천왕",
@@ -12215,30 +13577,30 @@
         "id": "청량리_경의중앙",
         "line": "경의중앙",
         "accessibility": {
-          "elevator": 2,
-          "escalator": 6,
+          "elevator": 14,
+          "escalator": 19,
           "wheelchair_lift": 1,
-          "shared": true
+          "source": "korail_2023"
         }
       },
       {
         "id": "청량리_경춘",
         "line": "경춘",
         "accessibility": {
-          "elevator": 2,
-          "escalator": 6,
+          "elevator": 14,
+          "escalator": 19,
           "wheelchair_lift": 1,
-          "shared": true
+          "source": "korail_2023"
         }
       },
       {
         "id": "청량리_수인분당",
         "line": "수인분당",
         "accessibility": {
-          "elevator": 2,
-          "escalator": 6,
+          "elevator": 14,
+          "escalator": 19,
           "wheelchair_lift": 1,
-          "shared": true
+          "source": "korail_2023"
         }
       }
     ],
@@ -12256,10 +13618,15 @@
       {
         "id": "청명_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 5,
+          "escalator": 20,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "청산",
@@ -12290,10 +13657,15 @@
       {
         "id": "청평_경춘",
         "line": "경춘",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "초당",
@@ -12324,10 +13696,15 @@
       {
         "id": "초월_경강",
         "line": "경강",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "초지",
@@ -12343,20 +13720,35 @@
       {
         "id": "초지_4",
         "line": "4",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "초지_서해",
         "line": "서해",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "초지_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "총신대입구",
@@ -12403,10 +13795,13 @@
       {
         "id": "춘의_7",
         "line": "7",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "춘천",
@@ -12420,10 +13815,15 @@
       {
         "id": "춘천_경춘",
         "line": "경춘",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 7,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "충무로",
@@ -12500,10 +13900,13 @@
       {
         "id": "캠퍼스타운_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 5,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "킨텍스",
@@ -12534,10 +13937,15 @@
       {
         "id": "탄현_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "탑석",
@@ -12568,10 +13976,15 @@
       {
         "id": "탕정_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "태릉입구",
@@ -12616,10 +14029,15 @@
       {
         "id": "태평_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 2,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "테크노파크",
@@ -12633,10 +14051,13 @@
       {
         "id": "테크노파크_인천1",
         "line": "인천1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "source": "incheon_2026"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "퇴계원",
@@ -12650,10 +14071,15 @@
       {
         "id": "퇴계원_경춘",
         "line": "경춘",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "파주",
@@ -12667,10 +14093,15 @@
       {
         "id": "파주_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 5,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "판교",
@@ -12685,15 +14116,26 @@
       {
         "id": "판교_경강",
         "line": "경강",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 18,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "판교_신분당",
         "line": "신분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 18,
+          "wheelchair_lift": 0,
+          "source": "korail_2023",
+          "shared": true
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "팔당",
@@ -12707,10 +14149,15 @@
       {
         "id": "팔당_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "평내호평",
@@ -12724,10 +14171,15 @@
       {
         "id": "평내호평_경춘",
         "line": "경춘",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "평촌",
@@ -12741,10 +14193,15 @@
       {
         "id": "평촌_4",
         "line": "4",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 16,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "평택",
@@ -12758,10 +14215,15 @@
       {
         "id": "평택_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "평택지제",
@@ -12775,10 +14237,15 @@
       {
         "id": "평택지제_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "풍무",
@@ -12810,15 +14277,25 @@
       {
         "id": "풍산_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "풍산_서해",
         "line": "서해",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "하계",
@@ -12996,10 +14473,15 @@
       {
         "id": "한남_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 0,
+          "escalator": 0,
+          "wheelchair_lift": 2,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "unmet"
   },
   {
     "name": "한대앞",
@@ -13014,15 +14496,25 @@
       {
         "id": "한대앞_4",
         "line": "4",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "한대앞_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "한성대입구",
@@ -13098,10 +14590,15 @@
       {
         "id": "한티_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 18,
+          "wheelchair_lift": 3,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "합정",
@@ -13167,10 +14664,15 @@
       {
         "id": "행신_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 10,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "혜화",
@@ -13205,10 +14707,15 @@
       {
         "id": "호구포_수인분당",
         "line": "수인분당",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "홍대입구",
@@ -13234,10 +14741,10 @@
         "id": "홍대입구_경의중앙",
         "line": "경의중앙",
         "accessibility": {
-          "elevator": 2,
-          "escalator": 8,
+          "elevator": 5,
+          "escalator": 16,
           "wheelchair_lift": 0,
-          "shared": true
+          "source": "korail_2023"
         }
       },
       {
@@ -13348,10 +14855,15 @@
       {
         "id": "화서_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 2,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "화정",
@@ -13365,10 +14877,15 @@
       {
         "id": "화정_3",
         "line": "3",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "회기",
@@ -13384,20 +14901,35 @@
       {
         "id": "회기_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "escalator": 7,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "회기_경의중앙",
         "line": "경의중앙",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "escalator": 7,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "회기_경춘",
         "line": "경춘",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 6,
+          "escalator": 7,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "회룡",
@@ -13412,15 +14944,26 @@
       {
         "id": "회룡_1",
         "line": "1",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023"
+        }
       },
       {
         "id": "회룡_의정부",
         "line": "의정부",
-        "accessibility": null
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "source": "korail_2023",
+          "shared": true
+        }
       }
     ],
-    "elevator": "unknown"
+    "elevator": "met"
   },
   {
     "name": "회현",
@@ -13483,10 +15026,10 @@
         "id": "효창공원앞_경의중앙",
         "line": "경의중앙",
         "accessibility": {
-          "elevator": 2,
-          "escalator": 6,
+          "elevator": 4,
+          "escalator": 14,
           "wheelchair_lift": 0,
-          "shared": true
+          "source": "korail_2023"
         }
       }
     ],
