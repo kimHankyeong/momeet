@@ -94,6 +94,22 @@ export default function RecommendPage() {
     };
   }, [id, navigate]);
 
+  // 방장이 제안하면 참여자 화면도 제안 화면으로 넘어간다 (5초마다 단계 확인).
+  // 방장은 대상이 아니다: 다른 후보를 다시 제안하려고 이 화면에 돌아온 경우에도 그대로 둔다
+  useEffect(() => {
+    const t = setInterval(async () => {
+      try {
+        const dash = await getMeeting(id);
+        if (!dash.me.is_host && ['proposed', 'confirmed'].includes(dash.meeting.stage)) {
+          navigate(`/meet/${id}/proposal`, { replace: true });
+        }
+      } catch {
+        // 일시적인 오류는 다음 확인 때 다시 시도한다
+      }
+    }, 5000);
+    return () => clearInterval(t);
+  }, [id, navigate]);
+
   const selected = candidates.find((c) => c.id === selectedId);
 
   const handlePropose = async () => {
