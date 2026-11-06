@@ -9,7 +9,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  min-height: 500px;
+  min-height: 600px;   /* 500 → 600 (더 내리려면 650) */
 }
 
 .home__hero-text {
