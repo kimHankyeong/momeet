@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import MeetingLayout from '../components/MeetingLayout/MeetingLayout';
 import MeetingCard from '../components/MeetingCard/MeetingCard';
 import { getMeeting } from '../api/meetApi';
+import { stationLabel } from '../utils/station';
 
 const DOW = ['일', '월', '화', '수', '목', '금', '토'];
 const dateLabel = (s) => {
@@ -31,7 +32,7 @@ const toCard = (id, res) => {
     dateLabel: c
       ? `${dateLabel(c.date)} ${c.start}`
       : `${dateLabel(res.meeting.date_start)} - ${dateLabel(res.meeting.date_end)}`,
-    place: c ? `${c.station.name}역` : '장소 미정',
+    place: c ? stationLabel(c.station.name) : '장소 미정',
     participants: res.participants.length,
     maxParticipants: res.meeting.max_participants,
     stage: STAGE_LABEL[res.meeting.stage],

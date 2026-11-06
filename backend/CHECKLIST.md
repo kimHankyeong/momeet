@@ -51,9 +51,9 @@
 - [x] `POST /meetings/{id}/proposal` — 호스트 전용, **후보는 B의 `get_candidate`로 검증** (저장된 추천 결과에 있는 후보만)
 - [x] 후보 ID는 B 형식 `c_<날짜>_<HHMM>_<역명>` (한글·`4.19민주묘지` 같은 점 포함 이름 지원)
 - [x] `POST /meetings/{id}/proposal/response` — 동의/거절, 진행 중에는 변경 가능
-- [x] 전원 동의(호스트 포함) → **자동 확정**, 거절 1명 → 즉시 `rejected`
+- [x] 확정은 호스트가 `POST /proposal/confirm` (전원 동의해도 자동 확정 안 함). 미응답이 있어도 확정 가능, 거절이 있으면 `409 HAS_REJECTION`
 - [x] 재제안 시 응답 초기화 (새 버전으로 시작, 진행 중이던 제안은 `superseded`)
-- [x] 제외/나가기로 남은 전원이 동의 상태가 되면 자동 확정
+- [x] 제외/나가기로 남은 전원이 동의 상태가 되면 호스트에게 `confirm_proposal` 안내
 - [x] 완료 기준: 단계 전이가 테스트로 확인됨 ✔
 
 ## D4. 대시보드 · 확정 화면 API

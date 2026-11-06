@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import AvailabilityGrid from './conditions/AvailabilityGrid';
 import { submitConditions } from '../api/meetApi';
-import { cellsToAvailability } from '../api/transform';
+import { cellsToAvailability, toDateString } from '../api/transform';
+import OriginPicker from './OriginPicker';
 
 
 // startDate: 약속방 시작일 "YYYY-MM-DD", totalDays: 약속방 날짜 수 (SetupPage가 서버에서 받아 넘김)
@@ -42,6 +43,8 @@ const timeRanges = (() => {
           result.push({
             id: `${d}-${start}`,
             label,
+            date: toDateString(date), // 서버 형식 "YYYY-MM-DD"
+            hours: Array.from({ length: prev + 1 - start }, (_, k) => start + k), // 이 구간의 시각들
             start: `${pad(start)}:00`,
             end: `${pad(prev + 1)}:00`,
           });
@@ -79,23 +82,34 @@ const selectedTimes = timeRanges.map((r) => `${r.label} ${r.start}-${r.end}`);
   const commitOrigin = () => {
     const place = originDraft.place.trim();
     const station = originDraft.station.trim();
-    if (place && station) setOrigin({ place, station });
+    if (station) setOrigin({ ...originDraft, place, station }); // 출발지(주소)는 선택. 없으면 집→역 도보만 빠짐
+  };
+
+  // 2단계 '다음': 역만 정해져 있으면 확정하고 넘어간다 (Enter를 안 눌러도 되게)
+  const canLeaveStep2 = Boolean(origin || originDraft.station.trim());
+  const handleNextFromStep2 = () => {
+    if (!origin) commitOrigin();
+    handleNext();
   };
 
   // [추가] 예외 출발 추가/삭제
   const handleAddException = () => {
     const { rangeId, place, station } = exceptionDraft;
     const range = timeRanges.find((r) => r.id === rangeId);
-    if (!range || !place.trim() || !station.trim()) return;
+    if (!range || !station.trim()) return;
     setExceptions((prev) => [
       ...prev,
       {
         id: Date.now(),
         label: range.label,
+        date: range.date,
+        hours: range.hours,
         startTime: range.start,
         endTime: range.end,
         place: place.trim(),
         station: station.trim(),
+        lat: exceptionDraft.lat, // 장소 검색에서 골랐을 때만 있음
+        lng: exceptionDraft.lng,
       },
     ]);
     setExceptionDraft({ rangeId: '', place: '', station: '' });
@@ -142,11 +156,21 @@ const selectedTimes = timeRanges.map((r) => `${r.label} ${r.start}-${r.end}`);
     if (c.id === 'avoidStairs') constraints.avoid_stairs = { value: true, level };
   });
 
-  const stationName = (origin?.station || '').replace(/역$/, '').trim();
+  // 끝의 '역'은 서버가 처리한다 (여기서 떼면 "서울역" → "서울"이 됨)
+  const stationName = (origin?.station || '').trim();
   try {
     await submitConditions(meetingId, {
       availability: cellsToAvailability(selectedCells, START_DATE),
       default_station: stationName,
+      // 출발 위치 좌표 → 서버가 집→역 도보를 구해 '최대 도보 거리'에 넣는다 (장소를 목록에서 골랐을 때만)
+      ...(origin?.lat != null && { default_origin: { lat: origin.lat, lng: origin.lng } }),
+      // 예외 출발: 그 날짜·시각에는 다른 역에서 출발
+      exception_stations: exceptions.map((ex) => ({
+        date: ex.date,
+        hours: ex.hours,
+        station: ex.station.trim(),
+        ...(ex.lat != null && { origin: { lat: ex.lat, lng: ex.lng } }),
+      })),
       constraints,
     });
     onSubmitSuccess({ location: stationName, selectedTimes, addedConditions });
@@ -224,27 +248,12 @@ const selectedTimes = timeRanges.map((r) => `${r.label} ${r.start}-${r.end}`);
               {/* 기본 출발: 미확정이면 입력, 확정이면 보라색 칩 */}
               {!origin ? (
                 <>
-                  <input
-                    type="text"
-                    placeholder="출발지"
-                    value={originDraft.place}
-                    onChange={(e) => setOriginDraft((d) => ({ ...d, place: e.target.value }))}
-                    className="w-full py-3.5 px-4 bg-[#F5F5F7] border-none rounded-full text-sm text-center placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6C5CE7]"
-                    autoFocus
-                  />
-                  <input
-                    type="text"
-                    placeholder="지하철 역 검색"
-                    value={originDraft.station}
-                    onChange={(e) => setOriginDraft((d) => ({ ...d, station: e.target.value }))}
-                    onKeyDown={(e) => e.key === 'Enter' && commitOrigin()}
-                    className="w-full py-3.5 px-4 bg-[#F5F5F7] border-none rounded-full text-sm text-center placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6C5CE7]"
-                  />
+                  <OriginPicker value={originDraft} onChange={setOriginDraft} onEnter={commitOrigin} autoFocus />
                   <span className="text-xs text-gray-300 block pt-1">다른 출발 설정</span>
                 </>
               ) : (
                 <>
-                  {[origin.place, origin.station].map((text, i) => (
+                  {[origin.place, origin.station].filter(Boolean).map((text, i) => (
                     <button
                       key={i}
                       type="button"
@@ -273,7 +282,7 @@ const selectedTimes = timeRanges.map((r) => `${r.label} ${r.start}-${r.end}`);
                           삭제
                         </button>
                       </div>
-                      {[ex.place, ex.station].map((text, i) => (
+                      {[ex.place, ex.station].filter(Boolean).map((text, i) => (
                         <div
                           key={i}
                           className="w-full py-3 border border-[#6C5CE7] text-[#6C5CE7] font-bold rounded-full text-sm"
@@ -299,27 +308,16 @@ const selectedTimes = timeRanges.map((r) => `${r.label} ${r.start}-${r.end}`);
                           </option>
                         ))}
                       </select>
-                      <input
-                        type="text"
-                        placeholder="출발지"
-                        value={exceptionDraft.place}
-                        onChange={(e) => setExceptionDraft((d) => ({ ...d, place: e.target.value }))}
-                        className="w-full py-3.5 px-4 bg-[#F5F5F7] border-none rounded-full text-sm text-center placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6C5CE7]"
-                      />
-                      <input
-                        type="text"
-                        placeholder="지하철 역 검색"
-                        value={exceptionDraft.station}
-                        onChange={(e) => setExceptionDraft((d) => ({ ...d, station: e.target.value }))}
-                        onKeyDown={(e) => e.key === 'Enter' && handleAddException()}
-                        className="w-full py-3.5 px-4 bg-[#F5F5F7] border-none rounded-full text-sm text-center placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6C5CE7]"
+                      <OriginPicker
+                        value={exceptionDraft}
+                        onChange={(next) => setExceptionDraft((d) => ({ ...d, ...next }))}
+                        onEnter={handleAddException}
                       />
                       <button
                         type="button"
                         onClick={handleAddException}
                         disabled={
                           !exceptionDraft.rangeId ||
-                          !exceptionDraft.place.trim() ||
                           !exceptionDraft.station.trim()
                         }
                         className="text-xs underline text-gray-500 hover:text-[#6C5CE7] disabled:text-gray-300 disabled:no-underline disabled:cursor-not-allowed"
@@ -342,10 +340,10 @@ const selectedTimes = timeRanges.map((r) => `${r.label} ${r.start}-${r.end}`);
 
             <button
               type="button"
-              disabled={!origin}
-              onClick={handleNext}
+              disabled={!canLeaveStep2}
+              onClick={handleNextFromStep2}
               className={`w-full py-3.5 font-bold rounded-full text-sm transition-all ${
-                origin
+                canLeaveStep2
                   ? 'bg-[#6C5CE7] hover:bg-[#5b4cdb] text-white shadow-sm'
                   : 'bg-[#F5F5F7] text-gray-300 cursor-not-allowed'
               }`}
@@ -519,7 +517,7 @@ const selectedTimes = timeRanges.map((r) => `${r.label} ${r.start}-${r.end}`);
                 <div className="flex items-center gap-2">
                   <span className="text-gray-400 text-[11px]">기본 출발</span>
                   <span className="font-bold text-gray-800">
-                    {origin ? `${origin.place} · ${origin.station}` : '-'}
+                    {origin ? [origin.place, origin.station].filter(Boolean).join(' · ') : '-'}
                   </span>
                 </div>
                 {exceptions.length > 0 && (
@@ -530,7 +528,7 @@ const selectedTimes = timeRanges.map((r) => `${r.label} ${r.start}-${r.end}`);
                     </div>
                     {exceptions.map((ex) => (
                       <div key={ex.id} className="bg-[#F5F5F7] text-gray-700 text-[10px] px-2 py-1 rounded">
-                        {ex.label} {ex.startTime}-{ex.endTime} · {ex.place} · {ex.station}
+                        {ex.label} {ex.startTime}-{ex.endTime} · {[ex.place, ex.station].filter(Boolean).join(' · ')}
                       </div>
                     ))}
                   </div>

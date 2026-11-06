@@ -50,22 +50,32 @@ def propose(db: Session, meeting: Meeting, host: Participant, candidate_id: str,
     return proposal
 
 
-def evaluate(db: Session, meeting: Meeting) -> Proposal | None:
-    """진행 중인 제안을 평가한다: 활성 참여자 전원이 동의하면 accepted + 확정.
+def confirm(db: Session, meeting: Meeting, host: Participant) -> Proposal:
+    """호스트가 진행 중인 제안을 확정한다 (전원 동의로 자동 확정하지 않음).
 
-    거절이 있어도 제안은 pending으로 남는다 (시안: "거절 완료 / 수정하기"). 거절한 사람이 동의로 바꾸면
-    확정될 수 있고, 호스트가 다른 후보를 다시 제안하면 이 제안은 superseded 된다.
+    - 아직 응답하지 않은 사람이 있어도 확정할 수 있다 (응답 없는 사람 때문에 멈추지 않게).
+    - 거절한 사람이 있으면 확정할 수 없다 → 거절한 사람이 동의로 바꾸거나 호스트가 다른 후보를 다시 제안.
+    - 확정하는 호스트는 동의한 것으로 기록한다.
     """
+    state.require_stage(meeting, STAGE_PROPOSED)
     proposal = current_pending(meeting)
     if proposal is None:
-        return None
-    responses = {r.participant_id: r.response for r in proposal.responses}
-    active = active_participants(db, meeting.id)
-    if active and all(responses.get(p.id) == "accept" for p in active):
-        proposal.status = "accepted"
-        meeting.confirmed_candidate_id = proposal.candidate_id
-        state.transition(meeting, STAGE_CONFIRMED)
+        raise AppError("NO_ACTIVE_PROPOSAL", "확정할 수 있는 제안이 없습니다.", 409)
+    active_ids = {p.id for p in active_participants(db, meeting.id)}
+    if any(r.response == "reject" and r.participant_id in active_ids for r in proposal.responses):
+        raise AppError("HAS_REJECTION", "거절한 참여자가 있어 확정할 수 없어요. 다른 후보를 다시 제안해 주세요.", 409)
+
+    mine = next((r for r in proposal.responses if r.participant_id == host.id), None)
+    if mine is None:
+        db.add(ProposalResponse(proposal_id=proposal.id, participant_id=host.id, response="accept"))
+    else:
+        mine.response = "accept"
+        mine.responded_at = utcnow()
+    proposal.status = "accepted"
+    meeting.confirmed_candidate_id = proposal.candidate_id
+    state.transition(meeting, STAGE_CONFIRMED)
     db.commit()
+    db.refresh(proposal)
     return proposal
 
 
@@ -86,7 +96,5 @@ def respond(db: Session, meeting: Meeting, me: Participant, response: str) -> Pr
         existing.response = response
         existing.responded_at = utcnow()
     db.commit()
-    db.refresh(proposal)
-    evaluate(db, meeting)
     db.refresh(proposal)
     return proposal

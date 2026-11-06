@@ -7,7 +7,6 @@ from app.models import STAGE_INPUT, JoinRequest, Meeting, Participant
 from app.security import digests_equal, token_digest
 from app.services import state
 from app.services.meetings import _active_count, issue_token, revoke
-from app.services.proposals import evaluate
 
 
 def _get_request(db: Session, meeting: Meeting, request_id: int) -> JoinRequest:
@@ -86,6 +85,4 @@ def exclude(db: Session, meeting: Meeting, participant_id: int) -> Participant:
     p.status = "excluded"
     revoke(db, p)
     db.commit()
-    # 제외로 남은 사람이 모두 동의한 상태가 될 수 있다
-    evaluate(db, meeting)
     return p

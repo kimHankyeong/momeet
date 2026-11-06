@@ -28,6 +28,10 @@ def respond(room, who, response):
     return room.post("/proposal/response", {"response": response}, headers=who["h"] if "h" in who else who)
 
 
+def confirm(room, who=None):
+    return room.post("/proposal/confirm", {}, **({"headers": who["h"]} if who else {}))
+
+
 # ---------------------------------------------------------------- 단계 머신
 def test_stage_order_is_enforced(client, session_factory, db):
     room = new_room(client)
@@ -99,15 +103,20 @@ def test_dashboard_proposal_shows_only_my_own_route(client, session_factory):
 
 
 # ---------------------------------------------------------------- 동의 / 확정
-def test_everyone_accepting_confirms_automatically(client, session_factory):
+def test_host_confirms_after_everyone_accepts(client, session_factory):
     room, (a, b) = make_ready(client, session_factory)
     propose(room, 1)
 
     assert respond(room, a, "accept").json()["status"] == "pending"
-    assert respond(room, b, "accept").json()["status"] == "pending"  # 호스트도 응답해야 한다
+    assert respond(room, b, "accept").json()["status"] == "pending"
+    assert respond(room, room.host, "accept").json()["status"] == "pending"  # 전원 동의해도 자동 확정 안 함
     assert room.get().json()["meeting"]["stage"] == "proposed"
+    assert room.get().json()["next_action"]["code"] == "confirm_proposal"
+    assert room.get(headers=a["h"]).json()["next_action"]["code"] == "wait_confirm"
 
-    r = respond(room, room.host, "accept")
+    assert confirm(room, a).status_code == 403  # 참여자는 확정할 수 없다
+    r = confirm(room)
+    assert r.status_code == 200
     assert r.json()["status"] == "accepted" and r.json()["stage"] == "confirmed"
 
     d = room.get(headers=a["h"]).json()
@@ -117,9 +126,33 @@ def test_everyone_accepting_confirms_automatically(client, session_factory):
     assert c["candidate"]["station"]["name"] and c["my_route"]["origin"] == "강남"
     assert sorted(p["nickname"] for p in c["participants"]) == ["민수", "지은", "호스트"]
 
-    # 확정 이후에는 더 응답하거나 제안할 수 없다
+    # 확정 이후에는 더 응답하거나 제안·확정할 수 없다
     assert respond(room, a, "reject").status_code == 409
     assert propose(room, 0).status_code == 409
+    assert confirm(room).status_code == 409
+
+
+def test_host_can_confirm_without_every_response(client, session_factory):
+    """응답하지 않은 사람이 있어도 호스트가 확정할 수 있다. 확정한 호스트는 동의로 기록된다."""
+    room, (a, b) = make_ready(client, session_factory)
+    assert confirm(room).json()["error"]["code"] == "INVALID_STAGE"  # 제안 전
+    propose(room)
+    respond(room, a, "accept")
+    assert room.get().json()["next_action"]["code"] == "respond_to_proposal"
+    r = confirm(room)
+    assert r.status_code == 200 and r.json()["stage"] == "confirmed"
+    by = {p["nickname"]: p["response"] for p in room.get().json()["participants"]}
+    assert by == {"호스트": "accept", "민수": "accept", "지은": "pending"}
+
+
+def test_host_cannot_confirm_with_rejection(client, session_factory):
+    room, (a, b) = make_ready(client, session_factory)
+    propose(room)
+    respond(room, a, "accept")
+    respond(room, b, "reject")
+    r = confirm(room)
+    assert r.status_code == 409 and r.json()["error"]["code"] == "HAS_REJECTION"
+    assert room.get().json()["meeting"]["stage"] == "proposed"
 
 
 def test_rejection_keeps_proposal_open_until_everyone_responded(client, session_factory):
@@ -152,7 +185,9 @@ def test_rejecter_can_change_mind_and_confirm(client, session_factory):
     respond(room, b, "reject")
     assert room.get().json()["proposal"]["needs_replan"] is True
 
-    r = respond(room, b, "accept")
+    assert respond(room, b, "accept").json()["status"] == "pending"
+    assert room.get().json()["proposal"]["needs_replan"] is False
+    r = confirm(room)
     assert r.status_code == 200 and r.json()["status"] == "accepted" and r.json()["stage"] == "confirmed"
     d = room.get().json()
     assert d["meeting"]["stage"] == "confirmed" and d["proposal"]["needs_replan"] is False
@@ -184,6 +219,7 @@ def test_reproposal_resets_responses(client, session_factory):
 
     for who in (a, b, room.host):
         respond(room, who, "accept")
+    confirm(room)
     assert room.get().json()["meeting"]["stage"] == "confirmed"
     assert room.get("/confirmed").json()["candidate_id"] == room.cands[1]
 
@@ -229,13 +265,16 @@ def test_invalid_response_value_rejected(client, session_factory):
 
 
 # ---------------------------------------------------------------- 제외 / 나가기가 확정에 미치는 영향
-def test_excluding_last_pending_person_confirms(client, session_factory):
+def test_excluding_last_pending_person_lets_host_confirm(client, session_factory):
     room, (a, b) = make_ready(client, session_factory)
     propose(room)
     respond(room, a, "accept")
     respond(room, room.host, "accept")
     r = room.post(f"/participants/{b['id']}/exclude")
     assert r.status_code == 200 and r.json()["status"] == "excluded"
+    assert room.get().json()["meeting"]["stage"] == "proposed"  # 자동 확정 안 함
+    assert room.get().json()["next_action"]["code"] == "confirm_proposal"
+    confirm(room)
     assert room.get().json()["meeting"]["stage"] == "confirmed"
     assert [p["nickname"] for p in room.get("/confirmed").json()["participants"]] == ["호스트", "민수"]
 
@@ -256,12 +295,14 @@ def test_cannot_exclude_host_or_stranger(client, session_factory):
     assert room.post(f"/participants/{a['id']}/exclude", headers=a["h"]).status_code == 403
 
 
-def test_leaving_can_complete_confirmation(client, session_factory):
+def test_leaving_lets_host_confirm(client, session_factory):
     room, (a, b) = make_ready(client, session_factory)
     propose(room)
     respond(room, a, "accept")
     respond(room, room.host, "accept")
     assert client.delete(f"/meetings/{room.id}/me", headers=b["h"]).status_code == 204
+    assert room.get().json()["next_action"]["code"] == "confirm_proposal"
+    confirm(room)
     assert room.get().json()["meeting"]["stage"] == "confirmed"
 
 

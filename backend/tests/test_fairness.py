@@ -193,6 +193,19 @@ def test_검증_정상_및_정리():
     assert "needs_elevator" not in clean["constraints"]
 
 
+def test_검증_역_이름_표기():
+    # 서울역은 '역'을 떼고 와도 찾고, 같은 이름 다른 역은 노선을 붙인 이름으로 구분
+    data = {
+        "availability": {"2026-11-07": [14]},
+        "default_station": "서울",
+        "exception_stations": [{"date": "2026-11-07", "hours": [14], "station": "양평(경의중앙)"}],
+    }
+    errors, clean = validate_conditions(data, DATES, final=True)
+    assert errors == []
+    assert clean["default_station"] == "서울역"
+    assert clean["exception_stations"][0]["station"] == "양평(경의중앙)"
+
+
 def test_검증_에러_코드():
     data = {
         "availability": {"2026-12-25": [10]},

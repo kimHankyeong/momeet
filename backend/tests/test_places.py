@@ -171,3 +171,16 @@ def test_no_content_response_is_empty_result_not_error(monkeypatch):
     assert tmap.search_places("없는곳없는곳") == []
     with pytest.raises(LookupError):
         tmap.geocode("없는곳없는곳")
+
+
+def test_nearby_stations(client):
+    # 안양 귀인로 237 (초원대림아파트) → 평촌역이 가장 가깝고, 3km 안의 역만 가까운 순
+    r = client.get("/stations/nearby", params={"lat": 37.388867, "lng": 126.964965})
+    assert r.status_code == 200
+    got = r.json()["stations"]
+    assert [s["name"] for s in got][0] == "평촌"
+    assert len(got) <= 3 and all(s["walk_m"] <= 3000 for s in got)
+    assert [s["walk_m"] for s in got] == sorted(s["walk_m"] for s in got)
+    # 바다 한가운데 → 근처 역 없음, 범위 밖 좌표 → 422
+    assert client.get("/stations/nearby", params={"lat": 37.0, "lng": 125.0}).json()["stations"] == []
+    assert client.get("/stations/nearby", params={"lat": 10, "lng": 126.9}).status_code == 422

@@ -142,6 +142,8 @@ def get_station(name: str) -> dict:
         return by_name[key]
     if name.strip() in by_name:
         return by_name[name.strip()]
+    if f"{key}역" in by_name:  # "서울" → 서울역 (이름 자체가 '역'으로 끝나는 역)
+        return by_name[f"{key}역"]
     raise KeyError(f"범위 밖이거나 없는 역: {name}")
 
 
@@ -162,6 +164,24 @@ def search_stations(query: str, limit: int = 10) -> list[dict]:
         elif any(q in n for n in names):
             contains.append(item)
     return (prefix + contains)[:limit]
+
+
+def nearby_stations(lat: float, lng: float, limit: int = 3) -> list[dict]:
+    """
+    출발 위치 근처 역 (가까운 순). 걸어갈 만한 거리(MAX_ACCESS_M) 안의 역만.
+    walk_m / walk_min 은 access_walk 와 같은 추정 (직선거리 × WALK_DETOUR)
+    """
+    stations, _, _, _ = _load()
+    found = []
+    for st in stations:
+        if st["lat"] is None:
+            continue
+        meters = round(distance_m(lat, lng, st["lat"], st["lng"]) * WALK_DETOUR)
+        if meters <= MAX_ACCESS_M:
+            found.append({"name": st["name"], "lines": st["lines"], "lat": st["lat"], "lng": st["lng"],
+                          "walk_m": meters, "walk_min": walk_minutes(meters)})
+    found.sort(key=lambda s: s["walk_m"])
+    return found[:limit]
 
 
 def path_stops(path: list[str]) -> list[dict]:

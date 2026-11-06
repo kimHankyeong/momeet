@@ -125,10 +125,6 @@ def delete_me(
 ):
     """내 데이터 삭제 + 토큰 무효화 (호스트는 약속방 삭제를 사용)."""
     svc.delete_my_data(db, meeting, me)
-    # 나간 사람이 빠지면 남은 사람이 모두 동의한 상태가 될 수 있다
-    from app.services.proposals import evaluate
-
-    evaluate(db, meeting)
     return Response(status_code=204)
 
 

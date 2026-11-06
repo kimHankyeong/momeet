@@ -89,6 +89,7 @@ def main() -> None:
         proposals.propose(db, m, h, best, CandidateProvider(db).get)
         for p in [h] + [x[0] for x in mem]:
             proposals.respond(db, m, p, "accept")
+        proposals.confirm(db, m, h)  # 전원 동의 후 호스트가 확정
         out.append((m, ht, mem))
 
         print(f"호스트 비밀번호={HOST_PASSWORD}  (입장 코드는 방마다 아래에 표시)")

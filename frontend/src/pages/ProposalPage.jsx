@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getMeeting, respondProposal } from '../api/meetApi';
+import { confirmProposal, getMeeting, respondProposal } from '../api/meetApi';
+import { stationLabel } from '../utils/station';
 
 const DOW = ['일', '월', '화', '수', '목', '금', '토'];
 // "2026-11-10" → "11월 10일 (화)"
@@ -78,6 +79,8 @@ export default function ProposalPage() {
   const [editing, setEditing] = useState(false); // "수정하기"를 눌러 응답을 다시 고르는 중
   const [showRoute, setShowRoute] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  const [nextAction, setNextAction] = useState(''); // 서버가 알려 주는 내 다음 할 일 (wait_confirm 등)
+  const [confirming, setConfirming] = useState(false);
 
   const fetchData = async () => {
     try {
@@ -87,6 +90,7 @@ export default function ProposalPage() {
         dateRange: `${dateLabel(res.meeting.date_start)} - ${dateLabel(res.meeting.date_end)}`,
       });
       setServerStage(res.meeting.stage);
+      setNextAction(res.next_action?.code || '');
       setParticipants(
         res.participants.map((p) => ({
           id: p.id,
@@ -101,7 +105,7 @@ export default function ProposalPage() {
         const c = pr.candidate;
         const r = pr.my_route;
         const [, m, d] = c.date.split('-').map(Number);
-        const station = c.station.name.endsWith('역') ? c.station.name : `${c.station.name}역`;
+        const station = stationLabel(c.station.name);
         setNeedsReplan(pr.needs_replan);
         setProposal({
           dateText: `${dateLabel(c.date)} ${c.start}`,
@@ -152,6 +156,22 @@ export default function ProposalPage() {
       await fetchData();
     } catch (e) {
       setErrorMsg(e.response?.data?.error?.message || '응답을 저장하지 못했어요.');
+    }
+  };
+
+  // 방장: 약속 확정 (응답하지 않은 사람이 있으면 한 번 더 묻는다)
+  const pendingCount = participants.filter((p) => p.response === 'PENDING' && !p.isMe).length;
+  const rejectedCount = participants.filter((p) => p.response === 'REJECTED').length;
+  const handleConfirm = async () => {
+    if (pendingCount > 0 && !window.confirm(`아직 응답하지 않은 참여자가 ${pendingCount}명 있어요. 그래도 확정할까요?`)) return;
+    setConfirming(true);
+    try {
+      await confirmProposal(id);
+      await fetchData();
+    } catch (e) {
+      setErrorMsg(e.response?.data?.error?.message || '확정하지 못했어요.');
+    } finally {
+      setConfirming(false);
     }
   };
 
@@ -251,13 +271,45 @@ export default function ProposalPage() {
                   >
                     {myResponse === 'AGREED' ? '동의 완료' : '거절 완료'}
                   </p>
-                  <p className="text-xs text-gray-300">다른 참여자의 응답을 기다리고 있어요.</p>
+                  <p className="text-xs text-gray-300">
+                    {nextAction === 'wait_confirm'
+                      ? '모두 동의했어요. 주최자의 확정을 기다리고 있어요.'
+                      : '다른 참여자의 응답을 기다리고 있어요.'}
+                  </p>
                   <button
                     type="button"
                     onClick={() => respond('PENDING')}
                     className="px-8 py-2 rounded-full bg-[#6C5CE7] text-white text-sm font-semibold hover:opacity-90"
                   >
                     수정하기
+                  </button>
+                </div>
+              )}
+
+              {/* 방장: 확정 / 다른 후보로 다시 제안 */}
+              {stage === 'PROPOSAL' && me.isHost && (
+                <div className="space-y-2 border-t border-gray-100 pt-5">
+                  <button
+                    type="button"
+                    disabled={confirming || rejectedCount > 0}
+                    onClick={handleConfirm}
+                    className="w-full py-2.5 rounded-full bg-[#6C5CE7] text-white text-sm font-semibold hover:opacity-90 disabled:opacity-40"
+                  >
+                    {confirming ? '확정하는 중…' : '약속 확정하기'}
+                  </button>
+                  <p className="text-[11px] text-gray-400 text-center">
+                    {rejectedCount > 0
+                      ? '거절한 참여자가 있어 확정할 수 없어요. 다른 후보를 제안해 보세요.'
+                      : pendingCount > 0
+                      ? `동의 ${agreedCount}/${participants.length} · 응답을 기다리지 않고 확정할 수도 있어요.`
+                      : '모두 동의했어요. 확정하면 모두에게 확정 화면이 보여요.'}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => navigate(`/meet/${id}/recommend`)}
+                    className="w-full text-xs text-gray-400 underline hover:text-gray-600"
+                  >
+                    다른 후보로 다시 제안하기
                   </button>
                 </div>
               )}
@@ -287,7 +339,7 @@ export default function ProposalPage() {
 
               {stage === 'CONFIRMED' && (
                 <p className="text-xs text-gray-700 leading-relaxed">
-                  모든 참여자가 동의했어요.
+                  약속이 확정됐어요.
                   <br />
                   각자의 이동 경로를 확인해 주세요.
                 </p>

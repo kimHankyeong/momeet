@@ -3,7 +3,8 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 // 추천 역 지도 (OpenStreetMap, API 키 불필요. 지도 아래 출처 표시는 이용 조건이라 지우지 않는다)
-export default function StationMap({ lat, lng, name }) {
+// className: 높이 등 크기 (기본 280px)
+export default function StationMap({ lat, lng, name, className = 'h-[280px]' }) {
   const el = useRef(null);
   const map = useRef(null);
   const marker = useRef(null);
@@ -38,5 +39,5 @@ export default function StationMap({ lat, lng, name }) {
   }, [lat, lng, name]);
 
   // isolate: 지도 레이어(z-index 400~1000)가 헤더·모달 위로 올라오지 않게 한다
-  return <div ref={el} className="isolate w-full h-[280px] rounded-2xl overflow-hidden" />;
+  return <div ref={el} className={`isolate w-full ${className} rounded-2xl overflow-hidden`} />;
 }

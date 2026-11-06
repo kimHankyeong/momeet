@@ -38,6 +38,14 @@ export const submitConditions = async (id, body) =>
 export const searchStations = async (q) =>
   (await api.get('/stations', { params: { q } })).data;
 
+// 출발 위치 근처 역 (가까운 순, 도보 추정 포함)
+export const nearbyStations = async (lat, lng) =>
+  (await api.get('/stations/nearby', { params: { lat, lng } })).data;
+
+// 출발지 장소·주소 검색 (티맵, 최대 5건)
+export const searchPlaces = async (q) =>
+  (await api.get('/places', { params: { q } })).data;
+
 // 기존 이름 유지 (ConditionSetupModal 호환용)
 export const submitUserConditions = submitConditions;
 
@@ -91,3 +99,7 @@ export const createProposal = async (id, candidateId) =>
 // 제안 응답 (전원): 'accept' | 'reject'. 확정 전까지 여러 번 바꿀 수 있다
 export const respondProposal = async (id, response) =>
   (await api.post(`/meetings/${id}/proposal/response`, { response })).data;
+
+// 방장: 진행 중인 제안 확정 (거절이 있으면 409 HAS_REJECTION)
+export const confirmProposal = async (id) =>
+  (await api.post(`/meetings/${id}/proposal/confirm`)).data;

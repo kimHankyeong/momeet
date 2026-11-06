@@ -43,6 +43,16 @@ def search_stations(q: str = Query(min_length=1, max_length=20), limit: int = Qu
     return {"stations": subway.search_stations(q, limit)}
 
 
+@router.get("/stations/nearby")
+def nearby_stations(
+    lat: float = Query(ge=33, le=39),
+    lng: float = Query(ge=124, le=132),
+    limit: int = Query(default=3, ge=1, le=10),
+):
+    """출발 위치 근처 역 (걸어갈 만한 거리 안, 가까운 순, 인증 불필요). 출발지를 고른 뒤 출발역 추천용."""
+    return {"stations": subway.nearby_stations(lat, lng, limit)}
+
+
 @router.get("/places")
 def search_places(request: Request, q: str = Query(min_length=2, max_length=50)):
     """출발지 장소·주소 검색 (최대 5건, 인증 불필요). 응답의 lat/lng를 default_origin에 그대로 보내면 된다."""

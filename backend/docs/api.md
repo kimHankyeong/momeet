@@ -37,9 +37,9 @@ recruiting → input → recommended → proposed → confirmed
 | recruiting → input | 호스트 `POST /close` ("참여자 모집 마감") | 참여자 2명 이상. 마감 전에는 새 참여자가 들어올 수 있고, 마감 후에는 호스트 승인이 필요하다 |
 | input → recommended | 호스트 `POST /recommendations` | 활성 참여자 **전원 조건 제출** + 추천 후보가 1개 이상 (후보가 없으면 단계는 그대로) |
 | recommended → proposed | 호스트 `POST /proposal` | 후보 검증 통과 |
-| proposed → confirmed | 마지막 사람이 동의 → **자동** | 활성 참여자 **전원**(호스트 포함) 동의 |
+| proposed → confirmed | 호스트 `POST /proposal/confirm` | 거절한 참여자가 없을 것 (미응답은 허용, 확정한 호스트는 동의로 기록) |
 
-거절이 나와도 제안은 `pending`으로 열려 있다. **전원이 응답했는데 거절이 있으면 `proposal.needs_replan = true`** (시안: "이번 제안은 확정되지 않았어요")이고, 거절한 사람이 동의로 바꾸면 전원 동의로 확정된다. 호스트가 다른 후보를 다시 제안하면 응답은 처음부터 시작한다.
+거절이 나와도 제안은 `pending`으로 열려 있다. **전원이 응답했는데 거절이 있으면 `proposal.needs_replan = true`** (시안: "이번 제안은 확정되지 않았어요")이고, 거절한 사람이 동의로 바꾸면 다시 확정할 수 있다. 전원이 동의해도 **자동 확정되지 않고** 호스트가 확정한다. 호스트가 다른 후보를 다시 제안하면 응답은 처음부터 시작한다.
 
 ### 주요 오류 코드
 
@@ -202,7 +202,8 @@ recruiting → input → recommended → proposed → confirmed
 | `run_recommendation` | 호스트 (전원 제출) | input |
 | `wait_recommendation` | 제출 완료한 참여자 | input |
 | `propose_candidate` / `wait_proposal` | 호스트 / 참여자 | recommended |
-| `respond_to_proposal` / `wait_responses` | 미응답 / 응답 완료 | proposed (진행 중 제안) |
+| `respond_to_proposal` / `wait_responses` | 미응답 / 응답 완료 (호스트는 이때도 확정 가능) | proposed (진행 중 제안) |
+| `confirm_proposal` / `wait_confirm` | 호스트 / 참여자 | proposed + 전원 동의 |
 | `repropose` / `wait_reproposal` | 호스트 / 참여자 | proposed + `needs_replan` |
 | `view_confirmed` | 모두 | confirmed |
 
@@ -214,6 +215,12 @@ recruiting → input → recommended → proposed → confirmed
 
 ```json
 { "stations": [ { "name": "쌍문", "lines": ["4"], "lat": 37.648627, "lng": 127.034709 } ] }
+```
+
+`GET /stations/nearby?lat=37.388867&lng=126.964965` — 출발 위치 **근처 역** (인증 불필요, 기본 3건, `limit` 최대 10). 걸어갈 만한 거리(3km) 안의 역만 가까운 순. `walk_m`/`walk_min`은 직선거리×1.3 추정.
+
+```json
+{ "stations": [ { "name": "평촌", "lines": ["4"], "lat": 37.394346, "lng": 126.963881, "walk_m": 802, "walk_min": 12 } ] }
 ```
 
 `GET /places?q=노해로 342` — 출발지 **장소·주소 검색** (인증 불필요, `q` 2~50자, **최대 5건**). 도로명·지번 주소와 장소 이름 모두 검색된다.
@@ -348,10 +355,17 @@ recruiting → input → recommended → proposed → confirmed
 { "response": "accept" }       // "accept" | "reject"
 ```
 
-응답은 위 제안 객체와 같다 (`status`가 `accepted`이면 `stage`가 `confirmed`).
+응답은 위 제안 객체와 같다.
 - 제안이 열려 있는 동안(확정 전) **언제든 응답을 바꿀 수 있다** (시안: "동의 완료/거절 완료 → 수정하기"). 같은 응답을 반복해도 된다.
-- 전원 동의 → `status: "accepted"`, `stage: "confirmed"`. 거절이 있어도 `status`는 `pending`이고, 전원 응답 후에는 `needs_replan`이 `true`가 된다.
+- 응답만으로는 확정되지 않는다 (전원 동의해도 `pending`). 거절이 있어도 `status`는 `pending`이고, 전원 응답 후에는 `needs_replan`이 `true`가 된다.
 - 확정된 뒤에는 `409 INVALID_STAGE`, 열린 제안이 없으면 `409 NO_ACTIVE_PROPOSAL`.
+
+`POST /meetings/{id}/proposal/confirm` (호스트) — 진행 중인 제안을 **확정**한다. 본문 없음.
+
+- 응답은 위 제안 객체 (`status: "accepted"`, `stage: "confirmed"`).
+- 아직 응답하지 않은 참여자가 있어도 확정할 수 있다. 확정한 호스트의 응답은 `accept`로 기록된다.
+- 거절한 참여자가 있으면 `409 HAS_REJECTION` (거절한 사람이 동의로 바꾸거나, 다른 후보를 다시 제안).
+- 제안 단계가 아니면 `409 INVALID_STAGE`, 열린 제안이 없으면 `409 NO_ACTIVE_PROPOSAL`, 호스트가 아니면 `403`.
 
 ## 확정 화면
 
@@ -370,7 +384,7 @@ recruiting → input → recommended → proposed → confirmed
 | `POST /meetings/{id}/join-requests/{rid}/approve` | 승인 (입력 단계에서만, 정원 확인). `{ "id", "status": "approved" }` |
 | `POST /meetings/{id}/join-requests/{rid}/reject` | 거절 |
 | `POST /meetings/{id}/join-requests/{rid}/claim` | **신청자**가 결과 확인 (인증 대신 `{ "request_secret": "…" }`). 대기/거절이면 `{ "status": "pending"\|"rejected" }`, 승인이면 토큰 발급(한 번만, 이후 `409 ALREADY_CLAIMED`) |
-| `POST /meetings/{id}/participants/{pid}/exclude` | 참여자 제외. 토큰 즉시 무효. 제외 결과로 남은 전원이 동의한 상태면 자동 확정 |
+| `POST /meetings/{id}/participants/{pid}/exclude` | 참여자 제외. 토큰 즉시 무효. (응답하지 않는 사람을 빼고 확정할 때 사용) |
 
 신청자는 승인될 때까지 `claim`을 주기적으로 호출한다.
 

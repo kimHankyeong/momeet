@@ -50,6 +50,18 @@ def respond(
     return _proposal(meeting, p, provider, me)
 
 
+@router.post("/proposal/confirm")
+def confirm_proposal(
+    meeting: Meeting = Depends(get_meeting),
+    host: Participant = Depends(require_host),
+    db: Session = Depends(get_db),
+    provider: CandidateProvider = Depends(get_candidate_provider),
+):
+    """호스트가 진행 중인 제안을 확정한다. 거절이 있으면 409 HAS_REJECTION."""
+    p = svc.confirm(db, meeting, host)
+    return _proposal(meeting, p, provider, host)
+
+
 # ---- 마감 후 참여 승인 / 참여자 제외 (후순위)
 @router.get("/join-requests")
 def list_join_requests(

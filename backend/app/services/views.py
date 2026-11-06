@@ -90,8 +90,15 @@ def _next_action(db: Session, meeting: Meeting, me: Participant, people: list[Pa
                 if host:
                     return act("repropose", "이번 제안은 확정되지 않았어요. 다른 후보를 다시 제안하세요.")
                 return act("wait_reproposal", "주최자의 새 제안을 기다리는 중입니다.")
+            all_accepted = bool(people) and all(p.id in answered for p in people) and not rejected
+            if all_accepted:
+                if host:
+                    return act("confirm_proposal", "모두 동의했어요. 약속을 확정하세요.")
+                return act("wait_confirm", "모두 동의했어요. 주최자의 확정을 기다리는 중입니다.")
             if me.id not in answered:
                 return act("respond_to_proposal", "제안에 동의 또는 거절하세요.")
+            if host:
+                return act("wait_responses", "다른 참여자의 응답을 기다리는 중입니다. 지금 확정할 수도 있어요.")
             return act("wait_responses", "다른 참여자의 응답을 기다리는 중입니다.")
         return act("repropose", "다른 후보를 제안하세요.") if host else act("wait_reproposal", "주최자의 새 제안을 기다리는 중입니다.")
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import StationMap from '../components/StationMap/StationMap';
 import { createProposal, getMeeting, getRecommendations } from '../api/meetApi';
+import { linesLabel, stationLabel } from '../utils/station';
 
 const STEPS = ['모집', '입력', '추천', '제안', '확정'];
 
@@ -43,27 +44,10 @@ const dateLabel = (s) => {
   const [y, m, d] = s.split('-').map(Number);
   return `${m}월 ${d}일 (${DOW[new Date(y, m - 1, d).getDay()]})`;
 };
-// '선'만 붙이면 어색한 노선 이름 (나머지는 "경의중앙" → "경의중앙선")
-const LINE_NAME = {
-  공항철도: '공항철도',
-  에버라인: '에버라인',
-  김포골드: '김포골드라인',
-  의정부: '의정부경전철',
-  인천1: '인천1호선',
-  인천2: '인천2호선',
-  'GTX-A': 'GTX-A',
-};
-// ["2", "5"] → "2·5호선", ["1", "우이신설"] → "1호선·우이신설선"
-const linesLabel = (lines) => {
-  const nums = lines.filter((l) => /^\d+$/.test(l));
-  const others = lines.filter((l) => !/^\d+$/.test(l)).map((l) => LINE_NAME[l] || `${l}선`);
-  return [...(nums.length ? [`${nums.join('·')}호선`] : []), ...others].join('·');
-};
-
 // 서버 추천 후보 → 화면 형식 (내 이동은 본인 경로만 내려옴. 추천 이후 참여자는 my_route가 없음)
 const toCandidate = (c) => ({
   id: c.candidate_id,
-  name: c.station.name.endsWith('역') ? c.station.name : `${c.station.name}역`,
+  name: stationLabel(c.station.name),
   lines: linesLabel(c.station.lines),
   lat: c.station.lat,
   lng: c.station.lng,
