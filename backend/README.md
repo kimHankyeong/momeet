@@ -23,11 +23,11 @@ uvicorn app.main:app --reload   # http://localhost:8000/docs
 
 ## 배포 (렌더)
 
-[docs/deploy-render.md](docs/deploy-render.md) — 절차, 환경 변수, 무료 플랜 제한(재시작 시 SQLite 초기화), 점검표. **실제 배포는 아직 하지 않았다.**
+[docs/deploy-render.md](docs/deploy-render.md) — 절차, 환경 변수, 무료 플랜 제한(재시작 시 SQLite 초기화), 점검표. 배포 주소: https://momeet-backend.onrender.com (렌더 무료 플랜이라 잠들면 첫 요청이 느리고, 재시작하면 SQLite 데이터가 초기화된다).
 
 ## API 키 (선택)
 
-서울시 엘리베이터 API와 티맵 보행자 경로를 쓸 때만 필요하다. **키가 없어도 서버와 테스트는 그대로 실행된다.**
+티맵 키(`TMAP_APP_KEY`)는 출발지→출발역 도보(보행자 경로)와 출발지 장소·주소 검색에 쓴다. **키가 없어도 서버와 테스트는 그대로 실행된다** (도보는 직선거리 추정, 장소 검색은 503). 서울시 키(`SEOUL_OPEN_API_KEY`)는 지금 서버가 쓰지 않는다.
 
 - 내 컴퓨터: `.env`에 `SEOUL_OPEN_API_KEY=`, `TMAP_APP_KEY=` 뒤에 값만 한 줄로 넣는다 (따옴표·공백 없이).
 - 배포(렌더 등): 서비스 설정의 환경 변수에 같은 이름으로 넣는다. `.env` 파일은 올라가지 않는다.
