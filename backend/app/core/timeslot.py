@@ -153,7 +153,7 @@ def generate_candidates(participants: list[dict],
             ...
           }
         }
-    stations: 후보역 목록. None이면 1~8호선 전체 역.
+    stations: 후보역 목록. None이면 데이터에 있는 전체 역 (수도권 전철).
 
     반환: (시간적으로 가능한 후보 목록, 날짜별 진단)
     """

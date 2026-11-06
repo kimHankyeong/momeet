@@ -196,7 +196,7 @@ def test_검증_정상_및_정리():
 def test_검증_에러_코드():
     data = {
         "availability": {"2026-12-25": [10]},
-        "default_station": "구로",
+        "default_station": "서면",
         "constraints": {"max_walk_m": {"value": -1, "level": "required"}, "unknown": {"value": 1, "level": "required"}},
     }
     errors, _ = validate_conditions(data, DATES, final=True)
