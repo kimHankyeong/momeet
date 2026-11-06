@@ -1,16 +1,17 @@
 from typing import Any
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, Query, Request
 from pydantic import ConfigDict, Field, StrictInt
 from sqlalchemy.orm import Session
 
 from app.core import subway
 from app.database import get_db
-from app.deps import get_current_participant, get_meeting, require_host
+from app.deps import client_key, get_current_participant, get_meeting, require_host
 from app.models import Meeting, Participant
 from app.schemas import Strict
 from app.security import isoformat
 from app.services import conditions as svc
+from app.services import places as places_svc
 
 router = APIRouter(tags=["conditions"])
 
@@ -40,6 +41,12 @@ def _row(c) -> dict:
 def search_stations(q: str = Query(min_length=1, max_length=20), limit: int = Query(default=10, ge=1, le=20)):
     """역 자동완성 (공개 데이터, 인증 불필요)."""
     return {"stations": subway.search_stations(q, limit)}
+
+
+@router.get("/places")
+def search_places(request: Request, q: str = Query(min_length=2, max_length=50)):
+    """출발지 장소·주소 검색 (최대 5건, 인증 불필요). 응답의 lat/lng를 default_origin에 그대로 보내면 된다."""
+    return {"places": places_svc.search(client_key(request), q)}
 
 
 @router.get("/meetings/{meeting_id}/conditions/me")
