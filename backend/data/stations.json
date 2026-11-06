@@ -20,6 +20,23 @@
     "elevator": "met"
   },
   {
+    "name": "가능",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.748362,
+    "lng": 127.044251,
+    "nodes": [
+      {
+        "id": "가능_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "가락시장",
     "aliases": [],
     "lines": [
@@ -54,11 +71,22 @@
     "name": "가산디지털단지",
     "aliases": [],
     "lines": [
+      "1",
       "7"
     ],
-    "lat": 37.480338,
-    "lng": 126.882656,
+    "lat": 37.481568,
+    "lng": 126.882628,
     "nodes": [
+      {
+        "id": "가산디지털단지_1",
+        "line": "1",
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 18,
+          "wheelchair_lift": 3,
+          "shared": true
+        }
+      },
       {
         "id": "가산디지털단지_7",
         "line": "7",
@@ -112,10 +140,181 @@
     "elevator": "met"
   },
   {
+    "name": "가재울",
+    "aliases": [],
+    "lines": [
+      "인천2"
+    ],
+    "lat": 37.484152,
+    "lng": 126.683883,
+    "nodes": [
+      {
+        "id": "가재울_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "가정",
+    "aliases": [],
+    "lines": [
+      "인천2"
+    ],
+    "lat": 37.524805,
+    "lng": 126.675387,
+    "nodes": [
+      {
+        "id": "가정_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "가정중앙시장",
+    "aliases": [],
+    "lines": [
+      "인천2"
+    ],
+    "lat": 37.517511,
+    "lng": 126.676784,
+    "nodes": [
+      {
+        "id": "가정중앙시장_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "가좌",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.568611,
+    "lng": 126.914841,
+    "nodes": [
+      {
+        "id": "가좌_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "가천대",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.448784,
+    "lng": 127.126677,
+    "nodes": [
+      {
+        "id": "가천대_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "가평",
+    "aliases": [],
+    "lines": [
+      "경춘"
+    ],
+    "lat": 37.814515,
+    "lng": 127.510693,
+    "nodes": [
+      {
+        "id": "가평_경춘",
+        "line": "경춘",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "간석",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.464689,
+    "lng": 126.693408,
+    "nodes": [
+      {
+        "id": "간석_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "간석오거리",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.466921,
+    "lng": 126.707861,
+    "nodes": [
+      {
+        "id": "간석오거리_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "갈매",
+    "aliases": [],
+    "lines": [
+      "경춘"
+    ],
+    "lat": 37.634135,
+    "lng": 127.114803,
+    "nodes": [
+      {
+        "id": "갈매_경춘",
+        "line": "경춘",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "갈산",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.517124,
+    "lng": 126.721566,
+    "nodes": [
+      {
+        "id": "갈산_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "강남",
     "aliases": [],
     "lines": [
-      "2"
+      "2",
+      "신분당"
     ],
     "lat": 37.49799,
     "lng": 127.027912,
@@ -128,6 +327,16 @@
           "escalator": 0,
           "wheelchair_lift": 0
         }
+      },
+      {
+        "id": "강남_신분당",
+        "line": "신분당",
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
       }
     ],
     "elevator": "met"
@@ -136,7 +345,8 @@
     "name": "강남구청",
     "aliases": [],
     "lines": [
-      "7"
+      "7",
+      "수인분당"
     ],
     "lat": 37.517179,
     "lng": 127.041255,
@@ -149,9 +359,36 @@
           "escalator": 7,
           "wheelchair_lift": 0
         }
+      },
+      {
+        "id": "강남구청_수인분당",
+        "line": "수인분당",
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 7,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "강남대",
+    "aliases": [],
+    "lines": [
+      "에버라인"
+    ],
+    "lat": 37.27017073,
+    "lng": 127.1260669,
+    "nodes": [
+      {
+        "id": "강남대_에버라인",
+        "line": "에버라인",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "강동",
@@ -196,6 +433,23 @@
     "elevator": "met"
   },
   {
+    "name": "강매",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.612396,
+    "lng": 126.844537,
+    "nodes": [
+      {
+        "id": "강매_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "강변",
     "aliases": [],
     "lines": [
@@ -238,6 +492,23 @@
     "elevator": "met"
   },
   {
+    "name": "강촌",
+    "aliases": [],
+    "lines": [
+      "경춘"
+    ],
+    "lat": 37.805728,
+    "lng": 127.634054,
+    "nodes": [
+      {
+        "id": "강촌_경춘",
+        "line": "경춘",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "개롱",
     "aliases": [],
     "lines": [
@@ -257,6 +528,40 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "개봉",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.494698,
+    "lng": 126.858504,
+    "nodes": [
+      {
+        "id": "개봉_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "개포동",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.489112,
+    "lng": 127.066027,
+    "nodes": [
+      {
+        "id": "개포동_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "개화",
@@ -352,6 +657,165 @@
     "elevator": "met"
   },
   {
+    "name": "걸포북변",
+    "aliases": [],
+    "lines": [
+      "김포골드"
+    ],
+    "lat": 37.631639,
+    "lng": 126.70575,
+    "nodes": [
+      {
+        "id": "걸포북변_김포골드",
+        "line": "김포골드",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "검단사거리",
+    "aliases": [],
+    "lines": [
+      "인천2"
+    ],
+    "lat": 37.601693,
+    "lng": 126.656545,
+    "nodes": [
+      {
+        "id": "검단사거리_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "검단오류",
+    "aliases": [],
+    "lines": [
+      "인천2"
+    ],
+    "lat": 37.5950162,
+    "lng": 126.62801,
+    "nodes": [
+      {
+        "id": "검단오류_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "검단호수공원",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.6025,
+    "lng": 126.688056,
+    "nodes": [
+      {
+        "id": "검단호수공원_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "검바위",
+    "aliases": [],
+    "lines": [
+      "인천2"
+    ],
+    "lat": 37.561091,
+    "lng": 126.677529,
+    "nodes": [
+      {
+        "id": "검바위_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "검암",
+    "aliases": [],
+    "lines": [
+      "공항철도",
+      "인천2"
+    ],
+    "lat": 37.56915547,
+    "lng": 126.6735357,
+    "nodes": [
+      {
+        "id": "검암_공항철도",
+        "line": "공항철도",
+        "accessibility": null
+      },
+      {
+        "id": "검암_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "경기광주",
+    "aliases": [],
+    "lines": [
+      "경강"
+    ],
+    "lat": 37.398974,
+    "lng": 127.253201,
+    "nodes": [
+      {
+        "id": "경기광주_경강",
+        "line": "경강",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "경기도청북부청사",
+    "aliases": [],
+    "lines": [
+      "의정부"
+    ],
+    "lat": 37.75073213,
+    "lng": 127.0714795,
+    "nodes": [
+      {
+        "id": "경기도청북부청사_의정부",
+        "line": "의정부",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "경마공원",
+    "aliases": [],
+    "lines": [
+      "4"
+    ],
+    "lat": 37.443987,
+    "lng": 127.007899,
+    "nodes": [
+      {
+        "id": "경마공원_4",
+        "line": "4",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "경복궁",
     "aliases": [],
     "lines": [
@@ -373,6 +837,40 @@
     "elevator": "met"
   },
   {
+    "name": "경인교대입구",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.538272,
+    "lng": 126.722603,
+    "nodes": [
+      {
+        "id": "경인교대입구_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "경전철의정부",
+    "aliases": [],
+    "lines": [
+      "의정부"
+    ],
+    "lat": 37.73729974,
+    "lng": 127.043321,
+    "nodes": [
+      {
+        "id": "경전철의정부_의정부",
+        "line": "의정부",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "경찰병원",
     "aliases": [],
     "lines": [
@@ -392,6 +890,46 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "계산",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.543243,
+    "lng": 126.728436,
+    "nodes": [
+      {
+        "id": "계산_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "계양",
+    "aliases": [],
+    "lines": [
+      "공항철도",
+      "인천1"
+    ],
+    "lat": 37.571769,
+    "lng": 126.736319,
+    "nodes": [
+      {
+        "id": "계양_공항철도",
+        "line": "공항철도",
+        "accessibility": null
+      },
+      {
+        "id": "계양_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "고덕",
@@ -436,6 +974,23 @@
     "elevator": "met"
   },
   {
+    "name": "고색",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.249829,
+    "lng": 126.9805899,
+    "nodes": [
+      {
+        "id": "고색_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "고속터미널",
     "aliases": [],
     "lines": [
@@ -476,11 +1031,127 @@
     "elevator": "met"
   },
   {
+    "name": "고잔",
+    "aliases": [],
+    "lines": [
+      "4",
+      "수인분당"
+    ],
+    "lat": 37.316821,
+    "lng": 126.823094,
+    "nodes": [
+      {
+        "id": "고잔_4",
+        "line": "4",
+        "accessibility": null
+      },
+      {
+        "id": "고잔_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "고진",
+    "aliases": [],
+    "lines": [
+      "에버라인"
+    ],
+    "lat": 37.24463834,
+    "lng": 127.2141836,
+    "nodes": [
+      {
+        "id": "고진_에버라인",
+        "line": "에버라인",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "고촌",
+    "aliases": [],
+    "lines": [
+      "김포골드"
+    ],
+    "lat": 37.60125,
+    "lng": 126.770361,
+    "nodes": [
+      {
+        "id": "고촌_김포골드",
+        "line": "김포골드",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "곡산",
+    "aliases": [],
+    "lines": [
+      "경의중앙",
+      "서해"
+    ],
+    "lat": 37.645729,
+    "lng": 126.801877,
+    "nodes": [
+      {
+        "id": "곡산_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      },
+      {
+        "id": "곡산_서해",
+        "line": "서해",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "곤제",
+    "aliases": [],
+    "lines": [
+      "의정부"
+    ],
+    "lat": 37.75054343,
+    "lng": 127.0838651,
+    "nodes": [
+      {
+        "id": "곤제_의정부",
+        "line": "의정부",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "곤지암",
+    "aliases": [],
+    "lines": [
+      "경강"
+    ],
+    "lat": 37.350525,
+    "lng": 127.346186,
+    "nodes": [
+      {
+        "id": "곤지암_경강",
+        "line": "경강",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "공덕",
     "aliases": [],
     "lines": [
       "5",
-      "6"
+      "6",
+      "경의중앙",
+      "공항철도"
     ],
     "lat": 37.544431,
     "lng": 126.951372,
@@ -501,6 +1172,26 @@
           "elevator": 5,
           "escalator": 6,
           "wheelchair_lift": 0
+        }
+      },
+      {
+        "id": "공덕_경의중앙",
+        "line": "경의중앙",
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 11,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
+      },
+      {
+        "id": "공덕_공항철도",
+        "line": "공항철도",
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 11,
+          "wheelchair_lift": 0,
+          "shared": true
         }
       }
     ],
@@ -548,6 +1239,108 @@
     "elevator": "met"
   },
   {
+    "name": "공항화물청사",
+    "aliases": [],
+    "lines": [
+      "공항철도"
+    ],
+    "lat": 37.45902611,
+    "lng": 126.4774333,
+    "nodes": [
+      {
+        "id": "공항화물청사_공항철도",
+        "line": "공항철도",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "과천",
+    "aliases": [],
+    "lines": [
+      "4"
+    ],
+    "lat": 37.432805,
+    "lng": 126.996404,
+    "nodes": [
+      {
+        "id": "과천_4",
+        "line": "4",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "관악",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.419578,
+    "lng": 126.908476,
+    "nodes": [
+      {
+        "id": "관악_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "관악산",
+    "aliases": [],
+    "lines": [
+      "신림"
+    ],
+    "lat": 37.46916896,
+    "lng": 126.944954837,
+    "nodes": [
+      {
+        "id": "관악산_신림",
+        "line": "신림",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "광교",
+    "aliases": [],
+    "lines": [
+      "신분당"
+    ],
+    "lat": 37.3017347422146,
+    "lng": 127.044856131638,
+    "nodes": [
+      {
+        "id": "광교_신분당",
+        "line": "신분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "광교중앙",
+    "aliases": [],
+    "lines": [
+      "신분당"
+    ],
+    "lat": 37.2877375194967,
+    "lng": 127.052625032841,
+    "nodes": [
+      {
+        "id": "광교중앙_신분당",
+        "line": "신분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "광나루",
     "aliases": [],
     "lines": [
@@ -569,6 +1362,23 @@
     "elevator": "met"
   },
   {
+    "name": "광명",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.415995,
+    "lng": 126.884523,
+    "nodes": [
+      {
+        "id": "광명_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "광명사거리",
     "aliases": [],
     "lines": [
@@ -588,6 +1398,29 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "광운대",
+    "aliases": [],
+    "lines": [
+      "1",
+      "경춘"
+    ],
+    "lat": 37.62357,
+    "lng": 127.06181,
+    "nodes": [
+      {
+        "id": "광운대_1",
+        "line": "1",
+        "accessibility": null
+      },
+      {
+        "id": "광운대_경춘",
+        "line": "경춘",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "광화문",
@@ -663,6 +1496,40 @@
     "elevator": "met"
   },
   {
+    "name": "구래",
+    "aliases": [],
+    "lines": [
+      "김포골드"
+    ],
+    "lat": 37.645354,
+    "lng": 126.6285,
+    "nodes": [
+      {
+        "id": "구래_김포골드",
+        "line": "김포골드",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "구로",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.503178,
+    "lng": 126.882037,
+    "nodes": [
+      {
+        "id": "구로_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "구로디지털단지",
     "aliases": [],
     "lines": [
@@ -682,6 +1549,46 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "구룡",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.486985,
+    "lng": 127.059496,
+    "nodes": [
+      {
+        "id": "구룡_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "구리",
+    "aliases": [],
+    "lines": [
+      "8",
+      "경의중앙"
+    ],
+    "lat": 37.60256,
+    "lng": 127.14073,
+    "nodes": [
+      {
+        "id": "구리_8",
+        "line": "8",
+        "accessibility": null
+      },
+      {
+        "id": "구리_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "구반포",
@@ -725,6 +1632,29 @@
     "elevator": "met"
   },
   {
+    "name": "구성",
+    "aliases": [],
+    "lines": [
+      "GTX-A",
+      "수인분당"
+    ],
+    "lat": 37.299013,
+    "lng": 127.105664,
+    "nodes": [
+      {
+        "id": "구성_GTX-A",
+        "line": "GTX-A",
+        "accessibility": null
+      },
+      {
+        "id": "구성_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "구의",
     "aliases": [],
     "lines": [
@@ -746,6 +1676,23 @@
     "elevator": "met"
   },
   {
+    "name": "구일",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.495973,
+    "lng": 126.869201,
+    "nodes": [
+      {
+        "id": "구일_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "구파발",
     "aliases": [],
     "lines": [
@@ -765,6 +1712,40 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "국수",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.516171,
+    "lng": 127.399402,
+    "nodes": [
+      {
+        "id": "국수_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "국제업무지구",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.400421,
+    "lng": 126.630105,
+    "nodes": [
+      {
+        "id": "국제업무지구_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "국회의사당",
@@ -818,6 +1799,57 @@
     "elevator": "met"
   },
   {
+    "name": "군포",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.353732,
+    "lng": 126.948517,
+    "nodes": [
+      {
+        "id": "군포_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "굴봉산",
+    "aliases": [],
+    "lines": [
+      "경춘"
+    ],
+    "lat": 37.832086,
+    "lng": 127.557732,
+    "nodes": [
+      {
+        "id": "굴봉산_경춘",
+        "line": "경춘",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "굴포천",
+    "aliases": [],
+    "lines": [
+      "7"
+    ],
+    "lat": 37.506997,
+    "lng": 126.73128,
+    "nodes": [
+      {
+        "id": "굴포천_7",
+        "line": "7",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "굽은다리",
     "aliases": [],
     "lines": [
@@ -839,6 +1871,114 @@
     "elevator": "met"
   },
   {
+    "name": "귤현",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.566362,
+    "lng": 126.742498,
+    "nodes": [
+      {
+        "id": "귤현_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "금곡",
+    "aliases": [],
+    "lines": [
+      "경춘"
+    ],
+    "lat": 37.637414,
+    "lng": 127.207931,
+    "nodes": [
+      {
+        "id": "금곡_경춘",
+        "line": "경춘",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "금릉",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.751295,
+    "lng": 126.765401,
+    "nodes": [
+      {
+        "id": "금릉_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "금정",
+    "aliases": [],
+    "lines": [
+      "1",
+      "4"
+    ],
+    "lat": 37.371957,
+    "lng": 126.943411,
+    "nodes": [
+      {
+        "id": "금정_1",
+        "line": "1",
+        "accessibility": null
+      },
+      {
+        "id": "금정_4",
+        "line": "4",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "금천구청",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.45576,
+    "lng": 126.894344,
+    "nodes": [
+      {
+        "id": "금천구청_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "금촌",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.766106,
+    "lng": 126.774515,
+    "nodes": [
+      {
+        "id": "금촌_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "금호",
     "aliases": [],
     "lines": [
@@ -858,6 +1998,29 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "기흥",
+    "aliases": [],
+    "lines": [
+      "수인분당",
+      "에버라인"
+    ],
+    "lat": 37.275657,
+    "lng": 127.115944,
+    "nodes": [
+      {
+        "id": "기흥_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      },
+      {
+        "id": "기흥_에버라인",
+        "line": "에버라인",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "길동",
@@ -902,11 +2065,48 @@
     "elevator": "met"
   },
   {
+    "name": "김량장",
+    "aliases": [],
+    "lines": [
+      "에버라인"
+    ],
+    "lat": 37.23732377,
+    "lng": 127.1986109,
+    "nodes": [
+      {
+        "id": "김량장_에버라인",
+        "line": "에버라인",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "김유정",
+    "aliases": [],
+    "lines": [
+      "경춘"
+    ],
+    "lat": 37.818475,
+    "lng": 127.714302,
+    "nodes": [
+      {
+        "id": "김유정_경춘",
+        "line": "경춘",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "김포공항",
     "aliases": [],
     "lines": [
       "5",
-      "9"
+      "9",
+      "공항철도",
+      "김포골드",
+      "서해"
     ],
     "lat": 37.562384,
     "lng": 126.801292,
@@ -926,6 +2126,36 @@
         "accessibility": {
           "elevator": 3,
           "source": "elevator_location"
+        }
+      },
+      {
+        "id": "김포공항_공항철도",
+        "line": "공항철도",
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
+      },
+      {
+        "id": "김포공항_김포골드",
+        "line": "김포골드",
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
+      },
+      {
+        "id": "김포공항_서해",
+        "line": "서해",
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "shared": true
         }
       }
     ],
@@ -962,6 +2192,23 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "까치울",
+    "aliases": [],
+    "lines": [
+      "7"
+    ],
+    "lat": 37.506207,
+    "lng": 126.810939,
+    "nodes": [
+      {
+        "id": "까치울_7",
+        "line": "7",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "낙성대",
@@ -1006,6 +2253,40 @@
     "elevator": "met"
   },
   {
+    "name": "남동구청",
+    "aliases": [],
+    "lines": [
+      "인천2"
+    ],
+    "lat": 37.448179,
+    "lng": 126.736581,
+    "nodes": [
+      {
+        "id": "남동구청_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "남동인더스파크",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.407668,
+    "lng": 126.695613,
+    "nodes": [
+      {
+        "id": "남동인더스파크_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "남부터미널",
     "aliases": [],
     "lines": [
@@ -1048,6 +2329,23 @@
     "elevator": "met"
   },
   {
+    "name": "남영",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.540597,
+    "lng": 126.971171,
+    "nodes": [
+      {
+        "id": "남영_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "남위례",
     "aliases": [],
     "lines": [
@@ -1067,6 +2365,23 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "남춘천",
+    "aliases": [],
+    "lines": [
+      "경춘"
+    ],
+    "lat": 37.864071,
+    "lng": 127.723761,
+    "nodes": [
+      {
+        "id": "남춘천_경춘",
+        "line": "경춘",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "남태령",
@@ -1155,11 +2470,21 @@
     "name": "노량진",
     "aliases": [],
     "lines": [
+      "1",
       "9"
     ],
-    "lat": 37.513534,
-    "lng": 126.941005,
+    "lat": 37.514072,
+    "lng": 126.941671,
     "nodes": [
+      {
+        "id": "노량진_1",
+        "line": "1",
+        "accessibility": {
+          "elevator": 3,
+          "source": "elevator_location",
+          "shared": true
+        }
+      },
       {
         "id": "노량진_9",
         "line": "9",
@@ -1245,10 +2570,45 @@
     "elevator": "met"
   },
   {
+    "name": "녹양",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.759416,
+    "lng": 127.042272,
+    "nodes": [
+      {
+        "id": "녹양_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "녹천",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.644599,
+    "lng": 127.051406,
+    "nodes": [
+      {
+        "id": "녹천_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "논현",
     "aliases": [],
     "lines": [
-      "7"
+      "7",
+      "신분당"
     ],
     "lat": 37.511093,
     "lng": 127.021415,
@@ -1261,9 +2621,84 @@
           "escalator": 19,
           "wheelchair_lift": 0
         }
+      },
+      {
+        "id": "논현_신분당",
+        "line": "신분당",
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 19,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "능곡",
+    "aliases": [],
+    "lines": [
+      "경의중앙",
+      "서해"
+    ],
+    "lat": 37.618741,
+    "lng": 126.82089,
+    "nodes": [
+      {
+        "id": "능곡_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      },
+      {
+        "id": "능곡_서해",
+        "line": "서해",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "능길",
+    "aliases": [
+      "신길온천"
+    ],
+    "lines": [
+      "4",
+      "수인분당"
+    ],
+    "lat": 37.337488,
+    "lng": 126.767306,
+    "nodes": [
+      {
+        "id": "능길_4",
+        "line": "4",
+        "accessibility": null
+      },
+      {
+        "id": "능길_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "다산",
+    "aliases": [],
+    "lines": [
+      "8"
+    ],
+    "lat": 37.62437,
+    "lng": 127.1498,
+    "nodes": [
+      {
+        "id": "다산_8",
+        "line": "8",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "단대오거리",
@@ -1287,6 +2722,40 @@
     "elevator": "met"
   },
   {
+    "name": "달미",
+    "aliases": [],
+    "lines": [
+      "서해"
+    ],
+    "lat": 37.3490003,
+    "lng": 126.809318,
+    "nodes": [
+      {
+        "id": "달미_서해",
+        "line": "서해",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "달월",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.379993,
+    "lng": 126.745431,
+    "nodes": [
+      {
+        "id": "달월_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "답십리",
     "aliases": [],
     "lines": [
@@ -1306,6 +2775,23 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "당곡",
+    "aliases": [],
+    "lines": [
+      "신림"
+    ],
+    "lat": 37.490039105,
+    "lng": 126.927568759,
+    "nodes": [
+      {
+        "id": "당곡_신림",
+        "line": "신림",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "당산",
@@ -1338,6 +2824,75 @@
     "elevator": "met"
   },
   {
+    "name": "당정",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.34338,
+    "lng": 126.948388,
+    "nodes": [
+      {
+        "id": "당정_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "대곡",
+    "aliases": [],
+    "lines": [
+      "3",
+      "GTX-A",
+      "경의중앙",
+      "서해"
+    ],
+    "lat": 37.631629,
+    "lng": 126.811025,
+    "nodes": [
+      {
+        "id": "대곡_3",
+        "line": "3",
+        "accessibility": null
+      },
+      {
+        "id": "대곡_GTX-A",
+        "line": "GTX-A",
+        "accessibility": null
+      },
+      {
+        "id": "대곡_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      },
+      {
+        "id": "대곡_서해",
+        "line": "서해",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "대공원",
+    "aliases": [],
+    "lines": [
+      "4"
+    ],
+    "lat": 37.435724,
+    "lng": 127.006474,
+    "nodes": [
+      {
+        "id": "대공원_4",
+        "line": "4",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "대림",
     "aliases": [],
     "lines": [
@@ -1367,6 +2922,80 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "대모산입구",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.491347,
+    "lng": 127.072702,
+    "nodes": [
+      {
+        "id": "대모산입구_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "대방",
+    "aliases": [],
+    "lines": [
+      "1",
+      "신림"
+    ],
+    "lat": 37.513392,
+    "lng": 126.926407,
+    "nodes": [
+      {
+        "id": "대방_1",
+        "line": "1",
+        "accessibility": null
+      },
+      {
+        "id": "대방_신림",
+        "line": "신림",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "대성리",
+    "aliases": [],
+    "lines": [
+      "경춘"
+    ],
+    "lat": 37.683909,
+    "lng": 127.379165,
+    "nodes": [
+      {
+        "id": "대성리_경춘",
+        "line": "경춘",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "대야미",
+    "aliases": [],
+    "lines": [
+      "4"
+    ],
+    "lat": 37.328304,
+    "lng": 126.917161,
+    "nodes": [
+      {
+        "id": "대야미_4",
+        "line": "4",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "대청",
@@ -1411,6 +3040,23 @@
     "elevator": "met"
   },
   {
+    "name": "대화",
+    "aliases": [],
+    "lines": [
+      "3"
+    ],
+    "lat": 37.675883,
+    "lng": 126.747756,
+    "nodes": [
+      {
+        "id": "대화_3",
+        "line": "3",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "대흥",
     "aliases": [],
     "lines": [
@@ -1432,10 +3078,62 @@
     "elevator": "met"
   },
   {
+    "name": "덕계",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.818761,
+    "lng": 127.056676,
+    "nodes": [
+      {
+        "id": "덕계_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "덕소",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.586892,
+    "lng": 127.208835,
+    "nodes": [
+      {
+        "id": "덕소_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "덕정",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.843216,
+    "lng": 127.061511,
+    "nodes": [
+      {
+        "id": "덕정_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "도곡",
     "aliases": [],
     "lines": [
-      "3"
+      "3",
+      "수인분당"
     ],
     "lat": 37.490922,
     "lng": 127.055452,
@@ -1448,9 +3146,53 @@
           "escalator": 8,
           "wheelchair_lift": 0
         }
+      },
+      {
+        "id": "도곡_수인분당",
+        "line": "수인분당",
+        "accessibility": {
+          "elevator": 0,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
       }
     ],
     "elevator": "unmet"
+  },
+  {
+    "name": "도농",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.608756,
+    "lng": 127.161105,
+    "nodes": [
+      {
+        "id": "도농_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "도라산",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.8995,
+    "lng": 126.709,
+    "nodes": [
+      {
+        "id": "도라산_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "도림천",
@@ -1474,14 +3216,42 @@
     "elevator": "met"
   },
   {
+    "name": "도봉",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.679441,
+    "lng": 127.045521,
+    "nodes": [
+      {
+        "id": "도봉_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "도봉산",
     "aliases": [],
     "lines": [
+      "1",
       "7"
     ],
-    "lat": 37.689241,
-    "lng": 127.046509,
+    "lat": 37.689603,
+    "lng": 127.046047,
     "nodes": [
+      {
+        "id": "도봉산_1",
+        "line": "1",
+        "accessibility": {
+          "elevator": 5,
+          "escalator": 0,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
+      },
       {
         "id": "도봉산_7",
         "line": "7",
@@ -1493,6 +3263,57 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "도심",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.579628,
+    "lng": 127.222798,
+    "nodes": [
+      {
+        "id": "도심_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "도원",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.468604,
+    "lng": 126.642824,
+    "nodes": [
+      {
+        "id": "도원_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "도화",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.466154,
+    "lng": 126.66846,
+    "nodes": [
+      {
+        "id": "도화_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "독립문",
@@ -1537,6 +3358,40 @@
     "elevator": "met"
   },
   {
+    "name": "독산",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.465994,
+    "lng": 126.889508,
+    "nodes": [
+      {
+        "id": "독산_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "독정",
+    "aliases": [],
+    "lines": [
+      "인천2"
+    ],
+    "lat": 37.584927,
+    "lng": 126.675981,
+    "nodes": [
+      {
+        "id": "독정_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "돌곶이",
     "aliases": [],
     "lines": [
@@ -1556,6 +3411,23 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "동구릉",
+    "aliases": [],
+    "lines": [
+      "8"
+    ],
+    "lat": 37.610556,
+    "lng": 127.135056,
+    "nodes": [
+      {
+        "id": "동구릉_8",
+        "line": "8",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "동대문",
@@ -1651,6 +3523,57 @@
     "elevator": "met"
   },
   {
+    "name": "동두천",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.927569,
+    "lng": 127.054825,
+    "nodes": [
+      {
+        "id": "동두천_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "동두천중앙",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.901818,
+    "lng": 127.056528,
+    "nodes": [
+      {
+        "id": "동두천중앙_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "동막",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.398173,
+    "lng": 126.673561,
+    "nodes": [
+      {
+        "id": "동막_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "동묘앞",
     "aliases": [],
     "lines": [
@@ -1682,6 +3605,91 @@
     "elevator": "met"
   },
   {
+    "name": "동백",
+    "aliases": [],
+    "lines": [
+      "에버라인"
+    ],
+    "lat": 37.26910138,
+    "lng": 127.1526906,
+    "nodes": [
+      {
+        "id": "동백_에버라인",
+        "line": "에버라인",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "동수",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.485409,
+    "lng": 126.718464,
+    "nodes": [
+      {
+        "id": "동수_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "동암",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.470835,
+    "lng": 126.703016,
+    "nodes": [
+      {
+        "id": "동암_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "동오",
+    "aliases": [],
+    "lines": [
+      "의정부"
+    ],
+    "lat": 37.74519123,
+    "lng": 127.05703,
+    "nodes": [
+      {
+        "id": "동오_의정부",
+        "line": "의정부",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "동인천",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.475414,
+    "lng": 126.632598,
+    "nodes": [
+      {
+        "id": "동인천_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "동작",
     "aliases": [],
     "lines": [
@@ -1710,6 +3718,91 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "동천",
+    "aliases": [],
+    "lines": [
+      "신분당"
+    ],
+    "lat": 37.3386841329961,
+    "lng": 127.102793673668,
+    "nodes": [
+      {
+        "id": "동천_신분당",
+        "line": "신분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "동춘",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.404676,
+    "lng": 126.680835,
+    "nodes": [
+      {
+        "id": "동춘_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "동탄",
+    "aliases": [],
+    "lines": [
+      "GTX-A"
+    ],
+    "lat": 37.2003,
+    "lng": 127.0957,
+    "nodes": [
+      {
+        "id": "동탄_GTX-A",
+        "line": "GTX-A",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "두정",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 36.833791,
+    "lng": 127.148905,
+    "nodes": [
+      {
+        "id": "두정_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "둔전",
+    "aliases": [],
+    "lines": [
+      "에버라인"
+    ],
+    "lat": 37.26721222,
+    "lng": 127.2136387,
+    "nodes": [
+      {
+        "id": "둔전_에버라인",
+        "line": "에버라인",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "둔촌동",
@@ -1776,7 +3869,9 @@
     "name": "디지털미디어시티",
     "aliases": [],
     "lines": [
-      "6"
+      "6",
+      "경의중앙",
+      "공항철도"
     ],
     "lat": 37.576108,
     "lng": 126.901391,
@@ -1788,6 +3883,26 @@
           "elevator": 3,
           "escalator": 8,
           "wheelchair_lift": 2
+        }
+      },
+      {
+        "id": "디지털미디어시티_경의중앙",
+        "line": "경의중앙",
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 8,
+          "wheelchair_lift": 2,
+          "shared": true
+        }
+      },
+      {
+        "id": "디지털미디어시티_공항철도",
+        "line": "공항철도",
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 8,
+          "wheelchair_lift": 2,
+          "shared": true
         }
       }
     ],
@@ -1839,7 +3954,8 @@
     "name": "마곡나루",
     "aliases": [],
     "lines": [
-      "9"
+      "9",
+      "공항철도"
     ],
     "lat": 37.566778,
     "lng": 126.82731,
@@ -1851,9 +3967,35 @@
           "elevator": 5,
           "source": "elevator_location"
         }
+      },
+      {
+        "id": "마곡나루_공항철도",
+        "line": "공항철도",
+        "accessibility": {
+          "elevator": 5,
+          "source": "elevator_location",
+          "shared": true
+        }
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "마두",
+    "aliases": [],
+    "lines": [
+      "3"
+    ],
+    "lat": 37.652185,
+    "lng": 126.777641,
+    "nodes": [
+      {
+        "id": "마두_3",
+        "line": "3",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "마들",
@@ -1877,6 +4019,40 @@
     "elevator": "met"
   },
   {
+    "name": "마산",
+    "aliases": [],
+    "lines": [
+      "김포골드"
+    ],
+    "lat": 37.640606,
+    "lng": 126.643944,
+    "nodes": [
+      {
+        "id": "마산_김포골드",
+        "line": "김포골드",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "마석",
+    "aliases": [],
+    "lines": [
+      "경춘"
+    ],
+    "lat": 37.652328,
+    "lng": 127.311713,
+    "nodes": [
+      {
+        "id": "마석_경춘",
+        "line": "경춘",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "마장",
     "aliases": [],
     "lines": [
@@ -1896,6 +4072,23 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "마전",
+    "aliases": [],
+    "lines": [
+      "인천2"
+    ],
+    "lat": 37.597756,
+    "lng": 126.667195,
+    "nodes": [
+      {
+        "id": "마전_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "마천",
@@ -1961,6 +4154,46 @@
     "elevator": "met"
   },
   {
+    "name": "만수",
+    "aliases": [],
+    "lines": [
+      "인천2"
+    ],
+    "lat": 37.454962,
+    "lng": 126.731764,
+    "nodes": [
+      {
+        "id": "만수_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "망우",
+    "aliases": [],
+    "lines": [
+      "경의중앙",
+      "경춘"
+    ],
+    "lat": 37.599288,
+    "lng": 127.092318,
+    "nodes": [
+      {
+        "id": "망우_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      },
+      {
+        "id": "망우_경춘",
+        "line": "경춘",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "망원",
     "aliases": [],
     "lines": [
@@ -1982,6 +4215,57 @@
     "elevator": "met"
   },
   {
+    "name": "망월사",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.710499,
+    "lng": 127.047361,
+    "nodes": [
+      {
+        "id": "망월사_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "망포",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.245793,
+    "lng": 127.057367,
+    "nodes": [
+      {
+        "id": "망포_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "매교",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.265502,
+    "lng": 127.015657,
+    "nodes": [
+      {
+        "id": "매교_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "매봉",
     "aliases": [],
     "lines": [
@@ -2001,6 +4285,23 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "매탄권선",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.252458,
+    "lng": 127.040824,
+    "nodes": [
+      {
+        "id": "매탄권선_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "먹골",
@@ -2087,10 +4388,45 @@
     "elevator": "met"
   },
   {
+    "name": "명지대",
+    "aliases": [],
+    "lines": [
+      "에버라인"
+    ],
+    "lat": 37.23807629,
+    "lng": 127.1902913,
+    "nodes": [
+      {
+        "id": "명지대_에버라인",
+        "line": "에버라인",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "명학",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.384435,
+    "lng": 126.935579,
+    "nodes": [
+      {
+        "id": "명학_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "모란",
     "aliases": [],
     "lines": [
-      "8"
+      "8",
+      "수인분당"
     ],
     "lat": 37.433824,
     "lng": 127.129837,
@@ -2103,9 +4439,36 @@
           "escalator": 2,
           "wheelchair_lift": 0
         }
+      },
+      {
+        "id": "모란_수인분당",
+        "line": "수인분당",
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 2,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "모래내시장",
+    "aliases": [],
+    "lines": [
+      "인천2"
+    ],
+    "lat": 37.455842,
+    "lng": 126.719578,
+    "nodes": [
+      {
+        "id": "모래내시장_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "목동",
@@ -2192,6 +4555,23 @@
     "elevator": "met"
   },
   {
+    "name": "문산",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.854565,
+    "lng": 126.787531,
+    "nodes": [
+      {
+        "id": "문산_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "문정",
     "aliases": [],
     "lines": [
@@ -2211,6 +4591,46 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "문학경기장",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.434964,
+    "lng": 126.698373,
+    "nodes": [
+      {
+        "id": "문학경기장_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "미금",
+    "aliases": [],
+    "lines": [
+      "수인분당",
+      "신분당"
+    ],
+    "lat": 37.350078,
+    "lng": 127.108952,
+    "nodes": [
+      {
+        "id": "미금_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      },
+      {
+        "id": "미금_신분당",
+        "line": "신분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "미사",
@@ -2276,6 +4696,40 @@
     "elevator": "met"
   },
   {
+    "name": "박촌",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.553525,
+    "lng": 126.744946,
+    "nodes": [
+      {
+        "id": "박촌_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "반월",
+    "aliases": [],
+    "lines": [
+      "4"
+    ],
+    "lat": 37.312244,
+    "lng": 126.903684,
+    "nodes": [
+      {
+        "id": "반월_4",
+        "line": "4",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "반포",
     "aliases": [],
     "lines": [
@@ -2295,6 +4749,23 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "발곡",
+    "aliases": [],
+    "lines": [
+      "의정부"
+    ],
+    "lat": 37.726983,
+    "lng": 127.052889,
+    "nodes": [
+      {
+        "id": "발곡_의정부",
+        "line": "의정부",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "발산",
@@ -2360,6 +4831,23 @@
     "elevator": "met"
   },
   {
+    "name": "방학",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.667471,
+    "lng": 127.044295,
+    "nodes": [
+      {
+        "id": "방학_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "방화",
     "aliases": [],
     "lines": [
@@ -2379,6 +4867,97 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "배방",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 36.777541,
+    "lng": 127.052751,
+    "nodes": [
+      {
+        "id": "배방_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "백마",
+    "aliases": [],
+    "lines": [
+      "경의중앙",
+      "서해"
+    ],
+    "lat": 37.658346,
+    "lng": 126.794401,
+    "nodes": [
+      {
+        "id": "백마_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      },
+      {
+        "id": "백마_서해",
+        "line": "서해",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "백석",
+    "aliases": [],
+    "lines": [
+      "3"
+    ],
+    "lat": 37.642973,
+    "lng": 126.788109,
+    "nodes": [
+      {
+        "id": "백석_3",
+        "line": "3",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "백양리",
+    "aliases": [],
+    "lines": [
+      "경춘"
+    ],
+    "lat": 37.830881,
+    "lng": 127.589085,
+    "nodes": [
+      {
+        "id": "백양리_경춘",
+        "line": "경춘",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "백운",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.483301,
+    "lng": 126.707179,
+    "nodes": [
+      {
+        "id": "백운_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "버티고개",
@@ -2402,10 +4981,102 @@
     "elevator": "met"
   },
   {
+    "name": "범계",
+    "aliases": [],
+    "lines": [
+      "4"
+    ],
+    "lat": 37.389783,
+    "lng": 126.950752,
+    "nodes": [
+      {
+        "id": "범계_4",
+        "line": "4",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "범골",
+    "aliases": [],
+    "lines": [
+      "의정부"
+    ],
+    "lat": 37.7287279,
+    "lng": 127.0437202,
+    "nodes": [
+      {
+        "id": "범골_의정부",
+        "line": "의정부",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "별내",
+    "aliases": [],
+    "lines": [
+      "8",
+      "경춘"
+    ],
+    "lat": 37.642517,
+    "lng": 127.1273,
+    "nodes": [
+      {
+        "id": "별내_8",
+        "line": "8",
+        "accessibility": null
+      },
+      {
+        "id": "별내_경춘",
+        "line": "경춘",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "별내별가람",
+    "aliases": [],
+    "lines": [
+      "4"
+    ],
+    "lat": 37.667833,
+    "lng": 127.116167,
+    "nodes": [
+      {
+        "id": "별내별가람_4",
+        "line": "4",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "병점",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.206821,
+    "lng": 127.033268,
+    "nodes": [
+      {
+        "id": "병점_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "보라매",
     "aliases": [],
     "lines": [
-      "7"
+      "7",
+      "신림"
     ],
     "lat": 37.499872,
     "lng": 126.920428,
@@ -2418,9 +5089,53 @@
           "escalator": 4,
           "wheelchair_lift": 0
         }
+      },
+      {
+        "id": "보라매_신림",
+        "line": "신림",
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "보라매공원",
+    "aliases": [],
+    "lines": [
+      "신림"
+    ],
+    "lat": 37.495225405,
+    "lng": 126.918258811,
+    "nodes": [
+      {
+        "id": "보라매공원_신림",
+        "line": "신림",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "보라매병원",
+    "aliases": [],
+    "lines": [
+      "신림"
+    ],
+    "lat": 37.4929607,
+    "lng": 126.923886,
+    "nodes": [
+      {
+        "id": "보라매병원_신림",
+        "line": "신림",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "보문",
@@ -2453,10 +5168,62 @@
     "elevator": "met"
   },
   {
+    "name": "보산",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.914268,
+    "lng": 127.057134,
+    "nodes": [
+      {
+        "id": "보산_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "보정",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.31274,
+    "lng": 127.108219,
+    "nodes": [
+      {
+        "id": "보정_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "보평",
+    "aliases": [],
+    "lines": [
+      "에버라인"
+    ],
+    "lat": 37.25896427,
+    "lng": 127.2184808,
+    "nodes": [
+      {
+        "id": "보평_에버라인",
+        "line": "에버라인",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "복정",
     "aliases": [],
     "lines": [
-      "8"
+      "8",
+      "수인분당"
     ],
     "lat": 37.471052,
     "lng": 127.126732,
@@ -2469,9 +5236,36 @@
           "escalator": 5,
           "wheelchair_lift": 0
         }
+      },
+      {
+        "id": "복정_수인분당",
+        "line": "수인분당",
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 5,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "봉명",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 36.801578,
+    "lng": 127.136319,
+    "nodes": [
+      {
+        "id": "봉명_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "봉은사",
@@ -2534,6 +5328,177 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "부개",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.488479,
+    "lng": 126.740549,
+    "nodes": [
+      {
+        "id": "부개_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "부발",
+    "aliases": [],
+    "lines": [
+      "경강"
+    ],
+    "lat": 37.260411,
+    "lng": 127.490303,
+    "nodes": [
+      {
+        "id": "부발_경강",
+        "line": "경강",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "부천",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.484066,
+    "lng": 126.782779,
+    "nodes": [
+      {
+        "id": "부천_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "부천시청",
+    "aliases": [],
+    "lines": [
+      "7"
+    ],
+    "lat": 37.504631,
+    "lng": 126.763538,
+    "nodes": [
+      {
+        "id": "부천시청_7",
+        "line": "7",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "부천종합운동장",
+    "aliases": [],
+    "lines": [
+      "7",
+      "서해"
+    ],
+    "lat": 37.50538,
+    "lng": 126.797337,
+    "nodes": [
+      {
+        "id": "부천종합운동장_7",
+        "line": "7",
+        "accessibility": null
+      },
+      {
+        "id": "부천종합운동장_서해",
+        "line": "서해",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "부평",
+    "aliases": [],
+    "lines": [
+      "1",
+      "인천1"
+    ],
+    "lat": 37.489457,
+    "lng": 126.724584,
+    "nodes": [
+      {
+        "id": "부평_1",
+        "line": "1",
+        "accessibility": null
+      },
+      {
+        "id": "부평_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "부평구청",
+    "aliases": [],
+    "lines": [
+      "7",
+      "인천1"
+    ],
+    "lat": 37.507394,
+    "lng": 126.721599,
+    "nodes": [
+      {
+        "id": "부평구청_7",
+        "line": "7",
+        "accessibility": null
+      },
+      {
+        "id": "부평구청_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "부평삼거리",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.478267,
+    "lng": 126.710494,
+    "nodes": [
+      {
+        "id": "부평삼거리_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "부평시장",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.498495,
+    "lng": 126.722282,
+    "nodes": [
+      {
+        "id": "부평시장_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "북한산보국문",
@@ -2682,6 +5647,57 @@
     "elevator": "met"
   },
   {
+    "name": "사릉",
+    "aliases": [],
+    "lines": [
+      "경춘"
+    ],
+    "lat": 37.651145,
+    "lng": 127.176839,
+    "nodes": [
+      {
+        "id": "사릉_경춘",
+        "line": "경춘",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "사리",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.290809,
+    "lng": 126.857172,
+    "nodes": [
+      {
+        "id": "사리_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "사우",
+    "aliases": [],
+    "lines": [
+      "김포골드"
+    ],
+    "lat": 37.620361,
+    "lng": 126.719722,
+    "nodes": [
+      {
+        "id": "사우_김포골드",
+        "line": "김포골드",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "사평",
     "aliases": [],
     "lines": [
@@ -2700,6 +5716,40 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "산곡",
+    "aliases": [],
+    "lines": [
+      "7"
+    ],
+    "lat": 37.5086,
+    "lng": 126.7035277,
+    "nodes": [
+      {
+        "id": "산곡_7",
+        "line": "7",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "산본",
+    "aliases": [],
+    "lines": [
+      "4"
+    ],
+    "lat": 37.358019,
+    "lng": 126.932969,
+    "nodes": [
+      {
+        "id": "산본_4",
+        "line": "4",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "산성",
@@ -2721,6 +5771,23 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "삼가",
+    "aliases": [],
+    "lines": [
+      "에버라인"
+    ],
+    "lat": 37.24205993,
+    "lng": 127.16818,
+    "nodes": [
+      {
+        "id": "삼가_에버라인",
+        "line": "에버라인",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "삼각지",
@@ -2752,6 +5819,40 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "삼동",
+    "aliases": [],
+    "lines": [
+      "경강"
+    ],
+    "lat": 37.408731,
+    "lng": 127.203447,
+    "nodes": [
+      {
+        "id": "삼동_경강",
+        "line": "경강",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "삼산체육관",
+    "aliases": [],
+    "lines": [
+      "7"
+    ],
+    "lat": 37.506411,
+    "lng": 126.742153,
+    "nodes": [
+      {
+        "id": "삼산체육관_7",
+        "line": "7",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "삼성",
@@ -2793,6 +5894,23 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "삼송",
+    "aliases": [],
+    "lines": [
+      "3"
+    ],
+    "lat": 37.653096,
+    "lng": 126.895559,
+    "nodes": [
+      {
+        "id": "삼송_3",
+        "line": "3",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "삼양",
@@ -2855,6 +5973,23 @@
     "elevator": "met"
   },
   {
+    "name": "상갈",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.261797,
+    "lng": 127.108718,
+    "nodes": [
+      {
+        "id": "상갈_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "상계",
     "aliases": [],
     "lines": [
@@ -2897,10 +6032,46 @@
     "elevator": "met"
   },
   {
-    "name": "상봉",
+    "name": "상동",
     "aliases": [],
     "lines": [
       "7"
+    ],
+    "lat": 37.505781,
+    "lng": 126.753083,
+    "nodes": [
+      {
+        "id": "상동_7",
+        "line": "7",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "상록수",
+    "aliases": [],
+    "lines": [
+      "4"
+    ],
+    "lat": 37.302845,
+    "lng": 126.866533,
+    "nodes": [
+      {
+        "id": "상록수_4",
+        "line": "4",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "상봉",
+    "aliases": [],
+    "lines": [
+      "7",
+      "경의중앙",
+      "경춘"
     ],
     "lat": 37.595577,
     "lng": 127.085716,
@@ -2912,6 +6083,26 @@
           "elevator": 5,
           "escalator": 6,
           "wheelchair_lift": 0
+        }
+      },
+      {
+        "id": "상봉_경의중앙",
+        "line": "경의중앙",
+        "accessibility": {
+          "elevator": 5,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
+      },
+      {
+        "id": "상봉_경춘",
+        "line": "경춘",
+        "accessibility": {
+          "elevator": 5,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "shared": true
         }
       }
     ],
@@ -3002,6 +6193,57 @@
     "elevator": "met"
   },
   {
+    "name": "상천",
+    "aliases": [],
+    "lines": [
+      "경춘"
+    ],
+    "lat": 37.770305,
+    "lng": 127.4542,
+    "nodes": [
+      {
+        "id": "상천_경춘",
+        "line": "경춘",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "상현",
+    "aliases": [],
+    "lines": [
+      "신분당"
+    ],
+    "lat": 37.2986852587224,
+    "lng": 127.06957991138,
+    "nodes": [
+      {
+        "id": "상현_신분당",
+        "line": "신분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "새말",
+    "aliases": [],
+    "lines": [
+      "의정부"
+    ],
+    "lat": 37.74889941,
+    "lng": 127.063869,
+    "nodes": [
+      {
+        "id": "새말_의정부",
+        "line": "의정부",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "새절",
     "aliases": [],
     "lines": [
@@ -3026,7 +6268,8 @@
     "name": "샛강",
     "aliases": [],
     "lines": [
-      "9"
+      "9",
+      "신림"
     ],
     "lat": 37.517274,
     "lng": 126.928422,
@@ -3038,9 +6281,52 @@
           "elevator": 2,
           "source": "elevator_location"
         }
+      },
+      {
+        "id": "샛강_신림",
+        "line": "신림",
+        "accessibility": {
+          "elevator": 2,
+          "source": "elevator_location",
+          "shared": true
+        }
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "서강대",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.552132,
+    "lng": 126.935389,
+    "nodes": [
+      {
+        "id": "서강대_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "서구청",
+    "aliases": [],
+    "lines": [
+      "인천2"
+    ],
+    "lat": 37.543839,
+    "lng": 126.676795,
+    "nodes": [
+      {
+        "id": "서구청_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "서대문",
@@ -3064,6 +6350,74 @@
     "elevator": "met"
   },
   {
+    "name": "서동탄",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.195675,
+    "lng": 127.051893,
+    "nodes": [
+      {
+        "id": "서동탄_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "서부여성회관",
+    "aliases": [],
+    "lines": [
+      "인천2"
+    ],
+    "lat": 37.500298,
+    "lng": 126.675875,
+    "nodes": [
+      {
+        "id": "서부여성회관_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "서빙고",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.51961,
+    "lng": 126.988358,
+    "nodes": [
+      {
+        "id": "서빙고_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "서울대벤처타운",
+    "aliases": [],
+    "lines": [
+      "신림"
+    ],
+    "lat": 37.47204068,
+    "lng": 126.933976556,
+    "nodes": [
+      {
+        "id": "서울대벤처타운_신림",
+        "line": "신림",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "서울대입구",
     "aliases": [],
     "lines": [
@@ -3085,11 +6439,31 @@
     "elevator": "met"
   },
   {
+    "name": "서울숲",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.543647,
+    "lng": 127.044686,
+    "nodes": [
+      {
+        "id": "서울숲_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "서울역",
     "aliases": [],
     "lines": [
       "1",
-      "4"
+      "4",
+      "GTX-A",
+      "경의중앙",
+      "공항철도"
     ],
     "lat": 37.556228,
     "lng": 126.972135,
@@ -3111,9 +6485,90 @@
           "escalator": 4,
           "wheelchair_lift": 0
         }
+      },
+      {
+        "id": "서울역_GTX-A",
+        "line": "GTX-A",
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 5,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
+      },
+      {
+        "id": "서울역_경의중앙",
+        "line": "경의중앙",
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 5,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
+      },
+      {
+        "id": "서울역_공항철도",
+        "line": "공항철도",
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 5,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "서울지방병무청",
+    "aliases": [],
+    "lines": [
+      "신림"
+    ],
+    "lat": 37.50604687,
+    "lng": 126.922783404,
+    "nodes": [
+      {
+        "id": "서울지방병무청_신림",
+        "line": "신림",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "서원",
+    "aliases": [],
+    "lines": [
+      "신림"
+    ],
+    "lat": 37.47827336,
+    "lng": 126.933228219,
+    "nodes": [
+      {
+        "id": "서원_신림",
+        "line": "신림",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "서정리",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.056459,
+    "lng": 127.052844,
+    "nodes": [
+      {
+        "id": "서정리_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "서초",
@@ -3137,14 +6592,42 @@
     "elevator": "met"
   },
   {
+    "name": "서현",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.384931,
+    "lng": 127.123249,
+    "nodes": [
+      {
+        "id": "서현_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "석계",
     "aliases": [],
     "lines": [
+      "1",
       "6"
     ],
-    "lat": 37.614872,
-    "lng": 127.065595,
+    "lat": 37.615206,
+    "lng": 127.065594,
     "nodes": [
+      {
+        "id": "석계_1",
+        "line": "1",
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 14,
+          "wheelchair_lift": 2,
+          "shared": true
+        }
+      },
       {
         "id": "석계_6",
         "line": "6",
@@ -3156,6 +6639,80 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "석남",
+    "aliases": [],
+    "lines": [
+      "7",
+      "인천2"
+    ],
+    "lat": 37.5062285,
+    "lng": 126.6762813,
+    "nodes": [
+      {
+        "id": "석남_7",
+        "line": "7",
+        "accessibility": null
+      },
+      {
+        "id": "석남_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "석바위시장",
+    "aliases": [],
+    "lines": [
+      "인천2"
+    ],
+    "lat": 37.457659,
+    "lng": 126.692387,
+    "nodes": [
+      {
+        "id": "석바위시장_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "석수",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.435161,
+    "lng": 126.902233,
+    "nodes": [
+      {
+        "id": "석수_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "석천사거리",
+    "aliases": [],
+    "lines": [
+      "인천2"
+    ],
+    "lat": 37.4569323,
+    "lng": 126.710383,
+    "nodes": [
+      {
+        "id": "석천사거리_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "석촌",
@@ -3211,7 +6768,8 @@
     "name": "선릉",
     "aliases": [],
     "lines": [
-      "2"
+      "2",
+      "수인분당"
     ],
     "lat": 37.504286,
     "lng": 127.048203,
@@ -3224,9 +6782,53 @@
           "escalator": 2,
           "wheelchair_lift": 0
         }
+      },
+      {
+        "id": "선릉_수인분당",
+        "line": "수인분당",
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 2,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "선바위",
+    "aliases": [],
+    "lines": [
+      "4"
+    ],
+    "lat": 37.451854,
+    "lng": 127.002164,
+    "nodes": [
+      {
+        "id": "선바위_4",
+        "line": "4",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "선부",
+    "aliases": [],
+    "lines": [
+      "서해"
+    ],
+    "lat": 37.33459,
+    "lng": 126.81,
+    "nodes": [
+      {
+        "id": "선부_서해",
+        "line": "서해",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "선유도",
@@ -3252,7 +6854,8 @@
     "name": "선정릉",
     "aliases": [],
     "lines": [
-      "9"
+      "9",
+      "수인분당"
     ],
     "lat": 37.510297,
     "lng": 127.043999,
@@ -3264,9 +6867,92 @@
           "elevator": 2,
           "source": "elevator_location"
         }
+      },
+      {
+        "id": "선정릉_수인분당",
+        "line": "수인분당",
+        "accessibility": {
+          "elevator": 2,
+          "source": "elevator_location",
+          "shared": true
+        }
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "선학",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.426985,
+    "lng": 126.698872,
+    "nodes": [
+      {
+        "id": "선학_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "성균관대",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.300344,
+    "lng": 126.970861,
+    "nodes": [
+      {
+        "id": "성균관대_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "성남",
+    "aliases": [],
+    "lines": [
+      "GTX-A",
+      "경강"
+    ],
+    "lat": 37.394709,
+    "lng": 127.11949,
+    "nodes": [
+      {
+        "id": "성남_GTX-A",
+        "line": "GTX-A",
+        "accessibility": null
+      },
+      {
+        "id": "성남_경강",
+        "line": "경강",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "성복",
+    "aliases": [],
+    "lines": [
+      "신분당"
+    ],
+    "lat": 37.3140425091456,
+    "lng": 127.080757826931,
+    "nodes": [
+      {
+        "id": "성복_신분당",
+        "line": "신분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "성수",
@@ -3320,6 +7006,165 @@
     "elevator": "met"
   },
   {
+    "name": "성환",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 36.915781,
+    "lng": 127.127007,
+    "nodes": [
+      {
+        "id": "성환_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "세류",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.244102,
+    "lng": 127.013772,
+    "nodes": [
+      {
+        "id": "세류_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "세마",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.187288,
+    "lng": 127.043279,
+    "nodes": [
+      {
+        "id": "세마_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "세종대왕릉",
+    "aliases": [],
+    "lines": [
+      "경강"
+    ],
+    "lat": 37.293636,
+    "lng": 127.570764,
+    "nodes": [
+      {
+        "id": "세종대왕릉_경강",
+        "line": "경강",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "센트럴파크",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.392833,
+    "lng": 126.635002,
+    "nodes": [
+      {
+        "id": "센트럴파크_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "소래포구",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.400963,
+    "lng": 126.733533,
+    "nodes": [
+      {
+        "id": "소래포구_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "소사",
+    "aliases": [],
+    "lines": [
+      "1",
+      "서해"
+    ],
+    "lat": 37.482755,
+    "lng": 126.795654,
+    "nodes": [
+      {
+        "id": "소사_1",
+        "line": "1",
+        "accessibility": null
+      },
+      {
+        "id": "소사_서해",
+        "line": "서해",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "소새울",
+    "aliases": [],
+    "lines": [
+      "서해"
+    ],
+    "lat": 37.4685046,
+    "lng": 126.797228,
+    "nodes": [
+      {
+        "id": "소새울_서해",
+        "line": "서해",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "소요산",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.948608,
+    "lng": 127.061007,
+    "nodes": [
+      {
+        "id": "소요산_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "솔밭공원",
     "aliases": [],
     "lines": [
@@ -3360,6 +7205,74 @@
     "elevator": "met"
   },
   {
+    "name": "송내",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.487626,
+    "lng": 126.753045,
+    "nodes": [
+      {
+        "id": "송내_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "송도",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.429714,
+    "lng": 126.654486,
+    "nodes": [
+      {
+        "id": "송도_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "송도달빛축제공원",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.40687495,
+    "lng": 126.6260537,
+    "nodes": [
+      {
+        "id": "송도달빛축제공원_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "송산",
+    "aliases": [],
+    "lines": [
+      "의정부"
+    ],
+    "lat": 37.7371698,
+    "lng": 127.0872755,
+    "nodes": [
+      {
+        "id": "송산_의정부",
+        "line": "의정부",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "송정",
     "aliases": [],
     "lines": [
@@ -3379,6 +7292,23 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "송탄",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.075376,
+    "lng": 127.054397,
+    "nodes": [
+      {
+        "id": "송탄_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "송파",
@@ -3422,6 +7352,23 @@
     "elevator": "met"
   },
   {
+    "name": "수내",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.378435,
+    "lng": 127.114216,
+    "nodes": [
+      {
+        "id": "수내_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "수락산",
     "aliases": [],
     "lines": [
@@ -3443,10 +7390,46 @@
     "elevator": "met"
   },
   {
+    "name": "수리산",
+    "aliases": [],
+    "lines": [
+      "4"
+    ],
+    "lat": 37.350297,
+    "lng": 126.925537,
+    "nodes": [
+      {
+        "id": "수리산_4",
+        "line": "4",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "수색",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.580855,
+    "lng": 126.895681,
+    "nodes": [
+      {
+        "id": "수색_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "수서",
     "aliases": [],
     "lines": [
-      "3"
+      "3",
+      "GTX-A",
+      "수인분당"
     ],
     "lat": 37.487378,
     "lng": 127.101907,
@@ -3459,9 +7442,69 @@
           "escalator": 12,
           "wheelchair_lift": 0
         }
+      },
+      {
+        "id": "수서_GTX-A",
+        "line": "GTX-A",
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 12,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
+      },
+      {
+        "id": "수서_수인분당",
+        "line": "수인분당",
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 12,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "수원",
+    "aliases": [],
+    "lines": [
+      "1",
+      "수인분당"
+    ],
+    "lat": 37.266162,
+    "lng": 126.999821,
+    "nodes": [
+      {
+        "id": "수원_1",
+        "line": "1",
+        "accessibility": null
+      },
+      {
+        "id": "수원_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "수원시청",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.261941,
+    "lng": 127.030736,
+    "nodes": [
+      {
+        "id": "수원시청_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "수유",
@@ -3483,6 +7526,23 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "수지구청",
+    "aliases": [],
+    "lines": [
+      "신분당"
+    ],
+    "lat": 37.3230089609191,
+    "lng": 127.095581285703,
+    "nodes": [
+      {
+        "id": "수지구청_신분당",
+        "line": "신분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "수진",
@@ -3548,6 +7608,57 @@
     "elevator": "met"
   },
   {
+    "name": "숭의",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.460891,
+    "lng": 126.638035,
+    "nodes": [
+      {
+        "id": "숭의_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "시민공원",
+    "aliases": [],
+    "lines": [
+      "인천2"
+    ],
+    "lat": 37.458339,
+    "lng": 126.6810091,
+    "nodes": [
+      {
+        "id": "시민공원_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "시우",
+    "aliases": [],
+    "lines": [
+      "서해"
+    ],
+    "lat": 37.3130967,
+    "lng": 126.795503,
+    "nodes": [
+      {
+        "id": "시우_서해",
+        "line": "서해",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "시청",
     "aliases": [],
     "lines": [
@@ -3579,6 +7690,108 @@
     "elevator": "met"
   },
   {
+    "name": "시청.용인대",
+    "aliases": [],
+    "lines": [
+      "에버라인"
+    ],
+    "lat": 37.23944203,
+    "lng": 127.1788851,
+    "nodes": [
+      {
+        "id": "시청.용인대_에버라인",
+        "line": "에버라인",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "시흥능곡",
+    "aliases": [],
+    "lines": [
+      "서해"
+    ],
+    "lat": 37.3699903,
+    "lng": 126.808594,
+    "nodes": [
+      {
+        "id": "시흥능곡_서해",
+        "line": "서해",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "시흥대야",
+    "aliases": [],
+    "lines": [
+      "서해"
+    ],
+    "lat": 37.4504787,
+    "lng": 126.793142,
+    "nodes": [
+      {
+        "id": "시흥대야_서해",
+        "line": "서해",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "시흥시청",
+    "aliases": [],
+    "lines": [
+      "서해"
+    ],
+    "lat": 37.3814109,
+    "lng": 126.805946,
+    "nodes": [
+      {
+        "id": "시흥시청_서해",
+        "line": "서해",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "신갈",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.286127,
+    "lng": 127.111311,
+    "nodes": [
+      {
+        "id": "신갈_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "신검단중앙",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.6026,
+    "lng": 126.698611,
+    "nodes": [
+      {
+        "id": "신검단중앙_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "신금호",
     "aliases": [],
     "lines": [
@@ -3603,11 +7816,22 @@
     "name": "신길",
     "aliases": [],
     "lines": [
+      "1",
       "5"
     ],
-    "lat": 37.517623,
-    "lng": 126.914839,
+    "lat": 37.517018,
+    "lng": 126.917743,
     "nodes": [
+      {
+        "id": "신길_1",
+        "line": "1",
+        "accessibility": {
+          "elevator": 6,
+          "escalator": 9,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
+      },
       {
         "id": "신길_5",
         "line": "5",
@@ -3626,7 +7850,8 @@
       "신내역"
     ],
     "lines": [
-      "6"
+      "6",
+      "경춘"
     ],
     "lat": 37.613174,
     "lng": 127.102231,
@@ -3639,6 +7864,16 @@
           "escalator": 2,
           "wheelchair_lift": 0
         }
+      },
+      {
+        "id": "신내_경춘",
+        "line": "경춘",
+        "accessibility": {
+          "elevator": 1,
+          "escalator": 2,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
       }
     ],
     "elevator": "met"
@@ -3647,7 +7882,8 @@
     "name": "신논현",
     "aliases": [],
     "lines": [
-      "9"
+      "9",
+      "신분당"
     ],
     "lat": 37.504598,
     "lng": 127.02506,
@@ -3658,6 +7894,15 @@
         "accessibility": {
           "elevator": 2,
           "source": "elevator_location"
+        }
+      },
+      {
+        "id": "신논현_신분당",
+        "line": "신분당",
+        "accessibility": {
+          "elevator": 2,
+          "source": "elevator_location",
+          "shared": true
         }
       }
     ],
@@ -3761,11 +8006,22 @@
     "name": "신도림",
     "aliases": [],
     "lines": [
+      "1",
       "2"
     ],
-    "lat": 37.508961,
-    "lng": 126.891084,
+    "lat": 37.508983,
+    "lng": 126.891513,
     "nodes": [
+      {
+        "id": "신도림_1",
+        "line": "1",
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 9,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
+      },
       {
         "id": "신도림_2",
         "line": "2",
@@ -3779,10 +8035,28 @@
     "elevator": "met"
   },
   {
+    "name": "신둔도예촌",
+    "aliases": [],
+    "lines": [
+      "경강"
+    ],
+    "lat": 37.315499,
+    "lng": 127.405251,
+    "nodes": [
+      {
+        "id": "신둔도예촌_경강",
+        "line": "경강",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "신림",
     "aliases": [],
     "lines": [
-      "2"
+      "2",
+      "신림"
     ],
     "lat": 37.484201,
     "lng": 126.929715,
@@ -3794,6 +8068,16 @@
           "elevator": 3,
           "escalator": 8,
           "wheelchair_lift": 0
+        }
+      },
+      {
+        "id": "신림_신림",
+        "line": "신림",
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "shared": true
         }
       }
     ],
@@ -3863,7 +8147,8 @@
     "name": "신사",
     "aliases": [],
     "lines": [
-      "3"
+      "3",
+      "신분당"
     ],
     "lat": 37.516334,
     "lng": 127.020114,
@@ -3875,6 +8160,16 @@
           "elevator": 4,
           "escalator": 6,
           "wheelchair_lift": 0
+        }
+      },
+      {
+        "id": "신사_신분당",
+        "line": "신분당",
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "shared": true
         }
       }
     ],
@@ -3921,6 +8216,23 @@
     "elevator": "met"
   },
   {
+    "name": "신연수",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.418032,
+    "lng": 126.693853,
+    "nodes": [
+      {
+        "id": "신연수_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "신용산",
     "aliases": [],
     "lines": [
@@ -3940,6 +8252,40 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "신원",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.525921,
+    "lng": 127.372745,
+    "nodes": [
+      {
+        "id": "신원_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "신이문",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.601829,
+    "lng": 127.067347,
+    "nodes": [
+      {
+        "id": "신이문_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "신정",
@@ -3984,6 +8330,57 @@
     "elevator": "met"
   },
   {
+    "name": "신중동",
+    "aliases": [],
+    "lines": [
+      "7"
+    ],
+    "lat": 37.503048,
+    "lng": 126.77596,
+    "nodes": [
+      {
+        "id": "신중동_7",
+        "line": "7",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "신창",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 36.769213,
+    "lng": 126.950129,
+    "nodes": [
+      {
+        "id": "신창_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "신천",
+    "aliases": [],
+    "lines": [
+      "서해"
+    ],
+    "lat": 37.4391147,
+    "lng": 126.786835,
+    "nodes": [
+      {
+        "id": "신천_서해",
+        "line": "서해",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "신촌",
     "aliases": [],
     "lines": [
@@ -4005,6 +8402,40 @@
     "elevator": "met"
   },
   {
+    "name": "신촌(경의중앙)",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.559768,
+    "lng": 126.942308,
+    "nodes": [
+      {
+        "id": "신촌(경의중앙)_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "신포",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.468442,
+    "lng": 126.624509,
+    "nodes": [
+      {
+        "id": "신포_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "신풍",
     "aliases": [],
     "lines": [
@@ -4024,6 +8455,23 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "신현",
+    "aliases": [],
+    "lines": [
+      "서해"
+    ],
+    "lat": 37.4091399,
+    "lng": 126.78788,
+    "nodes": [
+      {
+        "id": "신현_서해",
+        "line": "서해",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "신흥",
@@ -4066,6 +8514,91 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "쌍용",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 36.793745,
+    "lng": 127.121363,
+    "nodes": [
+      {
+        "id": "쌍용_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "아라",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.592222,
+    "lng": 126.713333,
+    "nodes": [
+      {
+        "id": "아라_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "아산",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 36.792195,
+    "lng": 127.104384,
+    "nodes": [
+      {
+        "id": "아산_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "아시아드경기장",
+    "aliases": [],
+    "lines": [
+      "인천2"
+    ],
+    "lat": 37.551373,
+    "lng": 126.677075,
+    "nodes": [
+      {
+        "id": "아시아드경기장_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "아신",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.513954,
+    "lng": 127.443238,
+    "nodes": [
+      {
+        "id": "아신_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "아차산",
@@ -4131,6 +8664,29 @@
     "elevator": "met"
   },
   {
+    "name": "안산",
+    "aliases": [],
+    "lines": [
+      "4",
+      "수인분당"
+    ],
+    "lat": 37.327006,
+    "lng": 126.788748,
+    "nodes": [
+      {
+        "id": "안산_4",
+        "line": "4",
+        "accessibility": null
+      },
+      {
+        "id": "안산_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "안암",
     "aliases": [],
     "lines": [
@@ -4152,6 +8708,23 @@
     "elevator": "met"
   },
   {
+    "name": "안양",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.401929,
+    "lng": 126.922647,
+    "nodes": [
+      {
+        "id": "안양_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "암사",
     "aliases": [],
     "lines": [
@@ -4166,6 +8739,27 @@
         "accessibility": {
           "elevator": 3,
           "escalator": 4,
+          "wheelchair_lift": 0
+        }
+      }
+    ],
+    "elevator": "met"
+  },
+  {
+    "name": "암사역사공원",
+    "aliases": [],
+    "lines": [
+      "8"
+    ],
+    "lat": 37.55695,
+    "lng": 127.13702,
+    "nodes": [
+      {
+        "id": "암사역사공원_8",
+        "line": "8",
+        "accessibility": {
+          "elevator": 4,
+          "escalator": 12,
           "wheelchair_lift": 0
         }
       }
@@ -4194,6 +8788,23 @@
     "elevator": "met"
   },
   {
+    "name": "압구정로데오",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.527385,
+    "lng": 127.040555,
+    "nodes": [
+      {
+        "id": "압구정로데오_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "애오개",
     "aliases": [],
     "lines": [
@@ -4213,6 +8824,57 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "야당",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.712749,
+    "lng": 126.761535,
+    "nodes": [
+      {
+        "id": "야당_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "야목",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.261211,
+    "lng": 126.884029,
+    "nodes": [
+      {
+        "id": "야목_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "야탑",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.41132,
+    "lng": 127.128661,
+    "nodes": [
+      {
+        "id": "야탑_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "약수",
@@ -4246,10 +8908,45 @@
     "elevator": "met"
   },
   {
+    "name": "양수",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.545998,
+    "lng": 127.328948,
+    "nodes": [
+      {
+        "id": "양수_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "양원",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 36.963729,
+    "lng": 129.091321,
+    "nodes": [
+      {
+        "id": "양원_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "양재",
     "aliases": [],
     "lines": [
-      "3"
+      "3",
+      "신분당"
     ],
     "lat": 37.484477,
     "lng": 127.033902,
@@ -4262,9 +8959,70 @@
           "escalator": 2,
           "wheelchair_lift": 0
         }
+      },
+      {
+        "id": "양재_신분당",
+        "line": "신분당",
+        "accessibility": {
+          "elevator": 5,
+          "escalator": 2,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "양재시민의숲",
+    "aliases": [],
+    "lines": [
+      "신분당"
+    ],
+    "lat": 37.4709638768813,
+    "lng": 127.038420263319,
+    "nodes": [
+      {
+        "id": "양재시민의숲_신분당",
+        "line": "신분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "양정",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.604269,
+    "lng": 127.194602,
+    "nodes": [
+      {
+        "id": "양정_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "양주",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.774281,
+    "lng": 127.044719,
+    "nodes": [
+      {
+        "id": "양주_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "양천구청",
@@ -4308,6 +9066,23 @@
     "elevator": "met"
   },
   {
+    "name": "양촌",
+    "aliases": [],
+    "lines": [
+      "김포골드"
+    ],
+    "lat": 37.641639,
+    "lng": 126.614694,
+    "nodes": [
+      {
+        "id": "양촌_김포골드",
+        "line": "김포골드",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "양평",
     "aliases": [],
     "lines": [
@@ -4329,6 +9104,40 @@
     "elevator": "met"
   },
   {
+    "name": "양평(경의중앙)",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.492674,
+    "lng": 127.491858,
+    "nodes": [
+      {
+        "id": "양평(경의중앙)_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "어룡",
+    "aliases": [],
+    "lines": [
+      "의정부"
+    ],
+    "lat": 37.74272184,
+    "lng": 127.0852045,
+    "nodes": [
+      {
+        "id": "어룡_의정부",
+        "line": "의정부",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "어린이대공원",
     "aliases": [],
     "lines": [
@@ -4348,6 +9157,40 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "어정",
+    "aliases": [],
+    "lines": [
+      "에버라인"
+    ],
+    "lat": 37.27495132,
+    "lng": 127.1437499,
+    "nodes": [
+      {
+        "id": "어정_에버라인",
+        "line": "에버라인",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "어천",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.250076,
+    "lng": 126.908805,
+    "nodes": [
+      {
+        "id": "어천_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "언주",
@@ -4421,6 +9264,40 @@
     "elevator": "met"
   },
   {
+    "name": "여주",
+    "aliases": [],
+    "lines": [
+      "경강"
+    ],
+    "lat": 37.282881,
+    "lng": 127.628571,
+    "nodes": [
+      {
+        "id": "여주_경강",
+        "line": "경강",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "역곡",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.48514,
+    "lng": 126.811622,
+    "nodes": [
+      {
+        "id": "역곡_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "역삼",
     "aliases": [],
     "lines": [
@@ -4463,11 +9340,29 @@
     "elevator": "met"
   },
   {
+    "name": "연수",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.417769,
+    "lng": 126.678991,
+    "nodes": [
+      {
+        "id": "연수_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "연신내",
     "aliases": [],
     "lines": [
       "3",
-      "6"
+      "6",
+      "GTX-A"
     ],
     "lat": 37.619229,
     "lng": 126.921038,
@@ -4489,9 +9384,36 @@
           "escalator": 6,
           "wheelchair_lift": 0
         }
+      },
+      {
+        "id": "연신내_GTX-A",
+        "line": "GTX-A",
+        "accessibility": {
+          "elevator": 1,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "연천",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 38.100485,
+    "lng": 127.07368,
+    "nodes": [
+      {
+        "id": "연천_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "염창",
@@ -4512,6 +9434,23 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "영등포",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.515756,
+    "lng": 126.907411,
+    "nodes": [
+      {
+        "id": "영등포_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "영등포구청",
@@ -4566,6 +9505,57 @@
     "elevator": "met"
   },
   {
+    "name": "영종",
+    "aliases": [],
+    "lines": [
+      "공항철도"
+    ],
+    "lat": 37.51209814,
+    "lng": 126.5242471,
+    "nodes": [
+      {
+        "id": "영종_공항철도",
+        "line": "공항철도",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "영통",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.251521,
+    "lng": 127.071341,
+    "nodes": [
+      {
+        "id": "영통_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "예술회관",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.449334,
+    "lng": 126.700991,
+    "nodes": [
+      {
+        "id": "예술회관_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "오금",
     "aliases": [],
     "lines": [
@@ -4597,6 +9587,57 @@
     "elevator": "met"
   },
   {
+    "name": "오남",
+    "aliases": [],
+    "lines": [
+      "4"
+    ],
+    "lat": 37.7054056,
+    "lng": 127.191644,
+    "nodes": [
+      {
+        "id": "오남_4",
+        "line": "4",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "오류동",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.4944,
+    "lng": 126.844551,
+    "nodes": [
+      {
+        "id": "오류동_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "오리",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.339832,
+    "lng": 127.108985,
+    "nodes": [
+      {
+        "id": "오리_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "오목교",
     "aliases": [],
     "lines": [
@@ -4618,10 +9659,102 @@
     "elevator": "met"
   },
   {
+    "name": "오목천",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.243011,
+    "lng": 126.9636354,
+    "nodes": [
+      {
+        "id": "오목천_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "오빈",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.506061,
+    "lng": 127.474053,
+    "nodes": [
+      {
+        "id": "오빈_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "오산",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.145472,
+    "lng": 127.066708,
+    "nodes": [
+      {
+        "id": "오산_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "오산대",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.169401,
+    "lng": 127.063081,
+    "nodes": [
+      {
+        "id": "오산대_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "오이도",
+    "aliases": [],
+    "lines": [
+      "4",
+      "수인분당"
+    ],
+    "lat": 37.361773,
+    "lng": 126.738437,
+    "nodes": [
+      {
+        "id": "오이도_4",
+        "line": "4",
+        "accessibility": null
+      },
+      {
+        "id": "오이도_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "옥수",
     "aliases": [],
     "lines": [
-      "3"
+      "3",
+      "경의중앙"
     ],
     "lat": 37.541684,
     "lng": 127.017269,
@@ -4634,6 +9767,16 @@
           "escalator": 4,
           "wheelchair_lift": 0
         }
+      },
+      {
+        "id": "옥수_경의중앙",
+        "line": "경의중앙",
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
       }
     ],
     "elevator": "met"
@@ -4642,11 +9785,22 @@
     "name": "온수",
     "aliases": [],
     "lines": [
+      "1",
       "7"
     ],
-    "lat": 37.492092,
-    "lng": 126.823023,
+    "lat": 37.492267,
+    "lng": 126.823399,
     "nodes": [
+      {
+        "id": "온수_1",
+        "line": "1",
+        "accessibility": {
+          "elevator": 3,
+          "escalator": 16,
+          "wheelchair_lift": 1,
+          "shared": true
+        }
+      },
       {
         "id": "온수_7",
         "line": "7",
@@ -4658,6 +9812,23 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "온양온천",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 36.780419,
+    "lng": 127.003707,
+    "nodes": [
+      {
+        "id": "온양온천_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "올림픽공원",
@@ -4690,11 +9861,47 @@
     "elevator": "met"
   },
   {
+    "name": "완정",
+    "aliases": [],
+    "lines": [
+      "인천2"
+    ],
+    "lat": 37.592867,
+    "lng": 126.672961,
+    "nodes": [
+      {
+        "id": "완정_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "왕길",
+    "aliases": [],
+    "lines": [
+      "인천2"
+    ],
+    "lat": 37.5950191,
+    "lng": 126.642284,
+    "nodes": [
+      {
+        "id": "왕길_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "왕십리",
     "aliases": [],
     "lines": [
       "2",
-      "5"
+      "5",
+      "경의중앙",
+      "수인분당"
     ],
     "lat": 37.561238,
     "lng": 127.036954,
@@ -4716,9 +9923,46 @@
           "escalator": 8,
           "wheelchair_lift": 0
         }
+      },
+      {
+        "id": "왕십리_경의중앙",
+        "line": "경의중앙",
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
+      },
+      {
+        "id": "왕십리_수인분당",
+        "line": "수인분당",
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "외대앞",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.596157,
+    "lng": 127.063572,
+    "nodes": [
+      {
+        "id": "외대앞_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "용답",
@@ -4784,6 +10028,63 @@
     "elevator": "met"
   },
   {
+    "name": "용문",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.482085,
+    "lng": 127.594251,
+    "nodes": [
+      {
+        "id": "용문_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "용산",
+    "aliases": [],
+    "lines": [
+      "1",
+      "경의중앙"
+    ],
+    "lat": 37.52989,
+    "lng": 126.964775,
+    "nodes": [
+      {
+        "id": "용산_1",
+        "line": "1",
+        "accessibility": null
+      },
+      {
+        "id": "용산_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "용인중앙시장",
+    "aliases": [],
+    "lines": [
+      "에버라인"
+    ],
+    "lat": 37.2379113,
+    "lng": 127.2090526,
+    "nodes": [
+      {
+        "id": "용인중앙시장_에버라인",
+        "line": "에버라인",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "우장산",
     "aliases": [],
     "lines": [
@@ -4803,6 +10104,250 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "운길산",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.554659,
+    "lng": 127.310089,
+    "nodes": [
+      {
+        "id": "운길산_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "운서",
+    "aliases": [],
+    "lines": [
+      "공항철도"
+    ],
+    "lat": 37.49284463,
+    "lng": 126.4936619,
+    "nodes": [
+      {
+        "id": "운서_공항철도",
+        "line": "공항철도",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "운양",
+    "aliases": [],
+    "lines": [
+      "김포골드"
+    ],
+    "lat": 37.653861,
+    "lng": 126.683833,
+    "nodes": [
+      {
+        "id": "운양_김포골드",
+        "line": "김포골드",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "운연",
+    "aliases": [],
+    "lines": [
+      "인천2"
+    ],
+    "lat": 37.439533,
+    "lng": 126.759609,
+    "nodes": [
+      {
+        "id": "운연_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "운정",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.725441000000004,
+    "lng": 126.767076,
+    "nodes": [
+      {
+        "id": "운정_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "운정중앙",
+    "aliases": [],
+    "lines": [
+      "GTX-A"
+    ],
+    "lat": 37.7177,
+    "lng": 126.7468,
+    "nodes": [
+      {
+        "id": "운정중앙_GTX-A",
+        "line": "GTX-A",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "운천",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.880008,
+    "lng": 126.769713,
+    "nodes": [
+      {
+        "id": "운천_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "원당",
+    "aliases": [],
+    "lines": [
+      "3"
+    ],
+    "lat": 37.653103,
+    "lng": 126.842891,
+    "nodes": [
+      {
+        "id": "원당_3",
+        "line": "3",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "원덕",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.468585,
+    "lng": 127.547468,
+    "nodes": [
+      {
+        "id": "원덕_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "원시",
+    "aliases": [],
+    "lines": [
+      "서해"
+    ],
+    "lat": 37.302654,
+    "lng": 126.7867897,
+    "nodes": [
+      {
+        "id": "원시_서해",
+        "line": "서해",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "원인재",
+    "aliases": [],
+    "lines": [
+      "수인분당",
+      "인천1"
+    ],
+    "lat": 37.412921,
+    "lng": 126.686952,
+    "nodes": [
+      {
+        "id": "원인재_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      },
+      {
+        "id": "원인재_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "원종",
+    "aliases": [],
+    "lines": [
+      "서해"
+    ],
+    "lat": 37.5240628,
+    "lng": 126.8048386,
+    "nodes": [
+      {
+        "id": "원종_서해",
+        "line": "서해",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "원흥",
+    "aliases": [],
+    "lines": [
+      "3"
+    ],
+    "lat": 37.650709,
+    "lng": 126.873239,
+    "nodes": [
+      {
+        "id": "원흥_3",
+        "line": "3",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "월계",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.633114,
+    "lng": 127.058835,
+    "nodes": [
+      {
+        "id": "월계_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "월곡",
@@ -4826,6 +10371,23 @@
     "elevator": "met"
   },
   {
+    "name": "월곶",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.39189,
+    "lng": 126.742741,
+    "nodes": [
+      {
+        "id": "월곶_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "월드컵경기장",
     "aliases": [],
     "lines": [
@@ -4845,6 +10407,23 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "월롱",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.796201,
+    "lng": 126.792574,
+    "nodes": [
+      {
+        "id": "월롱_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "을지로3가",
@@ -4930,6 +10509,23 @@
     "elevator": "met"
   },
   {
+    "name": "응봉",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.550433,
+    "lng": 127.034824,
+    "nodes": [
+      {
+        "id": "응봉_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "응암",
     "aliases": [],
     "lines": [
@@ -4949,6 +10545,74 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "의왕",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.320648,
+    "lng": 126.948099,
+    "nodes": [
+      {
+        "id": "의왕_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "의정부",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.73873,
+    "lng": 127.045891,
+    "nodes": [
+      {
+        "id": "의정부_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "의정부시청",
+    "aliases": [],
+    "lines": [
+      "의정부"
+    ],
+    "lat": 37.73924874,
+    "lng": 127.034854,
+    "nodes": [
+      {
+        "id": "의정부시청_의정부",
+        "line": "의정부",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "의정부중앙",
+    "aliases": [],
+    "lines": [
+      "의정부"
+    ],
+    "lat": 37.74371903,
+    "lng": 127.0496332,
+    "nodes": [
+      {
+        "id": "의정부중앙_의정부",
+        "line": "의정부",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "이대",
@@ -4972,10 +10636,51 @@
     "elevator": "met"
   },
   {
+    "name": "이매",
+    "aliases": [],
+    "lines": [
+      "경강",
+      "수인분당"
+    ],
+    "lat": 37.394736,
+    "lng": 127.127048,
+    "nodes": [
+      {
+        "id": "이매_경강",
+        "line": "경강",
+        "accessibility": null
+      },
+      {
+        "id": "이매_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "이천",
+    "aliases": [],
+    "lines": [
+      "경강"
+    ],
+    "lat": 37.264222,
+    "lng": 127.442135,
+    "nodes": [
+      {
+        "id": "이천_경강",
+        "line": "경강",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "이촌",
     "aliases": [],
     "lines": [
-      "4"
+      "4",
+      "경의중앙"
     ],
     "lat": 37.522295,
     "lng": 126.974733,
@@ -4987,6 +10692,16 @@
           "elevator": 5,
           "escalator": 4,
           "wheelchair_lift": 0
+        }
+      },
+      {
+        "id": "이촌_경의중앙",
+        "line": "경의중앙",
+        "accessibility": {
+          "elevator": 5,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "shared": true
         }
       }
     ],
@@ -5014,6 +10729,228 @@
     "elevator": "met"
   },
   {
+    "name": "인덕원",
+    "aliases": [],
+    "lines": [
+      "4"
+    ],
+    "lat": 37.401901,
+    "lng": 126.976718,
+    "nodes": [
+      {
+        "id": "인덕원_4",
+        "line": "4",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "인천",
+    "aliases": [],
+    "lines": [
+      "1",
+      "수인분당"
+    ],
+    "lat": 37.476364,
+    "lng": 126.616936,
+    "nodes": [
+      {
+        "id": "인천_1",
+        "line": "1",
+        "accessibility": null
+      },
+      {
+        "id": "인천_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "인천가좌",
+    "aliases": [],
+    "lines": [
+      "인천2"
+    ],
+    "lat": 37.489962,
+    "lng": 126.675284,
+    "nodes": [
+      {
+        "id": "인천가좌_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "인천공항1터미널",
+    "aliases": [],
+    "lines": [
+      "공항철도"
+    ],
+    "lat": 37.44760672,
+    "lng": 126.4523433,
+    "nodes": [
+      {
+        "id": "인천공항1터미널_공항철도",
+        "line": "공항철도",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "인천공항2터미널",
+    "aliases": [],
+    "lines": [
+      "공항철도"
+    ],
+    "lat": 37.46866,
+    "lng": 126.433415,
+    "nodes": [
+      {
+        "id": "인천공항2터미널_공항철도",
+        "line": "공항철도",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "인천논현",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.400641,
+    "lng": 126.722495,
+    "nodes": [
+      {
+        "id": "인천논현_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "인천대공원",
+    "aliases": [],
+    "lines": [
+      "인천2"
+    ],
+    "lat": 37.448475,
+    "lng": 126.753051,
+    "nodes": [
+      {
+        "id": "인천대공원_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "인천대입구",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.386239,
+    "lng": 126.639351,
+    "nodes": [
+      {
+        "id": "인천대입구_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "인천시청",
+    "aliases": [],
+    "lines": [
+      "인천1",
+      "인천2"
+    ],
+    "lat": 37.457615,
+    "lng": 126.702216,
+    "nodes": [
+      {
+        "id": "인천시청_인천1",
+        "line": "인천1",
+        "accessibility": null
+      },
+      {
+        "id": "인천시청_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "인천터미널",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.441917,
+    "lng": 126.699727,
+    "nodes": [
+      {
+        "id": "인천터미널_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "인하대",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.448191,
+    "lng": 126.649832,
+    "nodes": [
+      {
+        "id": "인하대_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "일산",
+    "aliases": [],
+    "lines": [
+      "경의중앙",
+      "서해"
+    ],
+    "lat": 37.682231,
+    "lng": 126.769521,
+    "nodes": [
+      {
+        "id": "일산_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      },
+      {
+        "id": "일산_서해",
+        "line": "서해",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "일원",
     "aliases": [],
     "lines": [
@@ -5033,6 +10970,40 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "임진강",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.888364,
+    "lng": 126.746777,
+    "nodes": [
+      {
+        "id": "임진강_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "임학",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.545058,
+    "lng": 126.738642,
+    "nodes": [
+      {
+        "id": "임학_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "자양",
@@ -5056,6 +11027,23 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "작전",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.530271,
+    "lng": 126.722548,
+    "nodes": [
+      {
+        "id": "작전_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "잠실",
@@ -5152,6 +11140,23 @@
     "elevator": "met"
   },
   {
+    "name": "장기",
+    "aliases": [],
+    "lines": [
+      "김포골드"
+    ],
+    "lat": 37.644028,
+    "lng": 126.669,
+    "nodes": [
+      {
+        "id": "장기_김포골드",
+        "line": "김포골드",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "장승배기",
     "aliases": [],
     "lines": [
@@ -5192,6 +11197,23 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "장자호수공원",
+    "aliases": [],
+    "lines": [
+      "8"
+    ],
+    "lat": 37.587222,
+    "lng": 127.13793,
+    "nodes": [
+      {
+        "id": "장자호수공원_8",
+        "line": "8",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "장지",
@@ -5236,6 +11258,40 @@
     "elevator": "met"
   },
   {
+    "name": "전곡",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 38.024041,
+    "lng": 127.071913,
+    "nodes": [
+      {
+        "id": "전곡_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "전대.에버랜드",
+    "aliases": [],
+    "lines": [
+      "에버라인"
+    ],
+    "lat": 37.28541327,
+    "lng": 127.219509,
+    "nodes": [
+      {
+        "id": "전대.에버랜드_에버라인",
+        "line": "에버라인",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "정릉",
     "aliases": [],
     "lines": [
@@ -5254,6 +11310,86 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "정발산",
+    "aliases": [],
+    "lines": [
+      "3"
+    ],
+    "lat": 37.659709,
+    "lng": 126.773254,
+    "nodes": [
+      {
+        "id": "정발산_3",
+        "line": "3",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "정부과천청사",
+    "aliases": [],
+    "lines": [
+      "4"
+    ],
+    "lat": 37.426445,
+    "lng": 126.989802,
+    "nodes": [
+      {
+        "id": "정부과천청사_4",
+        "line": "4",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "정왕",
+    "aliases": [],
+    "lines": [
+      "4",
+      "수인분당"
+    ],
+    "lat": 37.351816,
+    "lng": 126.742844,
+    "nodes": [
+      {
+        "id": "정왕_4",
+        "line": "4",
+        "accessibility": null
+      },
+      {
+        "id": "정왕_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "정자",
+    "aliases": [],
+    "lines": [
+      "수인분당",
+      "신분당"
+    ],
+    "lat": 37.366037,
+    "lng": 127.108091,
+    "nodes": [
+      {
+        "id": "정자_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      },
+      {
+        "id": "정자_신분당",
+        "line": "신분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "제기동",
@@ -5275,6 +11411,23 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "제물포",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.466809,
+    "lng": 126.657165,
+    "nodes": [
+      {
+        "id": "제물포_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "종각",
@@ -5390,6 +11543,80 @@
     "elevator": "met"
   },
   {
+    "name": "주안",
+    "aliases": [],
+    "lines": [
+      "1",
+      "인천2"
+    ],
+    "lat": 37.465041,
+    "lng": 126.680702,
+    "nodes": [
+      {
+        "id": "주안_1",
+        "line": "1",
+        "accessibility": null
+      },
+      {
+        "id": "주안_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "주안국가산단",
+    "aliases": [],
+    "lines": [
+      "인천2"
+    ],
+    "lat": 37.473599,
+    "lng": 126.681102,
+    "nodes": [
+      {
+        "id": "주안국가산단_인천2",
+        "line": "인천2",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "주엽",
+    "aliases": [],
+    "lines": [
+      "3"
+    ],
+    "lat": 37.670138,
+    "lng": 126.761232,
+    "nodes": [
+      {
+        "id": "주엽_3",
+        "line": "3",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "죽전",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.324575,
+    "lng": 127.107385,
+    "nodes": [
+      {
+        "id": "죽전_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "중계",
     "aliases": [],
     "lines": [
@@ -5430,6 +11657,69 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "중동",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.486664,
+    "lng": 126.764474,
+    "nodes": [
+      {
+        "id": "중동_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "중랑",
+    "aliases": [],
+    "lines": [
+      "경의중앙",
+      "경춘"
+    ],
+    "lat": 37.594948,
+    "lng": 127.076152,
+    "nodes": [
+      {
+        "id": "중랑_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      },
+      {
+        "id": "중랑_경춘",
+        "line": "경춘",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "중앙",
+    "aliases": [],
+    "lines": [
+      "4",
+      "수인분당"
+    ],
+    "lat": 37.316055,
+    "lng": 126.838532,
+    "nodes": [
+      {
+        "id": "중앙_4",
+        "line": "4",
+        "accessibility": null
+      },
+      {
+        "id": "중앙_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "중앙보훈병원",
@@ -5514,6 +11804,40 @@
     "elevator": "met"
   },
   {
+    "name": "지석",
+    "aliases": [],
+    "lines": [
+      "에버라인"
+    ],
+    "lat": 37.26973732,
+    "lng": 127.1363256,
+    "nodes": [
+      {
+        "id": "지석_에버라인",
+        "line": "에버라인",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "지식정보단지",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.378021,
+    "lng": 126.645412,
+    "nodes": [
+      {
+        "id": "지식정보단지_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "지축",
     "aliases": [],
     "lines": [
@@ -5535,14 +11859,110 @@
     "elevator": "met"
   },
   {
-    "name": "창동",
+    "name": "지평",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.476496,
+    "lng": 127.629681,
+    "nodes": [
+      {
+        "id": "지평_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "지행",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.892361,
+    "lng": 127.055734,
+    "nodes": [
+      {
+        "id": "지행_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "직산",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 36.870921,
+    "lng": 127.143774,
+    "nodes": [
+      {
+        "id": "직산_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "진위",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.109771,
+    "lng": 127.062342,
+    "nodes": [
+      {
+        "id": "진위_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "진접",
     "aliases": [],
     "lines": [
       "4"
     ],
-    "lat": 37.653088,
-    "lng": 127.047274,
+    "lat": 37.720472,
+    "lng": 127.203167,
     "nodes": [
+      {
+        "id": "진접_4",
+        "line": "4",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "창동",
+    "aliases": [],
+    "lines": [
+      "1",
+      "4"
+    ],
+    "lat": 37.653181,
+    "lng": 127.047663,
+    "nodes": [
+      {
+        "id": "창동_1",
+        "line": "1",
+        "accessibility": {
+          "elevator": 8,
+          "escalator": 4,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
+      },
       {
         "id": "창동_4",
         "line": "4",
@@ -5575,6 +11995,40 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "천마산",
+    "aliases": [],
+    "lines": [
+      "경춘"
+    ],
+    "lat": 37.658995,
+    "lng": 127.285731,
+    "nodes": [
+      {
+        "id": "천마산_경춘",
+        "line": "경춘",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "천안",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 36.810238,
+    "lng": 127.146417,
+    "nodes": [
+      {
+        "id": "천안_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "천왕",
@@ -5650,6 +12104,23 @@
     "elevator": "met"
   },
   {
+    "name": "청계산입구",
+    "aliases": [],
+    "lines": [
+      "신분당"
+    ],
+    "lat": 37.4487148450701,
+    "lng": 127.054339616958,
+    "nodes": [
+      {
+        "id": "청계산입구_신분당",
+        "line": "신분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "청구",
     "aliases": [],
     "lines": [
@@ -5703,10 +12174,30 @@
     "elevator": "met"
   },
   {
+    "name": "청라국제도시",
+    "aliases": [],
+    "lines": [
+      "공항철도"
+    ],
+    "lat": 37.556509,
+    "lng": 126.624725,
+    "nodes": [
+      {
+        "id": "청라국제도시_공항철도",
+        "line": "공항철도",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "청량리",
     "aliases": [],
     "lines": [
-      "1"
+      "1",
+      "경의중앙",
+      "경춘",
+      "수인분당"
     ],
     "lat": 37.579956,
     "lng": 127.044585,
@@ -5719,9 +12210,153 @@
           "escalator": 6,
           "wheelchair_lift": 1
         }
+      },
+      {
+        "id": "청량리_경의중앙",
+        "line": "경의중앙",
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 6,
+          "wheelchair_lift": 1,
+          "shared": true
+        }
+      },
+      {
+        "id": "청량리_경춘",
+        "line": "경춘",
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 6,
+          "wheelchair_lift": 1,
+          "shared": true
+        }
+      },
+      {
+        "id": "청량리_수인분당",
+        "line": "수인분당",
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 6,
+          "wheelchair_lift": 1,
+          "shared": true
+        }
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "청명",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.259485,
+    "lng": 127.078945,
+    "nodes": [
+      {
+        "id": "청명_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "청산",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.995138,
+    "lng": 127.074097,
+    "nodes": [
+      {
+        "id": "청산_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "청평",
+    "aliases": [],
+    "lines": [
+      "경춘"
+    ],
+    "lat": 37.735484,
+    "lng": 127.426541,
+    "nodes": [
+      {
+        "id": "청평_경춘",
+        "line": "경춘",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "초당",
+    "aliases": [],
+    "lines": [
+      "에버라인"
+    ],
+    "lat": 37.26080647,
+    "lng": 127.1594692,
+    "nodes": [
+      {
+        "id": "초당_에버라인",
+        "line": "에버라인",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "초월",
+    "aliases": [],
+    "lines": [
+      "경강"
+    ],
+    "lat": 37.373389,
+    "lng": 127.299996,
+    "nodes": [
+      {
+        "id": "초월_경강",
+        "line": "경강",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "초지",
+    "aliases": [],
+    "lines": [
+      "4",
+      "서해",
+      "수인분당"
+    ],
+    "lat": 37.320583,
+    "lng": 126.806151,
+    "nodes": [
+      {
+        "id": "초지_4",
+        "line": "4",
+        "accessibility": null
+      },
+      {
+        "id": "초지_서해",
+        "line": "서해",
+        "accessibility": null
+      },
+      {
+        "id": "초지_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "총신대입구",
@@ -5755,6 +12390,40 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "춘의",
+    "aliases": [],
+    "lines": [
+      "7"
+    ],
+    "lat": 37.503663,
+    "lng": 126.787036,
+    "nodes": [
+      {
+        "id": "춘의_7",
+        "line": "7",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "춘천",
+    "aliases": [],
+    "lines": [
+      "경춘"
+    ],
+    "lat": 37.884391,
+    "lng": 127.716603,
+    "nodes": [
+      {
+        "id": "춘천_경춘",
+        "line": "경춘",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "충무로",
@@ -5820,6 +12489,91 @@
     "elevator": "met"
   },
   {
+    "name": "캠퍼스타운",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.388209,
+    "lng": 126.661985,
+    "nodes": [
+      {
+        "id": "캠퍼스타운_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "킨텍스",
+    "aliases": [],
+    "lines": [
+      "GTX-A"
+    ],
+    "lat": 37.6687,
+    "lng": 126.7448,
+    "nodes": [
+      {
+        "id": "킨텍스_GTX-A",
+        "line": "GTX-A",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "탄현",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.694114,
+    "lng": 126.761075,
+    "nodes": [
+      {
+        "id": "탄현_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "탑석",
+    "aliases": [],
+    "lines": [
+      "의정부"
+    ],
+    "lat": 37.73355362,
+    "lng": 127.0889064,
+    "nodes": [
+      {
+        "id": "탑석_의정부",
+        "line": "의정부",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "탕정",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 36.788272,
+    "lng": 127.084446,
+    "nodes": [
+      {
+        "id": "탕정_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "태릉입구",
     "aliases": [],
     "lines": [
@@ -5849,6 +12603,222 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "태평",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.439842,
+    "lng": 127.127746,
+    "nodes": [
+      {
+        "id": "태평_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "테크노파크",
+    "aliases": [],
+    "lines": [
+      "인천1"
+    ],
+    "lat": 37.382311,
+    "lng": 126.656355,
+    "nodes": [
+      {
+        "id": "테크노파크_인천1",
+        "line": "인천1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "퇴계원",
+    "aliases": [],
+    "lines": [
+      "경춘"
+    ],
+    "lat": 37.648316,
+    "lng": 127.143858,
+    "nodes": [
+      {
+        "id": "퇴계원_경춘",
+        "line": "경춘",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "파주",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.815391,
+    "lng": 126.792426,
+    "nodes": [
+      {
+        "id": "파주_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "판교",
+    "aliases": [],
+    "lines": [
+      "경강",
+      "신분당"
+    ],
+    "lat": 37.394798,
+    "lng": 127.111135,
+    "nodes": [
+      {
+        "id": "판교_경강",
+        "line": "경강",
+        "accessibility": null
+      },
+      {
+        "id": "판교_신분당",
+        "line": "신분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "팔당",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.547321,
+    "lng": 127.243896,
+    "nodes": [
+      {
+        "id": "팔당_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "평내호평",
+    "aliases": [],
+    "lines": [
+      "경춘"
+    ],
+    "lat": 37.653229,
+    "lng": 127.244452,
+    "nodes": [
+      {
+        "id": "평내호평_경춘",
+        "line": "경춘",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "평촌",
+    "aliases": [],
+    "lines": [
+      "4"
+    ],
+    "lat": 37.394346,
+    "lng": 126.963881,
+    "nodes": [
+      {
+        "id": "평촌_4",
+        "line": "4",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "평택",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 36.990559,
+    "lng": 127.085496,
+    "nodes": [
+      {
+        "id": "평택_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "평택지제",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.018822,
+    "lng": 127.070269,
+    "nodes": [
+      {
+        "id": "평택지제_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "풍무",
+    "aliases": [],
+    "lines": [
+      "김포골드"
+    ],
+    "lat": 37.612333,
+    "lng": 126.732583,
+    "nodes": [
+      {
+        "id": "풍무_김포골드",
+        "line": "김포골드",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "풍산",
+    "aliases": [],
+    "lines": [
+      "경의중앙",
+      "서해"
+    ],
+    "lat": 37.672173,
+    "lng": 126.786355,
+    "nodes": [
+      {
+        "id": "풍산_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      },
+      {
+        "id": "풍산_서해",
+        "line": "서해",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   },
   {
     "name": "하계",
@@ -5998,6 +12968,63 @@
     "elevator": "met"
   },
   {
+    "name": "한국항공대",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.603102,
+    "lng": 126.868291,
+    "nodes": [
+      {
+        "id": "한국항공대_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "한남",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.529361,
+    "lng": 127.008984,
+    "nodes": [
+      {
+        "id": "한남_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "한대앞",
+    "aliases": [],
+    "lines": [
+      "4",
+      "수인분당"
+    ],
+    "lat": 37.309685,
+    "lng": 126.853656,
+    "nodes": [
+      {
+        "id": "한대앞_4",
+        "line": "4",
+        "accessibility": null
+      },
+      {
+        "id": "한대앞_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "한성대입구",
     "aliases": [],
     "lines": [
@@ -6060,6 +13087,23 @@
     "elevator": "met"
   },
   {
+    "name": "한티",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.496208,
+    "lng": 127.052883,
+    "nodes": [
+      {
+        "id": "한티_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "합정",
     "aliases": [],
     "lines": [
@@ -6112,6 +13156,23 @@
     "elevator": "met"
   },
   {
+    "name": "행신",
+    "aliases": [],
+    "lines": [
+      "경의중앙"
+    ],
+    "lat": 37.612125,
+    "lng": 126.834063,
+    "nodes": [
+      {
+        "id": "행신_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "혜화",
     "aliases": [],
     "lines": [
@@ -6133,10 +13194,29 @@
     "elevator": "met"
   },
   {
+    "name": "호구포",
+    "aliases": [],
+    "lines": [
+      "수인분당"
+    ],
+    "lat": 37.401622,
+    "lng": 126.708682,
+    "nodes": [
+      {
+        "id": "호구포_수인분당",
+        "line": "수인분당",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "홍대입구",
     "aliases": [],
     "lines": [
-      "2"
+      "2",
+      "경의중앙",
+      "공항철도"
     ],
     "lat": 37.55679,
     "lng": 126.923708,
@@ -6148,6 +13228,26 @@
           "elevator": 2,
           "escalator": 8,
           "wheelchair_lift": 0
+        }
+      },
+      {
+        "id": "홍대입구_경의중앙",
+        "line": "경의중앙",
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "shared": true
+        }
+      },
+      {
+        "id": "홍대입구_공항철도",
+        "line": "공항철도",
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 8,
+          "wheelchair_lift": 0,
+          "shared": true
         }
       }
     ],
@@ -6237,6 +13337,92 @@
     "elevator": "met"
   },
   {
+    "name": "화서",
+    "aliases": [],
+    "lines": [
+      "1"
+    ],
+    "lat": 37.28399,
+    "lng": 126.989581,
+    "nodes": [
+      {
+        "id": "화서_1",
+        "line": "1",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "화정",
+    "aliases": [],
+    "lines": [
+      "3"
+    ],
+    "lat": 37.634708,
+    "lng": 126.832503,
+    "nodes": [
+      {
+        "id": "화정_3",
+        "line": "3",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "회기",
+    "aliases": [],
+    "lines": [
+      "1",
+      "경의중앙",
+      "경춘"
+    ],
+    "lat": 37.589602,
+    "lng": 127.057936,
+    "nodes": [
+      {
+        "id": "회기_1",
+        "line": "1",
+        "accessibility": null
+      },
+      {
+        "id": "회기_경의중앙",
+        "line": "경의중앙",
+        "accessibility": null
+      },
+      {
+        "id": "회기_경춘",
+        "line": "경춘",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
+    "name": "회룡",
+    "aliases": [],
+    "lines": [
+      "1",
+      "의정부"
+    ],
+    "lat": 37.724037,
+    "lng": 127.047319,
+    "nodes": [
+      {
+        "id": "회룡_1",
+        "line": "1",
+        "accessibility": null
+      },
+      {
+        "id": "회룡_의정부",
+        "line": "의정부",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "회현",
     "aliases": [],
     "lines": [
@@ -6258,10 +13444,28 @@
     "elevator": "met"
   },
   {
+    "name": "효자",
+    "aliases": [],
+    "lines": [
+      "의정부"
+    ],
+    "lat": 37.75398452,
+    "lng": 127.0773155,
+    "nodes": [
+      {
+        "id": "효자_의정부",
+        "line": "의정부",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
+  },
+  {
     "name": "효창공원앞",
     "aliases": [],
     "lines": [
-      "6"
+      "6",
+      "경의중앙"
     ],
     "lat": 37.539233,
     "lng": 126.961384,
@@ -6273,6 +13477,16 @@
           "elevator": 2,
           "escalator": 6,
           "wheelchair_lift": 0
+        }
+      },
+      {
+        "id": "효창공원앞_경의중앙",
+        "line": "경의중앙",
+        "accessibility": {
+          "elevator": 2,
+          "escalator": 6,
+          "wheelchair_lift": 0,
+          "shared": true
         }
       }
     ],
@@ -6297,5 +13511,22 @@
       }
     ],
     "elevator": "met"
+  },
+  {
+    "name": "흥선",
+    "aliases": [],
+    "lines": [
+      "의정부"
+    ],
+    "lat": 37.74322487,
+    "lng": 127.0371765,
+    "nodes": [
+      {
+        "id": "흥선_의정부",
+        "line": "의정부",
+        "accessibility": null
+      }
+    ],
+    "elevator": "unknown"
   }
 ]

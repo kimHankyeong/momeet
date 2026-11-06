@@ -2869,5 +2869,4127 @@
     "km": 1.0,
     "oneway": false,
     "estimated": true
+  },
+  {
+    "from": "연천_1",
+    "to": "전곡_1",
+    "line": "1",
+    "seconds": 560,
+    "km": 8.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "전곡_1",
+    "to": "청산_1",
+    "line": "1",
+    "seconds": 228,
+    "km": 3.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "청산_1",
+    "to": "소요산_1",
+    "line": "1",
+    "seconds": 382,
+    "km": 5.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "소요산_1",
+    "to": "동두천_1",
+    "line": "1",
+    "seconds": 173,
+    "km": 2.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "동두천_1",
+    "to": "보산_1",
+    "line": "1",
+    "seconds": 124,
+    "km": 1.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "보산_1",
+    "to": "동두천중앙_1",
+    "line": "1",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "동두천중앙_1",
+    "to": "지행_1",
+    "line": "1",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "지행_1",
+    "to": "덕정_1",
+    "line": "1",
+    "seconds": 370,
+    "km": 5.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "덕정_1",
+    "to": "덕계_1",
+    "line": "1",
+    "seconds": 204,
+    "km": 2.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "덕계_1",
+    "to": "양주_1",
+    "line": "1",
+    "seconds": 351,
+    "km": 5.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "양주_1",
+    "to": "녹양_1",
+    "line": "1",
+    "seconds": 124,
+    "km": 1.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "녹양_1",
+    "to": "가능_1",
+    "line": "1",
+    "seconds": 106,
+    "km": 1.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "가능_1",
+    "to": "의정부_1",
+    "line": "1",
+    "seconds": 99,
+    "km": 1.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "의정부_1",
+    "to": "회룡_1",
+    "line": "1",
+    "seconds": 124,
+    "km": 1.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "회룡_1",
+    "to": "망월사_1",
+    "line": "1",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "망월사_1",
+    "to": "도봉산_1",
+    "line": "1",
+    "seconds": 167,
+    "km": 2.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "도봉산_1",
+    "to": "도봉_1",
+    "line": "1",
+    "seconds": 99,
+    "km": 1.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "도봉_1",
+    "to": "방학_1",
+    "line": "1",
+    "seconds": 106,
+    "km": 1.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "방학_1",
+    "to": "창동_1",
+    "line": "1",
+    "seconds": 130,
+    "km": 1.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "창동_1",
+    "to": "녹천_1",
+    "line": "1",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "녹천_1",
+    "to": "월계_1",
+    "line": "1",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "월계_1",
+    "to": "광운대_1",
+    "line": "1",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "광운대_1",
+    "to": "석계_1",
+    "line": "1",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "석계_1",
+    "to": "신이문_1",
+    "line": "1",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "신이문_1",
+    "to": "외대앞_1",
+    "line": "1",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "외대앞_1",
+    "to": "회기_1",
+    "line": "1",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "회기_1",
+    "to": "청량리_1",
+    "line": "1",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "서울역_1",
+    "to": "남영_1",
+    "line": "1",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "남영_1",
+    "to": "용산_1",
+    "line": "1",
+    "seconds": 130,
+    "km": 1.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "용산_1",
+    "to": "노량진_1",
+    "line": "1",
+    "seconds": 222,
+    "km": 3.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "노량진_1",
+    "to": "대방_1",
+    "line": "1",
+    "seconds": 185,
+    "km": 2.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "대방_1",
+    "to": "신길_1",
+    "line": "1",
+    "seconds": 118,
+    "km": 1.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "신길_1",
+    "to": "영등포_1",
+    "line": "1",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "영등포_1",
+    "to": "신도림_1",
+    "line": "1",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "신도림_1",
+    "to": "구로_1",
+    "line": "1",
+    "seconds": 118,
+    "km": 1.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "구로_1",
+    "to": "구일_1",
+    "line": "1",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "구일_1",
+    "to": "개봉_1",
+    "line": "1",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "개봉_1",
+    "to": "오류동_1",
+    "line": "1",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "오류동_1",
+    "to": "온수_1",
+    "line": "1",
+    "seconds": 106,
+    "km": 1.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "온수_1",
+    "to": "역곡_1",
+    "line": "1",
+    "seconds": 142,
+    "km": 1.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "역곡_1",
+    "to": "소사_1",
+    "line": "1",
+    "seconds": 106,
+    "km": 1.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "소사_1",
+    "to": "부천_1",
+    "line": "1",
+    "seconds": 118,
+    "km": 1.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "부천_1",
+    "to": "중동_1",
+    "line": "1",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "중동_1",
+    "to": "송내_1",
+    "line": "1",
+    "seconds": 130,
+    "km": 1.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "송내_1",
+    "to": "부개_1",
+    "line": "1",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "부개_1",
+    "to": "부평_1",
+    "line": "1",
+    "seconds": 99,
+    "km": 1.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "부평_1",
+    "to": "백운_1",
+    "line": "1",
+    "seconds": 118,
+    "km": 1.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "백운_1",
+    "to": "동암_1",
+    "line": "1",
+    "seconds": 130,
+    "km": 1.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "동암_1",
+    "to": "간석_1",
+    "line": "1",
+    "seconds": 118,
+    "km": 1.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "간석_1",
+    "to": "주안_1",
+    "line": "1",
+    "seconds": 99,
+    "km": 1.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "주안_1",
+    "to": "도화_1",
+    "line": "1",
+    "seconds": 99,
+    "km": 1.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "도화_1",
+    "to": "제물포_1",
+    "line": "1",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "제물포_1",
+    "to": "도원_1",
+    "line": "1",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "도원_1",
+    "to": "동인천_1",
+    "line": "1",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "동인천_1",
+    "to": "인천_1",
+    "line": "1",
+    "seconds": 99,
+    "km": 1.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "구로_1",
+    "to": "가산디지털단지_1",
+    "line": "1",
+    "seconds": 204,
+    "km": 2.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "가산디지털단지_1",
+    "to": "독산_1",
+    "line": "1",
+    "seconds": 149,
+    "km": 2.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "독산_1",
+    "to": "금천구청_1",
+    "line": "1",
+    "seconds": 99,
+    "km": 1.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "금천구청_1",
+    "to": "석수_1",
+    "line": "1",
+    "seconds": 142,
+    "km": 1.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "석수_1",
+    "to": "관악_1",
+    "line": "1",
+    "seconds": 142,
+    "km": 1.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "관악_1",
+    "to": "안양_1",
+    "line": "1",
+    "seconds": 173,
+    "km": 2.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "안양_1",
+    "to": "명학_1",
+    "line": "1",
+    "seconds": 161,
+    "km": 2.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "명학_1",
+    "to": "금정_1",
+    "line": "1",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "금정_1",
+    "to": "군포_1",
+    "line": "1",
+    "seconds": 161,
+    "km": 2.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "군포_1",
+    "to": "당정_1",
+    "line": "1",
+    "seconds": 124,
+    "km": 1.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "당정_1",
+    "to": "의왕_1",
+    "line": "1",
+    "seconds": 185,
+    "km": 2.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "의왕_1",
+    "to": "성균관대_1",
+    "line": "1",
+    "seconds": 204,
+    "km": 2.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "성균관대_1",
+    "to": "화서_1",
+    "line": "1",
+    "seconds": 185,
+    "km": 2.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "화서_1",
+    "to": "수원_1",
+    "line": "1",
+    "seconds": 155,
+    "km": 2.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "수원_1",
+    "to": "세류_1",
+    "line": "1",
+    "seconds": 204,
+    "km": 2.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "세류_1",
+    "to": "병점_1",
+    "line": "1",
+    "seconds": 290,
+    "km": 4.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "병점_1",
+    "to": "세마_1",
+    "line": "1",
+    "seconds": 173,
+    "km": 2.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "세마_1",
+    "to": "오산대_1",
+    "line": "1",
+    "seconds": 192,
+    "km": 2.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "오산대_1",
+    "to": "오산_1",
+    "line": "1",
+    "seconds": 192,
+    "km": 2.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "오산_1",
+    "to": "진위_1",
+    "line": "1",
+    "seconds": 271,
+    "km": 4.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "진위_1",
+    "to": "송탄_1",
+    "line": "1",
+    "seconds": 259,
+    "km": 3.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "송탄_1",
+    "to": "서정리_1",
+    "line": "1",
+    "seconds": 161,
+    "km": 2.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "서정리_1",
+    "to": "평택지제_1",
+    "line": "1",
+    "seconds": 320,
+    "km": 4.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "평택지제_1",
+    "to": "평택_1",
+    "line": "1",
+    "seconds": 253,
+    "km": 3.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "평택_1",
+    "to": "성환_1",
+    "line": "1",
+    "seconds": 603,
+    "km": 9.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "성환_1",
+    "to": "직산_1",
+    "line": "1",
+    "seconds": 357,
+    "km": 5.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "직산_1",
+    "to": "두정_1",
+    "line": "1",
+    "seconds": 259,
+    "km": 3.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "두정_1",
+    "to": "천안_1",
+    "line": "1",
+    "seconds": 216,
+    "km": 3.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "천안_1",
+    "to": "봉명_1",
+    "line": "1",
+    "seconds": 106,
+    "km": 1.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "봉명_1",
+    "to": "쌍용_1",
+    "line": "1",
+    "seconds": 124,
+    "km": 1.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "쌍용_1",
+    "to": "아산_1",
+    "line": "1",
+    "seconds": 124,
+    "km": 1.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "아산_1",
+    "to": "탕정_1",
+    "line": "1",
+    "seconds": 136,
+    "km": 1.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "탕정_1",
+    "to": "배방_1",
+    "line": "1",
+    "seconds": 216,
+    "km": 3.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "배방_1",
+    "to": "온양온천_1",
+    "line": "1",
+    "seconds": 327,
+    "km": 4.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "온양온천_1",
+    "to": "신창_1",
+    "line": "1",
+    "seconds": 339,
+    "km": 5.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "금천구청_1",
+    "to": "광명_1",
+    "line": "1",
+    "seconds": 357,
+    "km": 5.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "병점_1",
+    "to": "서동탄_1",
+    "line": "1",
+    "seconds": 173,
+    "km": 2.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "대화_3",
+    "to": "주엽_3",
+    "line": "3",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "주엽_3",
+    "to": "정발산_3",
+    "line": "3",
+    "seconds": 124,
+    "km": 1.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "정발산_3",
+    "to": "마두_3",
+    "line": "3",
+    "seconds": 81,
+    "km": 0.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "마두_3",
+    "to": "백석_3",
+    "line": "3",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "백석_3",
+    "to": "대곡_3",
+    "line": "3",
+    "seconds": 179,
+    "km": 2.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "대곡_3",
+    "to": "화정_3",
+    "line": "3",
+    "seconds": 155,
+    "km": 2.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "화정_3",
+    "to": "원당_3",
+    "line": "3",
+    "seconds": 185,
+    "km": 2.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "원당_3",
+    "to": "원흥_3",
+    "line": "3",
+    "seconds": 204,
+    "km": 2.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "원흥_3",
+    "to": "삼송_3",
+    "line": "3",
+    "seconds": 155,
+    "km": 2.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "삼송_3",
+    "to": "지축_3",
+    "line": "3",
+    "seconds": 155,
+    "km": 2.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "진접_4",
+    "to": "오남_4",
+    "line": "4",
+    "seconds": 155,
+    "km": 2.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "오남_4",
+    "to": "별내별가람_4",
+    "line": "4",
+    "seconds": 498,
+    "km": 7.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "별내별가람_4",
+    "to": "불암산_4",
+    "line": "4",
+    "seconds": 296,
+    "km": 4.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "남태령_4",
+    "to": "선바위_4",
+    "line": "4",
+    "seconds": 149,
+    "km": 2.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "선바위_4",
+    "to": "경마공원_4",
+    "line": "4",
+    "seconds": 81,
+    "km": 0.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "경마공원_4",
+    "to": "대공원_4",
+    "line": "4",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "대공원_4",
+    "to": "과천_4",
+    "line": "4",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "과천_4",
+    "to": "정부과천청사_4",
+    "line": "4",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "정부과천청사_4",
+    "to": "인덕원_4",
+    "line": "4",
+    "seconds": 210,
+    "km": 3.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "인덕원_4",
+    "to": "평촌_4",
+    "line": "4",
+    "seconds": 124,
+    "km": 1.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "평촌_4",
+    "to": "범계_4",
+    "line": "4",
+    "seconds": 106,
+    "km": 1.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "범계_4",
+    "to": "금정_4",
+    "line": "4",
+    "seconds": 185,
+    "km": 2.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "금정_4",
+    "to": "산본_4",
+    "line": "4",
+    "seconds": 167,
+    "km": 2.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "산본_4",
+    "to": "수리산_4",
+    "line": "4",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "수리산_4",
+    "to": "대야미_4",
+    "line": "4",
+    "seconds": 185,
+    "km": 2.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "대야미_4",
+    "to": "반월_4",
+    "line": "4",
+    "seconds": 149,
+    "km": 2.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "반월_4",
+    "to": "상록수_4",
+    "line": "4",
+    "seconds": 253,
+    "km": 3.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "상록수_4",
+    "to": "한대앞_4",
+    "line": "4",
+    "seconds": 118,
+    "km": 1.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "한대앞_4",
+    "to": "중앙_4",
+    "line": "4",
+    "seconds": 124,
+    "km": 1.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "중앙_4",
+    "to": "고잔_4",
+    "line": "4",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "고잔_4",
+    "to": "초지_4",
+    "line": "4",
+    "seconds": 118,
+    "km": 1.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "초지_4",
+    "to": "안산_4",
+    "line": "4",
+    "seconds": 136,
+    "km": 1.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "안산_4",
+    "to": "능길_4",
+    "line": "4",
+    "seconds": 161,
+    "km": 2.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "능길_4",
+    "to": "정왕_4",
+    "line": "4",
+    "seconds": 204,
+    "km": 2.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "정왕_4",
+    "to": "오이도_4",
+    "line": "4",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "까치울_7",
+    "to": "부천종합운동장_7",
+    "line": "7",
+    "seconds": 99,
+    "km": 1.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "부천종합운동장_7",
+    "to": "춘의_7",
+    "line": "7",
+    "seconds": 81,
+    "km": 0.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "춘의_7",
+    "to": "신중동_7",
+    "line": "7",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "신중동_7",
+    "to": "부천시청_7",
+    "line": "7",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "부천시청_7",
+    "to": "상동_7",
+    "line": "7",
+    "seconds": 81,
+    "km": 0.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "상동_7",
+    "to": "삼산체육관_7",
+    "line": "7",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "삼산체육관_7",
+    "to": "굴포천_7",
+    "line": "7",
+    "seconds": 81,
+    "km": 0.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "굴포천_7",
+    "to": "부평구청_7",
+    "line": "7",
+    "seconds": 81,
+    "km": 0.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "부평구청_7",
+    "to": "산곡_7",
+    "line": "7",
+    "seconds": 124,
+    "km": 1.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "산곡_7",
+    "to": "석남_7",
+    "line": "7",
+    "seconds": 185,
+    "km": 2.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "온수_7",
+    "to": "까치울_7",
+    "line": "7",
+    "seconds": 167,
+    "km": 2.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "암사_8",
+    "to": "암사역사공원_8",
+    "line": "8",
+    "seconds": 106,
+    "km": 1.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "암사역사공원_8",
+    "to": "장자호수공원_8",
+    "line": "8",
+    "seconds": 271,
+    "km": 4.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "장자호수공원_8",
+    "to": "구리_8",
+    "line": "8",
+    "seconds": 155,
+    "km": 2.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "구리_8",
+    "to": "동구릉_8",
+    "line": "8",
+    "seconds": 99,
+    "km": 1.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "동구릉_8",
+    "to": "다산_8",
+    "line": "8",
+    "seconds": 173,
+    "km": 2.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "다산_8",
+    "to": "별내_8",
+    "line": "8",
+    "seconds": 234,
+    "km": 3.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "청량리_수인분당",
+    "to": "왕십리_수인분당",
+    "line": "수인분당",
+    "seconds": 173,
+    "km": 2.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "왕십리_수인분당",
+    "to": "서울숲_수인분당",
+    "line": "수인분당",
+    "seconds": 161,
+    "km": 2.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "서울숲_수인분당",
+    "to": "압구정로데오_수인분당",
+    "line": "수인분당",
+    "seconds": 142,
+    "km": 1.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "압구정로데오_수인분당",
+    "to": "강남구청_수인분당",
+    "line": "수인분당",
+    "seconds": 99,
+    "km": 1.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "강남구청_수인분당",
+    "to": "선정릉_수인분당",
+    "line": "수인분당",
+    "seconds": 69,
+    "km": 0.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "선정릉_수인분당",
+    "to": "선릉_수인분당",
+    "line": "수인분당",
+    "seconds": 69,
+    "km": 0.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "선릉_수인분당",
+    "to": "한티_수인분당",
+    "line": "수인분당",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "한티_수인분당",
+    "to": "도곡_수인분당",
+    "line": "수인분당",
+    "seconds": 69,
+    "km": 0.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "도곡_수인분당",
+    "to": "구룡_수인분당",
+    "line": "수인분당",
+    "seconds": 63,
+    "km": 0.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "구룡_수인분당",
+    "to": "개포동_수인분당",
+    "line": "수인분당",
+    "seconds": 69,
+    "km": 0.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "개포동_수인분당",
+    "to": "대모산입구_수인분당",
+    "line": "수인분당",
+    "seconds": 63,
+    "km": 0.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "대모산입구_수인분당",
+    "to": "수서_수인분당",
+    "line": "수인분당",
+    "seconds": 210,
+    "km": 3.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "수서_수인분당",
+    "to": "복정_수인분당",
+    "line": "수인분당",
+    "seconds": 222,
+    "km": 3.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "복정_수인분당",
+    "to": "가천대_수인분당",
+    "line": "수인분당",
+    "seconds": 173,
+    "km": 2.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "가천대_수인분당",
+    "to": "태평_수인분당",
+    "line": "수인분당",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "태평_수인분당",
+    "to": "모란_수인분당",
+    "line": "수인분당",
+    "seconds": 81,
+    "km": 0.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "모란_수인분당",
+    "to": "야탑_수인분당",
+    "line": "수인분당",
+    "seconds": 167,
+    "km": 2.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "야탑_수인분당",
+    "to": "이매_수인분당",
+    "line": "수인분당",
+    "seconds": 130,
+    "km": 1.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "이매_수인분당",
+    "to": "서현_수인분당",
+    "line": "수인분당",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "서현_수인분당",
+    "to": "수내_수인분당",
+    "line": "수인분당",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "수내_수인분당",
+    "to": "정자_수인분당",
+    "line": "수인분당",
+    "seconds": 124,
+    "km": 1.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "정자_수인분당",
+    "to": "미금_수인분당",
+    "line": "수인분당",
+    "seconds": 136,
+    "km": 1.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "미금_수인분당",
+    "to": "오리_수인분당",
+    "line": "수인분당",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "오리_수인분당",
+    "to": "죽전_수인분당",
+    "line": "수인분당",
+    "seconds": 136,
+    "km": 1.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "죽전_수인분당",
+    "to": "보정_수인분당",
+    "line": "수인분당",
+    "seconds": 106,
+    "km": 1.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "보정_수인분당",
+    "to": "구성_수인분당",
+    "line": "수인분당",
+    "seconds": 124,
+    "km": 1.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "구성_수인분당",
+    "to": "신갈_수인분당",
+    "line": "수인분당",
+    "seconds": 124,
+    "km": 1.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "신갈_수인분당",
+    "to": "기흥_수인분당",
+    "line": "수인분당",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "기흥_수인분당",
+    "to": "상갈_수인분당",
+    "line": "수인분당",
+    "seconds": 142,
+    "km": 1.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "상갈_수인분당",
+    "to": "청명_수인분당",
+    "line": "수인분당",
+    "seconds": 198,
+    "km": 2.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "청명_수인분당",
+    "to": "영통_수인분당",
+    "line": "수인분당",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "영통_수인분당",
+    "to": "망포_수인분당",
+    "line": "수인분당",
+    "seconds": 118,
+    "km": 1.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "망포_수인분당",
+    "to": "매탄권선_수인분당",
+    "line": "수인분당",
+    "seconds": 136,
+    "km": 1.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "매탄권선_수인분당",
+    "to": "수원시청_수인분당",
+    "line": "수인분당",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "수원시청_수인분당",
+    "to": "매교_수인분당",
+    "line": "수인분당",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "매교_수인분당",
+    "to": "수원_수인분당",
+    "line": "수인분당",
+    "seconds": 118,
+    "km": 1.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "수원_수인분당",
+    "to": "고색_수인분당",
+    "line": "수인분당",
+    "seconds": 192,
+    "km": 2.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "고색_수인분당",
+    "to": "오목천_수인분당",
+    "line": "수인분당",
+    "seconds": 124,
+    "km": 1.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "오목천_수인분당",
+    "to": "어천_수인분당",
+    "line": "수인분당",
+    "seconds": 339,
+    "km": 5.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "어천_수인분당",
+    "to": "야목_수인분당",
+    "line": "수인분당",
+    "seconds": 185,
+    "km": 2.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "야목_수인분당",
+    "to": "사리_수인분당",
+    "line": "수인분당",
+    "seconds": 314,
+    "km": 4.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "사리_수인분당",
+    "to": "한대앞_수인분당",
+    "line": "수인분당",
+    "seconds": 161,
+    "km": 2.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "한대앞_수인분당",
+    "to": "중앙_수인분당",
+    "line": "수인분당",
+    "seconds": 124,
+    "km": 1.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "중앙_수인분당",
+    "to": "고잔_수인분당",
+    "line": "수인분당",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "고잔_수인분당",
+    "to": "초지_수인분당",
+    "line": "수인분당",
+    "seconds": 118,
+    "km": 1.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "초지_수인분당",
+    "to": "안산_수인분당",
+    "line": "수인분당",
+    "seconds": 136,
+    "km": 1.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "안산_수인분당",
+    "to": "능길_수인분당",
+    "line": "수인분당",
+    "seconds": 161,
+    "km": 2.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "능길_수인분당",
+    "to": "정왕_수인분당",
+    "line": "수인분당",
+    "seconds": 204,
+    "km": 2.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "정왕_수인분당",
+    "to": "오이도_수인분당",
+    "line": "수인분당",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "오이도_수인분당",
+    "to": "달월_수인분당",
+    "line": "수인분당",
+    "seconds": 155,
+    "km": 2.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "달월_수인분당",
+    "to": "월곶_수인분당",
+    "line": "수인분당",
+    "seconds": 118,
+    "km": 1.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "월곶_수인분당",
+    "to": "소래포구_수인분당",
+    "line": "수인분당",
+    "seconds": 106,
+    "km": 1.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "소래포구_수인분당",
+    "to": "인천논현_수인분당",
+    "line": "수인분당",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "인천논현_수인분당",
+    "to": "호구포_수인분당",
+    "line": "수인분당",
+    "seconds": 106,
+    "km": 1.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "호구포_수인분당",
+    "to": "남동인더스파크_수인분당",
+    "line": "수인분당",
+    "seconds": 106,
+    "km": 1.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "남동인더스파크_수인분당",
+    "to": "원인재_수인분당",
+    "line": "수인분당",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "원인재_수인분당",
+    "to": "연수_수인분당",
+    "line": "수인분당",
+    "seconds": 81,
+    "km": 0.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "연수_수인분당",
+    "to": "송도_수인분당",
+    "line": "수인분당",
+    "seconds": 192,
+    "km": 2.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "송도_수인분당",
+    "to": "인하대_수인분당",
+    "line": "수인분당",
+    "seconds": 173,
+    "km": 2.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "인하대_수인분당",
+    "to": "숭의_수인분당",
+    "line": "수인분당",
+    "seconds": 136,
+    "km": 1.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "숭의_수인분당",
+    "to": "신포_수인분당",
+    "line": "수인분당",
+    "seconds": 118,
+    "km": 1.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "신포_수인분당",
+    "to": "인천_수인분당",
+    "line": "수인분당",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "도라산_경의중앙",
+    "to": "임진강_경의중앙",
+    "line": "경의중앙",
+    "seconds": 167,
+    "km": 2.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "임진강_경의중앙",
+    "to": "운천_경의중앙",
+    "line": "경의중앙",
+    "seconds": 167,
+    "km": 2.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "운천_경의중앙",
+    "to": "문산_경의중앙",
+    "line": "경의중앙",
+    "seconds": 253,
+    "km": 3.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "문산_경의중앙",
+    "to": "파주_경의중앙",
+    "line": "경의중앙",
+    "seconds": 296,
+    "km": 4.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "파주_경의중앙",
+    "to": "월롱_경의중앙",
+    "line": "경의중앙",
+    "seconds": 161,
+    "km": 2.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "월롱_경의중앙",
+    "to": "금촌_경의중앙",
+    "line": "경의중앙",
+    "seconds": 277,
+    "km": 4.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "금촌_경의중앙",
+    "to": "금릉_경의중앙",
+    "line": "경의중앙",
+    "seconds": 155,
+    "km": 2.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "금릉_경의중앙",
+    "to": "운정_경의중앙",
+    "line": "경의중앙",
+    "seconds": 216,
+    "km": 3.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "운정_경의중앙",
+    "to": "야당_경의중앙",
+    "line": "경의중앙",
+    "seconds": 118,
+    "km": 1.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "야당_경의중앙",
+    "to": "탄현_경의중앙",
+    "line": "경의중앙",
+    "seconds": 155,
+    "km": 2.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "탄현_경의중앙",
+    "to": "일산_경의중앙",
+    "line": "경의중앙",
+    "seconds": 130,
+    "km": 1.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "일산_경의중앙",
+    "to": "풍산_경의중앙",
+    "line": "경의중앙",
+    "seconds": 142,
+    "km": 1.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "풍산_경의중앙",
+    "to": "백마_경의중앙",
+    "line": "경의중앙",
+    "seconds": 130,
+    "km": 1.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "백마_경의중앙",
+    "to": "곡산_경의중앙",
+    "line": "경의중앙",
+    "seconds": 124,
+    "km": 1.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "곡산_경의중앙",
+    "to": "대곡_경의중앙",
+    "line": "경의중앙",
+    "seconds": 130,
+    "km": 1.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "대곡_경의중앙",
+    "to": "능곡_경의중앙",
+    "line": "경의중앙",
+    "seconds": 136,
+    "km": 1.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "능곡_경의중앙",
+    "to": "행신_경의중앙",
+    "line": "경의중앙",
+    "seconds": 118,
+    "km": 1.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "행신_경의중앙",
+    "to": "강매_경의중앙",
+    "line": "경의중앙",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "강매_경의중앙",
+    "to": "한국항공대_경의중앙",
+    "line": "경의중앙",
+    "seconds": 173,
+    "km": 2.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "한국항공대_경의중앙",
+    "to": "수색_경의중앙",
+    "line": "경의중앙",
+    "seconds": 234,
+    "km": 3.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "수색_경의중앙",
+    "to": "디지털미디어시티_경의중앙",
+    "line": "경의중앙",
+    "seconds": 63,
+    "km": 0.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "디지털미디어시티_경의중앙",
+    "to": "가좌_경의중앙",
+    "line": "경의중앙",
+    "seconds": 130,
+    "km": 1.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "가좌_경의중앙",
+    "to": "홍대입구_경의중앙",
+    "line": "경의중앙",
+    "seconds": 130,
+    "km": 1.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "홍대입구_경의중앙",
+    "to": "서강대_경의중앙",
+    "line": "경의중앙",
+    "seconds": 81,
+    "km": 0.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "서강대_경의중앙",
+    "to": "공덕_경의중앙",
+    "line": "경의중앙",
+    "seconds": 142,
+    "km": 1.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "공덕_경의중앙",
+    "to": "효창공원앞_경의중앙",
+    "line": "경의중앙",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "효창공원앞_경의중앙",
+    "to": "용산_경의중앙",
+    "line": "경의중앙",
+    "seconds": 118,
+    "km": 1.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "용산_경의중앙",
+    "to": "이촌_경의중앙",
+    "line": "경의중앙",
+    "seconds": 50,
+    "km": 0.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "이촌_경의중앙",
+    "to": "서빙고_경의중앙",
+    "line": "경의중앙",
+    "seconds": 130,
+    "km": 1.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "서빙고_경의중앙",
+    "to": "한남_경의중앙",
+    "line": "경의중앙",
+    "seconds": 142,
+    "km": 1.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "한남_경의중앙",
+    "to": "옥수_경의중앙",
+    "line": "경의중앙",
+    "seconds": 124,
+    "km": 1.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "옥수_경의중앙",
+    "to": "응봉_경의중앙",
+    "line": "경의중앙",
+    "seconds": 136,
+    "km": 1.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "응봉_경의중앙",
+    "to": "왕십리_경의중앙",
+    "line": "경의중앙",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "왕십리_경의중앙",
+    "to": "청량리_경의중앙",
+    "line": "경의중앙",
+    "seconds": 173,
+    "km": 2.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "청량리_경의중앙",
+    "to": "회기_경의중앙",
+    "line": "경의중앙",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "회기_경의중앙",
+    "to": "중랑_경의중앙",
+    "line": "경의중앙",
+    "seconds": 136,
+    "km": 1.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "중랑_경의중앙",
+    "to": "상봉_경의중앙",
+    "line": "경의중앙",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "상봉_경의중앙",
+    "to": "망우_경의중앙",
+    "line": "경의중앙",
+    "seconds": 63,
+    "km": 0.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "망우_경의중앙",
+    "to": "양원_경의중앙",
+    "line": "경의중앙",
+    "seconds": 14051,
+    "km": 228.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "양원_경의중앙",
+    "to": "구리_경의중앙",
+    "line": "경의중앙",
+    "seconds": 13756,
+    "km": 223.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "구리_경의중앙",
+    "to": "도농_경의중앙",
+    "line": "경의중앙",
+    "seconds": 130,
+    "km": 1.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "도농_경의중앙",
+    "to": "양정_경의중앙",
+    "line": "경의중앙",
+    "seconds": 253,
+    "km": 3.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "양정_경의중앙",
+    "to": "덕소_경의중앙",
+    "line": "경의중앙",
+    "seconds": 167,
+    "km": 2.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "덕소_경의중앙",
+    "to": "도심_경의중앙",
+    "line": "경의중앙",
+    "seconds": 118,
+    "km": 1.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "도심_경의중앙",
+    "to": "팔당_경의중앙",
+    "line": "경의중앙",
+    "seconds": 284,
+    "km": 4.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "팔당_경의중앙",
+    "to": "운길산_경의중앙",
+    "line": "경의중앙",
+    "seconds": 419,
+    "km": 6.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "운길산_경의중앙",
+    "to": "양수_경의중앙",
+    "line": "경의중앙",
+    "seconds": 142,
+    "km": 1.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "양수_경의중앙",
+    "to": "신원_경의중앙",
+    "line": "경의중앙",
+    "seconds": 314,
+    "km": 4.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "신원_경의중앙",
+    "to": "국수_경의중앙",
+    "line": "경의중앙",
+    "seconds": 204,
+    "km": 2.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "국수_경의중앙",
+    "to": "아신_경의중앙",
+    "line": "경의중앙",
+    "seconds": 277,
+    "km": 4.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "아신_경의중앙",
+    "to": "오빈_경의중앙",
+    "line": "경의중앙",
+    "seconds": 198,
+    "km": 2.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "오빈_경의중앙",
+    "to": "양평(경의중앙)_경의중앙",
+    "line": "경의중앙",
+    "seconds": 161,
+    "km": 2.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "양평(경의중앙)_경의중앙",
+    "to": "원덕_경의중앙",
+    "line": "경의중앙",
+    "seconds": 382,
+    "km": 5.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "원덕_경의중앙",
+    "to": "용문_경의중앙",
+    "line": "경의중앙",
+    "seconds": 320,
+    "km": 4.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "용문_경의중앙",
+    "to": "지평_경의중앙",
+    "line": "경의중앙",
+    "seconds": 247,
+    "km": 3.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "신촌(경의중앙)_경의중앙",
+    "to": "서울역_경의중앙",
+    "line": "경의중앙",
+    "seconds": 216,
+    "km": 3.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "가좌_경의중앙",
+    "to": "신촌(경의중앙)_경의중앙",
+    "line": "경의중앙",
+    "seconds": 216,
+    "km": 3.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "청량리_경춘",
+    "to": "회기_경춘",
+    "line": "경춘",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "회기_경춘",
+    "to": "중랑_경춘",
+    "line": "경춘",
+    "seconds": 136,
+    "km": 1.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "중랑_경춘",
+    "to": "상봉_경춘",
+    "line": "경춘",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "상봉_경춘",
+    "to": "망우_경춘",
+    "line": "경춘",
+    "seconds": 63,
+    "km": 0.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "망우_경춘",
+    "to": "신내_경춘",
+    "line": "경춘",
+    "seconds": 155,
+    "km": 2.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "신내_경춘",
+    "to": "갈매_경춘",
+    "line": "경춘",
+    "seconds": 185,
+    "km": 2.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "갈매_경춘",
+    "to": "별내_경춘",
+    "line": "경춘",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "별내_경춘",
+    "to": "퇴계원_경춘",
+    "line": "경춘",
+    "seconds": 124,
+    "km": 1.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "퇴계원_경춘",
+    "to": "사릉_경춘",
+    "line": "경춘",
+    "seconds": 228,
+    "km": 3.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "사릉_경춘",
+    "to": "금곡_경춘",
+    "line": "경춘",
+    "seconds": 247,
+    "km": 3.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "금곡_경춘",
+    "to": "평내호평_경춘",
+    "line": "경춘",
+    "seconds": 271,
+    "km": 4.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "평내호평_경춘",
+    "to": "천마산_경춘",
+    "line": "경춘",
+    "seconds": 284,
+    "km": 4.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "천마산_경춘",
+    "to": "마석_경춘",
+    "line": "경춘",
+    "seconds": 161,
+    "km": 2.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "마석_경춘",
+    "to": "대성리_경춘",
+    "line": "경춘",
+    "seconds": 480,
+    "km": 7.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "대성리_경춘",
+    "to": "청평_경춘",
+    "line": "경춘",
+    "seconds": 486,
+    "km": 7.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "청평_경춘",
+    "to": "상천_경춘",
+    "line": "경춘",
+    "seconds": 320,
+    "km": 4.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "상천_경춘",
+    "to": "가평_경춘",
+    "line": "경춘",
+    "seconds": 462,
+    "km": 7.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "가평_경춘",
+    "to": "굴봉산_경춘",
+    "line": "경춘",
+    "seconds": 314,
+    "km": 4.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "굴봉산_경춘",
+    "to": "백양리_경춘",
+    "line": "경춘",
+    "seconds": 204,
+    "km": 2.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "백양리_경춘",
+    "to": "강촌_경춘",
+    "line": "경춘",
+    "seconds": 351,
+    "km": 5.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "강촌_경춘",
+    "to": "김유정_경춘",
+    "line": "경춘",
+    "seconds": 492,
+    "km": 7.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "김유정_경춘",
+    "to": "남춘천_경춘",
+    "line": "경춘",
+    "seconds": 388,
+    "km": 5.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "남춘천_경춘",
+    "to": "춘천_경춘",
+    "line": "경춘",
+    "seconds": 192,
+    "km": 2.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "상봉_경춘",
+    "to": "광운대_경춘",
+    "line": "경춘",
+    "seconds": 308,
+    "km": 4.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "판교_경강",
+    "to": "성남_경강",
+    "line": "경강",
+    "seconds": 69,
+    "km": 0.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "성남_경강",
+    "to": "이매_경강",
+    "line": "경강",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "이매_경강",
+    "to": "삼동_경강",
+    "line": "경강",
+    "seconds": 449,
+    "km": 6.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "삼동_경강",
+    "to": "경기광주_경강",
+    "line": "경강",
+    "seconds": 327,
+    "km": 4.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "경기광주_경강",
+    "to": "초월_경강",
+    "line": "경강",
+    "seconds": 333,
+    "km": 5.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "초월_경강",
+    "to": "곤지암_경강",
+    "line": "경강",
+    "seconds": 327,
+    "km": 4.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "곤지암_경강",
+    "to": "신둔도예촌_경강",
+    "line": "경강",
+    "seconds": 443,
+    "km": 6.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "신둔도예촌_경강",
+    "to": "이천_경강",
+    "line": "경강",
+    "seconds": 505,
+    "km": 7.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "이천_경강",
+    "to": "부발_경강",
+    "line": "경강",
+    "seconds": 302,
+    "km": 4.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "부발_경강",
+    "to": "세종대왕릉_경강",
+    "line": "경강",
+    "seconds": 535,
+    "km": 8.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "세종대왕릉_경강",
+    "to": "여주_경강",
+    "line": "경강",
+    "seconds": 357,
+    "km": 5.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "일산_서해",
+    "to": "풍산_서해",
+    "line": "서해",
+    "seconds": 142,
+    "km": 1.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "풍산_서해",
+    "to": "백마_서해",
+    "line": "서해",
+    "seconds": 130,
+    "km": 1.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "백마_서해",
+    "to": "곡산_서해",
+    "line": "서해",
+    "seconds": 124,
+    "km": 1.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "곡산_서해",
+    "to": "대곡_서해",
+    "line": "서해",
+    "seconds": 130,
+    "km": 1.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "대곡_서해",
+    "to": "능곡_서해",
+    "line": "서해",
+    "seconds": 136,
+    "km": 1.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "능곡_서해",
+    "to": "김포공항_서해",
+    "line": "서해",
+    "seconds": 486,
+    "km": 7.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "김포공항_서해",
+    "to": "원종_서해",
+    "line": "서해",
+    "seconds": 290,
+    "km": 4.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "원종_서해",
+    "to": "부천종합운동장_서해",
+    "line": "서해",
+    "seconds": 155,
+    "km": 2.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "부천종합운동장_서해",
+    "to": "소사_서해",
+    "line": "서해",
+    "seconds": 216,
+    "km": 3.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "소사_서해",
+    "to": "소새울_서해",
+    "line": "서해",
+    "seconds": 142,
+    "km": 1.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "소새울_서해",
+    "to": "시흥대야_서해",
+    "line": "서해",
+    "seconds": 173,
+    "km": 2.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "시흥대야_서해",
+    "to": "신천_서해",
+    "line": "서해",
+    "seconds": 130,
+    "km": 1.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "신천_서해",
+    "to": "신현_서해",
+    "line": "서해",
+    "seconds": 271,
+    "km": 4.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "신현_서해",
+    "to": "시흥시청_서해",
+    "line": "서해",
+    "seconds": 284,
+    "km": 4.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "시흥시청_서해",
+    "to": "시흥능곡_서해",
+    "line": "서해",
+    "seconds": 118,
+    "km": 1.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "시흥능곡_서해",
+    "to": "달미_서해",
+    "line": "서해",
+    "seconds": 198,
+    "km": 2.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "달미_서해",
+    "to": "선부_서해",
+    "line": "서해",
+    "seconds": 142,
+    "km": 1.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "선부_서해",
+    "to": "초지_서해",
+    "line": "서해",
+    "seconds": 142,
+    "km": 1.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "초지_서해",
+    "to": "시우_서해",
+    "line": "서해",
+    "seconds": 124,
+    "km": 1.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "시우_서해",
+    "to": "원시_서해",
+    "line": "서해",
+    "seconds": 130,
+    "km": 1.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "서울역_공항철도",
+    "to": "공덕_공항철도",
+    "line": "공항철도",
+    "seconds": 228,
+    "km": 3.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "공덕_공항철도",
+    "to": "홍대입구_공항철도",
+    "line": "공항철도",
+    "seconds": 198,
+    "km": 2.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "홍대입구_공항철도",
+    "to": "디지털미디어시티_공항철도",
+    "line": "공항철도",
+    "seconds": 234,
+    "km": 3.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "디지털미디어시티_공항철도",
+    "to": "마곡나루_공항철도",
+    "line": "공항철도",
+    "seconds": 554,
+    "km": 8.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "마곡나루_공항철도",
+    "to": "김포공항_공항철도",
+    "line": "공항철도",
+    "seconds": 167,
+    "km": 2.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "김포공항_공항철도",
+    "to": "계양_공항철도",
+    "line": "공항철도",
+    "seconds": 431,
+    "km": 6.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "계양_공항철도",
+    "to": "검암_공항철도",
+    "line": "공항철도",
+    "seconds": 363,
+    "km": 5.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "검암_공항철도",
+    "to": "청라국제도시_공항철도",
+    "line": "공항철도",
+    "seconds": 320,
+    "km": 4.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "청라국제도시_공항철도",
+    "to": "영종_공항철도",
+    "line": "공항철도",
+    "seconds": 652,
+    "km": 10.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "영종_공항철도",
+    "to": "운서_공항철도",
+    "line": "공항철도",
+    "seconds": 247,
+    "km": 3.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "운서_공항철도",
+    "to": "공항화물청사_공항철도",
+    "line": "공항철도",
+    "seconds": 290,
+    "km": 4.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "공항화물청사_공항철도",
+    "to": "인천공항1터미널_공항철도",
+    "line": "공항철도",
+    "seconds": 185,
+    "km": 2.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "인천공항1터미널_공항철도",
+    "to": "인천공항2터미널_공항철도",
+    "line": "공항철도",
+    "seconds": 382,
+    "km": 5.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "신사_신분당",
+    "to": "논현_신분당",
+    "line": "신분당",
+    "seconds": 69,
+    "km": 0.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "논현_신분당",
+    "to": "신논현_신분당",
+    "line": "신분당",
+    "seconds": 81,
+    "km": 0.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "신논현_신분당",
+    "to": "강남_신분당",
+    "line": "신분당",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "강남_신분당",
+    "to": "양재_신분당",
+    "line": "신분당",
+    "seconds": 136,
+    "km": 1.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "양재_신분당",
+    "to": "양재시민의숲_신분당",
+    "line": "신분당",
+    "seconds": 142,
+    "km": 1.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "양재시민의숲_신분당",
+    "to": "청계산입구_신분당",
+    "line": "신분당",
+    "seconds": 234,
+    "km": 3.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "청계산입구_신분당",
+    "to": "판교_신분당",
+    "line": "신분당",
+    "seconds": 597,
+    "km": 9.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "판교_신분당",
+    "to": "정자_신분당",
+    "line": "신분당",
+    "seconds": 253,
+    "km": 3.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "정자_신분당",
+    "to": "미금_신분당",
+    "line": "신분당",
+    "seconds": 167,
+    "km": 2.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "미금_신분당",
+    "to": "동천_신분당",
+    "line": "신분당",
+    "seconds": 136,
+    "km": 1.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "동천_신분당",
+    "to": "수지구청_신분당",
+    "line": "신분당",
+    "seconds": 161,
+    "km": 2.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "수지구청_신분당",
+    "to": "성복_신분당",
+    "line": "신분당",
+    "seconds": 149,
+    "km": 2.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "성복_신분당",
+    "to": "상현_신분당",
+    "line": "신분당",
+    "seconds": 173,
+    "km": 2.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "상현_신분당",
+    "to": "광교중앙_신분당",
+    "line": "신분당",
+    "seconds": 167,
+    "km": 2.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "광교중앙_신분당",
+    "to": "광교_신분당",
+    "line": "신분당",
+    "seconds": 149,
+    "km": 2.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "기흥_에버라인",
+    "to": "강남대_에버라인",
+    "line": "에버라인",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "강남대_에버라인",
+    "to": "지석_에버라인",
+    "line": "에버라인",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "지석_에버라인",
+    "to": "어정_에버라인",
+    "line": "에버라인",
+    "seconds": 81,
+    "km": 0.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "어정_에버라인",
+    "to": "동백_에버라인",
+    "line": "에버라인",
+    "seconds": 99,
+    "km": 1.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "동백_에버라인",
+    "to": "초당_에버라인",
+    "line": "에버라인",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "초당_에버라인",
+    "to": "삼가_에버라인",
+    "line": "에버라인",
+    "seconds": 185,
+    "km": 2.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "삼가_에버라인",
+    "to": "시청.용인대_에버라인",
+    "line": "에버라인",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "시청.용인대_에버라인",
+    "to": "명지대_에버라인",
+    "line": "에버라인",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "명지대_에버라인",
+    "to": "김량장_에버라인",
+    "line": "에버라인",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "김량장_에버라인",
+    "to": "용인중앙시장_에버라인",
+    "line": "에버라인",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "용인중앙시장_에버라인",
+    "to": "고진_에버라인",
+    "line": "에버라인",
+    "seconds": 81,
+    "km": 0.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "고진_에버라인",
+    "to": "보평_에버라인",
+    "line": "에버라인",
+    "seconds": 136,
+    "km": 1.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "보평_에버라인",
+    "to": "둔전_에버라인",
+    "line": "에버라인",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "둔전_에버라인",
+    "to": "전대.에버랜드_에버라인",
+    "line": "에버라인",
+    "seconds": 185,
+    "km": 2.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "양촌_김포골드",
+    "to": "구래_김포골드",
+    "line": "김포골드",
+    "seconds": 118,
+    "km": 1.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "구래_김포골드",
+    "to": "마산_김포골드",
+    "line": "김포골드",
+    "seconds": 136,
+    "km": 1.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "마산_김포골드",
+    "to": "장기_김포골드",
+    "line": "김포골드",
+    "seconds": 192,
+    "km": 2.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "장기_김포골드",
+    "to": "운양_김포골드",
+    "line": "김포골드",
+    "seconds": 149,
+    "km": 2.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "운양_김포골드",
+    "to": "걸포북변_김포골드",
+    "line": "김포골드",
+    "seconds": 259,
+    "km": 3.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "걸포북변_김포골드",
+    "to": "사우_김포골드",
+    "line": "김포골드",
+    "seconds": 155,
+    "km": 2.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "사우_김포골드",
+    "to": "풍무_김포골드",
+    "line": "김포골드",
+    "seconds": 130,
+    "km": 1.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "풍무_김포골드",
+    "to": "고촌_김포골드",
+    "line": "김포골드",
+    "seconds": 290,
+    "km": 4.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "고촌_김포골드",
+    "to": "김포공항_김포골드",
+    "line": "김포골드",
+    "seconds": 406,
+    "km": 6.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "발곡_의정부",
+    "to": "회룡_의정부",
+    "line": "의정부",
+    "seconds": 69,
+    "km": 0.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "회룡_의정부",
+    "to": "범골_의정부",
+    "line": "의정부",
+    "seconds": 63,
+    "km": 0.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "범골_의정부",
+    "to": "경전철의정부_의정부",
+    "line": "의정부",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "경전철의정부_의정부",
+    "to": "의정부시청_의정부",
+    "line": "의정부",
+    "seconds": 81,
+    "km": 0.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "의정부시청_의정부",
+    "to": "흥선_의정부",
+    "line": "의정부",
+    "seconds": 63,
+    "km": 0.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "흥선_의정부",
+    "to": "의정부중앙_의정부",
+    "line": "의정부",
+    "seconds": 106,
+    "km": 1.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "의정부중앙_의정부",
+    "to": "동오_의정부",
+    "line": "의정부",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "동오_의정부",
+    "to": "새말_의정부",
+    "line": "의정부",
+    "seconds": 81,
+    "km": 0.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "새말_의정부",
+    "to": "경기도청북부청사_의정부",
+    "line": "의정부",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "경기도청북부청사_의정부",
+    "to": "효자_의정부",
+    "line": "의정부",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "효자_의정부",
+    "to": "곤제_의정부",
+    "line": "의정부",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "곤제_의정부",
+    "to": "어룡_의정부",
+    "line": "의정부",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "어룡_의정부",
+    "to": "송산_의정부",
+    "line": "의정부",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "송산_의정부",
+    "to": "탑석_의정부",
+    "line": "의정부",
+    "seconds": 56,
+    "km": 0.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "샛강_신림",
+    "to": "대방_신림",
+    "line": "신림",
+    "seconds": 69,
+    "km": 0.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "대방_신림",
+    "to": "서울지방병무청_신림",
+    "line": "신림",
+    "seconds": 81,
+    "km": 0.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "서울지방병무청_신림",
+    "to": "보라매_신림",
+    "line": "신림",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "보라매_신림",
+    "to": "보라매공원_신림",
+    "line": "신림",
+    "seconds": 69,
+    "km": 0.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "보라매공원_신림",
+    "to": "보라매병원_신림",
+    "line": "신림",
+    "seconds": 69,
+    "km": 0.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "보라매병원_신림",
+    "to": "당곡_신림",
+    "line": "신림",
+    "seconds": 63,
+    "km": 0.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "당곡_신림",
+    "to": "신림_신림",
+    "line": "신림",
+    "seconds": 69,
+    "km": 0.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "신림_신림",
+    "to": "서원_신림",
+    "line": "신림",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "서원_신림",
+    "to": "서울대벤처타운_신림",
+    "line": "신림",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "서울대벤처타운_신림",
+    "to": "관악산_신림",
+    "line": "신림",
+    "seconds": 99,
+    "km": 1.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "검단호수공원_인천1",
+    "to": "신검단중앙_인천1",
+    "line": "인천1",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "신검단중앙_인천1",
+    "to": "아라_인천1",
+    "line": "인천1",
+    "seconds": 142,
+    "km": 1.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "아라_인천1",
+    "to": "계양_인천1",
+    "line": "인천1",
+    "seconds": 271,
+    "km": 4.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "계양_인천1",
+    "to": "귤현_인천1",
+    "line": "인천1",
+    "seconds": 81,
+    "km": 0.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "귤현_인천1",
+    "to": "박촌_인천1",
+    "line": "인천1",
+    "seconds": 118,
+    "km": 1.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "박촌_인천1",
+    "to": "임학_인천1",
+    "line": "인천1",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "임학_인천1",
+    "to": "계산_인천1",
+    "line": "인천1",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "계산_인천1",
+    "to": "경인교대입구_인천1",
+    "line": "인천1",
+    "seconds": 81,
+    "km": 0.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "경인교대입구_인천1",
+    "to": "작전_인천1",
+    "line": "인천1",
+    "seconds": 81,
+    "km": 0.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "작전_인천1",
+    "to": "갈산_인천1",
+    "line": "인천1",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "갈산_인천1",
+    "to": "부평구청_인천1",
+    "line": "인천1",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "부평구청_인천1",
+    "to": "부평시장_인천1",
+    "line": "인천1",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "부평시장_인천1",
+    "to": "부평_인천1",
+    "line": "인천1",
+    "seconds": 81,
+    "km": 0.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "부평_인천1",
+    "to": "동수_인천1",
+    "line": "인천1",
+    "seconds": 81,
+    "km": 0.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "동수_인천1",
+    "to": "부평삼거리_인천1",
+    "line": "인천1",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "부평삼거리_인천1",
+    "to": "간석오거리_인천1",
+    "line": "인천1",
+    "seconds": 99,
+    "km": 1.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "간석오거리_인천1",
+    "to": "인천시청_인천1",
+    "line": "인천1",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "인천시청_인천1",
+    "to": "예술회관_인천1",
+    "line": "인천1",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "예술회관_인천1",
+    "to": "인천터미널_인천1",
+    "line": "인천1",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "인천터미널_인천1",
+    "to": "문학경기장_인천1",
+    "line": "인천1",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "문학경기장_인천1",
+    "to": "선학_인천1",
+    "line": "인천1",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "선학_인천1",
+    "to": "신연수_인천1",
+    "line": "인천1",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "신연수_인천1",
+    "to": "원인재_인천1",
+    "line": "인천1",
+    "seconds": 81,
+    "km": 0.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "원인재_인천1",
+    "to": "동춘_인천1",
+    "line": "인천1",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "동춘_인천1",
+    "to": "동막_인천1",
+    "line": "인천1",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "동막_인천1",
+    "to": "캠퍼스타운_인천1",
+    "line": "인천1",
+    "seconds": 124,
+    "km": 1.6,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "캠퍼스타운_인천1",
+    "to": "테크노파크_인천1",
+    "line": "인천1",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "테크노파크_인천1",
+    "to": "지식정보단지_인천1",
+    "line": "인천1",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "지식정보단지_인천1",
+    "to": "인천대입구_인천1",
+    "line": "인천1",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "인천대입구_인천1",
+    "to": "센트럴파크_인천1",
+    "line": "인천1",
+    "seconds": 81,
+    "km": 0.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "센트럴파크_인천1",
+    "to": "국제업무지구_인천1",
+    "line": "인천1",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "국제업무지구_인천1",
+    "to": "송도달빛축제공원_인천1",
+    "line": "인천1",
+    "seconds": 81,
+    "km": 0.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "검단오류_인천2",
+    "to": "왕길_인천2",
+    "line": "인천2",
+    "seconds": 106,
+    "km": 1.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "왕길_인천2",
+    "to": "검단사거리_인천2",
+    "line": "인천2",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "검단사거리_인천2",
+    "to": "마전_인천2",
+    "line": "인천2",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "마전_인천2",
+    "to": "완정_인천2",
+    "line": "인천2",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "완정_인천2",
+    "to": "독정_인천2",
+    "line": "인천2",
+    "seconds": 81,
+    "km": 0.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "독정_인천2",
+    "to": "검암_인천2",
+    "line": "인천2",
+    "seconds": 136,
+    "km": 1.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "검암_인천2",
+    "to": "검바위_인천2",
+    "line": "인천2",
+    "seconds": 81,
+    "km": 0.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "검바위_인천2",
+    "to": "아시아드경기장_인천2",
+    "line": "인천2",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "아시아드경기장_인천2",
+    "to": "서구청_인천2",
+    "line": "인천2",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "서구청_인천2",
+    "to": "가정_인천2",
+    "line": "인천2",
+    "seconds": 161,
+    "km": 2.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "가정_인천2",
+    "to": "가정중앙시장_인천2",
+    "line": "인천2",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "가정중앙시장_인천2",
+    "to": "석남_인천2",
+    "line": "인천2",
+    "seconds": 99,
+    "km": 1.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "석남_인천2",
+    "to": "서부여성회관_인천2",
+    "line": "인천2",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "서부여성회관_인천2",
+    "to": "인천가좌_인천2",
+    "line": "인천2",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "인천가좌_인천2",
+    "to": "가재울_인천2",
+    "line": "인천2",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "가재울_인천2",
+    "to": "주안국가산단_인천2",
+    "line": "인천2",
+    "seconds": 112,
+    "km": 1.4,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "주안국가산단_인천2",
+    "to": "주안_인천2",
+    "line": "인천2",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "주안_인천2",
+    "to": "시민공원_인천2",
+    "line": "인천2",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "시민공원_인천2",
+    "to": "석바위시장_인천2",
+    "line": "인천2",
+    "seconds": 87,
+    "km": 1.0,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "석바위시장_인천2",
+    "to": "인천시청_인천2",
+    "line": "인천2",
+    "seconds": 69,
+    "km": 0.7,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "인천시청_인천2",
+    "to": "석천사거리_인천2",
+    "line": "인천2",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "석천사거리_인천2",
+    "to": "모래내시장_인천2",
+    "line": "인천2",
+    "seconds": 75,
+    "km": 0.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "모래내시장_인천2",
+    "to": "만수_인천2",
+    "line": "인천2",
+    "seconds": 93,
+    "km": 1.1,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "만수_인천2",
+    "to": "남동구청_인천2",
+    "line": "인천2",
+    "seconds": 99,
+    "km": 1.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "남동구청_인천2",
+    "to": "인천대공원_인천2",
+    "line": "인천2",
+    "seconds": 118,
+    "km": 1.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "인천대공원_인천2",
+    "to": "운연_인천2",
+    "line": "인천2",
+    "seconds": 106,
+    "km": 1.3,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "수서_GTX-A",
+    "to": "성남_GTX-A",
+    "line": "GTX-A",
+    "seconds": 450,
+    "km": 12.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "성남_GTX-A",
+    "to": "구성_GTX-A",
+    "line": "GTX-A",
+    "seconds": 464,
+    "km": 12.9,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "구성_GTX-A",
+    "to": "동탄_GTX-A",
+    "line": "GTX-A",
+    "seconds": 475,
+    "km": 13.2,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "운정중앙_GTX-A",
+    "to": "킨텍스_GTX-A",
+    "line": "GTX-A",
+    "seconds": 234,
+    "km": 6.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "킨텍스_GTX-A",
+    "to": "대곡_GTX-A",
+    "line": "GTX-A",
+    "seconds": 306,
+    "km": 8.5,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "대곡_GTX-A",
+    "to": "연신내_GTX-A",
+    "line": "GTX-A",
+    "seconds": 425,
+    "km": 11.8,
+    "oneway": false,
+    "estimated": true
+  },
+  {
+    "from": "연신내_GTX-A",
+    "to": "서울역_GTX-A",
+    "line": "GTX-A",
+    "seconds": 360,
+    "km": 10.0,
+    "oneway": false,
+    "estimated": true
   }
 ]

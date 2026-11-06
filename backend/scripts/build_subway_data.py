@@ -1,8 +1,12 @@
 """
 지하철 원본 데이터 → momeet 정제 JSON 변환 스크립트
 
-범위: 서울교통공사 1~8호선 + 9호선 + 우이신설선
-     (1호선은 서울역~청량리 구간만, 코레일 구간 제외)
+범위: 수도권 전철 전체
+     - 서울교통공사 1~8호선: 공식 운행시간
+     - 9호선·우이신설선·코레일 구간(1·3·4호선 연장, 수인분당, 경의중앙, 경춘, 경강, 서해)
+       공항철도·신분당·에버라인·김포골드·의정부·신림·인천1·2호선·GTX-A: 거리로 시간 추정
+     (자기부상철도는 운행 중단으로 제외)
+     추가 입력: 국가철도공단 역간거리 파일들, 국토교통부_도시철도 전체노선, 전체_도시철도역사정보
 
 실행 (backend 폴더에서):
     python scripts/build_subway_data.py
@@ -48,6 +52,7 @@ ALIASES = {
     "이수": "총신대입구",      # 4호선 총신대입구 = 7호선 이수 (같은 역)
     "당고개": "불암산",        # 역명 변경 (역간 데이터는 옛 이름)
     "뚝섬유원지": "자양",      # 역명 변경 (역간·좌표 데이터는 옛 이름)
+    "신길온천": "능길",        # 4호선·수인분당선 역명 변경 (2025)
 }
 
 # 0:00으로 시작하지 않는 지선 구간: (호선, 지선 첫 역) → 분기역
@@ -192,6 +197,241 @@ def build_distance_edges(nodes, a, b):
     return edges
 
 
+# ---------------------------------------------------------------- 수도권 광역·경전철 (거리 → 시간 추정)
+# 서울교통공사 구간은 위의 공식 운행시간을 그대로 쓰고, 그 밖의 구간만 덧붙인다.
+# 순서: 국가철도공단 역간거리 파일(구간별로 순서대로 나열) → 없으면 국토교통부 전체노선의 순번
+KORAIL_DIST = "국가철도공단_코레일 역간거리_20251231.CSV"
+LINE1_DIST = "국가철도공단_수도권1호선_역간거리_20260630.CSV"
+LINE4_DIST = "국가철도공단_수도권4호선_역간거리_20251231.CSV"
+INCHEON_DIST = "국가철도공단_인천교통공사 역간거리_20251231.CSV"
+AIRPORT_DIST = "국가철도공단_공항철도_역간거리_20260630.CSV"
+EVERLINE_DIST = "국가철도공단_에버라인 역간거리_20251231.CSV"
+ALL_LINES = "국토교통부_도시철도 전체노선_20251211.csv"
+STATION_INFO = "전체_도시철도역사정보_20260630.xlsx"
+
+# 노선 ID → (출처, 구간 목록)
+#   ("dist", 파일, 선명)          역간거리 파일의 그 선명 행을 순서대로 (역간거리 = 다음 역까지, 빈칸이면 구간 끝)
+#   ("order", 운영기관, 노선명)    전체노선 파일의 순번 순서
+#   ("names", [역, 역, ...])       직접 적은 순서 (연결 구간·지선)
+REGIONAL_LINES = {
+    "1": [  # 코레일 1호선 (경인·경부·광명·서동탄). 서울역~청량리 구간은 기존 데이터와 겹쳐 건너뜀
+        ("dist", LINE1_DIST, "1호선(경인선)"),
+        ("dist", LINE1_DIST, "1호선(경부선)"),
+        ("dist", LINE1_DIST, "1호선(광명선)"),
+        ("dist", LINE1_DIST, "1호선(서동탄선)"),
+    ],
+    "3": [("dist", KORAIL_DIST, "3호선"), ("names", ["삼송", "지축"])],  # 일산선
+    "4": [("dist", LINE4_DIST, "4호선")],  # 진접선 ~ 안산과천선 ~ 오이도
+    "7": [("dist", INCHEON_DIST, "7호선"), ("names", ["온수", "까치울"])],  # 부천·인천 연장
+    "8": [("names", ["암사", "암사역사공원", "장자호수공원", "구리", "동구릉", "다산", "별내"])],  # 별내선
+    "수인분당": [("dist", KORAIL_DIST, "수인분당")],
+    "경의중앙": [("dist", KORAIL_DIST, "경의중앙"), ("names", ["가좌", "신촌", "서울역"])],
+    "경춘": [("dist", KORAIL_DIST, "경춘")],
+    "경강": [("dist", KORAIL_DIST, "경강")],
+    "서해": [
+        ("dist", KORAIL_DIST, "서해선"),
+        ("names", ["부천종합운동장", "소사"]),
+        ("order", "서해철도주식회사", "서해선"),
+    ],
+    "공항철도": [("dist", AIRPORT_DIST, "공항")],
+    "신분당": [("order", "네오트랜스주식회사", "신분당")],
+    "에버라인": [("dist", EVERLINE_DIST, "에버라인")],
+    "김포골드": [("order", "김포골드라인운영주식회사", "김포골드라인")],
+    "의정부": [("order", "의정부경량전철주식회사", "의정부")],
+    "신림": [("order", "남서울경전철주식회사", "신림선")],
+    "인천1": [("dist", INCHEON_DIST, "인천1호선")],
+    "인천2": [("dist", INCHEON_DIST, "인천2호선")],
+    # 수서~동탄, 운정중앙~서울역 두 구간 (삼성역 미개통)
+    "GTX-A": [("names", ["수서", "성남", "구성", "동탄"]), ("names", ["운정중앙", "킨텍스", "대곡", "연신내", "서울역"])],
+}
+
+# 역간거리 파일에서 구간이 끊기는 곳 (빈칸 없이 다른 지선이 이어 적힌 경우): (노선, 역)
+SEQUENCE_BREAK = {("경의중앙", "신촌")}  # 경의중앙 끝(지평) 뒤에 서울역 지선(신촌-서울역)이 이어 적혀 있음
+
+# 같은 이름이지만 다른 역 → 노선 이름을 붙여 구분
+SEPARATE_STATIONS = {
+    ("양평", "경의중앙"): "양평(경의중앙)",  # 5호선 양평(영등포구)과 다른 역
+    ("신촌", "경의중앙"): "신촌(경의중앙)",  # 2호선 신촌과 다른 역 (환승역 아님)
+}
+
+# 역사정보 파일의 노선명 → 노선 ID (좌표 찾기용)
+INFO_LINE = {
+    "1호선": "1", "경부선": "1", "경원선": "1", "경인선": "1", "장항선": "1",
+    "2호선": "2", "3호선": "3", "일산선": "3", "4호선": "4", "안산과천선": "4", "진접선": "4",
+    "5호선": "5", "6호선": "6", "7호선": "7", "도시철도 7호선": "7", "8호선": "8", "수도권 광역철도 8호선": "8",
+    "서울 도시철도 9호선": "9", "수도권  도시철도 9호선": "9",
+    "분당선": "수인분당", "수인선": "수인분당", "경의중앙선": "경의중앙", "경춘선": "경춘", "경강선": "경강",
+    "서해선": "서해", "인천국제공항선": "공항철도", "신분당선": "신분당", "에버라인": "에버라인",
+    "김포도시철도": "김포골드", "의정부": "의정부", "수도권 경량도시철도 신림선": "신림", "우이신설선": "우이신설",
+    "인천지하철 1호선": "인천1", "인천지하철 2호선": "인천2",
+}
+
+# 서울교통공사 환승 원본의 환승노선 표기 → 노선 ID (1~9호선·우이신설 밖의 노선)
+TRANSFER_LINE = {
+    "경의중앙선": "경의중앙", "수인분당선": "수인분당", "공항철도": "공항철도", "신분당선": "신분당",
+    "경춘선": "경춘", "신림선": "신림", "김포골드라인": "김포골드", "서해선": "서해",
+}
+
+# 역사정보 파일에 없는 역 좌표 (지도 서비스에서 확인한 대략값)
+MANUAL_COORDS = {
+    "도라산": (37.8995, 126.7090),
+    "동탄": (37.2003, 127.0957),
+    "킨텍스": (37.6687, 126.7448),
+    "운정중앙": (37.7177, 126.7468),
+}
+
+# 노선별 평균 속도로 시간을 계산하는 급행 노선 (km/h). 나머지는 1~8호선으로 맞춘 환산식 사용
+LINE_KMH = {"GTX-A": 100}
+
+# 역간거리 파일 값이 직선거리와 너무 다르면(파일의 행 어긋남 등) 직선거리 × 이 배율을 쓴다
+TRACK_DETOUR = 1.2
+
+
+def norm_regional(name: str) -> str:
+    """역명 정규화 + 끝의 '역' 제거 ('김포공항역' → '김포공항', 서울역은 그대로), '·' → '.'"""
+    name = norm(name).replace("·", ".")
+    if name.endswith("역") and name != "서울역":
+        name = name[:-1]
+    return ALIASES.get(name, name)
+
+
+def straight_km(p, q) -> float:
+    import math
+    r = 6371.0
+    p1, p2 = math.radians(p[0]), math.radians(q[0])
+    dp, dl = p2 - p1, math.radians(q[1] - p[1])
+    a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
+    return 2 * r * math.asin(math.sqrt(a))
+
+
+def load_station_info():
+    """전체 도시철도 역사정보 → {(역명, 노선): 좌표}, {역명: 좌표}"""
+    wb = openpyxl.load_workbook(require(RAW / STATION_INFO), read_only=True)
+    by_line, by_name = {}, {}
+    for r in wb.active.iter_rows(min_row=2, values_only=True):
+        line = INFO_LINE.get(str(r[3] or "").strip())
+        if line is None or r[9] is None:
+            continue
+        name = norm_regional(str(r[1]))
+        p = (float(r[9]), float(r[10]))
+        by_line.setdefault((name, line), p)
+        by_name.setdefault(name, p)
+    for name, p in MANUAL_COORDS.items():
+        by_name.setdefault(name, p)
+    return by_line, by_name
+
+
+def regional_sequences(line: str):
+    """노선 하나의 구간 목록 → [[(역명, 다음 역까지 km 또는 None), ...], ...]"""
+    seqs = []
+    for src in REGIONAL_LINES[line]:
+        kind = src[0]
+        if kind == "names":
+            seqs.append([(n, None) for n in src[1]])
+        elif kind == "order":
+            _, op, line_name = src
+            rows = [r for r in read_csv(require(RAW / ALL_LINES))
+                    if r["철도운영기관명"] == op and r["노선명"] == line_name]
+            rows.sort(key=lambda r: int(r["순번"]))
+            seqs.append([(norm_regional(r["역명"]), None) for r in rows])
+        else:  # dist
+            _, fname, line_name = src
+            cur = []
+            for r in read_csv(require(RAW / fname)):
+                if r["선명"].strip() != line_name:
+                    continue
+                name = norm_regional(r["역명"])
+                if (line, name) in SEQUENCE_BREAK and cur:
+                    seqs.append(cur)
+                    cur = []
+                km_text = (list(r.values())[3] or "").strip()
+                cur.append((name, float(km_text) if km_text else None))
+                if not km_text:  # 빈칸 = 구간 끝
+                    seqs.append(cur)
+                    cur = []
+            if cur:
+                seqs.append(cur)
+    return seqs
+
+
+def build_regional_edges(nodes, coords, edges, a, b):
+    """
+    수도권 광역·경전철 구간을 덧붙인다. 이미 있는 역간 연결(서울교통공사 구간)은 건너뛴다.
+    coords: 기존 좌표 {노드 ID: 좌표} (새 노드 좌표를 여기에 채워 넣음)
+    """
+    by_line, by_name = load_station_info()
+    have = {frozenset((e["from"], e["to"])) for e in edges}
+    name_pos = {}  # 역명 → 대표 좌표 (같은 이름 다른 역 검사용)
+    for nid, (name, _) in nodes.items():
+        if nid in coords:
+            name_pos.setdefault(name, coords[nid])
+
+    new_edges, far, no_coord = [], [], set()
+
+    def place(raw_name, line):
+        name = SEPARATE_STATIONS.get((raw_name, line), raw_name)
+        nid = node_id(name, line)
+        if nid not in nodes:
+            nodes[nid] = (name, line)
+        if nid not in coords:
+            p = by_line.get((raw_name, line)) or by_name.get(raw_name) or name_pos.get(name)
+            if p:
+                coords[nid] = p
+        p = coords.get(nid)
+        if p is None:
+            no_coord.add(name)
+        elif name in name_pos and straight_km(name_pos[name], p) > 1.0:
+            far.append(f"{name}({line}) {straight_km(name_pos[name], p):.1f}km")
+        elif p:
+            name_pos.setdefault(name, p)
+        return nid
+
+    for line in REGIONAL_LINES:
+        for seq in regional_sequences(line):
+            for (n1, km), (n2, _) in zip(seq, seq[1:]):
+                frm, to = place(n1, line), place(n2, line)
+                if frm == to or frozenset((frm, to)) in have:
+                    continue
+                straight = straight_km(coords[frm], coords[to]) if frm in coords and to in coords else None
+                if straight is not None and not (km and 0.6 * straight <= km <= 2.5 * straight):
+                    km = round(straight * TRACK_DETOUR, 1)
+                if not km:
+                    sys.exit(f"[오류] 거리를 알 수 없음: {frm} - {to}")
+                if line in LINE_KMH:
+                    sec = round(km / LINE_KMH[line] * 3600)
+                else:
+                    sec = round(a + b * km)
+                have.add(frozenset((frm, to)))
+                new_edges.append({
+                    "from": frm, "to": to, "line": line, "seconds": sec, "km": km,
+                    "oneway": False, "estimated": True,
+                })
+    return new_edges, far, sorted(no_coord)
+
+
+def add_default_transfers(transfers, nodes):
+    """
+    환승 원본(서울교통공사)에 없는 환승은 기존 환승의 중앙값으로 채운다.
+    같은 물리 역(같은 역명)에 있는 노선끼리 모두 연결.
+    """
+    import statistics
+    sec = round(statistics.median(t["seconds"] for t in transfers))
+    meters = round(statistics.median(t["meters"] for t in transfers))
+    have = {(t["from"], t["to"]) for t in transfers}
+    by_name = {}
+    for nid, (name, _) in nodes.items():
+        by_name.setdefault(name, []).append(nid)
+    added = 0
+    for name, nids in by_name.items():
+        for frm in nids:
+            for to in nids:
+                if frm != to and (frm, to) not in have:
+                    transfers.append({"station": name, "from": frm, "to": to,
+                                      "meters": meters, "seconds": sec, "estimated": True})
+                    added += 1
+    return added, sec, meters
+
+
 # ---------------------------------------------------------------- 환승
 def build_transfers(nodes):
     rows = read_csv(require(RAW / "transfers_raw.csv"))
@@ -199,8 +439,9 @@ def build_transfers(nodes):
 
     for r in rows:
         line = r["호선"].strip()
-        to_line = norm_line(r["환승노선"])
+        to_line = norm_line(r["환승노선"]) or TRANSFER_LINE.get(r["환승노선"].strip())
         name = norm(r["환승역명"])
+        name = SEPARATE_STATIONS.get((name, to_line), name)
         if line == to_line:
             continue  # 같은 호선 지선 연결(성수, 강동)은 역간 데이터로 이미 연결됨
         frm, to = node_id(name, line), node_id(name, to_line or "")
@@ -215,7 +456,7 @@ def build_transfers(nodes):
             "seconds": to_seconds(r["환승소요시간"]),
         }
 
-    # 9호선·우이신설선 쪽에서 1~8호선으로 가는 방향은 원본에 없음 → 반대 방향 값을 그대로 사용
+    # 9호선·우이신설선·광역철도 쪽에서 1~8호선으로 가는 방향은 원본에 없음 → 반대 방향 값을 그대로 사용
     for (frm, to), t in list(transfers.items()):
         if (to, frm) not in transfers:
             transfers[(to, frm)] = {**t, "from": to, "to": frm}
@@ -237,7 +478,7 @@ def load_coords():
 
 # ---------------------------------------------------------------- 접근성 (서울교통공사 1~8호선만 있음)
 def load_accessibility():
-    wb = openpyxl.load_workbook(require(RAW / "accessibility_raw.xlsx"), data_only=True)
+    wb = openpyxl.load_workbook(require(RAW / "accessibility_raw.xlsx"), data_only=True, read_only=True)
     ws = wb["역별승강설비현황"]
     acc = {}
     for r in ws.iter_rows(min_row=4, values_only=True):
@@ -320,8 +561,11 @@ def main():
     edges, nodes = build_metro_edges()
     a, b = fit_time_model(edges)
     edges += build_distance_edges(nodes, a, b)
-    transfers, skipped = build_transfers(nodes)
     coords = load_coords()
+    regional, far, no_coord_regional = build_regional_edges(nodes, coords, edges, a, b)
+    edges += regional
+    transfers, skipped = build_transfers(nodes)  # 광역철도 노드가 생긴 뒤에 읽어야 그쪽 환승도 들어감
+    added_tr, tr_sec, tr_m = add_default_transfers(transfers, nodes)
     acc = add_elevator_points(load_accessibility(), nodes)
     stations = build_stations(nodes, coords, acc)
 
@@ -332,7 +576,10 @@ def main():
     no_coord = [s["name"] for s in stations if s["lat"] is None]
     unknown = [s["name"] for s in stations if s["elevator"] == "unknown"]
 
-    print(f"노선: {', '.join(LINES)}")
+    print(f"노선: {', '.join(LINES + [l for l in REGIONAL_LINES if l not in LINES])}")
+    print(f"광역·경전철 역간 연결 {len(regional)}개 추가 / 기본값 환승 {added_tr}개 추가 ({tr_sec}초, {tr_m}m)")
+    print(f"같은 이름인데 1km 넘게 떨어진 역 (확인 필요): {far}")
+    print(f"광역·경전철 중 좌표 없는 역: {no_coord_regional}")
     print(f"노드(역×노선) {len(nodes)}개 / 물리 역 {len(stations)}개")
     print(f"역간 연결 {len(edges)}개 (거리로 추정 {sum(e['estimated'] for e in edges)}개) / 환승 연결 {len(transfers)}개")
     print(f"거리→시간 환산식: 운행시간(초) = {a:.1f} + {b:.1f} × 거리(km)")

@@ -43,10 +43,20 @@ const dateLabel = (s) => {
   const [y, m, d] = s.split('-').map(Number);
   return `${m}월 ${d}일 (${DOW[new Date(y, m - 1, d).getDay()]})`;
 };
+// '선'만 붙이면 어색한 노선 이름 (나머지는 "경의중앙" → "경의중앙선")
+const LINE_NAME = {
+  공항철도: '공항철도',
+  에버라인: '에버라인',
+  김포골드: '김포골드라인',
+  의정부: '의정부경전철',
+  인천1: '인천1호선',
+  인천2: '인천2호선',
+  'GTX-A': 'GTX-A',
+};
 // ["2", "5"] → "2·5호선", ["1", "우이신설"] → "1호선·우이신설선"
 const linesLabel = (lines) => {
   const nums = lines.filter((l) => /^\d+$/.test(l));
-  const others = lines.filter((l) => !/^\d+$/.test(l)).map((l) => `${l}선`);
+  const others = lines.filter((l) => !/^\d+$/.test(l)).map((l) => LINE_NAME[l] || `${l}선`);
   return [...(nums.length ? [`${nums.join('·')}호선`] : []), ...others].join('·');
 };
 

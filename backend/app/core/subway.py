@@ -1,6 +1,6 @@
 """
-지하철 경로 계산 (1~9호선 + 우이신설선, 1호선은 서울역~청량리 구간만)
-9호선·우이신설선 운행시간은 거리로 추정한 값 (edges.json의 estimated=True)
+지하철 경로 계산 (수도권 전철: 1~9호선, 광역철도, 경전철, GTX-A)
+서울교통공사 구간 밖(9호선·우이신설·광역철도 등) 운행시간은 거리로 추정한 값 (edges.json의 estimated=True)
 
 데이터: backend/data/stations.json, edges.json, transfers.json
         (scripts/build_subway_data.py 로 생성)
