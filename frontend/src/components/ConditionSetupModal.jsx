@@ -200,7 +200,7 @@ const selectedTimes = timeRanges.map((r) => `${r.label} ${r.start}-${r.end}`);
 
         {step === 1 && (
           <div className="space-y-6 pt-1">
-            <AvailabilityGrid selected={selectedCells} onChange={setSelectedCells} totalDays={totalDays} />
+            <AvailabilityGrid selected={selectedCells} onChange={setSelectedCells} totalDays={totalDays} startDate={START_DATE} />
 
             <button
               type="button"

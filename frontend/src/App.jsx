@@ -9,6 +9,7 @@ import JoinModal from './components/JoinModal/JoinModal';
 import RecommendPage from './pages/RecommendPage';
 import JoinedMeetingsPage from './pages/JoinedMeetingsPage'; // [추가]
 import SettingsPage from './pages/SettingsPage'; // [추가]
+import InvitePage from './pages/InvitePage';
 
 
 
@@ -36,6 +37,8 @@ function App() {
         <Route path="/meet/:id/setup" element={<SetupPage />} />
         <Route path="/meet/:id/proposal" element={<ProposalPage />} />
         <Route path="/meet/:id/recommend" element={<RecommendPage />} />
+        {/* 초대 링크: 참여 또는 지금 단계 화면으로 이동 */}
+        <Route path="/join/:code" element={<InvitePage />} />
       </Routes>
 
       <CreateModal isOpen={isCreateOpen} onClose={() => setIsCreateOpen(false)} />

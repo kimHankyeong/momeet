@@ -47,6 +47,20 @@ export const hostLogin = async (id, hostPassword) =>
 export const joinMeeting = async (code, nickname) =>
   (await api.post(`/join/${encodeURIComponent(code)}`, { nickname })).data;
 
+// 입장 코드로 방 미리보기 (인증 불필요) → { meeting_id, title, stage, can_join, ... }
+export const previewJoin = async (code) =>
+  (await api.get(`/join/${encodeURIComponent(code)}`)).data;
+
+// 초대 링크: 처음 온 사람은 참여, 이미 참여한 사람은 지금 단계 화면으로 간다 (토큰이 없어 공유해도 안전)
+export const inviteLinkOf = (joinCode) => `${window.location.origin}/join/${joinCode}`;
+
+// 진행 단계별 화면 (recruiting·input은 같은 "입력" 화면)
+export const stagePath = (id, stage) => {
+  if (stage === 'recommended') return `/meet/${id}/recommend`;
+  if (stage === 'proposed' || stage === 'confirmed') return `/meet/${id}/proposal`;
+  return `/meet/${id}/setup`;
+};
+
 export const leaveMeeting = async (id) => {
   await api.delete(`/meetings/${id}/me`);
   localStorage.removeItem(`momeet_token_${id}`);

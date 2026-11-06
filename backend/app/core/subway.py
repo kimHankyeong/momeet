@@ -164,6 +164,20 @@ def search_stations(query: str, limit: int = 10) -> list[dict]:
     return (prefix + contains)[:limit]
 
 
+def path_stops(path: list[str]) -> list[dict]:
+    """
+    지나가는 노드 ID 목록 → 지도에 그릴 역 목록 [{name, line, lat, lng}].
+    환승역은 노선이 바뀌므로 같은 역이 두 번 나온다 (예: 동대문역사문화공원 4호선 → 5호선)
+    """
+    _, by_name, node_info, _ = _load()
+    stops = []
+    for nid in path:
+        name, line, _ = node_info[nid]
+        st = by_name[name]
+        stops.append({"name": name, "line": line, "lat": st["lat"], "lng": st["lng"]})
+    return stops
+
+
 # ------------------------------------------------------------------ 최단경로
 def _dijkstra(origin: str, needs_elevator: bool, max_transfers: int | None):
     """

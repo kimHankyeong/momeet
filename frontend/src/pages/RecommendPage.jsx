@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import routeMap from '../assets/route-map.png';
+import StationMap from '../components/StationMap/StationMap';
 import { createProposal, getMeeting, getRecommendations } from '../api/meetApi';
 
 const STEPS = ['모집', '입력', '추천', '제안', '확정'];
@@ -55,10 +55,13 @@ const toCandidate = (c) => ({
   id: c.candidate_id,
   name: c.station.name.endsWith('역') ? c.station.name : `${c.station.name}역`,
   lines: linesLabel(c.station.lines),
+  lat: c.station.lat,
+  lng: c.station.lng,
   when: `${dateLabel(c.date)} ${c.start}`,
   maxMin: c.max_travel_min,
   myMin: c.my_route ? c.my_route.minutes : '-',
   transfers: c.my_route ? c.my_route.transfers : '-',
+  stops: c.my_route?.stops || [], // 지도용 (지나가는 역 전체)
 });
 
 export default function RecommendPage() {
@@ -84,6 +87,11 @@ export default function RecommendPage() {
           dateRange: `${dateLabel(dash.meeting.date_start)} - ${dateLabel(dash.meeting.date_end)}`,
         });
         setIsHost(dash.me.is_host);
+        // 이미 제안이 나갔으면 참여자는 제안 화면으로 (방장은 다른 후보로 다시 제안할 수 있게 남김)
+        if (!dash.me.is_host && ['proposed', 'confirmed'].includes(dash.meeting.stage)) {
+          navigate(`/meet/${id}/proposal`, { replace: true });
+          return;
+        }
         const list = (rec.candidates || []).map(toCandidate);
         setCandidates(list);
         setSelectedId(rec.best || list[0]?.id || null);
@@ -94,7 +102,7 @@ export default function RecommendPage() {
     return () => {
       alive = false;
     };
-  }, [id]);
+  }, [id, navigate]);
 
   const selected = candidates.find((c) => c.id === selectedId);
 
@@ -153,9 +161,7 @@ export default function RecommendPage() {
             <div className="grid grid-cols-2 gap-6 items-stretch">
               {/* 좌측: 선택 후보 미리보기 */}
               <section className="bg-white p-6 rounded-3xl border border-gray-300 flex flex-col justify-between min-h-[380px]">
-                <div className="flex-1 flex items-center justify-center">
-                  <img src={routeMap} alt="추천 장소 노선" className="w-full h-auto" />
-                </div>
+                <StationMap lat={selected.lat} lng={selected.lng} name={selected.name} />
                 <div className="mt-4 border border-gray-300 rounded-2xl px-4 py-3">
                   <p className="text-base font-medium text-gray-900">📍 {selected.name}</p>
                   <p className="text-xs text-gray-600 mt-1">

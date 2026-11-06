@@ -339,6 +339,8 @@ def _route_view(leg: dict) -> dict:
                     "source": leg.get("access_source") or "estimate"}  # tmap | estimate
                    if leg.get("access_walk_m") else None),
         "segments": leg["route"]["segments"],
+        # 지도용: 지나가는 역 전체 (역 좌표만. 출발 위치 좌표는 넣지 않음)
+        "stops": subway.path_stops(leg["route"].get("path", [])),
     }
 
 
