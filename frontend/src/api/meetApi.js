@@ -51,3 +51,9 @@ export const leaveMeeting = async (id) => {
   await api.delete(`/meetings/${id}/me`);
   localStorage.removeItem(`momeet_token_${id}`);
 };
+
+// 약속방 삭제 (방장만): 방과 모든 데이터 삭제
+export const deleteMeeting = async (id) => {
+  await api.delete(`/meetings/${id}`);
+  localStorage.removeItem(`momeet_token_${id}`);
+};

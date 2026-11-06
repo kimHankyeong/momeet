@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import MeetingSidebar from '../components/MeetingSidebar/MeetingSidebar';
 import MeetingSettingsModal from '../components/MeetingSettingsModal/MeetingSettingsModal';
-import { getMeeting, leaveMeeting } from '../api/meetApi';
+import { deleteMeeting, getMeeting, leaveMeeting } from '../api/meetApi';
 
 const DOW = ['일', '월', '화', '수', '목', '금', '토'];
 const dateLabel = (s) => {
@@ -50,13 +50,15 @@ export default function SettingsPage() {
     ).then((list) => setMeetings(list.filter(Boolean)));
   }, []);
 
-  // 접근 권한 해제(F-011): 서버에서 내 데이터 삭제 후 목록에서 제거
+    // 참여자: 나가기(F-011) / 방장: 약속방 삭제
   const handleLeave = async (id) => {
+    const m = meetings.find((x) => x.id === id);
     try {
-      await leaveMeeting(id);
-      setMeetings((prev) => prev.filter((m) => m.id !== id));
+      if (m?.isHost) await deleteMeeting(id);
+      else await leaveMeeting(id);
+      setMeetings((prev) => prev.filter((x) => x.id !== id));
     } catch (e) {
-      alert(e.response?.data?.error?.message || '약속방을 나가지 못했어요.');
+      alert(e.response?.data?.error?.message || '처리하지 못했어요.');
     }
   };
 
