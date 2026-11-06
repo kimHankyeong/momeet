@@ -8,7 +8,7 @@
 | | 주소 |
 | --- | --- |
 | 배포된 웹 | https://momeet-frontend.onrender.com |
-| 시연 영상 | https://youtu.be/UbdpHKHmkeo |
+| 시연 영상 | https://youtu.be/B6ti5lbVBXk?si=Zx21R9VzSXVDagie |
 | API 문서 (Swagger) | https://momeet-backend.onrender.com/docs |
 
 - **무료 서버라서 오랫동안 쓰지 않으면 잠들고, 첫 접속은 최대 1분 정도 걸립니다.** 화면이 멈춘 것처럼 보여도 잠시 기다려 주세요.
